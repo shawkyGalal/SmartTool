@@ -1,0 +1,1944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by Puneet (SADAD) -->
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by frank (frank inc.) -->
+<!-- 
+Revision History:
+
+Version V01.00.00:
+12-May-2004	Initial Creation of SADAD schema by Kris Carnmarker Based on the SADAD External Message Specification Issue 0.6
+06-Feb-2005	Last Modified by Jesin James Based on the SADAD External Message Specification Issue 1.7.
+
+
+Version V01.04.00:
+[26-Jun-2005][PD]:Modified BillSummAmtCode enumeration as per Ext.Msg.Spec r1.7.1e.
+[28-Jun-2005][PD]:Modified BillStatusCode enumeration as per Ext.Msg.Spec r1.7.1e.
+[28-Jun-2005][PD]:Modified PmtType_Type simpleType as per Ext.Msg.Spec r1.7.1f.
+[10-July-2005][PD]:Modified PmtStatusCode simpleType as per Ext.Msg.Spec r1.7.1g.
+[10-Aug-2005][PD]:Modified AccessChannel Enum simpleType as per Ext.Msg.Spec r1.7.1?
+[10-Aug-2005][PD]:Modified ServiceType Enum simpleType as per Ext.Msg.Spec r1.7.1?
+[10-Aug-2005][PD]:Removed AcctCancel fromAccountStatusCode enum simpleType as per Ext.Msg.Spec r1.7.1h? Bug# 75
+[28-Sep-2005][PD]:Added BillDeactive from BillStatusCode  enum simpleType as per Ext.Msg.Spec r1.7.2
+[28-Sep-2005][PD]:Added PendingRecordCount element in SADAD/PresSvcRq/BillConfirmationRq as per Ext.Msg.Spec r1.7.2
+[03-Oct-2005][PD]:Added "PAS" to the OfficialIDType closed enum (EMS 1.7.2)
+
+Version 2.0
+[17-April-2006][PD] Added PmtTransId and status aggregate in PmtNotifyRs Message Defination as per Ext.Msg.Spec r2.0
+[17-April-2006][PD] Added VoucherType , VoucherStatusCode enumeration as per Ext.Msg.Spec r2.0
+[17-April-2006][PD] Added C64_Type simpleType as per Ext.Msg.Spec r2.0
+[17-April-2006][PD] Added VoucherDesc ,SubstituteId ,VoucherAmt ,VoucherInfo ,VoucherNumber,EncVoucherNumber,VoucherRec ,VoucherErrorInfo ,VoucherUploadRq,VoucherUploadRs,VoucherConfirmationRq,VoucherConfirmationRs and Voucher element as per Ext.Msg.Spec r2.0 
+[17-April-2006][PD] Added communicationVersion in SADAD Tag as per Ext.Msg.Spec r2.0
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="SADAD_Type">
+		<xs:annotation>
+			<xs:documentation>root element type</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:sequence>
+				<xs:element ref="SignonRq"/>
+				<xs:choice>
+					<xs:element ref="BaseSvcRq"/>
+					<xs:element ref="BankSvcRq"/>
+					<xs:element ref="BillerSvcRq"/>
+					<xs:element ref="PaySvcRq"/>
+					<xs:element ref="PresSvcRq"/>
+				</xs:choice>
+				<xs:element ref="Signature" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element ref="SignonRs"/>
+				<xs:choice>
+					<xs:element ref="BaseSvcRs"/>
+					<xs:element ref="BankSvcRs"/>
+					<xs:element ref="BillerSvcRs"/>
+					<xs:element ref="PaySvcRs"/>
+					<xs:element ref="PresSvcRs"/>
+				</xs:choice>
+				<xs:element ref="Signature" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:choice>
+		<xs:attribute name="contentVersion" type="NC8_Type" default="2.0"/>
+		<!--[17-April-2006][PD] Added communicationVersion in SADAD Tag as per Ext.Msg.Spec r2.0-->
+	</xs:complexType>
+	<xs:element name="SADAD" type="SADAD_Type">
+		<xs:annotation>
+			<xs:documentation>root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="BankSvcRq_Type">
+		<xs:annotation>
+			<xs:documentation>-Bank Services are responsible for synchronization tasks performed exclusively with Banks</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="BankCutOffRq"/>
+				<xs:element ref="BankReconDownloadRq"/>
+				<xs:element ref="BankSplUploadRq"/>
+				<xs:element ref="XferAddRq"/>
+				<xs:element ref="XferResultRq"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankSvcRs_Type">
+		<xs:annotation>
+			<xs:documentation>-Bank Services are responsible for synchronization tasks performed exclusively with Banks</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="BankCutOffRs"/>
+				<xs:element ref="BankReconDownloadRs"/>
+				<xs:element ref="BankSplUploadRs"/>
+				<xs:element ref="XferAddRs"/>
+				<xs:element ref="XferResultRs"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BankSvcRq" type="BankSvcRq_Type"/>
+	<xs:element name="BankSvcRs" type="BankSvcRs_Type"/>
+	<xs:complexType name="BaseSvcRq_Type">
+		<xs:annotation>
+			<xs:documentation>-Base Services provide infrastructure to support ongoing SADAD operations</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="BillerInfoDownloadRq"/>
+				<xs:element ref="CustPayeeAddRq"/>
+				<xs:element ref="CustPayeeDelRq"/>
+				<xs:element ref="CustPayeeInqRq"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BaseSvcRs_Type">
+		<xs:annotation>
+			<xs:documentation>-Base Services provide infrastructure to support ongoing SADAD operations</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="BillerInfoDownloadRs"/>
+				<xs:element ref="CustPayeeAddRs"/>
+				<xs:element ref="CustPayeeDelRs"/>
+				<xs:element ref="CustPayeeInqRs"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BaseSvcRq" type="BaseSvcRq_Type"/>
+	<xs:element name="BaseSvcRs" type="BaseSvcRs_Type"/>
+	<xs:complexType name="BillerSvcRq_Type">
+		<xs:annotation>
+			<xs:documentation>-Biller Services are responsible for synchronization tasks performed exclusively with Billers</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="AccountConfirmationRq"/>
+				<xs:element ref="AccountUploadRq"/>
+				<xs:element ref="BillerReconUploadRq"/>
+				<xs:element ref="BillerTransLogUploadRq"/>
+				<xs:element ref="PmtConfirmationRq"/>
+				<xs:element ref="PmtDownloadRq"/>
+				<xs:element ref="PmtLoadRq"/>
+				<xs:element ref="PmtNotifyRq"/>
+				<xs:element ref="PmtNotifyUploadRq"/>
+				<xs:element ref="PmtUploadRq"/>
+				<!--[17-April-2006][PD] Added VoucherUploadRq,VoucherConfirmationRq  element as per Ext.Msg.Spec r2.0 -->
+				<xs:element ref="VoucherUploadRq"/>
+				<xs:element ref="VoucherConfirmationRq"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillerSvcRs_Type">
+		<xs:annotation>
+			<xs:documentation>-Biller Services are responsible for synchronization tasks performed exclusively with Billers</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="AccountConfirmationRs"/>
+				<xs:element ref="AccountUploadRs"/>
+				<xs:element ref="BillerReconUploadRs"/>
+				<xs:element ref="BillerTransLogUploadRs"/>
+				<xs:element ref="PmtConfirmationRs"/>
+				<xs:element ref="PmtDownloadRs"/>
+				<xs:element ref="PmtLoadRs"/>
+				<xs:element ref="PmtNotifyRs"/>
+				<xs:element ref="PmtNotifyUploadRs"/>
+				<xs:element ref="PmtUploadRs"/>
+				<!--[17-April-2006][PD] Added VoucherUploadRs,VoucherConfirmationRs element as per Ext.Msg.Spec r2.0 -->
+				<xs:element ref="VoucherUploadRs"/>
+				<xs:element ref="VoucherConfirmationRs"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BillerSvcRq" type="BillerSvcRq_Type"/>
+	<xs:element name="BillerSvcRs" type="BillerSvcRs_Type"/>
+	<xs:complexType name="PaySvcRq_Type">
+		<xs:annotation>
+			<xs:documentation>-Payment Services involve the processes of accepting Customer funds </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="PmtAdviceRq"/>
+				<xs:element ref="PmtModRq"/>
+				<xs:element ref="PmtValidationRq"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PaySvcRs_Type">
+		<xs:annotation>
+			<xs:documentation>-Payment Services involve the processes of accepting Customer funds </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="PmtAdviceRs"/>
+				<xs:element ref="PmtModRs"/>
+				<xs:element ref="PmtValidationRs"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PaySvcRq" type="PaySvcRq_Type"/>
+	<xs:element name="PaySvcRs" type="PaySvcRs_Type"/>
+	<xs:complexType name="PresSvcRq_Type">
+		<xs:annotation>
+			<xs:documentation>The presentment of both bill and payment data </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="BillConfirmationRq"/>
+				<xs:element ref="BillDownloadRq"/>
+				<xs:element ref="BillInqRq"/>
+				<xs:element ref="BillUploadRq"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PresSvcRs_Type">
+		<xs:annotation>
+			<xs:documentation>The presentment of both bill and payment data </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="RqUID"/>
+			<xs:choice>
+				<xs:element ref="BillConfirmationRs"/>
+				<xs:element ref="BillDownloadRs"/>
+				<xs:element ref="BillInqRs"/>
+				<xs:element ref="BillUploadRs"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PresSvcRq" type="PresSvcRq_Type"/>
+	<xs:element name="PresSvcRs" type="PresSvcRs_Type"/>
+	<xs:simpleType name="AccessChannel_Enum">
+		<xs:annotation>
+			<xs:documentation>Defines the known values for the Open Enum AccessChannel</xs:documentation>
+			<!--[10-Aug-2005][PD]:Modified AccessChannel Enum simpleType from as per Ext.Msg.Spec r1.7.1?-->
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="ATM"/>
+			<xs:enumeration value="IVR"/>
+			<xs:enumeration value="KIOSK"/>
+			<xs:enumeration value="INTERNET"/>
+			<xs:enumeration value="PORTAL"/>
+			<xs:enumeration value="BTELLER"/>
+			<xs:enumeration value="POS"/>
+			<xs:enumeration value="CAM"/>
+			<xs:enumeration value="CORP"/>
+			<xs:enumeration value="CCC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AccessChannel_Type">
+		<xs:annotation>
+			<xs:documentation>AccessChannel enum represents the tool in which humans interact with SADAD</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="AccessChannel_Enum NC32_Type"/>
+	</xs:simpleType>
+	<xs:simpleType name="AccountStatusCode_Type">
+		<xs:annotation>
+			<xs:documentation>Closed Enum that identifies an account?s status within SADAD or Biller systems</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="AcctNew"/>
+			<xs:enumeration value="AcctActivate"/>
+			<xs:enumeration value="AcctDeact"/>
+			<!--[10-Aug-2005][PD]:Removed AcctCancel fromAccountStatusCode enum simpleType as per Ext.Msg.Spec r1.7.1h?
+			<xs:enumeration value="AcctCancel"/> Bug# 75 -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AcctType_Enums">
+		<xs:annotation>
+			<xs:documentation>Defines the known values for the open enum AcctType</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="CUA"/>
+			<xs:enumeration value="CMA"/>
+			<xs:enumeration value="DDA"/>
+			<xs:enumeration value="LOC"/>
+			<xs:enumeration value="MMA"/>
+			<xs:enumeration value="SDA"/>
+			<xs:enumeration value="SSA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AcctType_Type">
+		<xs:annotation>
+			<xs:documentation>Open Enum for bank account types.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="AcctType_Enums NC32_Type"/>
+	</xs:simpleType>
+	<xs:simpleType name="Amount_Type">
+		<xs:annotation>
+			<xs:documentation>An amount, usualy monetary.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="BillCategory_Enum">
+		<xs:annotation>
+			<xs:documentation>Defines the known values for the Open Enum BillCategory</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC12_Type">
+			<xs:enumeration value="Recurring"/>
+			<xs:enumeration value="CIP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BillCategory_Type">
+		<xs:annotation>
+			<xs:documentation>A bill category assigns behaviour to a bill, thus permitting SADAD to apply rules to bills in varying manner.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="BillCategory_Enum NC12_Type"/>
+	</xs:simpleType>
+	<xs:simpleType name="BillPmtStatusCode_Type">
+		<xs:annotation>
+			<xs:documentation>todo comment</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type"/>
+	</xs:simpleType>
+	<xs:simpleType name="BillStatusCode_Type">
+		<xs:annotation>
+			<xs:documentation>Closed Enum that identifies a bill?s payment status within SADAD</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="BillPaid"/>
+			<xs:enumeration value="BillPartialPd"/>
+			<xs:enumeration value="BillOverPd"/>
+			<xs:enumeration value="BillUnpaid"/>
+			<xs:enumeration value="BillDeactive"/>
+			<xs:enumeration value="BillNew"/>
+			<xs:enumeration value="BillUpdated"/>
+			<xs:enumeration value="BillAny"/>
+			<xs:enumeration value="BillExpired"/>
+			<xs:enumeration value="BillCreate"/>
+			<xs:enumeration value="AcctAct"/>
+			<xs:enumeration value="AcctDeact"/>
+			<!--[28-Sep-2005][PD]:Added BillDeactive from BillStatusCode  enum simpleType as per Ext.Msg.Spec r1.7.2-->
+			<!--[28-Jun-2005][PD]:Modified BillStatusCode enumeration as per Ext.Msg.Spec r1.7.1c. -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BillSummAmtCode_Enum">
+		<xs:annotation>
+			<xs:documentation>Defines the known values for the Open Enum BillSummAmtCode</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="Incentive"/>
+			<xs:enumeration value="Penalty"/>
+			<xs:enumeration value="MinPartialPmt"/>
+			<xs:enumeration value="MinAdvancePmt"/>
+			<xs:enumeration value="MaxAdvancePmt"/>
+			<!-- [26-Jun-2005][PD]:Modified BillSummAmtCode enumeration as per Ext.Msg.Spec r1.7.1c. -->
+			<!-- Deleted <xs:enumeration value="CreditLimit"/>-->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BillSummAmtCode_Type">
+		<xs:annotation>
+			<xs:documentation>Open Enum: Indicates the type of amount being specified in CurAmt</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="NC32_Type BillSummAmtCode_Enum"/>
+	</xs:simpleType>
+	<xs:simpleType name="BillSummAmtType_Enum">
+		<xs:annotation>
+			<xs:documentation>Indicates the type of amount specified in an associated currency value</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="Payable"/>
+			<xs:enumeration value="Supplemental"/>
+			<xs:enumeration value="InfoOnly"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BillSummAmtType_Type">
+		<xs:annotation>
+			<xs:documentation>Open Enum: Indicates the type of amount specified in an associated currency value</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="NC32_Type BillSummAmtType_Enum"/>
+	</xs:simpleType>
+	<xs:simpleType name="C32_Type">
+		<xs:annotation>
+			<xs:documentation>32 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C40_Type">
+		<xs:annotation>
+			<xs:documentation>40 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--	[17-April-2006][PD] Added C64_Type simpleType as per Ext.Msg.Spec r2.0-->
+	<xs:simpleType name="C64_Type">
+		<xs:annotation>
+			<xs:documentation>64 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C128_Type">
+		<xs:annotation>
+			<xs:documentation>128 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C255_Type">
+		<xs:annotation>
+			<xs:documentation>255 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C256_Type">
+		<xs:annotation>
+			<xs:documentation>255 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C2048_Type">
+		<xs:annotation>
+			<xs:documentation>255 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2048"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C4096_Type">
+		<xs:annotation>
+			<xs:documentation>4096 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4096"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C2147483647_Type">
+		<xs:annotation>
+			<xs:documentation>2147483647 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2147483647"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Currency_Type">
+		<xs:annotation>
+			<xs:documentation>currency amount</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="LanguagePref_Type">
+		<xs:annotation>
+			<xs:documentation>Two letter country code as defined in RFC-1766</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ar-sa"/>
+			<xs:enumeration value="en-gb"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Date_Type">
+		<xs:annotation>
+			<xs:documentation>Date or DateTime type</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="Identifier_Type">
+		<xs:annotation>
+			<xs:documentation>Object identifier</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC36_Type"/>
+	</xs:simpleType>
+	<xs:simpleType name="NC2_Type">
+		<xs:annotation>
+			<xs:documentation>2 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC3_Type">
+		<xs:annotation>
+			<xs:documentation>3 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC4_Type">
+		<xs:annotation>
+			<xs:documentation>4 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC8_Type">
+		<xs:annotation>
+			<xs:documentation>8 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC10_Type">
+		<xs:annotation>
+			<xs:documentation>10 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC12_Type">
+		<xs:annotation>
+			<xs:documentation>12 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC16_Type">
+		<xs:annotation>
+			<xs:documentation>16 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC32_Type">
+		<xs:annotation>
+			<xs:documentation>32 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC34_Type">
+		<xs:annotation>
+			<xs:documentation>34 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="34"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC36_Type">
+		<xs:annotation>
+			<xs:documentation>36 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC80_Type">
+		<xs:annotation>
+			<xs:documentation>80 character ISO Latin-1 string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="80"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OfficialIdType_Type">
+		<xs:annotation>
+			<xs:documentation>Closed Enum: An OfficialId is a unique identifier for a bill-paying entity, including people and companies.  </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="NAT"/>
+			<xs:enumeration value="IQA"/>
+			<xs:enumeration value="BIS"/>
+			<xs:enumeration value="ACT"/>
+			<xs:enumeration value="SID"/>
+			<xs:enumeration value="BTL"/>
+			<xs:enumeration value="BED"/>
+			<xs:enumeration value="BIE"/>
+			<xs:enumeration value="SED"/>
+			<xs:enumeration value="PAS"/>
+			<!--			[03-Oct-2005][PD]:Added “PAS” to the OfficialIDType closed enum (EMS 1.7.2).-->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhoneNumber_Type">
+		<xs:annotation>
+			<xs:documentation>International phone number</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\+\d{1,3}-\d+-\d+(\+\d+)?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PmtIdType_Type">
+		<xs:annotation>
+			<xs:documentation>Closed Enum: defines how the PmtId element is to be interpreted.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="SPTN"/>
+			<xs:enumeration value="BLRPTN"/>
+			<xs:enumeration value="BNKPTN"/>
+			<xs:enumeration value="BNKRVL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PmtMethod_Enum">
+		<xs:annotation>
+			<xs:documentation>Defines the known values for the Open Enum PmtMethod</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="CASH"/>
+			<xs:enumeration value="CCARD"/>
+			<xs:enumeration value="EFT"/>
+			<xs:enumeration value="ACTDEB"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PmtMethod_Type">
+		<xs:annotation>
+			<xs:documentation>Open Enum: the method used to pay the bill.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="NC32_Type PmtMethod_Enum"/>
+	</xs:simpleType>
+	<xs:simpleType name="PmtStatusCode_Type">
+		<xs:annotation>
+			<xs:documentation>Closed Enum:  identifies the payment processing status</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="PmtNew"/>
+			<xs:enumeration value="PmtUpdated"/>
+			<xs:enumeration value="PmtAny"/>
+			<xs:enumeration value="PmtDuplicate"/>
+			<xs:enumeration value="PmtReversal"/>
+			<xs:enumeration value="PmtTransf"/>
+			<xs:enumeration value="PmtNotTransf"/>
+			<xs:enumeration value="PmtNotAdviced"/>
+			<xs:enumeration value="PmtRecon"/>
+			<xs:enumeration value="PmtAlreadyRecon"/>
+			<xs:enumeration value="PmtNotRecon"/>
+			<xs:enumeration value="PmtNotInBank"/>
+			<xs:enumeration value="PmtNotInSadad"/>
+			<xs:enumeration value="PmtMisMatch"/>
+			<xs:enumeration value="PmtCompleted"/>
+			<xs:enumeration value="PmtNotCompleted"/>
+			<xs:enumeration value="PmtBillerMistmatch"/>
+			<!--[10-July-2005][PD]:Modified PmtStatusCode simpleType as per Ext.Msg.Spec r1.7.1g -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PmtType_Enum">
+		<xs:annotation>
+			<xs:documentation>Defines the known values for the Open Enum PmtType</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC4_Type">
+			<xs:enumeration value="POST"/>
+			<xs:enumeration value="RCHG"/>
+			<xs:enumeration value="RNEW"/>
+			<xs:enumeration value="RDEP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PmtType_Type">
+		<xs:annotation>
+			<xs:documentation>Open Enum: A Payment Type distinguishes the payment?s intent as it is possible for a Biller to accept multiple types of pre-payment for the same account.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="NC10_Type PmtType_Enum"/>
+		<!-- [28-Jun-2005][PD]:Modified PmtType_Type simpleType as per Ext.Msg.Spec r1.7.1c. -->
+	</xs:simpleType>
+	<xs:simpleType name="ServiceType_Enum">
+		<xs:annotation>
+			<xs:documentation>Defines the known values for the Open Enum ServiceType</xs:documentation>
+			<!--	[10-Aug-2005][PD]:Modified ServiceType Enum simpleType from as per Ext.Msg.Spec r1.7.1? -->
+		</xs:annotation>
+		<xs:restriction base="NC4_Type">
+			<xs:enumeration value="CIP"/>
+			<xs:enumeration value="ELCT"/>
+			<xs:enumeration value="PHON"/>
+			<xs:enumeration value="GSM"/>
+			<xs:enumeration value="LLIN"/>
+			<xs:enumeration value="INSR"/>
+			<xs:enumeration value="BKSV"/>
+			<xs:enumeration value="GOVT"/>
+			<xs:enumeration value="MED"/>
+			<xs:enumeration value="CCRD"/>
+			<xs:enumeration value="UTIL"/>
+			<xs:enumeration value="PCIN"/>
+			<xs:enumeration value="EXAM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceType_Type">
+		<xs:annotation>
+			<xs:documentation>Open Enum: A Service Type represents the solitary service category associated with a bill</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="NC4_Type ServiceType_Enum"/>
+	</xs:simpleType>
+	<xs:simpleType name="Severity_Type">
+		<xs:annotation>
+			<xs:documentation>Closed Enum: The Severity enum classifies XML documents transferred between Banks/Billers and SADAD into distinct groups</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="Error"/>
+			<xs:enumeration value="Warning"/>
+			<xs:enumeration value="Info"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="URL_Type">
+		<xs:annotation>
+			<xs:documentation>Uniform Resource Locator </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="UUID_Type">
+		<xs:annotation>
+			<xs:documentation>A UUID is an identifier that is unique across both space and time, with respect to the space of all UUIDs.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".{8}-.{4}-.{4}-.{4}-.{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--	[17-April-2006][PD] Added VoucherStatusCode ,VoucherType enumeration as per Ext.Msg.Spec r2.0 -->
+	<xs:simpleType name="VoucherStatusCode_Type">
+		<xs:annotation>
+			<xs:documentation>Defines the known values for the Close Enum VoucherStatusCode</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="VoucherNew"/>
+			<xs:enumeration value="VoucherActivate"/>
+			<xs:enumeration value="VoucherDeact"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VoucherType_Enum">
+		<xs:annotation>
+			<xs:documentation>Defines the known values for the Open Enum VoucherType</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC8_Type"/>
+	</xs:simpleType>
+	<xs:simpleType name="VoucherType_Type">
+		<xs:annotation>
+			<xs:documentation>Open Enum: A voucher Type reserved for future use</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="NC8_Type VoucherType_Enum"/>
+	</xs:simpleType>
+	<!--end of change-->
+	<xs:complexType name="AccountId_Type">
+		<xs:annotation>
+			<xs:documentation>-represents a bill presentment account</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BillingAcct" minOccurs="0"/>
+			<xs:element ref="BillerId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AccountConfirmationRq_Type">
+		<xs:annotation>
+			<xs:documentation>-provides an account load summary report.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AsyncRqUID"/>
+			<xs:element ref="UploadDt"/>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="SuccessRecordCount"/>
+			<xs:element ref="ErrorRecordCount"/>
+			<xs:element ref="AccountInfoError" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AccountConfirmationRs_Type">
+		<xs:annotation>
+			<xs:documentation>-acknowledgement of receipt of the AccountConfirmationRq message </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AsyncRqUID"/>
+			<xs:element ref="UploadDt"/>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="SuccessRecordCount"/>
+			<xs:element ref="ErrorRecordCount"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AccountUploadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-a collection of account records and is used to create, activate, deactivate, and/or cancel accounts within SADAD system. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Timestamp"/>
+			<xs:element ref="AccountInfo" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AccountUploadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-an acknowledgement to the AccountUploadRq message. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Timestamp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankCutOffRq_Type">
+		<xs:annotation>
+			<xs:documentation>-informs each Bank when it is to cut off transactions for the current processing day</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="PmtRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankCutOffRs_Type">
+		<xs:annotation>
+			<xs:documentation>-response to receiving the BankCutOffRq message</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankReconDownloadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-used to send reconciliation report to the Bank.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="PmtRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankReconDownloadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-acknowledges the receipt of the reconciliation report</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankSplUploadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-pushes the SADAD Payment Log (SPL) to SADAD</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="PmtRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BankSplUploadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-Bank?s response to SADAD?s request for the daily SPL file</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillConfirmationRq_Type">
+		<xs:annotation>
+			<xs:documentation>-provides a bill load summary report and a list of rejected records.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AsyncRqUID"/>
+			<xs:element ref="UploadDt"/>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="BillCategory" minOccurs="0"/>
+			<xs:element ref="ServiceType" minOccurs="0"/>
+			<xs:element ref="SuccessRecordCount"/>
+			<xs:element ref="ErrorRecordCount"/>
+			<xs:element ref="PendingRecordCount" minOccurs="0"/>
+			<!--[28-Sep-2005][PD]:Added PendingRecordCount element in SADAD/PresSvcRq/BillConfirmationRq as per Ext.Msg.Spec r1.7.2-->
+			<xs:element ref="BillInfoError" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillConfirmationRs_Type">
+		<xs:annotation>
+			<xs:documentation>-acknowledgement of receipt of the BillConfirmationRq message </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AsyncRqUID"/>
+			<xs:element ref="UploadDt"/>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="BillCategory" minOccurs="0"/>
+			<xs:element ref="ServiceType" minOccurs="0"/>
+			<xs:element ref="SuccessRecordCount"/>
+			<xs:element ref="ErrorRecordCount"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillDownloadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-used by SADAD to ?pull? bill data from the Biller site</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BillerId"/>
+			<xs:element ref="Timestamp" minOccurs="0"/>
+			<xs:element ref="BillCategory" minOccurs="0"/>
+			<xs:element ref="ServiceType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillDownloadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-used by SADAD to pull the bill data from the Biller</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BillCategory" minOccurs="0"/>
+			<xs:element ref="ServiceType" minOccurs="0"/>
+			<xs:element ref="Timestamp"/>
+			<xs:element ref="BillRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillerInfo_Type">
+		<xs:annotation>
+			<xs:documentation>-identifies a specific biller</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Identifier" type="NC3_Type"/>
+			<xs:element ref="Name"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillerInfoDownloadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-response to the BillerInfoDownloadRq and contains the latest copy of SADAD participating Billers</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Timestamp"/>
+			<xs:element ref="BillerInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillerReconUploadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-report containing a complete list of payments collected on behalf of the Biller during the previous processing day and the associated reconciliation/settlement status of each</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+			<xs:element name="CollectPmtAmt" type="Currency_Type"/>
+			<xs:element name="ReconPmtAmt" type="Currency_Type"/>
+			<xs:element name="UnReconPmtAmt" type="Currency_Type"/>
+			<xs:element name="TransFees" type="Currency_Type"/>
+			<xs:element ref="PmtBankRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillerReconUploadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-ack</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillerTransLogUploadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-Used to request Bank SPL files be downloaded to their host systems</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="CurAmt"/>
+			<xs:element ref="PmtBankRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillerTransLogUploadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-response to a request for the Biller transaction log data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AccountInfo_Type">
+		<xs:annotation>
+			<xs:documentation>-Represents a bill presentment account and an associated status.    </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BillerId"/>
+			<xs:element ref="BillingAcct"/>
+			<xs:element ref="ServiceType"/>
+			<xs:element ref="AccountStatusCode"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AccountInfoError_Type">
+		<xs:annotation>
+			<xs:documentation>-wrapper around an AccountInfo aggregate?s primary values and is used to communicate errors associated with account data. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Error"/>
+			<xs:element ref="AccountInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillInfo_Type">
+		<xs:annotation>
+			<xs:documentation>-Define a Biller?s collection of values assigned to a specific bill.  </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BillCategory"/>
+			<xs:element ref="ServiceType"/>
+			<xs:element ref="BillCycle" minOccurs="0"/>
+			<xs:element ref="BillNumber" minOccurs="0"/>
+			<xs:element ref="BillingAcct"/>
+			<xs:element ref="BillerId" minOccurs="0"/>
+			<xs:element ref="AmountDue"/>
+			<xs:element ref="DueDt"/>
+			<xs:element ref="OpenDt" minOccurs="0"/>
+			<xs:element ref="CloseDt" minOccurs="0"/>
+			<xs:element ref="ExpDt" minOccurs="0"/>
+			<xs:element ref="ChkDigit" minOccurs="0"/>
+			<xs:element ref="CustType" minOccurs="0"/>
+			<xs:element ref="BillRefInfo" minOccurs="0"/>
+			<xs:element ref="BillSummAmt" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillInfoError_Type">
+		<xs:annotation>
+			<xs:documentation>-wrapper around a BillInfo aggregate and is used to communicate errors associated with BillInfo data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Error"/>
+			<xs:element ref="BillingAcct" minOccurs="0"/>
+			<xs:element ref="BillerId"/>
+			<xs:element ref="BillCategory" minOccurs="0"/>
+			<xs:element ref="ServiceType" minOccurs="0"/>
+			<xs:element ref="BillCycle" minOccurs="0"/>
+			<xs:element ref="BillNumber" minOccurs="0"/>
+			<xs:element ref="BillPmtStatusError" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillInqRq_Type">
+		<xs:annotation>
+			<xs:documentation>-used to query SADAD for bill and associated payment data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BranchCode" minOccurs="0"/>
+			<xs:element ref="DistrictCode" minOccurs="0"/>
+			<xs:element ref="AccessChannel"/>
+			<xs:element ref="CustId" minOccurs="0"/>
+			<xs:element ref="ProxyCustId" minOccurs="0"/>
+			<xs:element ref="BillNumber" minOccurs="0"/>
+			<xs:element ref="BillingAcct" minOccurs="0"/>
+			<xs:element ref="BillerId" minOccurs="0"/>
+			<xs:element ref="ServiceType" minOccurs="0"/>
+			<xs:element ref="DateRange" minOccurs="0"/>
+			<xs:element ref="IncPayments" minOccurs="0"/>
+			<xs:element ref="IncPaidBills" minOccurs="0"/>
+			<xs:element ref="IncBillSummAmt" minOccurs="0"/>
+			<xs:element ref="IncExactPmt" minOccurs="0"/>
+			<xs:element name="MaxBills" type="xs:long" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillInqRs_Type">
+		<xs:annotation>
+			<xs:documentation>-provides the bill data requested in a corresponding BillInqRs message</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Error" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Msg" minOccurs="0"/>
+			<xs:element ref="BillRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillPmtStatus_Type">
+		<xs:annotation>
+			<xs:documentation>-used during the Bill Upload process to associate a payment record to a given bill.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtTransId" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="PmtStatusCode"/>
+			<xs:element ref="CurAmt"/>
+			<xs:element ref="EffDt" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillPmtStatusError_Type">
+		<xs:annotation>
+			<xs:documentation>-Payment upload errors in the BillUploadRq message.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Error"/>
+			<xs:element ref="BillPmtStatus"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillRec_Type">
+		<xs:annotation>
+			<xs:documentation>-adds data which Billers or SADAD may associate with a given bill.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="SupercedeBillNumber" minOccurs="0"/>
+			<xs:element ref="BillStatusCode" minOccurs="0"/>
+			<xs:element ref="BillPmtStatus" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ExactPmtRq" minOccurs="0"/>
+			<xs:element ref="CustId" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="DisplayLabel" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Msg" minOccurs="0"/>
+			<xs:element ref="BillInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillShortDesc_Type">
+		<xs:annotation>
+			<xs:documentation>-Short description of bill</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="LanguagePref"/>
+			<xs:element name="Text" type="C255_Type"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillSummAmt_Type">
+		<xs:annotation>
+			<xs:documentation>-any currency amounts that are distinctly represented in the bill?s due amount</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CurAmt"/>
+			<xs:element ref="BillSummAmtCode" minOccurs="0"/>
+			<xs:element ref="BillSummAmtType"/>
+			<xs:element ref="ShortDesc" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillUploadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-Billers may initiate a bill upload operation at any time of their choosing by sending the BillUploadRq </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BillCategory" minOccurs="0"/>
+			<xs:element ref="ServiceType" minOccurs="0"/>
+			<xs:element ref="Timestamp"/>
+			<xs:element ref="BillRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustId_Type">
+		<xs:annotation>
+			<xs:documentation>-aggregate identifies a specific bill paying Customer or institution</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="OfficialId"/>
+			<xs:element ref="OfficialIdType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustPayeeAddRq_Type">
+		<xs:annotation>
+			<xs:documentation>-is used to add one or more specific billing accounts to a Customer?s profile</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CustId"/>
+			<xs:element ref="AccountId" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustPayeeAddRs_Type">
+		<xs:annotation>
+			<xs:documentation>-indicates the success or failure of an attempt to add bills to a Customer?s profile</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CustId"/>
+			<xs:element ref="CustProfileUpdated" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustPayeeDelRq_Type">
+		<xs:annotation>
+			<xs:documentation>-is used to delete one or more specific billing accounts to a Customer?s profile</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CustId"/>
+			<xs:element ref="AccountId" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustPayeeDelRs_Type">
+		<xs:annotation>
+			<xs:documentation>-indicates the success or failure of an attempt to delete bills to a Customer?s profile</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CustId"/>
+			<xs:element ref="CustProfileUpdated" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustPayeeInqRq_Type">
+		<xs:annotation>
+			<xs:documentation>-queries Customer-Bill associations in a Customer?s profile</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CustId"/>
+			<xs:element ref="AccountId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustPayeeInqRs_Type">
+		<xs:annotation>
+			<xs:documentation>-response to a CustPayeeInqRq message and informs the invoking application of the existence of billing account data in a Customer?s profile</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CustId"/>
+			<xs:element ref="CustProfileExists" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustProfileExists_Type">
+		<xs:annotation>
+			<xs:documentation>-indicates whether SADAD has an established profile association between the specified Customer and Account.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="IsInProfile"/>
+			<xs:element ref="AccountId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustProfileUpdated_Type">
+		<xs:annotation>
+			<xs:documentation>-typically used within another aggregate identifying a specific Customer of interest and conveys the result of either adding or deleting accounts from an associated Customer?s profile</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="IsInProfile"/>
+			<xs:element ref="AccountId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DateRange_Type">
+		<xs:annotation>
+			<xs:documentation>-defines a contiguous range of days</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="StartDt" minOccurs="0"/>
+			<xs:element ref="EndDt" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DepAcctId_Type">
+		<xs:annotation>
+			<xs:documentation>-used to uniquely identify a deposit-type account.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AcctId"/>
+			<xs:element ref="AcctType"/>
+			<xs:element ref="BankId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DepAcctIdFrom_Type">
+		<xs:annotation>
+			<xs:documentation>-used to uniquely identify a deposit-type account.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AcctId"/>
+			<xs:element ref="AcctType"/>
+			<xs:element ref="BankId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DepAcctIdTo_Type">
+		<xs:annotation>
+			<xs:documentation>-used to uniquely identify a deposit-type account.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AcctId"/>
+			<xs:element ref="AcctType"/>
+			<xs:element ref="BankId"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DisplayLabel_Type">
+		<xs:annotation>
+			<xs:documentation>-communicates a localized text string the message recipient</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="LanguagePref" minOccurs="0"/>
+			<xs:element name="Text" type="C32_Type"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Error_Type">
+		<xs:annotation>
+			<xs:documentation>Wraps the error code and error message that is associated with the processesing of the message.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ErrorCode"/>
+			<xs:element ref="ErrorMsg"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Msg_Type">
+		<xs:annotation>
+			<xs:documentation>-communicates a localized text string the message recipient</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="LanguagePref"/>
+			<xs:element name="Text" type="C4096_Type"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtAdviceRq_Type">
+		<xs:annotation>
+			<xs:documentation>-Banks will send this message to SADAD each time funds have been moved to the SADAD Suspense Account</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ProxyCustId" minOccurs="0"/>
+			<xs:element ref="GroupPmtId"/>
+			<xs:element ref="PmtRec" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtAdviceRs_Type">
+		<xs:annotation>
+			<xs:documentation>-message to the Bank informing it of successful confirmation of advancing one or more payment records to a confirmed state </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="GroupPmtId"/>
+			<xs:element ref="PmtRecAdviceStatus" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtBankRec_Type">
+		<xs:annotation>
+			<xs:documentation>-represents the data data points in each Bank?s SADAD Payment Log </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BankId"/>
+			<xs:element ref="CurAmt"/>
+			<xs:element ref="PmtBranchRec" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtBranchRec_Type">
+		<xs:annotation>
+			<xs:documentation>-represents the data data points in each Bank?s SADAD Payment Log </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BranchCode" minOccurs="0"/>
+			<xs:element ref="CurAmt"/>
+			<xs:element ref="PmtRec" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtConfirmationRq_Type">
+		<xs:annotation>
+			<xs:documentation>-response to processing a previously uploaded payment data file</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AsyncRqUID"/>
+			<xs:element ref="UploadDt"/>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="SuccessRecordCount"/>
+			<xs:element ref="ErrorRecordCount"/>
+			<xs:element ref="PmtInfoError" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtConfirmationRs_Type">
+		<xs:annotation>
+			<xs:documentation>-acknowledgement of the PmtConfirmationRq message </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AsyncRqUID"/>
+			<xs:element ref="UploadDt"/>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="SuccessRecordCount"/>
+			<xs:element ref="ErrorRecordCount"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtDownloadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-similar to the PmtUploadRq message </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Timestamp"/>
+			<xs:element ref="PmtRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtInfo_Type">
+		<xs:annotation>
+			<xs:documentation>-represents a payment which has either taken place, or may someday take place.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CurAmt"/>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="DueDt" minOccurs="0"/>
+			<xs:element ref="BillCycle" minOccurs="0"/>
+			<xs:element ref="BillNumber" minOccurs="0"/>
+			<xs:element ref="AccountId"/>
+			<xs:element ref="BankId" minOccurs="0"/>
+			<xs:element ref="DistrictCode" minOccurs="0"/>
+			<xs:element ref="BranchCode" minOccurs="0"/>
+			<xs:element ref="AccessChannel" minOccurs="0"/>
+			<xs:element ref="PmtMethod" minOccurs="0"/>
+			<xs:element ref="PmtType" minOccurs="0"/>
+			<xs:element ref="ChkDigit" minOccurs="0"/>
+			<xs:element ref="ServiceType" minOccurs="0"/>
+			<xs:element ref="PmtRefInfo" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtInfoError_Type">
+		<xs:annotation>
+			<xs:documentation>-wrapper for the PmtRec aggregate, but includes an error code and message</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Error"/>
+			<xs:element ref="PmtTransId" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtInfoValidation_Type">
+		<xs:annotation>
+			<xs:documentation>-wrapper for the PmtInfo, with the added Boolean flag indicating if the associated PmtInfo record has been validated</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="IsInProfile" minOccurs="0"/>
+			<xs:element ref="Status" minOccurs="0"/>
+			<xs:element ref="PmtTransId" minOccurs="0"/>
+			<xs:element ref="PmtInfo"/>
+			<!--[17-April-2006][PD] Added Voucher element as per Ext.Msg.Spec r2.0 -->
+			<xs:element ref="Voucher" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtLoadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-used to upload payments to SADAD in real-time.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Timestamp"/>
+			<xs:element ref="PmtRec"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtLoadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-response to the PmtLoadRq message</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Error" minOccurs="0"/>
+			<xs:element ref="PmtTransId" minOccurs="0" maxOccurs="2"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtModRq_Type">
+		<xs:annotation>
+			<xs:documentation>-used to modify payments within the SADAD system</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CustId" minOccurs="0"/>
+			<xs:element ref="ProxyCustId" minOccurs="0"/>
+			<xs:element ref="PmtTransId" minOccurs="3" maxOccurs="3"/>
+			<xs:element ref="PmtStatus"/>
+			<xs:element ref="BankId"/>
+			<xs:element ref="DistrictCode"/>
+			<xs:element ref="BranchCode"/>
+			<xs:element ref="AccessChannel"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtModRs_Type">
+		<xs:annotation>
+			<xs:documentation>-response to PmtModRq</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtTransId" minOccurs="3" maxOccurs="3"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtNotifyRq_Type">
+		<xs:annotation>
+			<xs:documentation>-a real time alert from SADAD to the Biller each time a new payment has been confirmed, cancelled, adjusted, or reversed</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtRec" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--[17-April-2006][PD] Added PmtTransId and status aggregate in PmtNotifyRs Message Defination as per Ext.Msg.Spec r2.0-->
+	<xs:complexType name="PmtNotifyRs_Type">
+		<xs:annotation>
+			<xs:documentation>-Response from the biller informing SADAD about successful processing of payment notification</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtRecNotifyStatus" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="PrcDt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtNotifyUploadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-used by SADAD to push payment notification data to a Biller</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="PmtRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtRec_Type">
+		<xs:annotation>
+			<xs:documentation>-represents an actual payment</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtTransId" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="CustId" minOccurs="0"/>
+			<xs:element ref="PmtStatus"/>
+			<xs:element ref="PmtInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtRecAdviceStatus_Type">
+		<xs:annotation>
+			<xs:documentation>-provide status for individual payment payments during the payment advice process.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtTransId" maxOccurs="2"/>
+			<xs:element ref="Status" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--[17-April-2006][PD] Added PmtTransId and status aggregate in PmtNotifyRs Message Defination as per Ext.Msg.Spec r2.0-->
+	<xs:complexType name="PmtRecNotifyStatus_Type">
+		<xs:annotation>
+			<xs:documentation>-provide status for individual payment notification during the payment notification process.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtTransId" minOccurs="2" maxOccurs="3"/>
+			<xs:element ref="Status" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtStatus_Type">
+		<xs:annotation>
+			<xs:documentation>-returned in responses to Add or Modify Payment and Add or Modify Recurring Payment Model</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtStatusCode"/>
+			<xs:element ref="EffDt" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtTransId_Type">
+		<xs:annotation>
+			<xs:documentation>-unique payment transaction number</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtId"/>
+			<xs:element ref="PmtIdType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtUploadRq_Type">
+		<xs:annotation>
+			<xs:documentation>-used to upload in batch mode the payments it has received via non-SADAD channels</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Timestamp"/>
+			<xs:element ref="PmtRec" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtValidationRq_Type">
+		<xs:annotation>
+			<xs:documentation>-performs this validation and returns a SADAD Payment Transaction Number as a ?receipt?.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="CustId" minOccurs="0"/>
+			<xs:element ref="ProxyCustId" minOccurs="0"/>
+			<xs:element ref="PmtInfo" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PmtValidationRs_Type">
+		<xs:annotation>
+			<xs:documentation>-respons to a Bank?s payment validation request with a PmtValidationRs message</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="GroupPmtId" minOccurs="0"/>
+			<xs:element ref="PmtInfoValidation" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProxyCustId_Type">
+		<xs:annotation>
+			<xs:documentation>-identifies a specific bill paying Customer or institution</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="OfficialId"/>
+			<xs:element ref="OfficialIdType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ShortDesc_Type">
+		<xs:annotation>
+			<xs:documentation>-generic mechanism for various messages and aggregates to contain localized text strings</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="LanguagePref"/>
+			<xs:element name="Text" type="C255_Type"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Signature_Type">
+		<xs:annotation>
+			<xs:documentation>-carries a digital signature for integrity, authenticity and non-repudiation </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="XPath"/>
+			<xs:element ref="SignatureValue"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignonProfile_Type">
+		<xs:annotation>
+			<xs:documentation>-used in both the SignonRq and SignonRs aggregates to identify the message sender and the intended recipient</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Sender"/>
+			<xs:element ref="Receiver" minOccurs="0"/>
+			<xs:element ref="MsgCode"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignonRq_Type">
+		<xs:annotation>
+			<xs:documentation>-used to authenticate a SADADD client</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ClientDt"/>
+			<xs:element ref="LanguagePref" minOccurs="0"/>
+			<xs:element ref="SignonProfile"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignonRs_Type">
+		<xs:annotation>
+			<xs:documentation>-serves a dual role of both authentication and status report of the associated request</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ClientDt" minOccurs="0"/>
+			<xs:element name="ServerDt" type="Date_Type"/>
+			<xs:element ref="LanguagePref" minOccurs="0"/>
+			<xs:element ref="SignonProfile"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Status_Type">
+		<xs:annotation>
+			<xs:documentation>-used in each response to indicate the status of the message</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="StatusCode"/>
+			<xs:element name="ShortDesc" type="C255_Type" minOccurs="0"/>
+			<xs:element ref="Severity"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--[17-April-2006][PD] Added VoucherErrorInfo,VoucherDesc ,VoucherInfo,VoucherRec,VoucherUploadRq,VoucherUploadRs,VoucherConfirmationRq,VoucherConfirmationRs complexType as per Ext.Msg.Spec r2.0 -->
+	<xs:complexType name="VoucherErrorInfo_Type">
+		<xs:annotation>
+			<xs:documentation>-wrapper around an VouchertInfo aggregateand is used to communicate errors associated with voucher data. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Error"/>
+			<xs:element ref="VoucherInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoucherDesc_Type">
+		<xs:annotation>
+			<xs:documentation>-Short description of Voucher</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="LanguagePref"/>
+			<xs:element name="Text" type="C64_Type"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoucherInfo_Type">
+		<xs:annotation>
+			<xs:documentation>-represents information on voucher and associated status.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="BillerId"/>
+			<xs:element ref="ServiceType"/>
+			<xs:element ref="VoucherType" minOccurs="0"/>
+			<xs:element ref="SubstituteId"/>
+			<xs:element ref="VoucherAmt" minOccurs="0"/>
+			<xs:element ref="ExpDt" minOccurs="0"/>
+			<xs:element ref="VoucherStatusCode"/>
+			<xs:element ref="VoucherDesc" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoucherRec_Type">
+		<xs:annotation>
+			<xs:documentation>-Represents a voucher record and a wrapper over VoucherInfo</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="VoucherNumber"/>
+			<xs:element ref="EncVoucherNumber"/>
+			<xs:element ref="VoucherInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoucherUploadRq_Type">
+		<xs:annotation>
+			<xs:documentation>A collection of voucher records and is used to activate, deactivate vouchers within SADAD system. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Timestamp"/>
+			<xs:element ref="VoucherRec" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoucherUploadRs_Type">
+		<xs:annotation>
+			<xs:documentation>-an acknowledgement to the VoucherUploadRq message. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Timestamp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoucherConfirmationRq_Type">
+		<xs:annotation>
+			<xs:documentation>-provides an voucher load summary report.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AsyncRqUID"/>
+			<xs:element ref="UploadDt"/>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="SuccessRecordCount"/>
+			<xs:element ref="ErrorRecordCount"/>
+			<xs:element ref="VoucherErrorInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="VoucherConfirmationRs_Type">
+		<xs:annotation>
+			<xs:documentation>-acknowledgement of receipt of the VoucherConfirmationRq message </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="AsyncRqUID"/>
+			<xs:element ref="UploadDt"/>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="SuccessRecordCount"/>
+			<xs:element ref="ErrorRecordCount"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Voucher_Type">
+		<xs:annotation>
+			<xs:documentation>This aggregate is simply a wrapper around the voucher information that is to be communicated to requesting party.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ExpDt" minOccurs="0"/>
+			<xs:element ref="VoucherNumber"/>
+			<xs:element ref="VoucherDesc" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- end of change-->
+	<xs:complexType name="XferAddRq_Type">
+		<xs:annotation>
+			<xs:documentation>-move funds from Bank's SSA to either SCMA or SBA accounts </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="XferInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XferAddRs_Type">
+		<xs:annotation>
+			<xs:documentation>-confirm receipt of the intra-Bank transfer instructions</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XferInfo_Type">
+		<xs:annotation>
+			<xs:documentation>-used in messages related to both Intrabank and Interbank Transfers</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PmtId"/>
+			<xs:element ref="CurAmt"/>
+			<xs:element ref="DepAcctIdFrom"/>
+			<xs:element ref="DepAcctIdTo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XferResultInfo_Type">
+		<xs:annotation>
+			<xs:documentation>-wrapper for the XferInfo aggregate, only it adds a Success element </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Status"/>
+			<xs:element ref="XferInfo"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XferResultRq_Type">
+		<xs:annotation>
+			<xs:documentation>-confirms the successful transfer of funds as directed by the XferAddRq message </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+			<xs:element ref="XferResultInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XferResultRs_Type">
+		<xs:annotation>
+			<xs:documentation>-confirms SADAD has received the XferResultRq message </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="PrcDt"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AccessChannel" type="AccessChannel_Type"/>
+	<xs:element name="AccountConfirmationRq" type="AccountConfirmationRq_Type"/>
+	<xs:element name="AccountConfirmationRs" type="AccountConfirmationRs_Type"/>
+	<xs:element name="AccountUploadRq" type="AccountUploadRq_Type"/>
+	<xs:element name="AccountUploadRs" type="AccountUploadRs_Type"/>
+	<xs:element name="AccountId" type="AccountId_Type"/>
+	<xs:element name="AccountInfo" type="AccountInfo_Type"/>
+	<xs:element name="AccountInfoError" type="AccountInfoError_Type"/>
+	<xs:element name="AccountStatusCode" type="AccountStatusCode_Type"/>
+	<xs:element name="AcctId" type="C32_Type"/>
+	<xs:element name="AcctType" type="AcctType_Type"/>
+	<xs:element name="ActualAmt" type="Currency_Type"/>
+	<xs:element name="AmountDue" type="Currency_Type"/>
+	<xs:element name="AsyncRqUID" type="UUID_Type"/>
+	<xs:element name="BankCutOffRq" type="BankCutOffRq_Type"/>
+	<xs:element name="BankCutOffRs" type="BankCutOffRs_Type"/>
+	<xs:element name="BankReconDownloadRq" type="BankReconDownloadRq_Type"/>
+	<xs:element name="BankReconDownloadRs" type="BankReconDownloadRs_Type"/>
+	<xs:element name="BankId" type="NC8_Type"/>
+	<xs:element name="BankSplUploadRq" type="BankSplUploadRq_Type"/>
+	<xs:element name="BankSplUploadRs" type="BankSplUploadRs_Type"/>
+	<xs:element name="BillCategory" type="BillCategory_Type"/>
+	<xs:element name="BillConfirmationRs" type="BillConfirmationRs_Type"/>
+	<xs:element name="BillConfirmationRq" type="BillConfirmationRq_Type"/>
+	<xs:element name="BillCycle" type="NC16_Type"/>
+	<xs:element name="BillDownloadRq" type="BillDownloadRq_Type"/>
+	<xs:element name="BillDownloadRs" type="BillDownloadRs_Type"/>
+	<xs:element name="BillInqRq" type="BillInqRq_Type"/>
+	<xs:element name="BillInqRs" type="BillInqRs_Type"/>
+	<xs:element name="BillUploadRq" type="BillUploadRq_Type"/>
+	<xs:element name="BillUploadRs" type="Identifier_Type"/>
+	<xs:element name="BillerId" type="NC3_Type"/>
+	<xs:element name="BillerInfo" type="BillerInfo_Type"/>
+	<xs:element name="BillerInfoDownloadRq" type="Identifier_Type"/>
+	<xs:element name="BillerInfoDownloadRs" type="BillerInfoDownloadRs_Type"/>
+	<xs:element name="BillerReconUploadRq" type="BillerReconUploadRq_Type"/>
+	<xs:element name="BillerReconUploadRs" type="BillerReconUploadRs_Type"/>
+	<xs:element name="BillerTransLogUploadRq" type="BillerTransLogUploadRq_Type"/>
+	<xs:element name="BillerTransLogUploadRs" type="BillerTransLogUploadRs_Type"/>
+	<xs:element name="BillInfo" type="BillInfo_Type"/>
+	<xs:element name="BillInfoError" type="BillInfoError_Type"/>
+	<xs:element name="BillingAcct" type="C32_Type"/>
+	<xs:element name="BillNumber" type="C32_Type"/>
+	<xs:element name="BillPmtStatusError" type="BillPmtStatusError_Type"/>
+	<xs:element name="BillPmtStatusCode" type="BillPmtStatusCode_Type"/>
+	<xs:element name="BillRec" type="BillRec_Type"/>
+	<xs:element name="BillRefInfo" type="NC80_Type"/>
+	<xs:element name="BillStatusCode" type="BillStatusCode_Type"/>
+	<xs:element name="BillSummAmtId" type="Identifier_Type"/>
+	<xs:element name="BillSummAmtCode" type="BillSummAmtCode_Type"/>
+	<xs:element name="BillSummAmtType" type="BillSummAmtType_Type"/>
+	<xs:element name="BillSummAmt" type="BillSummAmt_Type"/>
+	<xs:element name="BillPmtStatus" type="BillPmtStatus_Type"/>
+	<xs:element name="BranchCode" type="NC10_Type"/>
+	<xs:element name="ChkDigit" type="NC2_Type"/>
+	<xs:element name="ClientDt" type="Date_Type"/>
+	<xs:element name="CloseDt" type="Date_Type"/>
+	<xs:element name="CurAmt" type="Currency_Type"/>
+	<xs:element name="CustId" type="CustId_Type"/>
+	<xs:element name="CustType" type="NC2_Type"/>
+	<xs:element name="CustPayeeAddRq" type="CustPayeeAddRq_Type"/>
+	<xs:element name="CustPayeeAddRs" type="CustPayeeAddRs_Type"/>
+	<xs:element name="CustPayeeDelRq" type="CustPayeeDelRq_Type"/>
+	<xs:element name="CustPayeeDelRs" type="CustPayeeDelRs_Type"/>
+	<xs:element name="CustPayeeInqRq" type="CustPayeeInqRq_Type"/>
+	<xs:element name="CustPayeeInqRs" type="CustPayeeInqRs_Type"/>
+	<xs:element name="CustProfileExists" type="CustProfileExists_Type"/>
+	<xs:element name="CustProfileUpdated" type="CustProfileUpdated_Type"/>
+	<xs:element name="DateRange" type="DateRange_Type"/>
+	<xs:element name="DepAcctId" type="DepAcctId_Type"/>
+	<xs:element name="DepAcctIdFrom" type="DepAcctIdFrom_Type"/>
+	<xs:element name="DepAcctIdTo" type="DepAcctIdTo_Type"/>
+	<xs:element name="DisplayLabel" type="DisplayLabel_Type"/>
+	<xs:element name="DistrictCode" type="NC10_Type"/>
+	<xs:element name="DueDt" type="Date_Type"/>
+	<xs:element name="EffDt" type="Date_Type"/>
+	<xs:element name="EndDt" type="Date_Type"/>
+	<xs:element name="ErrorCode" type="xs:long"/>
+	<xs:element name="ErrorMsg" type="C255_Type"/>
+	<xs:element name="ErrorRecordCount" type="xs:long"/>
+	<xs:element name="ExactPmtRq" type="xs:boolean"/>
+	<xs:element name="ExpDt" type="Date_Type"/>
+	<xs:element name="GroupPmtId" type="Identifier_Type"/>
+	<xs:element name="IncBillSummAmt" type="xs:boolean" default="false"/>
+	<xs:element name="IncExactPmt" type="xs:boolean" default="false"/>
+	<xs:element name="IncPaidBills" type="xs:boolean" default="false"/>
+	<xs:element name="IncPayments" type="xs:boolean" default="false"/>
+	<xs:element name="IsInProfile" type="xs:boolean"/>
+	<xs:element name="IsValid" type="xs:boolean"/>
+	<xs:element name="LanguagePref" type="LanguagePref_Type"/>
+	<xs:element name="Msg" type="Msg_Type"/>
+	<xs:element name="MsgCode" type="Identifier_Type"/>
+	<xs:element name="Name" type="C255_Type"/>
+	<xs:element name="OfficialId" type="C32_Type"/>
+	<xs:element name="OfficialIdType" type="OfficialIdType_Type"/>
+	<xs:element name="OpenDt" type="Date_Type"/>
+	<xs:element name="PendingRecordCount" type="xs:long"/>
+	<!--[28-Sep-2005][PD]:Added PendingRecordCount element in SADAD/PresSvcRq/BillConfirmationRq as per Ext.Msg.Spec r1.7.2-->
+	<xs:element name="PmtAdviceRq" type="PmtAdviceRq_Type"/>
+	<xs:element name="PmtAdviceRs" type="PmtAdviceRs_Type"/>
+	<xs:element name="PmtBankRec" type="PmtBankRec_Type"/>
+	<xs:element name="PmtBranchRec" type="PmtBranchRec_Type"/>
+	<xs:element name="PmtConfirmationRq" type="PmtConfirmationRq_Type"/>
+	<xs:element name="PmtConfirmationRs" type="PmtConfirmationRs_Type"/>
+	<xs:element name="PmtDownloadRq" type="Identifier_Type"/>
+	<xs:element name="PmtDownloadRs" type="PmtDownloadRs_Type"/>
+	<xs:element name="PmtId" type="NC32_Type"/>
+	<xs:element name="PmtIdType" type="PmtIdType_Type"/>
+	<xs:element name="PmtInfo" type="PmtInfo_Type"/>
+	<xs:element name="PmtInfoError" type="PmtInfoError_Type"/>
+	<xs:element name="PmtInfoValidation" type="PmtInfoValidation_Type"/>
+	<xs:element name="PmtLoadRq" type="PmtLoadRq_Type"/>
+	<xs:element name="PmtLoadRs" type="PmtLoadRs_Type"/>
+	<xs:element name="PmtMethod" type="PmtMethod_Type"/>
+	<xs:element name="PmtModRq" type="PmtModRq_Type"/>
+	<xs:element name="PmtModRs" type="PmtModRs_Type"/>
+	<xs:element name="PmtNotifyRq" type="PmtNotifyRq_Type"/>
+	<!--[17-April-2006][PD] Added PmtTransId and status aggregate in PmtNotifyRs Message Defination as per Ext.Msg.Spec r2.0-->
+	<xs:element name="PmtNotifyRs" type="PmtNotifyRs_Type"/>
+	<xs:element name="PmtNotifyUploadRq" type="PmtNotifyUploadRq_Type"/>
+	<xs:element name="PmtNotifyUploadRs" type="Identifier_Type"/>
+	<xs:element name="PmtRec" type="PmtRec_Type"/>
+	<xs:element name="PmtRecAdviceStatus" type="PmtRecAdviceStatus_Type"/>
+	<!--[17-April-2006][PD] Added PmtTransId and status aggregate in PmtNotifyRs Message Defination as per Ext.Msg.Spec r2.0-->
+	<xs:element name="PmtRecNotifyStatus" type="PmtRecNotifyStatus_Type"/>
+	<xs:element name="PmtRefInfo" type="NC80_Type"/>
+	<xs:element name="PmtStatus" type="PmtStatus_Type"/>
+	<xs:element name="PmtStatusCode" type="PmtStatusCode_Type"/>
+	<xs:element name="PmtTransId" type="PmtTransId_Type"/>
+	<xs:element name="PmtType" type="PmtType_Type"/>
+	<xs:element name="PmtUploadRq" type="PmtUploadRq_Type"/>
+	<xs:element name="PmtUploadRs" type="Identifier_Type"/>
+	<xs:element name="PmtValidationRq" type="PmtValidationRq_Type"/>
+	<xs:element name="PmtValidationRs" type="PmtValidationRs_Type"/>
+	<xs:element name="PrcDt" type="Date_Type"/>
+	<xs:element name="ProxyCustId" type="CustId_Type"/>
+	<xs:element name="Sender" type="Identifier_Type"/>
+	<xs:element name="ServerDt" type="Date_Type"/>
+	<xs:element name="ServiceType" type="ServiceType_Type"/>
+	<xs:element name="Severity" type="Severity_Type"/>
+	<xs:element name="ShortDesc" type="BillShortDesc_Type"/>
+	<xs:element name="Signature" type="Signature_Type"/>
+	<xs:element name="SignatureValue" type="C2147483647_Type"/>
+	<xs:element name="SignonProfile" type="SignonProfile_Type"/>
+	<xs:element name="SignonRq" type="SignonRq_Type"/>
+	<xs:element name="SignonRs" type="SignonRs_Type"/>
+	<xs:element name="StartDt" type="Date_Type"/>
+	<xs:element name="Status" type="Status_Type"/>
+	<xs:element name="StatusCode" type="xs:long"/>
+	<!--[17-April-2006][PD] Added SubstituteId element as per Ext.Msg.Spec r2.0-->
+	<xs:element name="SubstituteId" type="C32_Type"/>
+	<xs:element name="Success" type="xs:boolean"/>
+	<xs:element name="SuccessRecordCount" type="xs:long"/>
+	<xs:element name="SupercedeBillNumber" type="C32_Type"/>
+	<xs:element name="Timestamp" type="Date_Type"/>
+	<xs:element name="Receiver" type="Identifier_Type"/>
+	<xs:element name="RqUID" type="UUID_Type"/>
+	<xs:element name="UploadDt" type="Date_Type"/>
+	<xs:element name="Version" type="C32_Type"/>
+	<!--[17-April-2006][PD] Added VoucherAmt,VoucherDesc,VoucherInfo ,VoucherNumber,EncVoucherNumber,VoucherRec,VoucherStatusCode ,VoucherType,VoucherErrorInfo,VoucherUploadRq,VoucherUploadRs,VoucherConfirmationRq,VoucherConfirmationRs,Voucher element as per Ext.Msg.Spec r2.0-->
+	<xs:element name="VoucherAmt" type="Currency_Type"/>
+	<xs:element name="VoucherDesc" type="VoucherDesc_Type"/>
+	<xs:element name="VoucherInfo" type="VoucherInfo_Type"/>
+	<xs:element name="VoucherNumber" type="C32_Type"/>
+	<xs:element name="EncVoucherNumber" type="C64_Type"/>
+	<xs:element name="VoucherRec" type="VoucherRec_Type"/>
+	<xs:element name="VoucherStatusCode" type="VoucherStatusCode_Type"/>
+	<xs:element name="VoucherType" type="VoucherType_Type"/>
+	<xs:element name="VoucherErrorInfo" type="VoucherErrorInfo_Type"/>
+	<xs:element name="VoucherUploadRq" type="VoucherUploadRq_Type"/>
+	<xs:element name="VoucherUploadRs" type="VoucherUploadRs_Type"/>
+	<xs:element name="VoucherConfirmationRq" type="VoucherConfirmationRq_Type"/>
+	<xs:element name="VoucherConfirmationRs" type="VoucherConfirmationRs_Type"/>
+	<xs:element name="Voucher" type="Voucher_Type"/>
+	<!-- end of change-->
+	<xs:element name="XferAddRq" type="XferAddRq_Type"/>
+	<xs:element name="XferAddRs" type="XferAddRs_Type"/>
+	<xs:element name="XferInfo" type="XferInfo_Type"/>
+	<xs:element name="XferResultInfo" type="XferResultInfo_Type"/>
+	<xs:element name="XferResultRq" type="XferResultRq_Type"/>
+	<xs:element name="XferResultRs" type="XferResultRs_Type"/>
+	<xs:element name="XPath" type="C256_Type"/>
+	<xs:element name="Error" type="Error_Type"/>
+</xs:schema>

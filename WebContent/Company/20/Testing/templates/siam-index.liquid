@@ -1,0 +1,1181 @@
+{% extends 'layout-page-tabs' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block breadcrumb %}
+<li class=""><a href="index.html">Home</a></li>
+<li class="active"><a href="index.html">Dashboard</a></li>
+{% endblock %}
+
+{% block styles %}
+{{ "plugins/charts-chartistjs/chartist.min.css" | asset_url | stylesheet_tag}} 				<!-- Chartist -->
+{{ "plugins/switchery/switchery.css" | asset_url | stylesheet_tag }}   						<!-- Switchery -->
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/wijets/wijets.js" | asset_url | script_tag }}     								<!-- Wijet -->
+{{ "plugins/charts-chartistjs/chartist.min.js" | asset_url | script_tag }}               	<!-- Chartist -->
+{{ "plugins/charts-chartistjs/chartist-plugin-tooltip.js" | asset_url | script_tag }}    	<!-- Chartist -->
+{{ "plugins/switchery/switchery.js" | asset_url | script_tag }}     						<!-- Switchery -->
+{{ "plugins/easypiechart/jquery.easypiechart.min.js" | asset_url | script_tag }}        	<!-- EasyPieChart-->
+{{ "plugins/jQuery-Mapael/js/jquery.mapael.js" | asset_url | script_tag }}              	<!-- jQuery Mapael -->
+{{ "plugins/fullcalendar/fullcalendar.min.js" | asset_url | script_tag }}              	<!-- jQuery Mapael -->
+{{ "demo/demo-index.js" | asset_url | script_tag }}     									<!-- demo -->
+
+<script>
+	$('#reset').click(function () {
+		bootbox.confirm("Are you sure you want to clear Local Storage? This will clear ALL globally set settings", function() {
+			localStorage.clear();
+		}); 
+	});
+
+	$.wijets().make();
+</script>
+{% endblock %}
+
+{% block tablist %}
+<li class="active"><a data-toggle="tab" href="#tab1" aria-expanded="true">Social</a></li>
+<li class=""><a data-toggle="tab" href="#tab2" aria-expanded="false">Analytical</a></li>
+<li class=""><a data-toggle="tab" href="#tab3" aria-expanded="false">Operational</a></li>
+<li class=""><a data-toggle="tab" href="#tab4" aria-expanded="false">Strategic</a></li>
+<li class=""><a data-toggle="tab" href="#tab5" aria-expanded="false">Tactical</a></li>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="tab-content dashboard-tabs">
+			<div id="tab1" class="tab-pane active">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque. Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.
+			</div>
+			<div id="tab2" class="tab-pane">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores porro eveniet debitis quas sed harum nobis libero voluptatibus dolorum odio at veniam aut id corrupti hic esse quisquam fugiat. Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.
+			</div>
+			<div id="tab3" class="tab-pane">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque. Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.
+			</div>
+			<div id="tab4" class="tab-pane">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores porro eveniet debitis quas sed harum nobis libero voluptatibus dolorum odio at veniam aut id corrupti hic esse quisquam fugiat. Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.
+			</div>
+			<div id="tab5" class="tab-pane">
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores porro eveniet debitis quas sed harum nobis libero voluptatibus dolorum odio at veniam aut id corrupti hic esse quisquam fugiat. Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.
+				Asperiores in eveniet sapiente error fuga tenetur ex ea dignissimos voluptas ab molestiae eos totam quo dolorem maxime illo neque quia itaque.
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<a href="#" class="info-tile tile-info has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Earnings</div>
+				<div class="pull-right">
+				</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>5,799</div>
+				<div class="pull-right"><div id="pierightbar"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="pull-left">Go to earnings</div>
+				<div class="pull-right percent-change icon text-danger">-2.5%</div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-3">
+		<a href="#" class="info-tile tile-info has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Referrals</div>
+				<div class="pull-right">
+				</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>2,160</div>
+				<div class="pull-right"><div id="pie2"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="pull-left">Go to referrals</div>
+				<div class="pull-right percent-change icon text-danger">+7.5%</div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-3">
+		<a href="#" class="info-tile tile-info has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Earnings</div>
+				<div class="pull-right">
+				</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>5,799</div>
+				<div class="pull-right"><div id="pie3"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="pull-left">Go to earnings</div>
+				<div class="pull-right percent-change icon text-danger">-2.5%</div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-3">
+		<a href="#" class="info-tile tile-indigo has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Referrals</div>
+				<div class="pull-right">
+				</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>2,160</div>
+				<div class="pull-right"><div id="pie4"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="pull-left">Go to referrals</div>
+				<div class="pull-right percent-change icon text-danger">+7.5%</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+<div class="row container-full">
+	<div class="col-md-3 p-n">
+		<a href="#" class="info-tile has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Total Earnings</div>
+			</div>
+			<div class="tile-body">
+				<div class=""><sup>$</sup><span>10,249</span></div>
+				<div class="progress">
+					<div style="width: 25%" class="progress-bar progress-bar-success"></div>
+				</div>
+			</div>
+			<div class="tile-footer">
+				<div class="">Go to earnings</div>
+				<div class="">20% discount</div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-3 p-n">
+		<a href="#" class="info-tile has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Total Sales Volume</div>
+			</div>
+			<div class="tile-body">
+				<div class=""><sup>$</sup><span>1,249</span></div>
+				<div class="progress">
+					<div style="width: 70%" class="progress-bar progress-bar-warning"></div>
+				</div>
+			</div>
+			<div class="tile-footer">
+				<div class="">Go to sales</div>
+				<div class="">5% discount</div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-3 p-n">
+		<a href="#" class="info-tile has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Gross Profit</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>1,249</div>
+				<div class="pull-right"><div id="pie5"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="">Go to profit</div>
+				<div class="">10% discount</div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-3 p-n">
+		<a href="#" class="info-tile has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Income Statement</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>1,249</div>
+				<div class="pull-right"><div id="sparkline-item3"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="">Go to income statement</div>
+				<div class="">Total 15% discount</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel">
+			<div class="panel-body">
+				<div class="col-md-5">
+					<span class="stack-text">ITEMS</span>
+					<h3 class="mb-xs">6,170</h3>
+					<div class="clearfix">
+						<div class="pull-left">
+							Items sold this week
+						</div>
+						<div class="pull-right icon text-danger">
+							-1.5%
+						</div>
+					</div>
+					<h3 class="mb-xs">520</h3>
+					<div class="clearfix">
+						<div class="pull-left">
+							New member
+						</div>
+						<div class="pull-right icon text-danger">
+							-4.2%
+						</div>
+					</div>
+					<h3 class="mb-xs">47</h3>
+					<div class="clearfix">
+						<div class="pull-left">
+							Referrals
+						</div>
+						<div class="pull-right icon text-success">
+							+9.5%
+						</div>
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div id="line-dashboard1"></div>
+					<div class="tabular">
+						<div class="tabular-row">
+							<div class="tabular-cell">
+								<div class="week-day sun">S</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day mon">M</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day tue">T</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day wed">W</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day thu">T</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day fri">F</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day sat">S</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel">
+			<div class="panel-body">
+				<div class="col-md-7">
+					<div id="sparkline-item2"></div>
+					<div class="tabular">
+						<div class="tabular-row">
+							<div class="tabular-cell">
+								<div class="week-day sun">S</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day mon">M</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day tue">T</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day wed">W</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day thu">T</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day fri">F</div>
+							</div>
+							<div class="tabular-cell">
+								<div class="week-day sat">S</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div class="col-md-5">
+					<span class="stack-text">ITEMS</span>
+					<h3 class="mb-xs">6,170</h3>
+					<div class="clearfix">
+						<div class="pull-left">
+							Items sold this week
+						</div>
+						<div class="pull-right icon text-danger">
+							-1.5%
+						</div>
+					</div>
+					<h3 class="mb-xs">520</h3>
+					<div class="clearfix">
+						<div class="pull-left">
+							New member
+						</div>
+						<div class="pull-right icon text-danger">
+							-4.5%
+						</div>
+					</div>
+					<h3 class="mb-xs">47</h3>
+					<div class="clearfix">
+						<div class="pull-left">
+							Referrals
+						</div>
+						<div class="pull-right icon text-success">
+							+9.5%
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-3">
+		<a href="#" class="info-tile tile-info has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Earnings</div>
+				<div class="pull-right">
+				</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>5,799</div>
+				<div class="pull-right"><div id="barrdashboard"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="pull-left">Go to earnings</div>
+				<div class="pull-right percent-change icon text-danger">-2.5%</div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-3">
+		<a href="#" class="info-tile tile-info has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Referrals</div>
+				<div class="pull-right">
+				</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>2,160</div>
+				<div class="pull-right"><div id="linedashboard"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="pull-left">Go to referrals</div>
+				<div class="pull-right percent-change icon text-danger">+7.5%</div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-3">
+		<a href="#" class="info-tile tile-success has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Earnings</div>
+				<div class="pull-right">
+				</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>5,799</div>
+				<div class="pull-right"><div id="barrdashboard1"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="pull-left">Go to earnings</div>
+				<div class="pull-right percent-change icon text-danger">-2.5%</div>
+			</div>
+		</a>
+	</div>
+	<div class="col-md-3">
+		<a href="#" class="info-tile tile-green has-footer">
+			<div class="tile-heading">
+				<div class="pull-left">Referrals</div>
+				<div class="pull-right">
+				</div>
+			</div>
+			<div class="tile-body">
+				<div class="pull-left"><sup>$</sup>2,160</div>
+				<div class="pull-right"><div id="linedashboard1"></div></div>
+			</div>
+			<div class="tile-footer">
+				<div class="pull-left">Go to referrals</div>
+				<div class="pull-right percent-change icon text-danger">+7.5%</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-3 col-sm-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Progress</h2>
+				<div class="panel-ctrls">
+					<span class="switch">
+						<input type="checkbox" id="toggle1" name="toggle1" class="toggle-input">
+						<label for="toggle1"></label>
+					</span>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="easypiechart" id="revenuespie" data-percent="65">
+					<span class="percent percent-big"></span>
+				</div>
+				<div class="percent-desc text-center">
+					Completed
+				</div>
+			</div>
+			<div class="panel-footer clearfix">
+				<div class="pt-md pull-left">
+					<h4 class="mt-n mb-n pt-xs text-left">75</h4><small class="mt-n mb-sm text-left">Taking List</small>
+				</div>
+				<div class="pt-md pull-right text-right">
+					<h4 class="mt-n mb-n pt-xs">100</h4><small class="mt-n mb-sm">Pending Task</small>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 col-sm-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Revenues</h2>
+				<div class="panel-ctrls">
+					<span class="switch">
+						<input type="checkbox" id="toggle1" name="toggle1" class="toggle-input">
+						<label for="toggle1"></label>
+					</span>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="text-center" id="piedashbiard"></div>
+			</div>
+			<div class="panel-footer clearfix">
+				<div class="pt-md pull-left">
+					<h4 class="mt-n mb-n pt-xs text-left"><sup>$</sup>18,400</h4><small class="mt-n mb-sm text-left">Sales Volume</small>
+				</div>
+				<div class="pt-md pull-right text-right">
+					<h4 class="mt-n mb-n pt-xs">7,920</h4><small class="mt-n mb-sm">Items Sold</small>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 col-sm-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Server</h2>
+				<div class="panel-ctrls">
+					<span class="switch">
+						<input type="checkbox" id="toggle1" name="toggle1" class="toggle-input">
+						<label for="toggle1"></label>
+					</span>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="text-center" id="line-dashboard"></div>
+			</div>
+			<div class="panel-footer clearfix">
+				<div class="pt-md pull-left">
+					<h4 class="mt-n mb-n pt-xs text-left">512<sup>MB</sup></h4><small class="mt-n mb-sm text-left">RAM usage</small>
+				</div>
+				<div class="pt-md pull-right text-right">
+					<h4 class="mt-n mb-n pt-xs">78<sup>%</sup></h4><small class="mt-n mb-sm">CPU load</small>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 col-sm-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Live Visitors</h2>
+				<div class="panel-ctrls">
+					<span class="switch">
+						<input type="checkbox" id="toggle1" name="toggle1" class="toggle-input">
+						<label for="toggle1"></label>
+					</span>
+				</div>
+			</div>
+			<div class="panel-body text-center">
+				<div class="text-center" id="sparkline-dashboard"></div>
+			</div>
+			<div class="panel-footer clearfix">
+				<div class="pt-md pull-left">
+					<h4 class="mt-n mb-n pt-xs text-left">10,400</h4><small class="mt-n mb-sm text-left">Visitors today</small>
+				</div>
+				<div class="pt-md pull-right text-right">
+					<h4 class="mt-n mb-n pt-xs">12</h4><small class="mt-n mb-sm">Right now</small>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row" data-widget-group="group-demo">
+	<div class="col-sm-6">
+		<div class="panel panel-default" data-widget='{"id" : "wiget01"}'>
+			<div class="panel-heading">
+				<div class="panel-ctrls" 
+				data-actions-container="" 
+				data-action-collapse='{"target": ".panel-body"}'
+				data-action-colorpicker=''
+				data-action-edit=''
+				data-action-expand=''
+				data-action-refresh='{"type": "circular", "url": "http://themes.dev/tectonic/demo-ajax-content.html"}'
+				data-action-close=''
+				>
+			</div>
+			<h2 class="title">Basic Panel</h2>
+		</div>
+		<div class="panel-editbox" data-widget-controls=""></div>
+		<div class="panel-body">
+			<p>Content goes here</p>
+		</div>
+	</div>
+</div>
+<div class="col-sm-6">
+	<div class="panel panel-primary body with-footer" data-widget='{"id" : "wiget02"}'>
+		<div class="panel-heading">
+			<div class="panel-ctrls" 
+			data-actions-container="" 
+			data-action-collapse='{"target": ".panel-body,.panel-footer"}'
+			data-action-colorpicker=''
+			data-action-edit=''
+			data-action-expand=''
+			data-action-refresh='{"type": "circular"}'
+			data-action-close=''
+			>
+		</div>
+		<h2 class="title">With Footer</h2>
+	</div>
+	<div class="panel-editbox" data-widget-controls=""></div>
+	<div class="panel-body">
+		<p>Content goes here</p>
+	</div>
+	<div class="panel-footer">
+		<a class="btn btn-default" href="#">Save</a>
+	</div>
+</div>
+</div>
+</div>
+
+<div class="row" data-widget-group="group-demo">
+	<div class="col-sm-6">
+		<div class="panel panel-default" data-widget='{"id" : "wiget03"}'>
+			<div class="panel-heading">
+				<div class="panel-ctrls" 
+				data-actions-container="" 
+				data-action-collapse='{"target": ".panel-body"}'
+				data-action-colorpicker=''
+				data-action-edit=''
+				data-action-expand=''
+				data-action-refresh='{"type": "circular"}'
+				data-action-close=''
+				>
+			</div>
+			<h2 class="title alt">Heading<small>Secondary Heading</small></h2>
+			
+		</div>
+		<div class="panel-editbox" data-widget-controls=""></div>
+		<div class="panel-body">
+			<p>Content goes here</p>
+		</div>
+
+	</div>
+</div>
+<div class="col-sm-6">
+	<div class="panel panel-default with-footer" data-widget='{"id" : "wiget04"}'>
+		<div class="panel-heading">
+			<div class="panel-ctrls" 
+			data-actions-container="" 
+			data-action-collapse='{"target": ".panel-body"}'
+			data-action-colorpicker=''
+			data-action-edit=''
+			data-action-expand=''
+			data-action-refresh='{"type": "circular"}'
+			data-action-close=''
+			>
+		</div>
+		<h2 class="title alt">Heading<small>Secondary Heading</small></h2>				
+	</div>
+	<div class="panel-editbox" data-widget-controls=""></div>
+	<div class="panel-body">
+		<p>Content goes here</p>
+	</div>
+	<div class="panel-footer">
+		<a class="btn btn-default" href="#">Save</a>
+	</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading m-n">
+				<ul class="nav nav-tabs tab-warning material-nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#tab-7-4" aria-expanded="true">Tab one</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-5" aria-expanded="false">Tab two</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-6" aria-expanded="false">Tab three</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab four</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab five</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab six</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab seven</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab eight</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab nine</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab ten</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab eleven</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab twelve</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab thirteen</a></li>
+				</ul>
+			</div>
+			<div class="panel-body tab-content">
+				<div class="tab-content">
+					<div id="tab-7-1" class="tab-pane active">
+						<p>Content goes here</p>
+					</div>
+					<div id="tab-7-2" class="tab-pane">
+						<p>Content goes here</p>
+					</div>
+					<div id="tab-7-3" class="tab-pane">
+						<p>Content goes here</p>
+					</div>
+					<div id="tab-7-31" class="tab-pane">
+						<p>Content goes here</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class="col-sm-6">
+		<div class="panel panel-default panel-info body">
+			<div class="panel-heading">
+				<ul class="nav nav-tabs material-nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#tab-7-4" aria-expanded="true">Tab one</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-5" aria-expanded="false">Tab two</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-6" aria-expanded="false">Tab three</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab four</a></li>
+				</ul>
+			</div>
+			<div class="panel-body">
+				<div class="tab-content">
+					<div id="tab-7-4" class="tab-pane active">
+						<p>Content goes here</p>
+					</div>
+					<div id="tab-7-5" class="tab-pane">
+						<p>Content goes here</p>
+					</div>
+					<div id="tab-7-6" class="tab-pane">
+						<p>Content goes here</p>
+					</div>
+					<div id="tab-7-7" class="tab-pane">
+						<p>Content goes here</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+		<div class="panel panel-default alt" data-widget='{"id" : "wiget2"}'>
+			<div class="panel-heading">
+				<div class="panel-ctrls">
+					<input type="text" class="form-control"/>
+				</div>
+				<h2>With input box</h2>
+			</div>
+			<div class="panel-editbox" data-widget-controls=""></div>
+			<div class="panel-body">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="panel panel-default panel-info alt" data-widget='{"id" : "wiget2"}'>
+			<div class="panel-heading">
+				<div class="panel-ctrls">
+					<div class="switch">
+						<input type="checkbox" class="toggle-input" name="toggled" id="toggled">
+						<label for="toggled"></label>
+					</div>
+				</div>
+				<h2>with switch</h2>
+			</div>
+			<div class="panel-editbox" data-widget-controls=""></div>
+			<div class="panel-body">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+		<div class="panel panel-default alt" data-widget='{"id" : "wiget2"}'>
+			<div class="panel-heading">
+				<div class="panel-ctrls">
+					<div class="dropdown">
+						<a class="dropdown-toggle btn btn-teal" data-toggle="dropdown" href="#" aria-expanded="false">Dropdown</a>
+						<ul class="dropdown-menu">
+							<li><span class="category-heading">Group</span></li>
+							<li><a href="#"><i class="ion-android-create"></i><span>Link</span></a></li>
+							<li><a href="#"><i class="ion-settings"></i><span>Another link</span></a></li>
+							<li><a href="#"><i class="ion-videocamera"></i><span>Something</span></a></li>
+							<li><a href="#"><i class=""></i><span>Without icon</span></a></li>
+							<li><a href="#"><i class="ion-arrow-down-a"></i><span>More</span></a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#"><i class="ion-arrow-return-right"></i><span>Seperated link</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<h2>With dropdowns</h2>
+			</div>
+			<div class="panel-editbox" data-widget-controls=""></div>
+			<div class="panel-body">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="panel panel-default alt" data-widget='{"id" : "wiget2"}'>
+			<div class="panel-heading">
+				<div class="panel-ctrls">
+					<div class="btn-group">
+						<button class="btn btn-success" type="button">One</button>
+						<button class="btn btn-success" type="button">Two</button>
+						<button class="btn btn-success" type="button">Three</button>
+					</div>
+				</div>
+				<h2>with buttons</h2>
+			</div>
+			<div class="panel-editbox" data-widget-controls=""></div>
+			<div class="panel-body">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+		<div class="panel panel-default alt" data-widget='{"id" : "wiget2"}'>
+			<div class="panel-heading">
+				<div class="panel-ctrls">
+					<span class="label label-primary">example</span>
+				</div>
+				<h2><span class="icon"><i class="ion-flash"></i></span>With Label</h2>
+			</div>
+			<div class="panel-editbox" data-widget-controls=""></div>
+			<div class="panel-body">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="panel panel-default alt" data-widget='{"id" : "wiget2"}'>
+			<div class="panel-heading">
+				<div class="panel-ctrls">
+					<span class="badge badge-info">32</span>
+				</div>
+				<h2><span class="icon"><i class="ion-flash"></i></span>with badge</h2>
+			</div>
+			<div class="panel-editbox" data-widget-controls=""></div>
+			<div class="panel-body">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading m-n">
+				<ul class="nav nav-tabs tab-warning material-nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#dashtab-7-4" aria-expanded="true">Tab one</a></li>
+					<li class=""><a data-toggle="tab" href="#dashtab-7-5" aria-expanded="false">Tab two</a></li>
+					<li class=""><a data-toggle="tab" href="#dashtab-7-6" aria-expanded="false">Tab three</a></li>
+					<li class=""><a data-toggle="tab" href="#dashtab-7-7" aria-expanded="false">Tab four</a></li>
+				</ul>
+			</div>
+			<div class="panel-body tab-content">
+				<div class="tab-content">
+					<div id="dashtab-7-4" class="tab-pane active">
+						<ul class="media-list scroll-content">
+							<li>
+								<span class="category-heading">Pending</span>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<span class="action">
+										<a class="approve"><i class="ion-checkmark-round"></i></a>
+										<a class="reject"><i class="ion-close-round"></i></a>
+									</span>
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_01.png">
+									</div>
+									<div class="media-body">
+										<span class="name">Amy Green</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<span class="action">
+										<a class="approve"><i class="ion-checkmark-round"></i></a>
+										<a class="reject"><i class="ion-close-round"></i></a>
+									</span>
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_02.png">
+									</div>
+									<div class="media-body">
+										<span class="name">Amy Green</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<span class="action">
+										<a class="approve"><i class="ion-checkmark-round"></i></a>
+										<a class="reject"><i class="ion-close-round"></i></a>
+									</span>
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_03.png">
+									</div>
+									<div class="media-body">
+										<span class="name">Amy Green</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<span class="action">
+										<a class="approve"><i class="ion-checkmark-round"></i></a>
+										<a class="reject"><i class="ion-close-round"></i></a>
+									</span>
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_04.png">
+									</div>
+									<div class="media-body">
+										<span class="name">Amy Green</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="category-heading">Recently Approved</span>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<span class="action">
+										<a class="approve"><i class="ion-checkmark-round"></i></a>
+										<a class="reject"><i class="ion-close-round"></i></a>
+									</span>
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_05.png">
+									</div>
+									<div class="media-body">
+										<span class="name">Amy Green</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<span class="action">
+										<a class="approve"><i class="ion-checkmark-round"></i></a>
+										<a class="reject"><i class="ion-close-round"></i></a>
+									</span>
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_06.png">
+									</div>
+									<div class="media-body">
+										<span class="name">Amy Green</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<span class="action">
+										<a class="approve"><i class="ion-checkmark-round"></i></a>
+										<a class="reject"><i class="ion-close-round"></i></a>
+									</span>
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_07.png">
+									</div>
+									<div class="media-body">
+										<span class="name">Amy Green</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div id="dashtab-7-5" class="tab-pane">
+						<div class="p-n">
+							<ul class="mini-timeline">
+								<li class="mini-timeline-primary">
+									<span class="timeline-icon"><i class="ion-briefcase"></i></span>
+									<div class="timeline-body">
+										<div class="timeline-content">
+											<a href="#/" class="name"> New daily build issue solved</a>
+											<span class="time">4 mins ago</span>
+										</div>
+									</div>
+								</li>
+
+								<li class="mini-timeline-purple">
+									<span class="timeline-icon"><i class="ion-social-usd"></i></span>
+									<div class="timeline-body">
+										<div class="timeline-content">
+											<a href="#/" class="name"> Get Payment</a>	
+											<span class="time">6 mins ago</span>							
+										</div>
+									</div>
+								</li>
+
+								<li class="mini-timeline-success">
+									<span class="timeline-icon"><i class="ion-plus-round"></i></span>
+									<div class="timeline-body">
+										<div class="timeline-content">
+											<a href="#/" class="name"> 3 New Products were added!</a>	
+											<span class="time">6 hours ago</span>								
+										</div>
+									</div>
+								</li>
+								<li class="mini-timeline-deeporange">
+									<span class="timeline-icon"><i class="ion-heart"></i></span>
+									<div class="timeline-body">
+										<div class="timeline-content">
+											<a href="#/" class="name">Jim Ball</a> 
+											<span class="time">4 mins ago</span>
+										</div>
+									</div>
+								</li>
+
+								<li class="mini-timeline-blue">
+									<span class="timeline-icon"><i class="ion-thumbsup"></i></span>
+									<div class="timeline-body">
+										<div class="timeline-content">
+											<a href="#/" class="name">+ 290 Page Likes</a> 
+											<span class="time">6 mins ago</span>
+										</div>
+									</div>
+								</li>
+
+								<li class="mini-timeline-success">
+									<span class="timeline-icon"><i class="ion-plus-round"></i></span>
+									<div class="timeline-body">
+										<div class="timeline-content">
+											<a href="#/" class="name">3 new packages available</a>	
+											<span class="time">12 mins ago</span>								
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="dashtab-7-6" class="tab-pane">
+						<ul class="media-list">
+							<li>
+								<span class="category-heading">Design</span>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-body">
+										<span class="text">Admin dashboard psd design</span> 
+										<div class="progress">
+											<div class="progress-bar progress-bar-lime" style="width: 50%"></div>
+										</div>
+									</div>
+									<div class="media-right">
+										<span class="icon text">
+											50%
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-body">
+										<span class="text">Admin dashboard psd design</span> 
+										<div class="progress">
+											<div class="progress-bar progress-bar-lime" style="width: 87%"></div>
+										</div>
+									</div>
+									<div class="media-right">
+										<span class="icon text">
+											87%
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-body">
+										<span class="text">Admin dashboard psd design</span> 
+										<div class="progress">
+											<div class="progress-bar progress-bar-lime" style="width: 44%"></div>
+										</div>
+									</div>
+									<div class="media-right">
+										<span class="icon text">
+											44%
+										</span>
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-body">
+										<span class="text">Admin dashboard psd design</span> 
+										<div class="progress">
+											<div class="progress-bar progress-bar-lime" style="width: 78%"></div>
+										</div>
+									</div>
+									<div class="media-right">
+										<span class="icon text">
+											78%
+										</span>
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="category-heading">Design</span>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-body">
+										<span class="text">Admin dashboard psd design</span> 
+										<div class="progress">
+											<div class="progress-bar progress-bar-lime" style="width: 90%"></div>
+										</div>
+									</div>
+									<div class="media-right">
+										<span class="icon text">
+											90%
+										</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div id="dashtab-7-7" class="tab-pane">
+						<ul class="media-list scroll-content">
+							<li>
+								<span class="category-heading">Pending</span>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-left">
+										<span class="input">
+											<input type="checkbox" name="ham" value="1" id="dashcheckbox1"  class="tectonic"/>
+											<label for="dashcheckbox1"></label>
+										</span>
+									</div>
+									<div class="media-body">
+										<span class="text">Create invoice mockup psd and convert to HTML/CSS</span> 
+										<span class="info text-muted">assigned to Patrick Kim</span> 
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-left">
+										<span class="input">
+											<input type="checkbox" name="ham" value="1" id="dashcheckbox2"  class="tectonic"/>
+											<label for="dashcheckbox2"></label>
+										</span>
+									</div>
+									<div class="media-body">
+										<span class="text">Add animation to interface elements and custom dropdowns</span>
+										<span class="info text-muted">assigned to Patrick Kim</span> 
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-left">
+										<span class="input">
+											<input type="checkbox" name="ham" value="1" id="dashcheckbox3"  class="tectonic"/>
+											<label for="dashcheckbox3"></label>
+										</span>
+									</div>
+									<div class="media-body">
+										<span class="text">Create invoice mockup psd and convert to HTML/CSS</span> 
+										<span class="info text-muted">assigned to Patrick Kim</span> 
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-left">
+										<span class="input">
+											<input type="checkbox" name="ham" value="1" id="dashcheckbox4"  class="tectonic"/>
+											<label for="dashcheckbox4"></label>
+										</span>
+									</div>
+									<div class="media-body">
+										<span class="text">Create invoice mockup psd and convert to HTML/CSS</span> 
+										<span class="info text-muted">assigned to Patrick Kim</span> 
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="category-heading">Completed</span>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-left">
+										<span class="input">
+											<input type="checkbox" name="ham" value="1" id="dashcheckbox5"  class="tectonic" checked/>
+											<label for="dashcheckbox5"></label>
+										</span>
+									</div>
+									<div class="media-body">
+										<span class="text text-muted"><strike><em>Fix a bunch of angular bugs</em></strike></span> 
+										<span class="info text-muted"><strike><em>assigned to Patrick Kim</em></strike></span> 
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-left">
+										<span class="input">
+											<input type="checkbox" name="ham" value="1" id="dashcheckbox6"  class="tectonic" checked/>
+											<label for="dashcheckbox6"></label>
+										</span>
+									</div>
+									<div class="media-body">
+										<span class="text text-muted"><strike><em>Fix a bunch of angular bugs</em></strike></span> 
+										<span class="info text-muted"><strike><em>assigned to Patrick Kim</em></strike></span> 
+									</div>
+								</div>
+							</li>
+							<li class="media">
+								<div class="media-content">
+									<div class="media-left">
+										<span class="input">
+											<input type="checkbox" name="ham" value="1" id="dashcheckbox7"  class="tectonic" checked/>
+											<label for="dashcheckbox7"></label>
+										</span>
+									</div>
+									<div class="media-body">
+										<span class="text text-muted"><strike><em>Fix a bunch of angular bugs</em></strike></span> 
+										<span class="info text-muted"><strike><em>assigned to Patrick Kim</em></strike></span> 
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

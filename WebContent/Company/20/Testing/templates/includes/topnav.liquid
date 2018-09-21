@@ -1,0 +1,828 @@
+{% include headerbar %}
+<header id="topnav" class="navbar navbar-default navbar-fixed-top clearfix" role="banner">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">
+			<!--<img class="img-white" src="assets/img/logo-white.png" alt="Tectonic">-->
+			<img class="img-dark" src="assets/img/logo-dark.png" alt="Tectonic">
+		</a>
+	</div>
+
+	<!-- Trigger -->
+	<span id="trigger-leftbar" class="toolbar-trigger">
+		<a data-toggle="tooltips" data-placement="right" title="Toggle Leftbar"><span class="icon"><i class="ion-android-arrow-back"></i></span></a>
+	</span>
+
+	<span id="trigger-infobar" class="toolbar-trigger">
+		<a data-toggle="tooltips" data-placement="left" title="Toggle Infobar"><span class="icon"><i class="ion-ios-settings-strong"></i></span></a>
+	</span>
+
+	<span class="toolbar-trigger">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tectonic-topnav-collapsible" aria-expanded="false">
+			<span class="icon"><i class="ion-more"></i></span>
+		</button>
+	</span>
+
+	<!-- Togglable navigation -->
+	<div class="collapse navbar-collapse" id="tectonic-topnav-collapsible">
+		<ul class="yamm nav navbar-nav navbar-left">
+			<li id="widget-tabbeddropdown" class="dropdown dropdown-lg">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<span class="icon"><i class="icon_folder-open_alt"></i></span>
+					<span class="text hidden-sm hidden-lg hidden-md" data-localize="topnav_dropdown_with_tabs">Dropdown with Tabs</span>
+				</a>
+				<div class="dropdown-menu tabbed">
+					<ul class="row">
+						<li class="col-xs-3">
+							<a data-toggle="tab" data-target="#dropdown-tab" class="" aria-expanded="true">
+								<span class="icon"><i class="ion-android-done-all"></i></span>
+							</a>
+						</li>
+
+						<li class="col-xs-3 active ">
+							<a data-toggle="tab" data-target="#dropdown-tab2" class="" aria-expanded="true">
+								<span class="icon"><i class="ion-shuffle"></i></span>
+							</a>
+						</li>
+						
+						<li class="col-xs-3">
+							<a data-toggle="tab" data-target="#dropdown-tab3" class="" aria-expanded="true">
+								<span class="icon"><i class="ion-calendar"></i></span>
+							</a>
+						</li>
+
+						<li class="col-xs-3">
+							<a data-toggle="tab" data-target="#dropdown-tab4" class="" aria-expanded="true">
+								<span class="icon"><i class="ion-arrow-down-c"></i></span>
+							</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div id="dropdown-tab" class="tab-pane">
+							<ul class="media-list scroll-content">
+								<li>
+									<span class="category-heading" data-localize="topnav_pending">Pending</span>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-checkmark-round"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<img class="avatar" alt="" src="assets/demo/avatar/avatar_01.png">
+										</div>
+										<div class="media-body">
+											<span class="name" data-localize="topnav_army_green">Amy Green</span>
+											<span class="time" data-localize="topnav_2mins_ago">2 mins ago</span>
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-checkmark-round"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<img class="avatar" alt="" src="assets/demo/avatar/avatar_02.png">
+										</div>
+										<div class="media-body">
+											<span class="name" data-localize="topnav_austin_freeman">Austin Freeman</span>
+											<span class="time" data-localize="topnav_2mins_ago">5 mins ago</span>
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-checkmark-round"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<img class="avatar" alt="" src="assets/demo/avatar/avatar_03.png">
+										</div>
+										<div class="media-body">
+											<span class="name" data-localize="topnav_joseph_gibson">Joseph Gibson</span>
+											<span class="time" data-localize="topnav_2mins_ago">10 mins ago</span>
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-checkmark-round"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<img class="avatar" alt="" src="assets/demo/avatar/avatar_04.png">
+										</div>
+										<div class="media-body">
+											<span class="name" data-localize="topnav_gary_robertson">Gary Robertson</span>
+											<span class="time" data-localize="topnav_2mins_ago">32 mins ago</span>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="category-heading" data-localize="topnav_recently_aproved">Recently Approved</span>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-checkmark-round"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<img class="avatar" alt="" src="assets/demo/avatar/avatar_05.png">
+										</div>
+										<div class="media-body">
+											<span class="name" data-localize="topnav_victoria_george">Victoria George</span>
+											<span class="time" data-localize="topnav_2mins_ago">54 mins ago</span>
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-checkmark-round"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<img class="avatar" alt="" src="assets/demo/avatar/avatar_06.png">
+										</div>
+										<div class="media-body">
+											<span class="name" data-localize="topnav_ralph_barrett">Ralph Barrett</span>
+											<span class="time" data-localize="topnav_2mins_ago">10 mins ago</span>
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-checkmark-round"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<img class="avatar" alt="" src="assets/demo/avatar/avatar_07.png">
+										</div>
+										<div class="media-body">
+											<span class="name" data-localize="topnav_joe_carr">Joe Carr</span>
+											<span class="time" data-localize="topnav_2mins_ago">22 mins ago</span>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div id="dropdown-tab2" class="tab-pane active">
+							<ul class="media-list scroll-content">
+								<li>
+									<span class="category-heading" data-localize="topnav_design">Design</span>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-body">
+											<span class="text" data-localize="topnav_admin_dashboard_psd_design">Admin dashboard psd design</span> 
+											<div class="progress">
+												<div class="progress-bar progress-bar-lime" style="width: 50%"></div>
+											</div>
+										</div>
+										<div class="media-right">
+											<span class="icon text">
+												50%
+											</span>
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-body">
+											<span class="text" data-localize="topnav_admin_dashboard_psd_design">Admin dashboard psd design</span> 
+											<div class="progress">
+												<div class="progress-bar progress-bar-lime" style="width: 87%"></div>
+											</div>
+										</div>
+										<div class="media-right">
+											<span class="icon text">
+												87%
+											</span>
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-body">
+											<span class="text" data-localize="topnav_admin_dashboard_psd_design">Admin dashboard psd design</span> 
+											<div class="progress">
+												<div class="progress-bar progress-bar-lime" style="width: 44%"></div>
+											</div>
+										</div>
+										<div class="media-right">
+											<span class="icon text">
+												44%
+											</span>
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-body">
+											<span class="text" data-localize="topnav_admin_dashboard_psd_design">Admin dashboard psd design</span> 
+											<div class="progress">
+												<div class="progress-bar progress-bar-lime" style="width: 78%"></div>
+											</div>
+										</div>
+										<div class="media-right">
+											<span class="icon text">
+												78%
+											</span>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="category-heading" data-localize="topnav_design">Design</span>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-body">
+											<span class="text" data-localize="topnav_admin_dashboard_psd_design">Admin dashboard psd design</span> 
+											<div class="progress">
+												<div class="progress-bar progress-bar-lime" style="width: 90%"></div>
+											</div>
+										</div>
+										<div class="media-right">
+											<span class="icon text">
+												90%
+											</span>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div id="dropdown-tab3" class="tab-pane">
+							<ul class="media-list scroll-content">
+								<li>
+									<span class="category-heading" data-localize="topnav_pending">Pending</span>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-left">
+											<span class="input">
+												<input type="checkbox" name="ham" value="1" id="checkbox1"  class="tectonic"/>
+												<label for="checkbox1"></label>
+											</span>
+										</div>
+										<div class="media-body">
+											<span class="text" data-localize="topnav_create_invoice_mockup">Create invoice mockup psd and convert to HTML/CSS</span> 
+											<span class="info text-muted" data-localize="topnav_assigned_to_kim">assigned to Patrick Kim</span> 
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-left">
+											<span class="input">
+												<input type="checkbox" name="ham" value="1" id="checkbox2"  class="tectonic"/>
+												<label for="checkbox2"></label>
+											</span>
+										</div>
+										<div class="media-body">
+											<span class="text" data-localize="topnav_add_information_to_interface">Add animation to interface elements and custom dropdowns</span>
+											<span class="info text-muted" data-localize="topnav_assigned_to_kim">assigned to Patrick Kim</span> 
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-left">
+											<span class="input">
+												<input type="checkbox" name="ham" value="1" id="checkbox3"  class="tectonic"/>
+												<label for="checkbox3"></label>
+											</span>
+										</div>
+										<div class="media-body">
+											<span class="text" data-localize="topnav_create_invoice_mockup">Create invoice mockup psd and convert to HTML/CSS</span> 
+											<span class="info text-muted" data-localize="topnav_assigned_to_kim">assigned to Patrick Kim</span> 
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-left">
+											<span class="input">
+												<input type="checkbox" name="ham" value="1" id="checkbox4"  class="tectonic"/>
+												<label for="checkbox4"></label>
+											</span>
+										</div>
+										<div class="media-body">
+											<span class="text" data-localize="topnav_create_invoice_mockup">Create invoice mockup psd and convert to HTML/CSS</span> 
+											<span class="info text-muted" data-localize="topnav_assigned_to_kim">assigned to Patrick Kim</span> 
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="category-heading" data-localize="topnav_completed">Completed</span>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-left">
+											<span class="input">
+												<input type="checkbox" name="ham" value="1" id="checkbox5"  class="tectonic" checked/>
+												<label for="checkbox5"></label>
+											</span>
+										</div>
+										<div class="media-body">
+											<span class="text text-muted"><strike><em data-localize="topnav_fix_angular">Fix a bunch of angular bugs</em></strike></span> 
+											<span class="info text-muted"><strike><em data-localize="topnav_assigned_to_kim">assigned to Patrick Kim</em></strike></span> 
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-left">
+											<span class="input">
+												<input type="checkbox" name="ham" value="1" id="checkbox6"  class="tectonic" checked/>
+												<label for="checkbox6"></label>
+											</span>
+										</div>
+										<div class="media-body">
+											<span class="text text-muted"><strike><em data-localize="topnav_fix_angular">Fix a bunch of angular bugs</em></strike></span> 
+											<span class="info text-muted"><strike><em data-localize="topnav_assigned_to_kim">assigned to Patrick Kim</em></strike></span> 
+										</div>
+									</div>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<div class="media-left">
+											<span class="input">
+												<input type="checkbox" name="ham" value="1" id="checkbox7"  class="tectonic" checked/>
+												<label for="checkbox7"></label>
+											</span>
+										</div>
+										<div class="media-body">
+											<span class="text text-muted"><strike><em data-localize="topnav_fix_angular">Fix a bunch of angular bugs</em></strike></span> 
+											<span class="info text-muted"><strike><em data-localize="topnav_assigned_to_kim">assigned to Patrick Kim</em></strike></span> 
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div id="dropdown-tab4" class="tab-pane">
+							<ul class="media-list scroll-content">
+								<li>
+									<span class="category-heading" data-localize="topnav_today">Today</span>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-arrow-down-a"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<span class="icon success" data-localize="topnav_ps">ps</span>
+										</div>
+										<div class="media-body">
+											<a class="link" data-localize="topnav_admin_dashboard_psd">admin dashboard.psd</a>
+											<span class="time" data-localize="topnav_by_patrick_kim">by Patrick Kim</span>
+
+										</div>
+									</div>	                                	                                
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-arrow-down-a"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<span class="icon success" data-localize="topnav_le">le</span>
+										</div>
+										<div class="media-body">
+											<a class="link" data-localize="topnav_ui_kit_metarials">ui kit material.psd</a>
+											<span class="time" data-localize="topnav_harry_wright">by Harry Wright</span>
+
+										</div>
+									</div>	                                	                                
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-arrow-down-a"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<span class="icon success" data-localize="topnav_ps">ps</span>
+										</div>
+										<div class="media-body">
+											<a class="link" data-localize="topnav_admin_dashboard_psd">admin dashboard.psd</a>
+											<span class="time" data-localize="topnav_by_patrick_kim">by Patrick Kim</span>
+
+										</div>
+									</div>	                                	                                
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-arrow-down-a"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<span class="icon success" data-localize="topnav_zi">zi</span>
+										</div>
+										<div class="media-body">
+											<a class="link" data-localize="topnav_demo_stock">demo stock photos.psd</a>
+											<span class="time" data-localize="topnav_by_ana_marshall">by Anna Marshall</span>
+										</div>
+									</div>	                                	                                
+								</li>
+								<li>
+									<span class="category-heading" data-localize="topnav_older">Older</span>
+								</li>
+								<li class="media">
+									<div class="media-content">
+										<span class="action">
+											<a class="approve"><i class="ion-arrow-down-a"></i></a>
+											<a class="reject"><i class="ion-close-round"></i></a>
+										</span>
+										<div class="media-left">
+											<span class="icon success" data-localize="topnav_ps">ps</span>
+										</div>
+										<div class="media-body">
+											<a class="link" data-localize="topnav_profile_page">profile page.psd</a>
+											<span class="time" data-localize="topnav_by_patrick_kim">by Patrick Kim</span>
+										</div>
+									</div>	                                	                                
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="dropdown-footer clearfix">
+						<a href="#" class="pull-left" data-localize="topnav_see_all">See all</a>
+						<a href="#" class="pull-right" data-localize="topnav_settings">Settings</a>
+					</div>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<span class="icon"><i class="icon_flowchart_alt"></i></span>
+					<span class="text hidden-sm" data-localize="topnav_megamenu">Megamenu</span>
+				</a>
+				<ul id="megamenu" class="dropdown-menu" style="width: 900px;">
+					<li>
+						<div class="yamm-content container-sm-height">
+							<div class="row row-sm-height yamm-col-bordered">
+								<div class="col-md-3 col-sm-3 col-sm-height yamm-col">                                            
+									<h3 class="yamm-category" data-localize="topnav_dropdown_group">Group</h3>
+									<ul class="list-unstyled without-icon">
+										<li><a href="#"><i class="ion-android-create"></i><span data-localize="topnav_dropdown_link">Link</span></a></li>
+										<li><a href="#"><i class="ion-settings"></i><span data-localize="topnav_dropdown_another_link">Another link</span></a></li>
+										<li><a href="#"><i class="ion-videocamera"></i><span data-localize="topnav_dropdown_something">Something</span></a></li>
+										<li><a href="#"><i class=""></i><span data-localize="topnav_dropdown_without_icon">Without icon</span></a></li>
+										<li><a href="#"><i class="ion-arrow-down-a"></i><span data-localize="topnav_dropdown_more">More</span></a></li>
+										<li><a href="#"><i class="ion-unlocked"></i><span data-localize="topnav_dropdown_without_icon">Without icon</span></a></li>
+										<li><a href="#"><i class="ion-shuffle"></i><span data-localize="topnav_dropdown_more">More</span></a></li>
+										<li><a href="#"><i class="ion-arrow-return-right"></i><span data-localize="topnav_dropdown_seperated_link">Seperated link</span></a></li> 
+									</ul>                                    
+								</div>
+								<div class="col-md-3 col-sm-3 col-sm-height yamm-col">
+									<h3 class="yamm-category" data-localize="topnav_dropdown_group">Group</h3>
+									<ul class="list-unstyled without-icon">
+										<li><a href="#"><i class="ion-android-create"></i><span data-localize="topnav_dropdown_link">Link</span></a></li>
+										<li><a href="#"><i class="ion-settings"></i><span data-localize="topnav_dropdown_another_link">Another link</span></a></li>
+										<li><a href="#"><i class="ion-videocamera"></i><span data-localize="topnav_dropdown_something">Something</span></a></li>
+										<li><a href="#"><i class=""></i><span data-localize="topnav_dropdown_without_icon">Without icon</span></a></li>
+										<li><a href="#"><i class="ion-arrow-down-a"></i><span data-localize="topnav_dropdown_more">More</span></a></li>
+										<li><a href="#"><i class="ion-unlocked"></i><span data-localize="topnav_dropdown_without_icon">Without icon</span></a></li>
+										<li><a href="#"><i class="ion-shuffle"></i><span data-localize="topnav_dropdown_more">More</span></a></li>
+										<li><a href="#"><i class="ion-arrow-return-right"></i><span data-localize="topnav_dropdown_seperated_link">Seperated link</span></a></li>
+									</ul>
+								</div>
+								<div class="col-md-3 col-sm-3 col-sm-height yamm-col">
+									<h3 class="yamm-category" data-localize="topnav_dropdown_with_icons">With Icons</h3>
+									<ul class="list-unstyled">
+										<li><a href="#"><i class="ion-android-create"></i><span data-localize="topnav_dropdown_link">Link</span></a></li>
+										<li><a href="#"><i class="ion-settings"></i><span data-localize="topnav_dropdown_another_link">Another link</span></a></li>
+										<li><a href="#"><i class="ion-videocamera"></i><span data-localize="topnav_dropdown_something">Something</span></a></li>
+										<li><a href="#"><i class=""></i><span data-localize="topnav_dropdown_without_icon">Without icon</span></a></li>
+										<li><a href="#"><i class="ion-arrow-down-a"></i><span data-localize="topnav_dropdown_more">More</span></a></li>
+										<li><a href="#"><i class="ion-unlocked"></i><span data-localize="topnav_dropdown_without_icon">Without icon</span></a></li>
+										<li><a href="#"><i class="ion-shuffle"></i><span data-localize="topnav_dropdown_more">More</span></a></li>
+										<li><a href="#"><i class="ion-arrow-return-right"></i><span data-localize="topnav_dropdown_seperated_link">Seperated link</span></a></li>
+									</ul>   
+								</div>
+								<div class="col-md-3 col-sm-3 col-sm-height yamm-col">
+									<h3 class="yamm-category" data-localize="topnav_dropdown_login_form">Login Form</h3>
+									<input id="exampleInputEmail2" class="form-control mb10" type="email" placeholder="username">
+									<input id="exampleInputPassword2" class="form-control mb10" type="password" placeholder="password">
+									<button class="btn btn-success btn-block" href="#" data-localize="topnav_dropdown_login">Login</button>
+									<br>
+									<h3 class="yamm-category" data-localize="topnav_dropdown_normal_text">Normal Text</h3>
+									<p data-localize="topnav_dropdown_normal_text_p">Vestibulum id ligula porta felis euismod semper eget.</p>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<span class="icon"><i class="ion-android-arrow-down"></i></span>
+					<span class="text hidden-sm" data-localize="topnav_dropdown">Dropdown</span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><span class="category-heading" data-localize="topnav_dropdown_group">Group</span></li>
+					<li><a href="#"><i class="ion-android-create"></i><span data-localize="topnav_dropdown_link">Link</span></a></li>
+					<li><a href="#"><i class="ion-settings"></i><span data-localize="topnav_dropdown_another_link">Another link</span></a></li>
+					<li><a href="#"><i class="ion-videocamera"></i><span data-localize="topnav_dropdown_something">Something</span></a></li>
+					<li><a href="#"><i class=""></i><span data-localize="topnav_dropdown_without_icon">Without icon</span></a></li>
+					<li><a href="#"><i class="ion-arrow-down-a"></i><span data-localize="topnav_dropdown_more">More</span></a></li>
+					<li><span class="category-heading" data-localize="topnav_dropdown_group">Group</span></li>
+					<li><a href="#"><i class="ion-unlocked"></i><span data-localize="topnav_without_icon">Without icon</span></a></li>
+					<li><a href="#"><i class="ion-shuffle"></i><span data-localize="topnav_more">More</span></a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#"><i class="ion-arrow-return-right"></i><span data-localize="topnav_dropdown_seperated_link">Seperated link</span></a></li>
+				</ul>
+			</li>
+			<li class="dropdown hidden-md hidden-sm">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<span class="icon visible-xs"><i class="ion-link"></i></span>
+					<span class="text" data-localize="topnav_dropdown_link">Link</span>
+				</a>
+			</li>
+			<li class="hidden-sm hidden-md hidden-lg"><a href=""><span class="icon"><i class="ion-plus"></i></span><span class="text hidden-lg hidden-sm hidden-md">Add item</span></a></li>
+		</ul>
+		<ul class="yamm nav navbar-nav navbar-right">
+			<li class="toolbar-icon-bg demo-headerdrop-hidden hidden-sm hidden-xs">
+				<a id="headerbardropdown" href="#"><span class="icon"><i class="ion-android-arrow-down"></i></span></a>
+			</li> 
+			<li class="dropdown" id="sample-dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<span class="icon"><i class="ion-settings"></i></span>
+					<span class="text visible-xs">Settings</span>
+				</a>
+				<ul class="dropdown-menu without-icon">
+					<li><span class="category-heading" data-localize="topnav_localisation">Localisation</span></li>
+					<li class="en"><a href="#" class="select_local" lang="en"><span class="pl-n">English</span><i class="ion-android-done"></i></a></li>
+					<li class="fr"><a href="#" class="select_local" lang="fr"><span class="pl-n">French</span><i class="ion-android-done"></i></a></li>
+					<li class="ar"><a href="#" class="select_local" lang="ar"><span class="pl-n">Arabic</span><i class="ion-android-done"></i></a></li>
+					<li class="ch"><a href="#" class="select_local" lang="ch"><span class="pl-n">Chinese</span><i class="ion-android-done"></i></a></li>
+					<li role="separator" class="divider"></li>
+					<li><span class="category-heading">Header Colors</span></li>
+					<li class="demo-options">
+						<ul id="demo-header-color" class="demo-color-list pl-md pd-md mb-sm">
+							<li><span class="demo-mirage"></span></li>
+							<li><span class="demo-graphite"></span></li>
+							<li><span class="demo-holly"></span></li>
+							<li><span class="demo-havana"></span></li>
+							<li><span class="demo-haiti"></span></li>
+							<li><span class="demo-bunting"></span></li>
+						</ul>
+					</li>
+					<li role="separator" class="divider"></li>
+					<li><span class="category-heading">Leftbar Colors</span></li>
+					<li class="demo-options">
+						<ul id="demo-sidebar-color" class="demo-color-list pl-md mb-sm">
+							<li><span class="demo-mirage"></span></li>
+							<li><span class="demo-graphite"></span></li>
+							<li><span class="demo-holly"></span></li>
+							<li><span class="demo-havana"></span></li>
+							<li><span class="demo-haiti"></span></li>
+							<li><span class="demo-bunting"></span></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="" id="trigger-fullscreen">
+				<a href="#" class="toggle-fullscreen"><span class="icon"><i class="arrow_expand"></i></span><span class="text hidden-sm hidden-lg hidden-md">Go to Fullscreen</span></a>
+			</li>
+
+			<li class="dropdown dropdown-lg">
+				<a href="#" class="dropdown-toggle" data-toggle='dropdown'>
+					<span class="icon"><i class="ion-android-mail"></i></span>
+					<span class="text hidden-sm hidden-lg hidden-md">Messages</span>
+					<span class="badge badge-pink">2</span>
+					<!-- <span class="label label-pink hidden-lg hidden-sm hidden-md">text</span> -->
+				</a>
+
+				<div class="dropdown-menu messages">
+					<div class="dropdown-header clearfix">
+						<span class="pull-left" data-localize="top-nav-notific_two_new_message">2 new message(s)</span>
+						<span class="mark-read pull-right"><i class="ion-android-done-all"></i></span>
+					</div>
+					<div class="scroll-pane">
+						<ul class="media-list scroll-content">
+							<li class="media new">
+								<a href="#">
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_01.png">
+										<span class="status online"></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Amy Green</span><span class="message">Integer vitae libero ac risus egestas placerat.</span>
+										<span class="time" data-localize="topnav_2mins_ago">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="media new">
+								<a href="#">
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_09.png">
+										<span class="status online"></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Daniel Andrews</span><span class="message">Vestibulum commodo felis quis tortor</span>
+										<span class="time" data-localize="topnav_2mins_ago">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<span class="category-heading">Older</span>
+							</li>
+							<li class="media">
+								<a href="#">
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_03.png">
+										<span class="status away"></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Harold Hawkins</span><span class="message">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</span>
+										<span class="time" data-localize="topnav_2mins_ago">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="media">
+								<a href="#">
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_02.png">
+										<span class="status offline"></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Jane Simpson</span><span class="message">Fusce lobortis lorem at ipsum semper sagittis.</span>
+										<span class="time" data-localize="topnav_2mins_ago">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="media">
+								<a href="#">
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_04.png">
+										<span class="status offline"></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Brian Fisher</span><span class="message">Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue.</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="media">
+								<a href="#">
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_05.png">
+										<span class="status offline"></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Dylan Black</span><span class="message">Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor.</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="media">
+								<a href="#">
+									<div class="media-left">
+										<img class="avatar" alt="" src="assets/demo/avatar/avatar_06.png">
+										<span class="status offline"></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Bobby Harper</span><span class="message">Sed adipiscing ornare risus. Morbi est est, blandit sit amet.</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="dropdown-footer clearfix">
+						<a href="#" class="pull-left" data-localize="top_nav_see_all">See all</a>
+						<a href="#" class="pull-right" data-localize="top_nav_settings">Settings</a>
+					</div>
+				</div>
+			</li>
+
+			<li class="dropdown dropdown-lg">
+				<a href="#" class="dropdown-toggle" data-toggle='dropdown'>
+					<span class="icon"><i class="ion-android-notifications"></i></span>
+					<span class="text hidden-sm hidden-lg hidden-md">Notifications</span>
+					<span class="badge badge-deep-purple">2</span>
+					<!-- <span class="label label-deep-purple hidden-lg hidden-sm hidden-md">text</span> -->
+				</a>
+
+				<div class="dropdown-menu notifications">
+					<div class="dropdown-header clearfix">
+						<span class="pull-left" data-localize="top-nav-notific_two_new_notification">2 new notification(s)</span>
+						<span class="mark-read pull-right"><i class="ion-android-done-all"></i></span>
+					</div>
+					<div class="scroll-pane">
+						<ul class="media-list scroll-content">
+							<li class="media new">
+								<a href="#">
+									<div class="media-left">
+										<span class="icon success"><i class="ion-checkmark-circled"></i></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Jerrod Miller</span> is now following you.
+										<span class="time">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="media new">
+								<a href="#">
+									<div class="media-left">
+										<span class="icon purple"><i class="ion-android-sync"></i></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Ben Hepworth</span> updated project <span class="link">Marvin</span>
+										<span class="time">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<span class="category-heading" data-localize="top_nav_notific_older">Older</span>
+							</li>
+							<li class="media">
+								<a href="#">
+									<div class="media-left">
+										<span class="icon blue"><i class="ion-android-document"></i></span>
+									</div>
+									<div class="media-body">
+										<span class="name">Ken Duren</span> added new files.
+										<span class="time">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="media">
+								<a href="#">
+									<div class="media-left">
+										<span class="icon success"><i class="ion-android-done"></i></span>
+									</div>
+									<div class="media-body">
+										Your changes were saved.
+										<span class="time">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="media">
+								<a href="#">
+									<div class="media-left">
+										<span class="icon info"><i class="ion-android-done"></i></span>
+									</div>
+									<div class="media-body">
+										Your changes were saved.
+										<span class="time">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							<li class="media">
+								<a href="#">
+									<div class="media-left">
+										<span class="icon teal"><i class="ion-android-done"></i></span>
+									</div>
+									<div class="media-body">
+										Your changes were saved.
+										<span class="time">2 mins ago</span>
+									</div>
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+					<div class="dropdown-footer clearfix">
+						<a href="#" class="pull-left" data-localize="top_nav_see_all">See all</a>
+						<a href="#" class="pull-right" data-localize="top_nav_settings">Settings</a>
+					</div>
+				</div>
+			</li>
+
+			<li class="dropdown username">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<span class="icon visible-xs"><i class="ion-android-person"></i></span>
+					<span class="text hidden-sm" data-localize="topnav_person">jon@tectonic.io</span>
+					<span class="avatar"><img class="img-responsive img-rounded" src="assets/demo/avatar/avatar_06.png"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<div class="userinfo">
+							<span class="avatar"><img class="img-responsive img-circle" src="assets/demo/avatar/avatar_06.png"></span>
+							<span class="name" data-localize="topnav_jonathan_smith">Jonathan Smith</span>
+							<span class="email" data-localize="topnav_person">jon@tectonic.io</span>
+							<button class="btn btn-orange btn-sm mt-md" data-localize="topnav_upgrade">Upgrade</button>
+						</div>
+					</li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#"><i class="ion-android-create"></i><span data-localize="topnav_edit_profile">Edit Profile</span></a></li>
+					<li><a href="#"><i class="ion-arrow-down-c"></i><span data-localize="topnav_downloads">Downloads</span></a></li>
+					<li><a href="#"><i class="ion-ios-settings-strong"></i><span data-localize="topnav_settings">Settings</span></a></li>
+					<li><a href="#"><i class="ion-help-buoy"></i><span data-localize="topnav_support">Support</span></a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#"><i class="ion-arrow-right-c"></i><span data-localize="topnav_logout">Logout</span></a></li>
+				</ul>
+			</li>
+		</ul>
+	</div><!-- /.navbar-collapse -->
+</header>

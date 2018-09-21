@@ -1,0 +1,173 @@
+{% extends 'layout' %}
+{% block title %}Invoice{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Extras</a></li>
+<li class="active"><a href="extras-invoice.html">Invoice</a></li>
+{% endblock %}
+
+{% block styles %}
+{{ 'less/demo-invoice.less' | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default invoice1">
+            <div class="panel-body p-xxl">
+                <div class="clearfix">
+                    <div class="row">
+                        <h1 class="text-primary text-center">
+                            INVOICE
+                        </h1>
+                        <hr>
+                        <p class="text-left ml-xl">
+                            <img class="text-left" src="assets/img/logo-dark.png" class="mt-md mb-md" alt="tectonic" width="48" height="38">
+                        </p>
+                        
+                        <address class="mt-md mb-md ml-xl text-left">
+                            <strong>Tectonic, Inc.</strong><br>
+                            705 Folsom Ave, Suite 400<br>
+                            San Francisco, CA 94107<br>
+                        </address>
+                    </div>
+                </div>
+                <div class="row mb-xl mr ml">
+                    <div class="col-md-12">
+                        <div class="pull-left">                            
+                            <h3 class="text-muted">Invoice to</h3>                         
+                            <address>
+                                <strong>Customer Company, Inc.</strong><br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                            </address>
+                        </div>
+                        <div class="pull-right">
+                            <h3 class="text-muted text-right">Info</h3>    
+                            <ul class="text-right list-unstyled">
+                                <li><strong>Invoice No:</strong> #10007819 </li>
+                                <li><strong>Date:</strong> 20/04/2016</li>
+                                <li><strong>Due:</strong> 19/05/2016</li>
+                                <li><strong>Late Fee:</strong> 0.5%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-xl">
+                    <div class="col-md-12">
+                        <div class="panel-transparent mb-xl">
+                            <div class="panel-body">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th class="text-right">Hours</th>
+                                            <th class="text-right">Rate</th>
+                                            <th class="text-right">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span class="title">Mouse Boxy</span>
+                                                <p class="desc">Integer vitae libero ac risus egestas placerat.</p>
+                                            </td>
+                                            <td class="text-right">1</td>
+                                            <td class="text-right">$30.00</td>
+                                            <td class="text-right">$30.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="title">Pack Asserv</span>
+                                                <p class="desc">Donec quis dui at dolor tempor interdum.</p>
+                                            </td>
+                                            <td class="text-right">3</td>
+                                            <td class="text-right">$30.00</td>
+                                            <td class="text-right">$30.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="title">Node Desk</span>
+                                                <p class="desc">Fusce lobortis lorem at ipsum semper sagittis.</p>
+                                            </td>
+                                            <td class="text-right">4</td>
+                                            <td class="text-right">$30.00</td>
+                                            <td class="text-right">$30.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="title">When Sin JS</span>
+                                                <p class="desc">Vestibulum commodo felis quis tortor.</p>
+                                            </td>
+                                            <td class="text-right">2</td>
+                                            <td class="text-right">$30.00</td>
+                                            <td class="text-right">$30.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="title">VLC Console</span>
+                                                <p class="desc">Aliquam tincidunt mauris eu risus.</p>
+                                            </td>
+                                            <td class="text-right">1</td>
+                                            <td class="text-right">$30.00</td>
+                                            <td class="text-right">$30.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row mr ml" style="border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;">
+                            <div class="col-md-9 pull-left">
+                                <p class="text-left authorization">Authorized Sign</p>
+                                <p class="text-left pt pb">
+                                    <img class="img-responsive" src="https://haciendaelrefugio.files.wordpress.com/2013/04/jim-signature.png" alt="signature" width= "130" height= "130">
+                                </p>
+                                <p class="text-left mb-sm"><strong class="signature">John Ochoa</strong></p>
+                                <p class="text-left designation">Web Developer</p>
+                                <p class="text-left authorization">Tectonic Inc.</p>
+                            </div>
+                            <div class="col-md-3 pull-ight">
+                                <p class="text-right"><strong>SUB TOTAL: $887.50</strong></p>
+                                <p class="text-right discount">DISCOUNT: 12.5%</p>
+                                <p class="text-right vat">VAT: 15%</p>
+                                <hr>
+                                <h4 class="text-right" style="font-weight: bold;">USD 893.05</h4>
+                                <div style="border-top: 2px solid rgb(238, 238, 238); width: 150px;float: right;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="row mr ml">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <a href="javascript:window.print()" class="btn btn-success"><i class="ion-printer"></i></a>
+                            <a href="#" class="btn btn-primary btn-label"><i class="ion-ios-paperplane"></i>Send</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 mt-xl pt">
+                        <hr>
+                        <p class="text-center">Thank you very much for doing business with us. We look forward to working again!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+

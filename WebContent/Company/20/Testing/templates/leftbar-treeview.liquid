@@ -1,0 +1,37 @@
+
+{% extends 'layout-leftbar-treeview' %}
+{% block title %}Leftbar Treeview{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Extras</a></li>
+<li class="active"><a href="leftbar-treeview.html">Leftbar Treeview</a></li>
+{% endblock %}
+
+{% block styles %}
+{{ "plugins/jstree/dist/themes/tectonic/style.min.css" | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/jstree/dist/jstree.min.js" | asset_url | script_tag }}
+{{ "demo/demo-jstree.js" | asset_url | script_tag }}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-success alt with-footer">
+			<div class="panel-heading">
+				<h2>Panel</h2>
+			</div>
+			<div class="panel-body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nam dolore ad est molestiae quasi qui id quas, corporis, laboriosam.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nam dolore ad est molestiae quasi qui id quas, corporis, laboriosam.</p>
+			</div>
+			<div class="panel-footer">
+				<a href="#" class="btn btn-default">Save</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

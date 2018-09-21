@@ -1,0 +1,131 @@
+{% extends "layout" %}
+{% block title %}To-do List{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Applications</a></li>
+<li class="active"><a href="todo.html">To-do List</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/bootbox/bootbox.js" | asset_url | script_tag }}     <!-- Bootbox -->
+
+{{ "demo/demo-app-todo.js" | asset_url | script_tag }}
+{% endblock %}
+
+{% block content %} 
+<div id="panel-advancedoptions" class="p-n">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel transparent">
+                <div class="panel-heading">
+                    <h2 class="title alt">Sample List<small>Sample list of things to do today</small></h2>
+                    <div class="panel-ctrls">
+                        <button class="btn btn-success mb-md" id="openTodoModal">Add New</button>
+                        <button class="btn btn-danger mb-md"><i class="ion-android-delete"></i></button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    
+                    <div class="todo-list">
+                        <span class="todo-header">Pending</span>
+                        <ul class="connectedSortable" id="sortable-todo">
+                            <li class="">
+                                <span class="drag-todo"> 
+                                    <span class="checkbox pt">
+                                        <input type="checkbox" class="tectonic" id="checked1" value="1" name="ham">
+                                        <label for="checked1"></label>
+                                    </span>
+                                </span>
+                                <p class="todo-description">
+                                    Send project demo files to client
+                                </p>
+                                
+                            </li>
+                            <li class="">
+                                <span class="drag-todo"> 
+                                    <span class="checkbox pt">
+                                        <input type="checkbox" class="tectonic" id="checked2" value="1" name="ham">
+                                        <label for="checked2"></label>
+                                    </span>
+                                </span>
+                                <p class="todo-description">
+                                    Sketch wireframes for new project and send it to client as soon as possible
+                                </p>
+                                
+                            </li>
+                            <li class="">
+                                <span class="drag-todo"> 
+                                    <span class="checkbox pt">
+                                        <input type="checkbox" class="tectonic" id="checked3" value="1" name="ham">
+                                        <label for="checked3"></label>
+                                    </span>
+                                </span>
+                                <p class="todo-description">
+                                    Buy some milk
+                                </p>
+                                
+                            </li>
+                            <li class="">
+                                <span class="drag-todo"> 
+                                    <span class="checkbox pt">
+                                        <input type="checkbox" class="tectonic" id="checked4" value="1" name="ham">
+                                        <label for="checked4"></label>
+                                    </span>
+                                </span>
+                                <p class="todo-description">
+                                    Prepare documentation for completed project
+                                </p>
+                                
+                            </li>
+                            <li class="">
+                                <span class="drag-todo"> 
+                                    <span class="checkbox pt">
+                                        <input type="checkbox" class="tectonic" id="checked5" value="1" name="ham">
+                                        <label for="checked5"></label>
+                                    </span>
+                                </span>
+                                <p class="todo-description">
+                                    Meeting with the development team
+                                </p>
+                            </li>
+                        </ul>
+                        <span class="todo-header">Completed</span>
+                        <ul class="todo-completed connectedSortable" id="completed-todo">
+                            <li class="">
+                                <span class="drag-todo"> 
+                                    <span class="checkbox pt">
+                                        <input type="checkbox" class="tectonic" id="checked6" value="1" name="ham" checked>
+                                        <label for="checked6"></label>
+                                    </span>
+                                    <span class="drag-image"></span>
+                                </span>
+                                <p class="todo-description">
+                                    Assign todo to designers
+                                </p>
+                                
+                            </li>
+                            <li class="">
+                                <span class="drag-todo"> 
+                                    <span class="checkbox pt">
+                                        <input type="checkbox" class="tectonic" id="checked7" value="1" name="ham" checked>
+                                        <label for="checked7"></label>
+                                    </span>
+                                    <span class="drag-image"></span>
+                                </span>
+                                <p class="todo-description">
+                                    Set up a meeting with new client
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

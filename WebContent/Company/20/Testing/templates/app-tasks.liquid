@@ -1,0 +1,779 @@
+{% extends 'layout' %}
+{% block title %}Projects{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Applications</a></li>
+<li class="active"><a href="app-tasks.html">Projects</a></li>
+{% endblock %}
+
+{% block styles %}
+{{ "plugins/form-nestable/jquery.nestable.css" | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/form-nestable/jquery.nestable.min.js" | asset_url | script_tag }}
+
+{{ "demo/demo-tasks.js" | asset_url | script_tag }}
+{% endblock %}
+
+{% block content %} 
+<div id="panel-advancedoptions">
+    <div class="row">
+        <div class="col-sm-4">
+            <ul class="sortable-connected list-unstyled" id="sortable-tasks-1">
+                <li class="card-task card-inverse" id="">
+                    <div class="card-handle"></div>
+                    <div class="card-title">
+                        <h3>Colorschemes</h3>
+                        <div class="card-done">0/5</div>
+                    </div>
+                    <div class="progress progress-striped active">    
+                        <div class="progress-bar progress-bar-inverse" style="width: 20%"></div>
+                    </div>
+
+                    <p class="card-desc">
+                        Create color variations for sidebar and topnav
+                    </p>
+                    <div class="card-options">
+                        <div class="pull-left">
+                            <span class="label label-orange">CSS</span>
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-create"></i></a>
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card-checklist">
+                        <div class="clearfix checklist-toggler">
+                            <h4>Checklist</h4>
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+
+                        <div class="checklist-container dd" id="nestable-list-1" style="display: none">
+                            <ol class="dd-list">
+                                <li class="checklist-item dd-item" data-id="1">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="red" class="tectonic" checked>
+                                            <label class="pl-n" for="red"></label>
+                                        </span>
+                                        Red
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="2">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Black" class="tectonic" checked>
+                                            <label class="pl-n" for="Black"></label>
+                                        </span>
+                                        Black
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="3">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Orange" class="tectonic" checked>
+                                            <label class="pl-n" for="Orange"></label>
+                                        </span>
+                                        Orange
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="4">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Violet" class="tectonic">
+                                            <label class="pl-n" for="Violet"></label>
+                                        </span>
+                                        Violet
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="5">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Blue" class="tectonic">
+                                            <label class="pl-n" for="Blue"></label>
+                                        </span>
+                                        Blue
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-task card-sky" id="">
+                    <div class="card-handle"></div>
+                    <div class="card-title">
+                        <h3>Template Pages</h3>
+                        <div class="card-done">0/5</div>
+                    </div>
+                    <div class="progress progress-striped active">    
+                        <div class="progress-bar progress-bar-info" style="width: 20%"></div>
+                    </div>
+
+                    <p class="card-desc">
+                        Finish all pending pages
+                    </p>
+                    <div class="card-options">
+                        <div class="pull-left">
+                            <span class="label label-primary">HTML</span>
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-create"></i></a>    
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card-checklist">
+                        <div class="clearfix checklist-toggler">
+                            <h4>Checklist</h4>
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+
+                        <div class="checklist-container dd" id="nestable-list-2" style="display: none">
+                            <ol class="dd-list">
+                                <li class="checklist-item dd-item" data-id="1">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Clients" class="tectonic" checked>
+                                            <label class="pl-n" for="Clients"></label>
+                                        </span>
+                                        Clients
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="2">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Portfolio" class="tectonic">
+                                            <label class="pl-n" for="Portfolio"></label>
+                                        </span>
+                                        Portfolio
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="3">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Blog" class="tectonic" checked>
+                                            <label class="pl-n" for="Blog"></label>
+                                        </span>
+                                        Blog
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="4">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Timeline" class="tectonic">
+                                            <label class="pl-n" for="Timeline"></label>
+                                        </span>
+                                        Timeline
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="5">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Profile" class="tectonic" checked>
+                                            <label class="pl-n" for="Profile"></label>
+                                        </span>
+                                        Profile
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-task card-primary" id="">
+                    <div class="card-handle"></div>
+                    <div class="card-title">
+                        <h3>Bugs</h3>
+                        <div class="card-done">0/5</div>
+                    </div>
+                    <div class="progress progress-striped active">    
+                        <div class="progress-bar progress-bar-primary" style="width: 20%"></div>
+                    </div>
+
+                    <p class="card-desc">
+                        Pending bug fixes.
+                    </p>
+                    <div class="card-options">
+                        <div class="pull-left">
+                            <span class="label label-orange">CSS</span>
+                            <span class="label label-alizarin">JS</span>
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-create"></i></a>  
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card-checklist">
+                        <div class="clearfix checklist-toggler">
+                            <h4>Checklist</h4>
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+
+                        <div class="checklist-container dd" id="nestable-list-3" style="display: none">
+                            <ol class="dd-list">
+                                <li class="checklist-item dd-item" data-id="1">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Responsivess" class="tectonic" checked>
+                                            <label class="pl-n" for="Responsivess"></label>
+                                        </span>
+                                        Responsivess
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="2">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Internet explorer 8" class="tectonic">
+                                            <label class="pl-n" for="Internet explorer 8"></label>
+                                        </span>
+                                        Internet explorer 8
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="3">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Sidebars" class="tectonic">
+                                            <label class="pl-n" for="Sidebars"></label>
+                                        </span>
+                                        Sidebars
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="4">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Dropdowns" class="tectonic" checked>
+                                            <label class="pl-n" for="Dropdowns"></label>
+                                        </span>
+                                        Dropdowns
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="5">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Switches" class="tectonic">
+                                            <label class="pl-n" for="Switches"></label>
+                                        </span>
+                                        Switches
+                                    </div>
+                                </li>
+                            </ol> 
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <ul class="sortable-connected list-unstyled" id="sortable-tasks-4">
+                <li class="card-task card-indigo" id="">
+                    <div class="card-handle"></div>
+                    <div class="card-title">
+                        <h3>Components</h3>
+                        <div class="card-done">0/5</div>
+                    </div>
+                    <div class="progress progress-striped active">    
+                        <div class="progress-bar progress-bar-indigo" style="width: 20%"></div>
+                    </div>
+
+                    <p class="card-desc">
+                        Add custom components
+                    </p>
+                    <div class="card-options">
+                        <div class="pull-left">
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-create"></i></a>
+
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card-checklist">
+                        <div class="clearfix checklist-toggler">
+                            <h4>Checklist</h4>
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+
+                        <div class="checklist-container dd" id="nestable-list-4" style="display: none">
+                            <ol class="dd-list">
+                                <li class="checklist-item dd-item" data-id="1">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Bootbox" class="tectonic">
+                                            <label class="pl-n" for="Bootbox"></label>
+                                        </span>
+                                        Bootbox
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="2">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Jquery Knob" class="tectonic" checked>
+                                            <label class="pl-n" for="Jquery Knob"></label>
+                                        </span>
+                                        Jquery Knob
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="3">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Nestable lists" class="tectonic">
+                                            <label class="pl-n" for="Nestable lists"></label>
+                                        </span>
+                                        Nestable lists
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="4">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Tree View" class="tectonic">
+                                            <label class="pl-n" for="Tree View"></label>
+                                        </span>
+                                        Tree View
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="5">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Paginators" class="tectonic">
+                                            <label class="pl-n" for="Paginators"></label>
+                                        </span>
+                                        Paginators
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-task card-warning" id="">
+                    <div class="card-handle"></div>
+                    <div class="card-title">
+                        <h3>Widgets</h3>
+                        <div class="card-done">0/5</div>
+                    </div>
+                    <div class="progress progress-striped active">    
+                        <div class="progress-bar progress-bar-teal" style="width: 20%"></div>
+                    </div>
+
+                    <p class="card-desc">
+                        Style all the widgets
+                    </p>
+                    <div class="card-options">
+                        <div class="pull-left">
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-create"></i></a>
+
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card-checklist">
+                        <div class="clearfix checklist-toggler">
+                            <h4>Checklist</h4>
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+
+                        <div class="checklist-container dd" id="nestable-list-5" style="display: block">
+                            <ol class="dd-list">
+                                <li class="checklist-item dd-item" data-id="1">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Chat" class="tectonic">
+                                            <label class="pl-n" for="Chat"></label>
+                                        </span>
+                                        Chat
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="2">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Feeds" class="tectonic" checked>
+                                            <label class="pl-n" for="Feeds"></label>
+                                        </span>
+                                        Feeds
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="3">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Contacts" class="tectonic" checked>
+                                            <label class="pl-n" for="Contacts"></label>
+                                        </span>
+                                        Contacts
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="4">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Todo" class="tectonic">
+                                            <label class="pl-n" for="Todo"></label>
+                                        </span>
+                                        Todo
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="5">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Weather" class="tectonic">
+                                            <label class="pl-n" for="Weather"></label>
+                                        </span>
+                                        Weather
+                                    </div>
+                                </li>
+                            </ol> 
+                        </div>
+                    </div>
+                </li>
+                <li class="card-task card-danger" id="">
+                    <div class="card-handle"></div>
+                    <div class="card-title">
+                        <h3>Data Tables</h3>
+                        <div class="card-done">0/5</div>
+                    </div>
+                    <div class="progress progress-striped active">    
+                        <div class="progress-bar progress-bar-danger" style="width: 20%"></div>
+                    </div>
+
+                    <p class="card-desc">
+                        Fix all data table bugs and add new plugins
+                    </p>
+                    <div class="card-options">
+                        <div class="pull-left">
+                            <span class="label label-alizarin">JS</span>
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-create"></i></a>
+
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card-checklist">
+                        <div class="clearfix checklist-toggler">
+                            <h4>Checklist</h4>
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+
+                        <div class="checklist-container dd" id="nestable-list-6" style="display: none">
+                            <ol class="dd-list">
+                                <li class="checklist-item dd-item" data-id="1">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Editable tables" class="tectonic">
+                                            <label class="pl-n" for="Editable tables"></label>
+                                        </span>
+                                        Editable tables
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="2">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Fixed header" class="tectonic" checked>
+                                            <label class="pl-n" for="Fixed header"></label>
+                                        </span>
+                                        Fixed header
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="3">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Advanced options" class="tectonic" checked>
+                                            <label class="pl-n" for="Advanced options"></label>
+                                        </span>
+                                        Advanced options
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="4">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Custom tables" class="tectonic" checked>
+                                            <label class="pl-n" for="Custom tables"></label>
+                                        </span>
+                                        Custom tables
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="5">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Update versions" class="tectonic">
+                                            <label class="pl-n" for="Update versions"></label>
+                                        </span>
+                                        Update versions
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <ul class="sortable-connected list-unstyled" id="sortable-tasks-5">
+                <li class="card-task card-indigo" id="">
+                    <div class="card-handle"></div>
+                    <div class="card-title">
+                        <h3>Components</h3>
+                        <div class="card-done">0/5</div>
+                    </div>
+                    <div class="progress progress-striped active">    
+                        <div class="progress-bar progress-bar-indigo" style="width: 20%"></div>
+                    </div>
+
+                    <p class="card-desc">
+                        Add custom components
+                    </p>
+                    <div class="card-options">
+                        <div class="pull-left">
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-create"></i></a>
+
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card-checklist">
+                        <div class="clearfix checklist-toggler">
+                            <h4>Checklist</h4>
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+
+                        <div class="checklist-container dd" id="nestable-list-4" style="display: none">
+                            <ol class="dd-list">
+                                <li class="checklist-item dd-item" data-id="1">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Bootbox" class="tectonic">
+                                            <label class="pl-n" for="Bootbox"></label>
+                                        </span>
+                                        Bootbox
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="2">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Jquery Knob" class="tectonic" checked>
+                                            <label class="pl-n" for="Jquery Knob"></label>
+                                        </span>
+                                        Jquery Knob
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="3">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Nestable lists" class="tectonic">
+                                            <label class="pl-n" for="Nestable lists"></label>
+                                        </span>
+                                        Nestable lists
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="4">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Tree View" class="tectonic">
+                                            <label class="pl-n" for="Tree View"></label>
+                                        </span>
+                                        Tree View
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="5">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Paginators" class="tectonic">
+                                            <label class="pl-n" for="Paginators"></label>
+                                        </span>
+                                        Paginators
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </li>
+                <li class="card-task card-warning" id="">
+                    <div class="card-handle"></div>
+                    <div class="card-title">
+                        <h3>Widgets</h3>
+                        <div class="card-done">0/5</div>
+                    </div>
+                    <div class="progress progress-striped active">    
+                        <div class="progress-bar progress-bar-success" style="width: 20%"></div>
+                    </div>
+
+                    <p class="card-desc">
+                        Style all the widgets
+                    </p>
+                    <div class="card-options">
+                        <div class="pull-left">
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-create"></i></a>
+
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card-checklist">
+                        <div class="clearfix checklist-toggler">
+                            <h4>Checklist</h4>
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+
+                        <div class="checklist-container dd" id="nestable-list-5" style="display: none">
+                            <ol class="dd-list">
+                                <li class="checklist-item dd-item" data-id="1">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Chat" class="tectonic">
+                                            <label class="pl-n" for="Chat"></label>
+                                        </span>
+                                        Chat
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="2">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Feeds" class="tectonic" checked>
+                                            <label class="pl-n" for="Feeds"></label>
+                                        </span>
+                                        Feeds
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="3">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Contacts" class="tectonic" checked>
+                                            <label class="pl-n" for="Contacts"></label>
+                                        </span>
+                                        Contacts
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="4">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Todo" class="tectonic">
+                                            <label class="pl-n" for="Todo"></label>
+                                        </span>
+                                        Todo
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="5">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Weather" class="tectonic">
+                                            <label class="pl-n" for="Weather"></label>
+                                        </span>
+                                        Weather
+                                    </div>
+                                </li>
+                            </ol> 
+                        </div>
+                    </div>
+                </li>
+                <li class="card-task card-danger" id="">
+                    <div class="card-handle"></div>
+                    <div class="card-title">
+                        <h3>Data Tables</h3>
+                        <div class="card-done">0/5</div>
+                    </div>
+                    <div class="progress progress-striped active">    
+                        <div class="progress-bar progress-bar-teal" style="width: 20%"></div>
+                    </div>
+
+                    <p class="card-desc">
+                        Fix all data table bugs and add new plugins
+                    </p>
+                    <div class="card-options">
+                        <div class="pull-left">
+                            <span class="label label-alizarin">JS</span>
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-create"></i></a>
+
+                                <a class="btn btn-default btn-xs" href="#"><i class="ion-android-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card-checklist">
+                        <div class="clearfix checklist-toggler">
+                            <h4>Checklist</h4>
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+
+                        <div class="checklist-container dd" id="nestable-list-6" style="display: block">
+                            <ol class="dd-list">
+                                <li class="checklist-item dd-item" data-id="1">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Editable tables" class="tectonic">
+                                            <label class="pl-n" for="Editable tables"></label>
+                                        </span>
+                                        Editable tables
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="2">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Fixed header" class="tectonic" checked>
+                                            <label class="pl-n" for="Fixed header"></label>
+                                        </span>
+                                        Fixed header
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="3">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Advanced options" class="tectonic" checked>
+                                            <label class="pl-n" for="Advanced options"></label>
+                                        </span>
+                                        Advanced options
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="4">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Custom tables" class="tectonic" checked>
+                                            <label class="pl-n" for="Custom tables"></label>
+                                        </span>
+                                        Custom tables
+                                    </div>
+                                </li>
+                                <li class="checklist-item dd-item" data-id="5">
+                                    <div class="dd-handle">
+                                        <span class="checkbox">
+                                            <input type="checkbox" name="ham" value="1" id="Update versions" class="tectonic">
+                                            <label class="pl-n" for="Update versions"></label>
+                                        </span>
+                                        Update versions
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

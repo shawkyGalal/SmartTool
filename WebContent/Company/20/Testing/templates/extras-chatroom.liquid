@@ -1,0 +1,115 @@
+{% extends 'layout-asides' %}
+{% block title %}Chatroom{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Extras</a></li>
+<li class="active"><a href="extras-chatroom.html">Chatroom</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+
+<div class="aside-wrapper">
+	<div class="aside-body">
+		<div class="aside-cell" style="position: relative;">
+			<div class="p-n">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12 p-n">
+							<div class="panel-chat well m-n" id="chat" tabindex="5000" style="overflow-y: hidden; outline: none; border-radius: 0;">
+								<div class="chat-message me">
+									<div class="chat-contact">
+										<img src="{{'demo/avatar/avatar_13.png' | asset_url | img_loc }}" alt="">
+									</div>
+									<div class="chat-text">
+										Chatroulette was one of those sites that didn’t impress me much because it was difficult to find someone to simply chat with.
+									</div>
+								</div>
+								<div class="chat-message chat-primary">
+									<div class="chat-contact">
+										<img src="{{'demo/avatar/avatar_02.png' | asset_url | img_loc }}" alt="">
+									</div>
+									<div class="chat-text">
+										Well, that was almost like a visit to the local loony bin. Strangers starts talking to you, but you are unable to comprehend what they are trying to say, and then they suddenly get distracted and leaves.
+									</div>
+								</div>
+								<div class="chat-message chat-success">
+									<div class="chat-contact">
+										<img src="{{'demo/avatar/avatar_07.png' | asset_url | img_loc }}" alt="">
+									</div>
+									<div class="chat-text">
+										I found some really interesting people on omegle.
+									</div>
+								</div>
+								<div class="chat-message chat-success">
+									<div class="chat-contact">
+										<img src="{{'demo/avatar/avatar_03.png' | asset_url | img_loc }}" alt="">
+									</div>
+									<div class="chat-text">
+										We talked about music, literature, life, etc.
+									</div>
+								</div>
+								<div class="chat-message me">
+									<div class="chat-contact">
+										<img src="{{'demo/avatar/avatar_13.png' | asset_url | img_loc }}" alt="">
+									</div>
+									<div class="chat-text">
+										What about good old ICQ?
+									</div>
+								</div>
+								<div class="chat-message me">
+									<div class="chat-contact">
+										<img src="{{'demo/avatar/avatar_13.png' | asset_url | img_loc }}" alt="">
+									</div>
+									<div class="chat-text">
+										It’s not a website.
+									</div>
+								</div>
+								<div class="chat-message chat-success">
+									<div class="chat-contact">
+										<img src="{{'demo/avatar/avatar_03.png' | asset_url | img_loc }}" alt="">
+									</div>
+									<div class="chat-text">
+										I’m talking about icq.com, not the messenger.
+									</div>
+								</div>
+								<div class="chat-message chat-success">
+									<div class="chat-contact">
+										<img src="{{'demo/avatar/avatar_08.png' | asset_url | img_loc }}" alt="">
+									</div>
+									<div class="chat-text">
+										Well, thank you for the pointer! I will eventually write a post about chatrooms and will definitely include ICQ.
+									</div>
+								</div>
+								<div class="chat-message me">
+									<div class="chat-contact">
+										<img src="{{'demo/avatar/avatar_13.png' | asset_url | img_loc }}" alt="">
+									</div>
+									<div class="chat-text">
+										I’ve been using chatlack.com which is like chatroulette and iddin but with photos.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<form action="#" style="position: absolute; bottom: 0; width: 100%;">
+				<div class="input-group" style="width: 98%; margin: 0 16px;">
+					<input type="text" placeholder="Enter your message here" class="form-control">
+				</div>
+			</form>
+		</div>
+		<div class="aside-cell aside-col" style="background: #fff;">
+			{% include extras-chatroom-rightbar %}
+		</div>
+	</div>
+</div>
+	
+{% endblock %}

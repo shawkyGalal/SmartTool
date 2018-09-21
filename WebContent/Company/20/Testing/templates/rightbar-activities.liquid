@@ -1,0 +1,34 @@
+{% extends 'layout-rightbar-activities' %}
+{% block title %}Rightbar Activities{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Extras</a></li>
+<li class="active"><a href="rightbar-activities.html">Rightbar Activities</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+$(function () {
+   $('#trigger-infobar>a').click();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h2>Default Case</h2>
+	</div>
+	<div class="panel-body">
+		Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+
+		Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
+	</div>
+</div>
+{% endblock %}

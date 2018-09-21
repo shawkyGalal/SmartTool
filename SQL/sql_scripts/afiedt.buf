@@ -1,0 +1,2 @@
+select distinct proposal_no, last_updated_by from takaful.tblprojection --where last_updated_by <>'SHAW'
+/

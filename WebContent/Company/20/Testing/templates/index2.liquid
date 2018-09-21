@@ -1,0 +1,203 @@
+{% extends 'layout' %}
+{% block title %}All Echart{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="chord-charts.html">Pie Charts</a></li>
+{% endblock %}
+
+
+{% block scripts %}
+{{ "js/echarts.js" | asset_url | script_tag }}  
+<script>
+   // Step:3 conifg ECharts's path, link to echarts.js from current page.
+   // Step:3 ????????echarts????????????echarts.js?????????
+   $('#reset').click(function () {
+       bootbox.confirm("Are you sure you want to clear Local Storage? This will clear ALL globally set settings", function() {
+           localStorage.clear();
+       }); 
+   });
+
+    require.config({
+        paths: {
+            echarts: 'assets/www/js'
+        }
+    });
+    
+    require(
+    [
+        'echarts',
+        'echarts/chart/pie'
+    ],
+    function (ec) {
+        //--- ?? ---
+        var myChart = ec.init(document.getElementById('main'));
+        
+        myChart.setOption({
+           tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    toolbox: {
+        show : false,
+        feature : {
+            mark : {show: false},
+            dataView : {show: false, readOnly: false},
+            magicType : {
+                show: false, 
+                type: ['pie', 'funnel'],
+                option: {
+                    funnel: {
+                        x: '25%',
+                        width: '50%',
+                        funnelAlign: 'center',
+                        max: 1548
+                    }
+                }
+            },
+            restore : {show: false},
+            saveAsImage : {show: false}
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'访问来源',
+            type:'pie',
+            radius : ['30%', '50%'],
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false
+                    },
+                    labelLine : {
+                        show : false
+                    }
+                },
+                emphasis : {
+                    label : {
+                        show : false,
+                        position : 'center',
+                        textStyle : {
+                            fontSize : '10',
+                            fontWeight : 'bold'
+                        }
+                    }
+                }
+            },
+            data:[
+                {value:335, name:'直接访问'},
+                {value:310, name:'邮件营销'},
+                {value:234, name:'联盟广告'}
+            ]
+        }
+    ]
+        });myChart.setTheme("macarons");
+    }
+   //$.wijets().make();
+   require.config({
+       paths: {
+           echarts: 'assets/www/js'
+       }
+   });
+   
+   // Step:4 require echarts and use it in the callback.
+   // Step:4 ????echarts?????????????????????????????
+   require(
+   [
+       'echarts',
+       'echarts/chart/pie'
+   ],
+   function (ec) {
+       //--- ?? ---
+       var myChart = ec.init(document.getElementById('main'));
+       
+       myChart.setOption({
+          tooltip : {
+       trigger: 'item',
+       formatter: "{a} <br/>{b} : {c} ({d}%)"
+   },
+   toolbox: {
+       show : false,
+       feature : {
+           mark : {show: false},
+           dataView : {show: false, readOnly: false},
+           magicType : {
+               show: false, 
+               type: ['pie', 'funnel'],
+               option: {
+                   funnel: {
+                       x: '25%',
+                       width: '50%',
+                       funnelAlign: 'center',
+                       max: 1548
+                   }
+               }
+           },
+           restore : {show: false},
+           saveAsImage : {show: false}
+       }
+   },
+   calculable : true,
+   series : [
+       {
+           name:'访问来源',
+           type:'pie',
+           radius : ['30%', '50%'],
+           itemStyle : {
+               normal : {
+                   label : {
+                       show : false
+                   },
+                   labelLine : {
+                       show : false
+                   }
+               },
+               emphasis : {
+                   label : {
+                       show : false,
+                       position : 'center',
+                       textStyle : {
+                           fontSize : '10',
+                           fontWeight : 'bold'
+                       }
+                   }
+               }
+           },
+           data:[
+               {value:335, name:'直接访问'},
+               {value:310, name:'邮件营销'},
+               {value:234, name:'联盟广告'}
+           ]
+       }
+   ]
+       });myChart.setTheme("macarons");
+   }
+);
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class='col-md-4'>
+         <div id="main" style="height:190px">
+        </div>
+    </div>
+    
+     
+   <div class='col-md-4'>
+        <div id="main" style="height:190px">
+       </div>
+   </div>
+   
+   
+
+    <style>
+       .chart-content>div{
+           width:100% !important;
+       }
+   </style>
+</div>
+{% endblock %}

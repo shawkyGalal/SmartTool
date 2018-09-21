@@ -1,0 +1,147 @@
+{% extends 'layout' %}
+{% block title %}Line-Area Amcharts{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+{% block styles %} 
+{{ 'plugins/amchart/css/amchart.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+{% block scripts %} 
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+{{ "plugins/wijets/wijets.js" | asset_url | script_tag }} 
+{{ "demo/amchart/line-area.js" | asset_url | script_tag }}
+{% endblock %}
+{% block content %}
+
+<div class="row" data-widget-group="group-demo">
+  <div class="col-md-12">
+    <div class="panel panel-default alt">
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title">chart1</h2>
+        </div>
+        <div class="panel-body">
+            <div id='chartdiv'>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-default alt">
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title">chart2</h2>
+        </div>
+        <div class="panel-body">
+            <div id='chartdiv2'>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-default alt">
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title">chart3</h2>
+        </div>
+        <div class="panel-body">
+            <div id='chartdiv3'>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-default alt">
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title">chart4</h2>
+        </div>
+        <div class="panel-body">
+            <div id='chartdiv4'>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-default alt">
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title">chart4</h2>
+        </div>
+        <div class="panel-body">
+            <div id='chartdiv5'>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-default alt">
+          <div class="panel-heading">
+              <div class="panel-ctrls" 
+                  data-actions-container="" 
+                  data-action-collapse='{"target": ".panel-body"}'
+                  data-action-colorpicker=''
+                  data-action-edit=''
+                  data-action-expand=''
+                  data-action-refresh=''
+                  data-action-close=''
+                  >
+              </div>
+              <h2 class="title">chart4</h2>
+          </div>
+          <div class="panel-body">
+              <div id='chartdiv6'>
+              </div>
+          </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

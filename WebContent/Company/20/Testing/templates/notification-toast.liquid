@@ -1,0 +1,239 @@
+{% extends 'layout' %}
+{% block title %}Toasts{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Components</a></li>
+<li class="active"><a href="ui-alerts.html">Alerts</a></li>
+{% endblock %}
+
+{% block styles %}
+{{ "plugins/toast/css/toastr.css" | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/toast/js/toastr.js" | asset_url | script_tag }}
+{{ "demo/toast/demo-toast.js" | asset_url | script_tag }}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary" id="toastTypeGroup">
+            <div class="panel-heading">
+                <h2 class="title">Toast1</h2>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="title">Title</label>
+                            <div class="col-sm-9">
+                                <input id="title" type="text" class="form-control" placeholder="Enter a title ..." />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="message">Message</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="message" rows="3" placeholder="Enter a message ..."></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="showEasing">Show Easing</label>
+                                    <div class="col-sm-4">
+                                        <input id="showEasing" type="text" placeholder="swing, linear" class="form-control" value="swing" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="hideEasing">Hide Easing</label>
+                                    <div class="col-sm-4">
+                                        <input id="hideEasing" type="text" placeholder="swing, linear" class="form-control" value="linear" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="showMethod">Show Method</label>
+                                    <div class="col-sm-4">
+                                        <input id="showMethod" type="text" placeholder="show, fadeIn, slideDown" class="form-control" value="fadeIn" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="hideMethod">Hide Method</label>
+                                    <div class="col-sm-4">
+                                        <input id="hideMethod" type="text" placeholder="hide, fadeOut, slideUp" class="form-control" value="fadeOut" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="showDuration">Show Duration</label>
+                                    <div class="col-sm-4">
+                                        <input id="showDuration" type="text" placeholder="ms" class="form-control" value="300" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="hideDuration">Hide Duration</label>
+                                    <div class="col-sm-4">
+                                        <input id="hideDuration" type="text" placeholder="ms" class="form-control" value="1000" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="timeOut">Time out</label>
+                                    <div class="col-sm-4">
+                                        <input id="timeOut" type="text" placeholder="ms" class="form-control" value="5000" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6" for="extendedTimeOut">Extended time out</label>
+                                    <div class="col-sm-4">
+                                        <input id="extendedTimeOut" type="text" placeholder="ms" class="form-control" value="1000" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <form class="form-horizontal">
+                        <div class="control-group">
+                            <div class="form-group m-n">
+                                <div class="checkbox inline">
+                                    <input type="checkbox" class="tectonic" id="closeButton" value="1" name="ham">
+                                    <label for="closeButton" class="pl-n"></label>
+                                    <span>Close Button</span>
+                                </div>
+                            </div>
+                            <div class="form-group m-n">
+                                <div class="checkbox inline">
+                                    <input type="checkbox" class="tectonic" id="addBehaviorOnToastClick" value="1" name="ham">
+                                    <label for="addBehaviorOnToastClick" class="pl-n"></label>
+                                    <span>Add behavior on toast click</span>
+                                </div>
+                            </div>
+                            <div class="form-group m-n">
+                                <div class="checkbox inline">
+                                    <input type="checkbox" class="tectonic" id="debugInfo" value="1" name="ham">
+                                    <label for="debugInfo" class="pl-n"></label>
+                                    <span>Debug</span>
+                                </div>
+                            </div>
+                            <div class="form-group m-n">
+                                <div class="checkbox inline">
+                                    <input type="checkbox" class="tectonic" id="progressBar" value="1" name="ham">
+                                    <label for="progressBar" class="pl-n"></label>
+                                    <span>Progress Bar</span>
+                                </div>
+                            </div>
+                            <div class="form-group m-n">
+                                <div class="checkbox inline">
+                                    <input type="checkbox" class="tectonic" id="preventDuplicates" value="1" name="ham">
+                                    <label for="preventDuplicates" class="pl-n"></label>
+                                    <span>Prevent Duplicates</span>
+                                </div>
+                            </div>
+                            <div class="form-group m-n">
+                                <div class="checkbox inline">
+                                    <input type="checkbox" class="tectonic" id="addClear" value="1" name="ham">
+                                    <label for="addClear" class="pl-n"></label>
+                                    <span>Add button to force clearing a toast</span>
+                                </div>
+                            </div>
+                            <div class="form-group ml-n mr-n">
+                                <div class="checkbox inline">
+                                    <input type="checkbox" class="tectonic" id="newestOnTop" value="1" name="ham">
+                                    <label for="newestOnTop" class="pl-n"></label>
+                                    <span>Newest on top</span>
+                                </div>
+                            </div>
+                            <div class="form-group m-n" id="toastTypeGroup">
+                                <label>Toast Type</label>
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r" value="success" name="ham">
+                                    <label for="r" class="labelbtn"></label>
+                                    <span>Success</span>
+                                </div>
+
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r1" value="info" name="ham">
+                                    <label for="r1" class="labelbtn"></label>
+                                    <span>Info</span>
+                                </div>
+
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r2" value="warning" name="ham">
+                                    <label for="r2" class="labelbtn"></label>
+                                    <span>Warning</span>
+                                </div>
+
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r3" value="error" name="ham">
+                                    <label for="r3" class="labelbtn"></label>
+                                    <span>Error</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <form class="form-horizontal" id="positionGroup">
+                        <div class="control-group">
+                            <div class="form-group m-n">
+                                <label>Position</label>
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r4" value="toast-top-right" name="ham">
+                                    <label for="r4" class="labelbtn"></label>
+                                    <span>Top Right</span>
+                                </div>
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r0" value="toast-top-left" name="ham">
+                                    <label for="r0" class="labelbtn"></label>
+                                    <span>Top Left</span>
+                                </div>
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r5" value="toast-bottom-right" name="ham">
+                                    <label for="r5" class="labelbtn"></label>
+                                    <span>Bottom Right</span>
+                                </div>
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r6" value="toast-bottom-left" name="ham">
+                                    <label for="r6" class="labelbtn"></label>
+                                    <span>Bottom Left</span>
+                                </div>
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r8" value="toast-top-full-width" name="ham">
+                                    <label for="r8" class="labelbtn"></label>
+                                    <span>Top Full Width</span>
+                                </div>
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r9" value="toast-bottom-full-width" name="ham">
+                                    <label for="r9" class="labelbtn"></label>
+                                    <span>Bottom Full Width</span>
+                                </div>
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r00" value="toast-top-center" name="ham">
+                                    <label for="r00" class="labelbtn"></label>
+                                    <span>Top Center</span>
+                                </div>
+                                <div class="radio block">                                
+                                    <input type="radio" class="tectonic" id="r87" value="toast-bottom-center" name="ham">
+                                    <label for="r87" class="labelbtn"></label>
+                                    <span>Bottom Center</span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary mt-xs" id="showtoast">Show Toast</button>
+                    <button type="button" class="btn btn-danger mt-xs" id="cleartoasts">Clear Toasts</button>
+                    <button type="button" class="btn btn-danger mt-xs" id="clearlasttoast">Clear Last Toast</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

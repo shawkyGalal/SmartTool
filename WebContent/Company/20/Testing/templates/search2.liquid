@@ -1,0 +1,98 @@
+{% extends 'layout' %}
+{% block title %}Search Result{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Search2</a></li>
+{% endblock %}
+
+{% block styles %} 
+{{ 'less/search.less' | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-2">
+		<div class="search-query2">
+			<p class="mb-md"><em>Refined by:</em></p>
+			<p class="search-title">Date</p>
+			<ul class="list-unstyled">
+				<li>Today</li>
+				<li>Weekly</li>
+				<li>Monthly</li>
+				<li>Three Month</li>
+				<li>Half Year</li>
+				<li>One Year</li>
+			</ul>
+			<p class="search-title">Type</p>
+			<ul class="list-unstyled">
+				<li>Pages</li>
+				<li>Topic</li>
+				<li>Support</li>
+				<li>Tutorial</li>
+				<li>Video</li>
+				<li>Image</li>
+				<li>Address</li>
+				<li>Artical</li>
+				<li>Name</li>
+				<li><a href="#">View All</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-10">
+		<div class="search-query pb-n">
+			<div class="row">
+				<div class="col-md-6">
+					<form action="">
+						<div class="form-group mb-md">
+							<input type="text" class="form-control" placeholder="search">
+						</div>
+					</form>
+				</div>
+				<div class="col-md-6">
+					<p class="mt-sm"><em>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</em></p>
+				</div>
+			</div>
+		</div>
+		<div class="search-results2">	
+			<p class="mb-md"><em>Showing 1-4 result of total 24 pages</em></p>
+			<div class="search-body pt-md pb-md">
+				<span class="name">Amy Green, There are many variations of passages of Lorem Ipsum available</span>
+				<span class="message">But the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.</span>
+			</div>
+			<div class="search-body pt-md pb-md">
+				<span class="name">Amy Green, There are many variations of passages of Lorem Ipsum available</span>
+				<span class="message">But the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.</span>
+			</div>
+			<div class="search-body pt-md pb-md">
+				<span class="name">Amy Green, There are many variations of passages of Lorem Ipsum available</span>
+				<span class="message">But the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.</span>
+			</div>
+			<div class="search-body pt-md pb-md">
+				<span class="name">Amy Green, There are many variations of passages of Lorem Ipsum available</span>
+				<span class="message">But the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.</span>
+			</div>
+			<div class="search-body pt-md pb-md">
+				<span class="name">Amy Green, There are many variations of passages of Lorem Ipsum available</span>
+				<span class="message">But the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.</span>
+			</div>
+			<div class="text-center mt-md">
+				<ul class="pagination pagination-sm">
+					<li class="disabled"><a href="#"><i class="ion-ios-arrow-left"></i></a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li class="active"><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#"><i class="ion-ios-arrow-right"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

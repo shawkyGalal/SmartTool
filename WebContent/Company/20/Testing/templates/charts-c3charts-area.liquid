@@ -1,0 +1,62 @@
+{% extends 'layout' %}
+{% block title %}Area C3charts{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+{% block styles %} 
+{{ 'plugins/c3-chart/css/c3.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+{% block scripts %} 
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+{{ 'plugins/c3-chart/js/c3.js' | asset_url | script_tag }}
+{{ "demo/c3-chart/area-chart.js" | asset_url | script_tag }}
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="title">Area chart1</h2>
+      </div>
+      <div class="panel-body">
+        <div id='chart1'>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="title">Area chart2</h2>
+      </div>
+      <div class="panel-body">
+        <div id='chart2'>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="title">Area chart3</h2>
+      </div>
+      <div class="panel-body">
+        <div id='chart3'>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="title">Area chart4</h2>
+      </div>
+      <div class="panel-body">
+        <div id='chart4'>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% include header %}
+<body class="infobar-overlay leftbar-hideon-collpase leftbar-scroll">
+  {% include analytics %}
+  {% include topnav %}
+  <div id="wrapper">
+    <div id="layout-scroll">
+      <div class="static-leftbar-wrapper leftbar-default">
+        <div class="static-leftbar">
+          {% include leftbar-search %}
+        </div>
+      </div>
+      <div class="static-content-wrapper">
+        <div class="static-content">
+          <div class="page-content">
+            <div class="page-heading">            
+              <h1>{% block title %}Blank{% endblock %}</h1>
+              {% include header-options-default %}
+            </div>
+            <div class="container-fluid">
+              {% block content %}{% endblock %}
+            </div> <!-- .container-fluid -->
+          </div> <!-- #page-content -->
+        </div>
+        {% include footer %}
+      </div>
+    </div>
+  </div>
+  <div class="infobar-wrapper scroll-pane fixedHeight">
+    {% include rightbar %}
+  </div>
+  {% include demo-switcher %}
+  {% include scripts %}
+  <!-- Load page level scripts-->
+  {% block scripts %}{% endblock %}
+  <!-- End loading page level scripts-->
+  {% block styles %}
+  {% endblock %}
+</body>
+</html>

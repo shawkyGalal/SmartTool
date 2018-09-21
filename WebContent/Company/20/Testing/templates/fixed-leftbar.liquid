@@ -1,0 +1,30 @@
+{% extends "layout-fixed-leftbar" %}
+{% block title %}Fixed Sidebars{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Layout</a></li>
+<li class="active"><a href="layout-fixed-sidebars.html">Fixed Sidebars</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function() {
+});
+</script>
+{% endblock %}
+
+{% block content %} 
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="alert alert-info">
+				<p>Fixed sidebars: both leftbar and rightbar are stretchable</p>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

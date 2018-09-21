@@ -1,0 +1,93 @@
+{% extends 'layout-asides-leftbar-small' %}
+{% block title %}Aside Content{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Layouts</a></li>
+<li class="active"><a href="chord-charts.html">Aside Content</a></li>
+{% endblock %}
+
+{% block styles %} 
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+
+<div class="aside-wrapper">
+	<div class="aside-body">
+		<div class="aside-cell aside-col">
+			<div class="aside-bar">
+				<div class="aside-bar-header p-md">
+					<h4 class="m-n">Header</h4>
+				</div>
+				<div class="aside-bar-body">
+					<p class="p-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+				<div class="aside-bar-footer p-md">
+					<h4 class="m-n">Footer</h4>
+				</div>
+			</div>
+		</div>
+		<div class="aside-cell">
+			<div class="p-md">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="panel panel-primary alt" data-widget='{"id" : "wiget02"}'>
+							<div class="panel-heading">
+								<div class="panel-ctrls" 
+								data-actions-container="" 
+								data-action-collapse='{"target": ".panel-body"}'
+								data-action-colorpicker=''
+								data-action-edit=''
+								data-action-expand=''
+								data-action-refresh=''
+								data-action-close=''
+								>
+							</div>
+							<h2 class="title">Aside Content</h2>
+						</div>
+						<div class="panel-editbox" data-widget-controls=""></div>
+						<div class="panel-body">
+							<p>Aside content forms a seperate visual hierarchy from rest of the body. Perfect for displaying extra information or more options.</p>
+
+							<p>Tectonic provides you three separate ways such asides can be used:</p>
+
+							<div class="row mt-md">
+								<div class="col-md-4">
+									<a href="layout-aside-left.html" class="btn btn-block btn-default">Aside on left side</a>
+								</div>
+								<div class="col-md-4">
+									<a href="layout-aside-both.html" class="btn btn-block btn-success">Aside on both sides</a>
+								</div>
+								<div class="col-md-4">
+									<a href="layout-aside-right.html" class="btn btn-block btn-default">Aside on right side</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="aside-cell aside-col">
+		<div class="aside-bar">
+			<div class="aside-bar-header p-md">
+				<h4 class="m-n">Header</h4>
+			</div>
+			<div class="aside-bar-body">
+				<p class="p-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+			<div class="aside-bar-footer p-md">
+				<h4 class="m-n">Footer</h4>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

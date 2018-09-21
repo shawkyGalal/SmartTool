@@ -1,0 +1,897 @@
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.2)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.2)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 08-JUN-03 13:00:01
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.2)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.2)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 08-JUN-03 13:47:12
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.2)(Port=1526))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\ora_8i\bin\SQLPLUSW.EXE)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 08-JUN-2003 13:53:34
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12541, connecting to:
+ (DESCRIPTION=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.2)(Port=1526))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\ora_8i\bin\SQLPLUSW.EXE)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.1.7.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.1.7.0.0 - Production
+  Time: 08-JUN-2003 13:55:23
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 06-AUG-03 14:37:33
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.190)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.190)(Port=1526)))(CONNECT_DATA=(SID=lap1)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 23-AUG-03 18:01:22
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 538
+    TNS-00538: Message 538 not found;  product=NET80; facility=TNS
+
+    nt secondary err code: 65
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.190)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=130.1.2.190)(Port=1526)))(CONNECT_DATA=(SID=lap1)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 23-AUG-03 18:01:33
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 538
+    TNS-00538: Message 538 not found;  product=NET80; facility=TNS
+
+    nt secondary err code: 65
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 25-NOV-02 10:27:25
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 25-NOV-02 10:30:12
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 25-NOV-02 11:39:06
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 28-NOV-02 13:09:19
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=D:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SHAWKY-FODA)(USER=foda_sh))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.5.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.5.0.0 - Production
+  Time: 14-SEP-03 09:55:45
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.1)(PORT=1521)))(CONNECT_DATA=(SID=edge1)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 30-11-03 09:38:19
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:·„ Ì „ «· „ﬂ‰ „‰ «·« ’«· »«·ÊÃÂ… «·„Õœœ…
+    ns main err code: 12541
+    TNS-12541: TNS:·« ÌÊÃœ »—‰«„Ã „ ’‰ 
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: ·« ÌÊÃœ „ ’‰ 
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.1)(PORT=1521)))(CONNECT_DATA=(SID=edge1)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 30-11-03 09:38:32
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:·„ Ì „ «· „ﬂ‰ „‰ «·« ’«· »«·ÊÃÂ… «·„Õœœ…
+    ns main err code: 12541
+    TNS-12541: TNS:·« ÌÊÃœ »—‰«„Ã „ ’‰ 
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: ·« ÌÊÃœ „ ’‰ 
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 09-12-03 08:55:04
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:·„ Ì „ «· „ﬂ‰ „‰ «·« ’«· »«·ÊÃÂ… «·„Õœœ…
+    ns main err code: 12535
+    TNS-12535: TNS:«‰ ÂÏ «·Êﬁ  «·„Õœœ ··⁄„·Ì…
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: «‰ ÂÏ Êﬁ  Â–Â «·⁄„·Ì…
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1521))(ADDRESS=(COMMUNITY=tcp.world)(PROTOCOL=TCP)(Host=192.1.1.8)(Port=1526)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 09-12-03 08:56:29
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:·„ Ì „ «· „ﬂ‰ „‰ «·« ’«· »«·ÊÃÂ… «·„Õœœ…
+    ns main err code: 12535
+    TNS-12535: TNS:«‰ ÂÏ «·Êﬁ  «·„Õœœ ··⁄„·Ì…
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: «‰ ÂÏ Êﬁ  Â–Â «·⁄„·Ì…
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 17-JAN-04 12:31:46
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 17-JAN-04 12:32:39
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 17-JAN-04 12:33:55
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 17-JAN-04 12:34:41
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 17-JAN-04 12:35:28
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.7)(PORT=1521)))(CONNECT_DATA=(SID=orac805)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 17-JAN-04 12:42:04
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.7)(PORT=1521)))(CONNECT_DATA=(SID=orac805)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 17-JAN-04 12:54:27
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 17-JAN-04 14:29:40
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12560
+    TNS-12560: TNS:protocol adapter error
+    ns secondary err code: 0
+    nt main err code: 538
+    TNS-00538: Message 538 not found;  product=NET80; facility=TNS
+
+    nt secondary err code: 65
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.7)(PORT=1521)))(CONNECT_DATA=(SID=orac805)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 17-JAN-04 14:30:28
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 24-JAN-04 08:44:46
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 24-JAN-04 08:44:49
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 09-FEB-04 08:02:18
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 09-FEB-04 08:02:28
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.158)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=shawky)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 11-FEB-04 10:42:31
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 14-FEB-04 09:50:03
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 14-FEB-04 09:50:31
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 14-FEB-04 09:51:09
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 19-NOV-03 09:52:47
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 14-FEB-04 14:48:23
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12535
+    TNS-12535: TNS:operation timed out
+    ns secondary err code: 12560
+    nt main err code: 505
+    TNS-00505: Operation timed out
+    nt secondary err code: 60
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12519, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.226)(PORT=1521)))(CONNECT_DATA=(SID=edge2)(SRVR=SHARED)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 14-FEB-04 17:09:08
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12519, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.226)(PORT=1521)))(CONNECT_DATA=(SID=edge2)(SRVR=SHARED)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 14-FEB-04 17:09:12
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12519, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.226)(PORT=1521)))(CONNECT_DATA=(SID=edge2)(SRVR=SHARED)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 14-FEB-04 17:09:23
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12519, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.226)(PORT=1521)))(CONNECT_DATA=(SID=edge2)(SRVR=SHARED)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 14-FEB-04 17:09:30
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12519, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.226)(PORT=1521)))(CONNECT_DATA=(SID=edge2)(SRVR=SHARED)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 15-FEB-04 08:21:23
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12519, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.226)(PORT=1521)))(CONNECT_DATA=(SID=edge2)(SRVR=SHARED)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 19-NOV-03 08:30:47
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12519, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=130.1.2.226)(PORT=1521)))(CONNECT_DATA=(SID=edge2)(SRVR=SHARED)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 19-NOV-03 08:31:05
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12564
+    TNS-12564: TNS:connection refused
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12203, connecting to:
+ (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.1.1.8)(PORT=1521)))(CONNECT_DATA=(SID=EDGEDEV)(CID=(PROGRAM=C:\Program Files\PLSQL Developer\PLSQLDev.exe)(HOST=SFODA-XP)(USER=FODA_SH))))
+
+  VERSION INFORMATION:
+	TNS for 32-bit Windows: Version 8.0.6.0.0 - Production
+	Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 8.0.6.0.0 - Production
+  Time: 28-FEB-04 09:44:06
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 12203
+    TNS-12203: TNS:unable to connect to destination
+    ns main err code: 12541
+    TNS-12541: TNS:no listener
+    ns secondary err code: 12560
+    nt main err code: 511
+    TNS-00511: No listener
+    nt secondary err code: 61
+    nt OS err code: 0

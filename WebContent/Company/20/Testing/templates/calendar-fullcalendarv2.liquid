@@ -1,0 +1,82 @@
+{% extends 'layout' %}
+{% block title %}fullcalendar-V2{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+{% block styles %} 
+{{ 'demo/fullcalendarv2/css/demo-fullcalendarv2.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+{% block scripts %} 
+<script src='http://fullcalendar.io/js/fullcalendar-2.6.0/lib/moment.min.js'></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.6.0/lib/jquery-ui.custom.min.js'></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.6.0/fullcalendar.min.js'></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.6.0/gcal.js'></script>
+{{ "demo/fullcalendarv2/js/demo-fullcalendarv2.js" | asset_url | script_tag }}
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="title">Timezione Calender</h2>
+      </div>
+      <div class="panel-body">
+        <div id='top'>
+          <div class='left'>
+            Timezone:
+            <select id='timezone-selector'>
+              <option value='' selected>none</option>
+              <option value='local'>local</option>
+              <option value='UTC'>UTC</option>
+            </select>
+          </div>
+          <div class='right'>
+            <span id='loading'>loading...</span>
+            <span id='script-warning'><code>php/get-events.php</code> must be running.</span>
+          </div>
+          <div class='clear'></div>
+        </div>
+        <div id='calendar'>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="title">External-dragging</h2>
+      </div>
+      <div class="panel-body">
+        <div id='wrap'>
+          <div id='external-events'>
+            <h4>Draggable Events</h4>
+            <div class='fc-event' data-color="#546E7A" style="border-color: rgb(84, 110, 122); background-color: rgb(84, 110, 122);">My Event 1</div>
+            <div class='fc-event' data-color="#26A69A" style="border-color: rgb(38, 166, 154); background-color: rgb(38, 166, 154);">My Event 2</div>
+            <div class='fc-event' data-color="#5C6BC0" style="border-color: rgb(92, 107, 192); background-color: rgb(92, 107, 192);">My Event 3</div>
+            <div class='fc-event'>My Event 4</div>
+            <div class='fc-event'>My Event 5</div>
+            <p>
+              <input type='checkbox' id='drop-remove' />
+              <label for='drop-remove'>remove after drop</label>
+            </p>
+          </div>
+          <div id='calendar2'></div>
+          <div style='clear:both'></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="title">Google Calendar</h2>
+      </div>
+      <div class="panel-body">
+       <div id='loading3'>loading...</div>
+       <div id='calendar3'></div>
+     </div>
+   </div>
+  </div>
+</div>
+{% endblock %}

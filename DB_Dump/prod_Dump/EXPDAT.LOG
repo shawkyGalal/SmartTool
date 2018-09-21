@@ -1,0 +1,5 @@
+ORA-39000: bad dump file specification
+ORA-31641: unable to create dump file "D:\Google Drive\SmartValue\Sources\app\SmartTool\DB_Dump\hulool_Dump\EXPDAT171106.DMP"
+ORA-27038: created file already exists
+OSD-04010: <create> option specified, file already exists
+ORA-39012: Client detached before the job started.

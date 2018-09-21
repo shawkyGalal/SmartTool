@@ -1,0 +1,204 @@
+{% extends 'layout' %}
+{% block title %}Simple Wizard{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/form-validation/jquery.validate.min.js" | asset_url | script_tag }}  					<!-- Validate Plugin -->
+{{ "plugins/form-stepy/jquery.stepy.js" | asset_url | script_tag }}  								<!-- Stepy Plugin -->
+
+{{ "demo/demo-formwizard.js" | asset_url | script_tag }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+
+    	<div class="panel panel-success">
+    		<div class="panel-heading">
+    			<h2 class="title alt">Simple Wizard<small>You can turn any simple form into a wizard</small></h2>
+    		</div>
+    		<div class="panel-body p-n stepy-success">
+    			<div class="tab-content">
+    				<div class="tab-pane active" id="domwizard">
+    					<form action="#" id="basicwizard" class="form-horizontal row-border p-md">
+    						<fieldset title="1">
+    							<legend>Sign up</legend>
+    							<div class="form-group">
+    								<label class="col-md-3 control-label">User Name</label>
+    								<div class="col-md-6">
+    									<input type="text" placeholder="username" class="form-control">
+    								</div>
+    							</div>
+    							<div class="form-group">
+    								<label class="col-md-3 control-label">Email Address</label>
+    								<div class="col-md-6">
+    									<input type="email" placeholder="example@address.com" class="form-control">
+    								</div>
+    							</div>
+    							<div class="form-group">
+    								<label class="col-md-3 control-label">Password</label>
+    								<div class="col-md-6">
+    									<input type="password" class="form-control">
+    								</div>
+    							</div>
+    							<div class="form-group">
+    								<label class="col-md-3 control-label">Confirm Password</label>
+    								<div class="col-md-6">
+    									<input type="password" class="form-control">
+    								</div>
+    							</div>
+    						</fieldset>
+    						<fieldset title="2">
+    							<legend>Update Profile</legend>
+    							<div class="form-group">
+    								<label class="col-md-3 control-label">Fullname</label>
+    								<div class="col-md-6">
+    									<input type="text" placeholder="John Smith" class="form-control">
+    								</div>
+    							</div>
+    							<div class="form-group">
+    								<label class="col-md-3 control-label">Bio</label>
+    								<div class="col-md-6">
+    									<textarea cols="2" rows="5" class="form-control"></textarea>
+    								</div>
+    							</div>
+    							<div class="form-group">
+    								<label class="col-md-3 control-label">Email Address</label>
+    								<div class="col-md-6">
+    									<input type="email" placeholder="example@address.com" class="form-control">
+    								</div>
+    							</div>
+    							<div class="form-group">
+    								<label class="col-md-3 control-label">Password</label>
+    								<div class="col-md-6">
+    									<input type="password" class="form-control">
+    								</div>
+    							</div>
+    							<div class="form-group">
+    								<label class="col-md-3 control-label">Confirm Password</label>
+    								<div class="col-md-6">
+    									<input type="password" class="form-control">
+    								</div>
+    							</div>
+    						</fieldset>
+    						<input type="submit" class="finish pull-right btn-success btn" value="Submit" />
+    					</form>
+    				</div>
+
+
+    				<div class="tab-pane" id="codewizard">
+    					<pre class="prettyprint linenums">
+    						&lt;form id=&quot;basicwizard&quot;&gt;
+    						&lt;fieldset title=&quot;Step 1&quot;&gt;
+    						&lt;legend&gt;No Validation&lt;/legend&gt;
+    						...
+    						&lt;/fieldset&gt;
+    						&lt;fieldset title=&quot;Step 2&quot;&gt;
+    						&lt;legend&gt;Update Profile&lt;/legend&gt;
+    						...
+    						&lt;/fieldset&gt;
+    						&lt;/form&gt;
+    					</pre>
+    				</div>
+    			</div>
+
+    		</div>
+    	</div>
+
+    	<div class="panel panel-info">
+    		<div class="panel-heading">
+    			<h2 class="title alt">Validation Wizard<small>The wizard has jQuery Validation plugin support built-in</small></h2>
+    		</div>
+    		<div class="panel-body p-n stepy-info">
+    			<form action="#" id="wizard" class="form-horizontal row-border p-md">
+    				<fieldset title="1">
+    					<legend>Registration</legend>
+    					<div class="form-group">
+    						<label for="fieldname" class="col-md-3 control-label">Username</label>
+    						<div class="col-md-6">
+    							<input id="fieldname" class="form-control" name="name" minlength="4" type="text" required>
+    						</div>
+    					</div>
+    					<div class="form-group">
+    						<label for="fieldemail" class="col-md-3 control-label">Email</label>
+    						<div class="col-md-6"><input id="fieldemail" class="form-control" type="email" name="email" required></div>
+    					</div>
+    					<div class="form-group">
+    						<label class="col-md-3 control-label">Password</label>
+    						<div class="col-md-6">
+    							<input type="password" class="form-control" name="password" required>
+    						</div>
+    					</div>
+    					<div class="form-group">
+    						<label class="col-md-3 control-label">Confirm Password</label>
+    						<div class="col-md-6">
+    							<input type="password" class="form-control" required>
+    						</div>
+    					</div>
+    				</fieldset>
+    				<fieldset title="2">
+    					<legend>Personal Data</legend>
+    					<div class="form-group">
+    						<label for="fieldnick" class="col-md-3 control-label">First Name</label>
+    						<div class="col-md-6"><input id="fieldnick" class="form-control" name="name" minlength="4" type="text" required></div>
+    					</div>
+    					<div class="form-group">
+    						<label for="fieldnick" class="col-md-3 control-label">Last Name</label>
+    						<div class="col-md-6"><input id="fieldnick" class="form-control" name="name" minlength="4" type="text" required></div>
+    					</div>
+    					<div class="form-group">
+    						<label for="fieldabout" class="col-md-3 control-label">Address</label>
+    						<div class="col-md-6"><textarea id="fieldabout" class="form-control autosize" col="2" rows="2"></textarea></div>
+    					</div>
+    					<div class="form-group">
+    						<label for="fieldurl" class="col-md-3 control-label">URL</label>
+    						<div class="col-md-6"><input id="fieldurl" class="form-control"  type="url" name="url"></div>
+    					</div>
+    					<div class="form-group">
+    						<label for="fieldnick" class="col-md-3 control-label">Phone</label>
+    						<div class="col-md-6"><input id="fieldnick" class="form-control" name="name" minlength="4" type="text" required></div>
+    					</div>
+    				</fieldset>
+    				<fieldset title="3">
+    					<legend>Verification</legend>
+    					<div class="form-group">
+    						<label for="" class="col-md-3 control-label">National ID</label>
+    						<div class="col-md-6">
+    							<input id="fieldnicks" class="form-control" name="name" minlength="4" type="text" required>
+    						</div>
+    					</div>
+    					<div class="form-group">
+    						<label class="col-sm-3 control-label" for="Name">Verification</label>
+    						<span class="radio inline">
+    							<input type="radio" name="ham" value="1" id="Email" class="tectonic">
+    							<label class="" for="Email"></label>
+    							<span>Email</span>
+    						</span>
+    						<span class="radio inline">
+    							<input type="radio" name="ham" value="1" id="Mobile" class="tectonic">
+    							<label class="" for="Mobile"></label>
+    							<span>Mobile</span>
+    						</span>
+    					</div>
+    					<div class="form-group">
+    						<label for="" class="col-md-3 control-label">Verification Code</label>
+    						<div class="col-md-6">
+    							<input id="fieldnicks" class="form-control" name="name" minlength="4" type="text" required>
+    						</div>
+    					</div>
+    				</fieldset>
+    				<input type="submit" class="finish pull-right btn-success btn" value="Submit" />
+    			</form>
+    		</div>
+    	</div>
+    </div>
+</div>
+{% endblock %}

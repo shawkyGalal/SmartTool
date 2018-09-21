@@ -1,0 +1,217 @@
+{% extends 'layout' %}
+{% block title %}Scatter Echarts{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="chord-charts.html">Pie Charts</a></li>
+{% endblock %}
+
+{% block styles %} 
+{{ 'css/echartsHome.css' | asset_url | stylesheet_tag }}
+{{ 'css/codemirror.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/wijets/wijets.js" | asset_url | script_tag }}  
+{{ "js/echarts.js" | asset_url | script_tag }}  
+{{ "js/codemirror.js" | asset_url | script_tag }}
+{{ "js/echartsExample.js" | asset_url | script_tag }}
+{{ "plugins/wijets/wijets.js" | asset_url | script_tag }}                                   <!-- Wijet -->
+
+<script>
+$(document).ready(function(){
+    $('#reset').click(function () {
+        bootbox.confirm("Are you sure you want to clear Local Storage? This will clear ALL globally set settings", function() {
+            localStorage.clear();
+        }); 
+    });
+
+    $.wijets().make();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="row" data-widget-group="group-demo">
+    <div class="col-md-12">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget16"}'>
+            <div class="panel-heading m-n">
+                <ul class="nav nav-tabs tab-warning material-nav-tabs">
+                  <li class="active"><a href="#domwell" data-toggle="tab">Scatter chart</a></li>
+                  <li><a href="#codewell" data-toggle="tab">Code</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="domwell">
+                             <div id="graphic" class="col-md-12">
+                    <div id="main" class="main"></div>
+                    <div>
+                        <button type="button" class="btn btn-success" onclick="refresh(true)">Refresh</button>
+                        <h4>Change Layout</h4>
+                        <select id="theme-select" class='form-control'></select>
+
+                        <span id='wrong-message' style="color:red"></span>
+                    </div>
+                </div>
+                        </div>
+                        <div class="tab-pane" id="codewell">
+                <div id="leftbar-code" class='col-md-12'>
+                    <div class="well leftbar-nav">
+                        <div class="nav-header"><a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id ="icon-resize" ></a>option</div>
+                        <textarea id="code" name="code">
+      option = {
+                                tooltip : {
+                                    trigger: 'axis',
+                                    axisPointer:{
+                                        show: true,
+                                        type : 'cross',
+                                        lineStyle: {
+                                            type : 'dashed',
+                                            width : 1
+                                        }
+                                    }
+                                },
+                                legend: {
+                                    data:['scatter1','scatter2']
+                                },
+                                toolbox: {
+                                    show : true,
+                                    feature : {
+                                        mark : {show: true},
+                                        dataView : {show: true, readOnly: false},
+                                        restore : {show: true},
+                                        saveAsImage : {show: true}
+                                    }
+                                },
+                                calculable : true,
+                                xAxis : [
+                                    {
+                                        type : 'value'
+                                    }
+                                ],
+                                yAxis : [
+                                    {
+                                        type : 'value'
+                                    }
+                                ],
+                                series : [
+                                    {
+                                        name:'scatter1',
+                                        type:'scatter',
+                                        symbol: 'emptyCircle', //'circle', 'rectangle', 'triangle', 'diamond', 'emptyCircle', 'emptyRectangle', 'emptyTriangle', 'emptyDiamond'
+                                        symbolSize: function (value){
+                                            if (value[0] < 2) {
+                                                return 2;
+                                            }
+                                            else if (value[0] < 8) {
+                                                return Math.round(value[2] * 3);
+                                            }
+                                            else {
+                                                return 20;
+                                            }
+                                        },
+                                        itemStyle: {
+                                            normal: {
+                                                color: 'lightblue',
+                                                borderWidth: 4,
+                                                label : {show: true}
+                                            },
+                                            emphasis: {
+                                                color: 'lightgreen',
+                                            }
+                                        },
+                                        data: (function () {
+                                            var d = [];
+                                            var len = 20;
+                                            while (len--) {
+                                                d.push([
+                                                    (Math.random()*10).toFixed(2) - 0,
+                                                    (Math.random()*10).toFixed(2) - 0,
+                                                    (Math.random()*10).toFixed(2) - 0
+                                                ]);
+                                            }
+                                            return d;
+                                        })(),
+                                        markPoint : {
+                                            data : [
+                                                {type : 'max', name: 'yMaximum'},
+                                                {type : 'min', name: 'yMin'},
+                                                {type : 'max', name: 'xMaximun', valueIndex : 0, symbol:'arrow',itemStyle:{normal:{borderColor:'red'}}},
+                                                {type : 'min', name: 'xMin', valueIndex : 0, symbol:'arrow',itemStyle:{normal:{borderColor:'red'}}}
+                                            ]
+                                        },
+                                        markLine : {
+                                            data : [
+                                                {type : 'average', name: 'yAvg'},
+                                                {type : 'average', name: 'xAvg', valueIndex : 0, itemStyle:{normal:{borderColor:'red'}}}
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        name:'scatter2',
+                                        type:'scatter',
+                                        symbol: 'image://../asset/ico/favicon.png',     // ??????????
+                                        symbolSize: function (value){
+                                            return Math.round(value[2] * 3);
+                                        },
+                                        itemStyle: {
+                                            emphasis : {
+                                                label : {show: true}
+                                            }
+                                        },
+                                        data: (function () {
+                                            var d = [];
+                                            var len = 20;
+                                            while (len--) {
+                                                d.push([
+                                                    (Math.random()*10).toFixed(2) - 0,
+                                                    (Math.random()*10).toFixed(2) - 0,
+                                                    (Math.random()*10).toFixed(2) - 0
+                                                ]);
+                                            }
+                                            d.push({
+                                                value : [5,5,1000],
+                                                itemStyle: {
+                                                    normal: {
+                                                        borderWidth: 8,
+                                                        color: 'orange'
+                                                    },
+                                                    emphasis: {
+                                                        borderWidth: 10,
+                                                        color: '#ff4500'
+                                                    }
+                                                },
+                                                symbol: 'emptyTriangle',
+                                                symbolRotate:90,
+                                                symbolSize:30
+                                            })
+                                            return d;
+                                        })(),
+                                        markPoint : {
+                                            symbol: 'emptyCircle',
+                                            itemStyle:{
+                                                normal:{label:{position:'top'}}
+                                            },
+                                            data : [
+                                                {name : '????', value : 1000, xAxis: 5, yAxis: 5, symbolSize:80}
+                                            ]
+                                        }
+                                    }
+                                ]
+                            };
+
+                        </textarea>
+                    </div><!--/.well -->
+                </div><!--/span-->
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

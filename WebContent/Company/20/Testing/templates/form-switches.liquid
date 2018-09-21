@@ -1,0 +1,181 @@
+
+{% extends 'layout' %}
+{% block title %}Switches{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Advanced Forms</a></li>
+<li class="active"><a href="form-switches.html">Switches</a></li>
+{% endblock %}
+
+{% block styles %}
+
+{{ "plugins/switchery/switchery.css" | asset_url | stylesheet_tag }}        					<!-- Switchery -->
+{{ "plugins/iCheck/skins/minimal/_all.css" | asset_url | stylesheet_tag }}                   	<!-- Custom Checkboxes / iCheck -->
+{{ "plugins/iCheck/skins/flat/_all.css" | asset_url | stylesheet_tag }}
+{{ "plugins/iCheck/skins/square/_all.css" | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %}
+
+{{ "plugins/switchery/switchery.js" | asset_url | script_tag }}     								<!-- Switchery -->
+{{ "plugins/card/lib/js/card.js" | asset_url | script_tag }} 										<!-- Card -->
+
+<!-- {{ "plugins/iCheck/icheck.min.js" | asset_url | script_tag }}  -->    							<!-- iCheck // already included on site-level -->
+{{ "plugins/bootstrap-switch/bootstrap-switch.js" | asset_url | script_tag }}     					<!-- BS Switch -->
+{{ "plugins/jquery-chained/jquery.chained.min.js" | asset_url | script_tag }} 						<!-- Chained Select Boxes -->
+{{ "plugins/jquery-mousewheel/jquery.mousewheel.min.js" | asset_url | script_tag }} 				<!-- MouseWheel Support -->
+{{ "demo/demo-formcomponents.js" | asset_url | script_tag }}
+{{ "plugins/wijets/wijets.js" | asset_url | script_tag }}     										<!-- Wijet -->
+
+{% endblock %}
+
+{% block content %}
+
+<div data-widget-group="group1">
+	<div class="panel panel-default alt" data-widget='{"draggable": "false"}'>
+		<div class="panel-heading"><h2>Bootstrap Switches</h2>
+			<div class="panel-ctrls"
+				data-actions-container="" 
+				data-action-collapse='{"target": ".panel-body"}'
+				data-action-expand=''
+				data-action-colorpicker=''
+			>
+			</div>
+		</div>
+		<div class="panel-editbox" data-widget-controls=""></div>
+		<div class="panel-body">
+			<form action="" class="form-horizontal row-border">
+				<div class="form-group">
+					<label class="col-sm-2 control-label label-input-sm" style="font-size: 12px; padding-top: 3px !important; padding-bottom: 3px !important;">Switch Mini</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10">
+							<li class="mb0"><input class="bootstrap-switch" type="checkbox" checked="false" data-size="mini" data-on-color="success" data-off-color="default" data-on-text="I" data-off-text="O"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="form-group pb10">
+					<label class="col-sm-2 control-label label-input-sm">Switch Small</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10">
+							<li><input class="bootstrap-switch" type="checkbox" data-size="small" data-on-color="success" data-off-color="default"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="form-group pb10">
+					<label class="col-sm-2 control-label">Switch Default</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10">
+							<li><input class="bootstrap-switch switch-alt" type="checkbox" checked="false" data-on-color="success" data-off-color="default"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="form-group pb10">
+					<label class="col-sm-2 control-label label-input-lg">Switch Large</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10">
+							<li><input class="bootstrap-switch" type="checkbox" data-size="large" data-on-color="success" data-off-color="default"></li>
+						</ul>
+					</div>
+				</div>				
+				<div class="form-group pb10">
+					<label class="col-sm-2 control-label">Default Colors</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10">
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" data-on-color="default" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" data-on-color="primary" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" data-on-color="success" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" data-on-color="warning" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" data-on-color="info" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" data-on-color="danger" data-off-color="default"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="form-group pb10">
+					<label class="col-sm-2 control-label">Disabled States</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10">
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" disabled="true" data-on-color="default" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" disabled="true" data-on-color="primary" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" disabled="true" data-on-color="success" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" disabled="true" data-on-color="warning" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" disabled="true" data-on-color="info" data-off-color="default"></li>
+							<li><input class="bootstrap-switch" type="checkbox" checked="false" disabled="true" data-on-color="danger" data-off-color="default"></li>
+					</ul>
+					</div>
+				</div>
+				<div class="form-group pb10">
+					<label class="col-sm-2 control-label">With Icons</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10">
+							<li><input class="bootstrap-switch" type="checkbox" data-on-text="<i class='fa fa-check'></i>" data-on-color="success" data-off-text="<i class='fa fa-times'></i>" data-off-color="danger" /></li>
+							<li><input class="bootstrap-switch" type="checkbox" data-on-text="<i class='fa fa-glass'></i>" data-on-color="info" data-off-text="<i class='fa fa-beer'></i>" data-off-color="warning" /></li>
+							<li><input class="bootstrap-switch" type="checkbox" data-on-text="<i class='fa fa-thumbs-up'></i>" data-on-color="primary" data-off-text="<i class='fa fa-thumbs-down'></i>" data-off-color="primary" /></li>
+							<li><input class="bootstrap-switch" type="checkbox" data-on-text="<i class='fa fa-lock'></i>" data-on-color="default" data-off-text="<i class='fa fa-unlock'></i>" data-off-color="default" /></li>
+							<li><input class="bootstrap-switch" type="checkbox" data-on-text="1" data-on-color="success" data-off-text="0" data-off-color="danger" /></li>
+							<li><input class="bootstrap-switch" type="checkbox" data-on-text="<i class='fa fa-smile-o'></i>" data-on-color="default" data-off-text="<i class='fa fa-frown-o'></i>" data-off-color="default"/> </li>
+						</ul>
+					</div>
+				</div>												
+			</form>
+		</div>
+	</div>
+		
+	<div class="panel panel-default alt" data-widget='{"draggable": "false"}'>
+		<div class="panel-heading"><h2>Toggle Switches</h2>
+			<div class="panel-ctrls"
+				data-actions-container="" 
+				data-action-collapse='{"target": ".panel-body"}'
+				data-action-expand=''
+				data-action-colorpicker=''
+			>
+			</div>
+		</div>
+		<div class="panel-editbox" data-widget-controls=""></div>
+		<div class="panel-body">
+			<form action="" class="form-horizontal row-border">
+				<div class="form-group pb10">
+					<label class="col-sm-2 control-label" style="font-size: 12px; padding-top: 3px !important;" >Switchery Mini</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10 xs">
+							<li><input type="checkbox" class="js-switch-primary switchery-xs" checked /></li>
+							<li><input type="checkbox" class="js-switch-success switchery-xs" checked /></li>
+							<li><input type="checkbox" class="js-switch-warning switchery-xs" checked /></li>
+							<li><input type="checkbox" class="js-switch-inverse switchery-xs" checked /></li>
+							<li><input type="checkbox" class="js-switch-danger switchery-xs" checked /></li>
+							<li><input type="checkbox" class="js-switch-info switchery-xs" checked /></li>
+						</ul>
+					</div>
+				</div>
+				<div class="form-group pb10">
+					<label class="col-sm-2 control-label label-input-sm" >Switchery Small</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10 sm">
+							<li><input type="checkbox" class="js-switch-primary switchery-sm" checked /></li>
+							<li><input type="checkbox" class="js-switch-success switchery-sm" checked /></li>
+							<li><input type="checkbox" class="js-switch-warning switchery-sm" checked /></li>
+							<li><input type="checkbox" class="js-switch-inverse switchery-sm" checked /></li>
+							<li><input type="checkbox" class="js-switch-danger switchery-sm" checked /></li>
+							<li><input type="checkbox" class="js-switch-info switchery-sm" checked /></li>
+						</ul>
+					</div>
+				</div>
+				<div class="form-group pb10">
+					<label class="col-sm-2 control-label" >Switchery Default</label>
+					<div class="col-sm-8">
+						<ul class="demo-btns mb-10 nm">
+							<li><input type="checkbox" class="js-switch-primary" checked /></li>
+							<li><input type="checkbox" class="js-switch-success" checked /></li>
+							<li><input type="checkbox" class="js-switch-warning" checked /></li>
+							<li><input type="checkbox" class="js-switch-inverse" checked /></li>
+							<li><input type="checkbox" class="js-switch-danger" checked /></li>
+							<li><input type="checkbox" class="js-switch-info" checked /></li>
+						</ul>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

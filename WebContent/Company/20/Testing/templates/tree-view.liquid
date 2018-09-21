@@ -1,0 +1,73 @@
+{% extends 'layout' %}
+{% block title %}Tree View{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Advanced Forms</a></li>
+<li class="active"><a href="form-dropzone.html">Dropzone Uploader</a></li>
+{% endblock %}
+
+{% block styles %}
+{{ "plugins/tree-view/css/easyTree.css" | asset_url | stylesheet_tag }} <!-- Dropzone Plugin -->
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/tree-view/js/easyTree.js" | asset_url | script_tag }}   	<!-- Dropzone Plugin -->
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3" style="margin-top:150px;">
+        <h3 class="text-success">Easy Tree Example</h3>
+        <div class="easy-tree">
+            <ul>
+                <li>Example 1</li>
+                <li>Example 2</li>
+                <li>Example 3
+                    <ul>
+                        <li>Example 1</li>
+                        <li>Example 2
+                            <ul>
+                                <li>Example 1</li>
+                                <li>Example 2</li>
+                                <li>Example 3</li>
+                                <li>Example 4</li>
+                            </ul>
+                        </li>
+                        <li>Example 3</li>
+                        <li>Example 4</li>
+                    </ul>
+                </li>
+                <li>Example 0
+                    <ul>
+                        <li>Example 1</li>
+                        <li>Example 2</li>
+                        <li>Example 3</li>
+                        <li>Example 4
+                            <ul>
+                                <li>Example 1</li>
+                                <li>Example 2</li>
+                                <li>Example 3</li>
+                                <li>Example 4</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        (function ($) {
+            function init() {
+                $('.easy-tree').EasyTree({
+                    addable: true,
+                    editable: true,
+                    deletable: true
+                });
+            }
+
+            window.onload = init();
+        })(jQuery);
+    </script>
+</div>
+{% endblock %}

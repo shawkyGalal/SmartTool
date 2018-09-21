@@ -1,0 +1,85 @@
+{% extends 'layout' %}
+{% block title %}NoUi Slider{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Advanced Tables</a></li>
+<li class="active"><a href="tables-data.html">Data Tables</a></li>
+{% endblock %}
+
+{% block styles %}
+{{ "plugins/nouislider/css/nouislider.min.css" | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/nouislider/js/nouislider.min.js" | asset_url | script_tag }}
+{{ "plugins/nouislider/js/demo-nouislider.js" | asset_url | script_tag }}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h2>Slider without bloat</h2></div>
+            <div class="panel-body">
+                <div class="example pt-md" id="showcase">
+                    <style>
+                        #showcase {
+                            margin: 0 20px;
+                            text-align: center;
+                        }
+                        #range {
+                            height: 300px;
+                            margin: 0 auto 30px;
+                        }
+                        #value-span,
+                        #value-input {
+                            width: 50%;
+                            float: left;
+                            display: block;
+                            text-align: center;
+                            margin: 0;
+                            margin-bottom: 16px;
+                        }
+                    </style>
+                    <div id="range"></div>
+                    <span id="value-span">50.00</span>
+                    <input id="value-input" class="form-control">        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">     
+                <h2>Using HTML5 input elements</h2>
+            </div>
+            <div class="panel-body">
+                <div class="example p-md">
+                    <div id="html5"></div>
+                    <br>
+                    <select id="input-select" class="form-control"></select>
+                    <br>
+                    <input type="number" min="-20" max="40" step="1" id="input-number" class="form-control">
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>Non linear slider</h2>
+            </div>
+            <div class="panel-body">
+                <div class="example p-md">
+                    <div id="nonlinear" ></div><br>
+                    <span class="example-val" id="lower-value">1000.00, 21.4286%</span>
+                    <span id="lower-offset"></span><br>
+                    <span class="example-val" id="upper-value">6000.00, 58.3333%</span>
+                    <span id="upper-offset"></span>         
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

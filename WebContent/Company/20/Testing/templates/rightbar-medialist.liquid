@@ -1,0 +1,39 @@
+{% extends 'layout-rightbar-medialist' %}
+{% block title %}Rightbar Medialist{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Extras</a></li>
+<li class="active"><a href="rightbar-medialist.html">Rightbar Medialist</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+	$(function () {
+	   $('#trigger-infobar>a').click();
+	});
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-success alt">
+			<div class="panel-heading">
+				<h2>Panel</h2>
+			</div>
+			<div class="panel-body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nam dolore ad est molestiae quasi qui id quas, corporis, laboriosam.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nam dolore ad est molestiae quasi qui id quas, corporis, laboriosam.</p>
+			</div>
+			<div class="panel-footer">
+				<a href="#" class="btn btn-default">Save</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

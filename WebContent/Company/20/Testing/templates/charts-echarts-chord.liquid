@@ -1,0 +1,114 @@
+{% extends 'layout' %}
+{% block title %}Chord Echarts{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="chord-charts.html">Chord Charts</a></li>
+{% endblock %}
+{% block styles %} 
+{{ 'css/echartsHome.css' | asset_url | stylesheet_tag }}
+{{ 'css/codemirror.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+{% block scripts %}
+{{ "js/echarts.js" | asset_url | script_tag }}  
+{{ "js/codemirror.js" | asset_url | script_tag }}
+{{ "js/echartsExample.js" | asset_url | script_tag }}
+{% endblock %}
+{% block content %}
+<div class="row" data-widget-group="group-demo">
+    <div class="col-md-12">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget5"}'>
+            <div class="panel-heading">
+                <div class="panel-ctrls" 
+                    data-actions-container="" 
+                    data-action-collapse='{"target": ".panel-body"}'
+                    data-action-colorpicker=''
+                    data-action-edit=''
+                    data-action-expand=''
+                    data-action-refresh=''
+                    data-action-close=''
+                    >
+                </div>
+                <h2>Chord Charts</h2>
+            </div>
+            <div class="panel-body">
+                <div id="graphic" class='col-md-12'>
+                    <div id="main" class="main"></div>
+                    <div>
+                        <button type="button" class="btn btn-success" onclick="refresh(true)">Refresh</button>
+                        <h4>Change Layout</h4>
+                        <select id="theme-select" class='form-control'></select>
+                        <span id='wrong-message' style="color:red"></span>
+                    </div>
+                </div>
+                <div id="leftbar-code" class='col-md-12'>
+                    <div class="well leftbar-nav">
+                        <div class="nav-header"><a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id ="icon-resize" ></a>option</div>
+                        <textarea id="code" name="code">
+                            option = {
+                                title : {
+                                    text: 'Tectonic',
+                                    subtext: 'Chord Chart',
+                                    x:'right',
+                                    y:'bottom'
+                                },
+                                tooltip : {
+                                    trigger: 'item',
+                                    formatter: function (params) {
+                                        if (params.indicator2) { // is edge
+                                            return params.value.weight;
+                                        } else {// is node
+                                            return params.name
+                                        }
+                                    }
+                                },
+                                toolbox: {
+                                    show : true,
+                                    feature : {
+                                        restore : {show: true},
+                                        magicType: {show: true, type: ['force', 'chord']},
+                                        saveAsImage : {show: true}
+                                    }
+                                },
+                                legend: {
+                                    x: 'left',
+                                    data:['group1','group2', 'group3', 'group4']
+                                },
+                                series : [
+                                    {
+                                        type:'chord',
+                                        sort : 'ascending',
+                                        sortSub : 'descending',
+                                        showScale : true,
+                                        showScaleText : true,
+                                        data : [
+                                            {name : 'group1'},
+                                            {name : 'group2'},
+                                            {name : 'group3'},
+                                            {name : 'group4'}
+                                        ],
+                                        itemStyle : {
+                                            normal : {
+                                                label : {
+                                                    show : false
+                                                }
+                                            }
+                                        },
+                                        matrix : [
+                                            [11975,  5871, 8916, 2868],
+                                            [ 1951, 10048, 2060, 6171],
+                                            [ 8010, 16145, 8090, 8045],
+                                            [ 1013,   990,  940, 6907]
+                                        ]
+                                    }
+                                ],
+                            };
+                        </textarea>
+                    </div><!--/.well -->
+                </div><!--/span-->
+                <!--/span-->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

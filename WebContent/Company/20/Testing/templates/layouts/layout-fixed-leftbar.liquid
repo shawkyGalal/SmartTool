@@ -1,0 +1,32 @@
+{% include header %}
+
+<body class="fixed-header">
+	{% include analytics %}
+	{% include topnav %}
+	<div id="layout-fixed">
+		<div class="ui-layout-west fixed-sidebar-wrapper leftbar-default scroll-pane">
+			<div class="infobar scroll-content">
+				{% include leftbar %}
+			</div>
+		</div>
+		<div class="ui-layout-center scroll-pane">
+			<div class="fixed-content-wrapper scroll-content">
+				<div class="fixed-content">
+					<div class="page-content">
+						<div class="container-fluid">
+							{% block content %}{% endblock %}
+						</div> <!-- .container-fluid -->
+					</div> <!-- #page-content -->
+				</div>
+			</div>
+		</div>
+		<div class="ui-layout-east infobar-wrapper scroll-pane">
+			{% include rightbar %}
+		</div>
+	</div>
+	{% include scripts %}
+	{% include demo-switcher %}
+	{{ "js/jquery.layout.min.js" | asset_url | script_tag }}
+	{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,280 @@
+{% extends 'layout' %}
+{% block title %}Animation{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+
+{% block styles %} 
+{{ 'plugins/animation/loader/jquery.faloading.min.css' | asset_url | stylesheet_tag }}
+{{ 'plugins/animation/loader/src/css/HoldOn.css' | asset_url | stylesheet_tag }}
+{{ 'plugins/animation/loader/dist/jquery.spindle.css' | asset_url | stylesheet_tag }}
+{{ 'plugins/animation/loader/dist/demo.css' | asset_url | stylesheet_tag }}
+{{ 'plugins/animation/loader/dist/ladda.min.css' | asset_url | stylesheet_tag }}
+{{ 'plugins/animation/loader/dist/Overlay.min.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %} 
+{{ 'plugins/animation/loader/jquery.faloading-0.2.min.js' | asset_url | script_tag }}
+{{ 'plugins/animation/loader/src/js/HoldOn.js' | asset_url | script_tag }}
+{{ 'plugins/animation/loader/dist/jquery.spindle.js' | asset_url | script_tag }}
+{{ 'plugins/animation/loader/dist/spin.min.js' | asset_url | script_tag }}
+
+{{ 'plugins/animation/loader/dist/ladda.min.js' | asset_url | script_tag }}
+{{ 'plugins/animation/loader/dist/Overlay.min.js' | asset_url | script_tag }}
+{{ 'plugins/animation/loader/dist/demo-loader.js' | asset_url | script_tag }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2>faLoading</h2>
+            </div>
+            <div class="panel-body" id="faLoadingContainer">
+                <button class="btn btn-info" id="btnBodyLoading" type="button">Body Loading</button>
+                <button  class="btn btn-danger" id="btnDivLoading" type="button">Div Loading</button>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+               <h2> Hold On Js</h2>
+            </div>
+            <div class="panel-body">
+                <button class="btn btn-info spindle-button">Toggle</button>
+                <button class="btn btn-primary spindle-button-ajax">Ajax</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel panel-heading mb-n">
+               <h2> 3d Cube</h2>
+            </div>
+            <div class="panel panel-body mb-n">
+                <div data-overlay="overlay">
+                    <!-- Animated cube -->
+                    <div class="cssload-container">
+                        <div class="cssload-cube">
+                            <div class="cssload-half1">
+                                <div class="cssload-side cssload-s1"></div>
+                                <div class="cssload-side cssload-s2"></div>
+                                <div class="cssload-side cssload-s5"></div>
+                            </div>
+                            <div class="cssload-half2">
+                                <div class="cssload-side cssload-s3"></div>
+                                <div class="cssload-side cssload-s4"></div>
+                                <div class="cssload-side cssload-s6"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Animated cube -->
+                    <span data-overlay-msg></span>
+                    <br>
+                    <br>
+                    <button type="button" class="btn btn-danger" onclick="Overlay.hide('overlay')">HIDE</button>
+                </div>
+                <button class="btn btn-success" type="button" onclick="Overlay.show('overlay', ' ')">CLICK FOR DEMO</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 text-center">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <h2>Hold On js</h2>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12 mt-xs">
+                        <input type="submit" class=" btn btn-danger mb-xs" value="Dot Theme" onclick="testHoldon('sk-dot');">
+                        <input type="submit" class=" btn btn-primary mb-xs" value="Rect Theme" onclick="testHoldon('sk-rect');">
+                        <input type="submit" class=" btn btn-default mb-xs" value="Cube Theme" onclick="testHoldon('sk-cube');">
+                        <input type="submit" class=" btn btn-success mb-xs" value="Bounce Theme" onclick="testHoldon('sk-bounce');">
+                        <input type="submit" class=" btn btn-info mb-xs" value="Circle Theme" onclick="testHoldon('sk-circle');">
+                        <input type="submit" class=" btn btn-default mb-xs" value="Cube Grid Theme" onclick="testHoldon('sk-cube-grid');">
+                        <input type="submit" class=" btn btn-primary mb-xs" value="Folding Cube Theme" onclick="testHoldon('sk-folding-cube');">
+                        <input type="submit" class=" btn btn-info mb-xs" value="Fading Circle Theme" onclick="testHoldon('sk-fading-circle');">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-orange">
+            <div class="panel-heading">
+               <h2> Ladda Loader</h2>
+            </div>
+            <div class="panel-body">
+                <article class="examples">
+                    <h3 id="progress">Built-in Expand</h3>
+                    <section class="button-demo">
+                        <h4>expand-left</h4>
+                        <button class="ladda-button" data-color="green" data-style="expand-left">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>expand-right</h4>
+                        <button class="ladda-button" data-color="green" data-style="expand-right">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>expand-up</h4>
+                        <button class="ladda-button" data-color="green" data-style="expand-up">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>expand-down</h4>
+                        <button class="ladda-button" data-color="green" data-style="expand-down">Submit</button>
+                    </section>
+
+
+                    <section class="button-demo">
+                        <h4>contract</h4>
+                        <button class="ladda-button" data-color="red" data-style="contract">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>contract-overlay</h4>
+                        <button class="ladda-button" data-color="red" data-style="contract-overlay" style="z-index: 10;">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>zoom-in</h4>
+                        <button class="ladda-button" data-color="red" data-style="zoom-in">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>zoom-out</h4>
+                        <button class="ladda-button" data-color="red" data-style="zoom-out">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>slide-left</h4>
+                        <button class="ladda-button" data-color="blue" data-style="slide-left">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>slide-right</h4>
+                        <button class="ladda-button" data-color="blue" data-style="slide-right">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>slide-up</h4>
+                        <button class="ladda-button" data-color="blue" data-style="slide-up">Submit</button>
+                    </section>
+
+                    <section class="button-demo">
+                        <h4>slide-down</h4>
+                        <button class="ladda-button" data-color="blue" data-style="slide-down">Submit</button>
+                    </section>
+
+                    <h3 id="progress">Built-in progress bar</h3>
+
+                    <section class="progress-demo">
+                        <h4>expand-right</h4>
+                        <button class="ladda-button" data-color="purple" data-style="expand-right">Submit</button>
+                    </section>
+
+                    <section class="progress-demo">
+                        <h4>contract</h4>
+                        <button class="ladda-button" data-color="purple" data-style="contract">Submit</button>
+                    </section>
+
+                    <h3 id="sizes">Sizes</h3>
+
+                    <section class="progress-demo">
+                        <h4>Extra Small</h4>
+                        <button class="ladda-button" data-color="mint" data-style="expand-right" data-size="xs">Submit</button>
+                    </section>
+
+                    <section class="progress-demo">
+                        <h4>Small</h4>
+                        <button class="ladda-button" data-color="mint" data-style="expand-right" data-size="s">Submit</button>
+                    </section>
+
+                    <section class="progress-demo">
+                        <h4>Large</h4>
+                        <button class="ladda-button" data-color="mint" data-style="expand-right" data-size="l">Submit</button>
+                    </section>
+
+                    <section class="progress-demo">
+                        <h4>Extra Large</h4>
+                        <button class="ladda-button" data-color="mint" data-style="expand-right" data-size="xl">Submit</button>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+               <h2>User card animation</h2>
+            </div>
+            <div class="panel-body clearfix text-center">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div id="example" class="animated animation-name bounce">
+                            <img class="img-responsive" src="assets/demo/avatar/5.jpg" alt="" width="200" height="200">
+                        </div>
+                        <h6>Bounce animation</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <div id="example" class="animated animation-name pulse">
+                            <img class="img-responsive" src="assets/demo/avatar/6.jpg" alt="" width="200" height="200">
+                        </div>
+                        <h6>Pulse animation</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <div id="example" class="animated animation-name flash">
+                            <img class="img-responsive" src="assets/demo/avatar/7.jpg" alt="" width="200" height="200">
+                        </div>
+                        <h6>Flash animation</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <div id="example" class="animated animation-name shake">
+                            <img class="img-responsive" src="assets/demo/avatar/8.jpg" alt="" width="200" height="200">
+                        </div>
+                        <h6>Shake animation</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="scales" onmouseover="this.className='scales scaleOn'" onmouseout="this.className='scales'">
+                            <img class="img-responsive" src="assets/demo/avatar/2.jpg" alt="" width="200" height="200">
+                        </div>
+                        <h6>Scale Up</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="scales" onmouseover="this.className='scales scaleOff'" onmouseout="this.className='scales'">
+                            <img class="img-responsive" src="assets/demo/avatar/4.jpg" alt="" width="200" height="200">
+                        </div>
+                        <h6>Scale Down</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="scales" onmouseover="this.className='scales rotateClock'" onmouseout="this.className='scales'">
+                            <img class="img-responsive" src="assets/demo/avatar/6.jpg" alt="" width="200" height="200">
+                        </div>
+                        <h6>Rotate clockwise</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="scales" onmouseover="this.className='scales rotateAnticlock'" onmouseout="this.className='scales'">
+                            <img class="img-responsive" src="assets/demo/avatar/8.jpg" alt="" width="200" height="200">
+                        </div>
+                        <h6>Rotate Anticlockwise</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

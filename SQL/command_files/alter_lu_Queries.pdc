@@ -1,0 +1,10 @@
+-- Add/modify columns 
+alter table LU_Queries add query_body varchar2(2000) default '/--------------';
+
+----- alter constraint-------
+alter table LU_QUERIES  drop constraint UQ_LU_QUERIES_CODE cascade;
+alter table LU_QUERIES add constraint UQ_LU_QUERIES_CODE unique (CODE,PARENT_ID);
+
+alter table LU_QUERIES  drop constraint FK_LU_QUERIES;
+alter table LU_QUERIES  add constraint FK_LU_QUERIES foreign key (PARENT_ID)
+  references LU_QUERIES (ID) on delete cascade;

@@ -1,0 +1,39 @@
+-- Create table
+create table SQL_BOUND_VARS
+(
+  OWNER          VARCHAR2(12) not null,
+  TITLE          VARCHAR2(50),
+  BOUND_VAR_NAME VARCHAR2(12),
+  ACTIVE         VARCHAR2(1),
+  DEFAULT_VAL    VARCHAR2(20),
+  CREATION_DATE  DATE default sysdate,
+  SN             NUMBER
+)
+tablespace NEWUSERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 1M
+    next 1M
+    minextents 1
+    maxextents unlimited
+    pctincrease 0
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table SQL_BOUND_VARS
+  add constraint OWNER_BOUND_VAR_UK unique (OWNER,BOUND_VAR_NAME)
+  using index 
+  tablespace NEWUSERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 1M
+    next 1M
+    minextents 1
+    maxextents unlimited
+    pctincrease 0
+  );

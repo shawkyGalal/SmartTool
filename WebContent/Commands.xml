@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='windows-1256'?>
+<Commands>
+	<SQL_Command>
+		<!--
+			String sql = extractInfo("SQL"); String serverName =
+			extractInfo("SERVER_NAME"); String DBName = extractInfo("DBNAME");
+			String userName = extractInfo("USERNAME"); String password =
+			extractInfo("PASSWORD"); String envName = extractInfo( "ConnName")
+		-->
+		<SERVER_NAME>127.0.0.1</SERVER_NAME> <!-- <SERVER_NAME>10.16.16.21</SERVER_NAME> -->
+		<DBNAME>orcl</DBNAME> <!--<DBNAME>repmn</DBNAME> -->
+		<USERNAME>support</USERNAME>
+		<PASSWORD>redsea11</PASSWORD>
+		<ConnName>Smart Tool Reposatory at Alddrin</ConnName>
+		<useSmartConn>N</useSmartConn>
+		<SQL>delete from lu_queries where id = 6500</SQL>
+		<MAILTO>foda_sh@hotmail.com</MAILTO>
+	</SQL_Command>
+	<RunTime_Command>
+		<COMMAND>cmd /c ren D:\MyWork\Support\public_html\editQuery1.jsp
+			editQuery.jsp </COMMAND>
+		<MAILTO>foda_sh@hotmail.com</MAILTO>
+	</RunTime_Command>
+</Commands>

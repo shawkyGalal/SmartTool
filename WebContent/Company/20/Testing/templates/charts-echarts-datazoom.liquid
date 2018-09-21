@@ -1,0 +1,123 @@
+{% extends 'layout' %}
+{% block title %}Data zoom Echarts{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="chord-charts.html">Data zoom Charts</a></li>
+{% endblock %}
+{% block styles %} 
+{{ 'css/echartsHome.css' | asset_url | stylesheet_tag }}
+{{ 'css/codemirror.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+{% block scripts %}
+{{ "js/echarts.js" | asset_url | script_tag }}  
+{{ "js/codemirror.js" | asset_url | script_tag }}
+{{ "js/echartsExample.js" | asset_url | script_tag }}
+{% endblock %}
+{% block content %}
+<div class="row" data-widget-group="group-demo">
+    <div class="col-md-12">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget14"}'>
+          <div class="panel-heading m-n">
+            <ul class="nav nav-tabs tab-warning material-nav-tabs">
+              <li class="active"><a href="#domwell" data-toggle="tab">Data zoom Echarts</a></li>
+              <li><a href="#codewell" data-toggle="tab">Code</a></li>
+            </ul>
+          </div>
+          <div class="panel-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="domwell">
+                <div id="graphic" class="col-md-12">
+                  <div id="main" class="main"></div>
+                  <div>
+                    <button type="button" class="btn btn-success" onclick="refresh(true)">Refresh</button>
+                    <h4>Change Layout</h4>
+                    <select id="theme-select" class='form-control'></select>
+
+                    <span id='wrong-message' style="color:red"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="codewell">
+                <div id="leftbar-code" class='col-md-12'>
+                  <div class="well leftbar-nav">
+                    <div class="nav-header"><a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id ="icon-resize" ></a>option</div>
+                    <textarea id="code" name="code">
+                      option = {
+                      tooltip : {
+                      trigger: 'axis'
+                                              },
+                                              legend: {
+                                              data:[]
+                                            },
+                                            toolbox: {
+                                            show : true,
+                                            feature : {
+                                            mark : {show: true},
+                                            dataZoom : {show: true},
+                                            dataView : {show: true},
+                                            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                                            restore : {show: true},
+                                            saveAsImage : {show: true}
+                                          }
+                                        },
+                                        calculable : true,
+                                        dataZoom : {
+                                        show : true,
+                                        realtime : true,
+                                        start : 20,
+                                        end : 80
+                                      },
+                                      xAxis : [
+                                      {
+                                      type : 'category',
+                                      boundaryGap : false,
+                                      data : function (){
+                                      var list = [];
+                                      for (var i = 1; i <= 30; i++) {
+                                      list.push('2013-03-' + i);
+                                    }
+                                    return list;
+                                  }()
+                                }
+                                ],
+                                yAxis : [
+                                {
+                                type : 'value'
+                              }
+                              ],
+                              series : [
+                              {
+                              name:'Line1',
+                              type:'line',
+                              data:function (){
+                              var list = [];
+                              for (var i = 1; i <= 30; i++) {
+                              list.push(Math.round(Math.random()* 30));
+                            }
+                            return list;
+                          }()
+                          },
+                          {
+                            name:'line2',
+                            type:'line',
+                            data:function (){
+                            var list = [];
+                            for (var i = 1; i <= 30; i++) {
+                            list.push(Math.round(Math.random()* 10));
+                          }
+                          return list;
+                          }()
+                          }
+                          ],
+                          };
+                    </textarea>
+                  </div><!--/.well -->
+                </div><!--/span-->
+              </div>
+            </div><!--/span-->
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

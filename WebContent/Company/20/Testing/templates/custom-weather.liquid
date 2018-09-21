@@ -1,0 +1,46 @@
+{% extends 'layout' %}
+{% block title %}Weather{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Custom Components</a></li>
+<li class="active"><a href="custom-weather.html">Weather</a></li>
+{% endblock %}
+
+{% block styles %}
+{{ "plugins/simpleWeather/weather.css" | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/simpleWeather/jquery.simpleWeather.min.js" | asset_url | script_tag }}    <!-- Weather Plugin -->
+{{ "demo/demo-custom-weather.js" | asset_url | script_tag }} 
+{{ "plugins/simpleWeather/weather.js" | asset_url | script_tag }} 
+
+<script type="text/javascript">
+$(document).ready(function () {
+                $(".weather").weatherFeed({relativeTimeZone:true});
+            });
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	 <div class="col-lg-12">
+	 	<div class="alert alert-info">
+			<h3>Simple Weather</h3>
+			<p>A simple jQuery plugin to display current weather data for any location and doesn't get in your way. Now supports HTML5 GeoLocation!</p>
+		</div>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h2>Weather Report</h2></div>
+            <div class="panel-body">
+                <div class="weather">Detroit,MI</div>
+                <div class="weather">New York,NY</div>
+                <div class="weather">Calgary,AB</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

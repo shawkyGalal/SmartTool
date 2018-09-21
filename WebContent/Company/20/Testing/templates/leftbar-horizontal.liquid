@@ -1,0 +1,239 @@
+{% extends 'layout-horizontal' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block breadcrumb %}
+<li class=""><a href="index.html">Home</a></li>
+<li class="active"><a href="index.html">Dashboard</a></li>
+{% endblock %}
+
+{% block tablist %}
+
+{% endblock %}
+
+{% block styles %}
+
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#widget-leftbar .widget-body").addClass("navbar-fixed-top clearfix navbar-bunting");
+	$("#widget-leftbar .widget-body").css({ "top": '56px'});
+	var portviewHeight = $(window).height();
+	var tpnavHeight=$("#topnav").height();
+	var headerbarHeight=$("#headerbar").height();
+	var wrapperHeight=$("#wrapper").height();
+	var viewHeight=tpnavHeight+wrapperHeight+headerbarHeight;
+
+    //viewHeight always greatter than portviewHeight.
+
+    if(portviewHeight<=viewHeight){
+    	$("footer").css({position:'fixed',bottom:'0px'});
+    }
+    console.log("portviewHeight:"+portviewHeight+", viewHeight:"+viewHeight);
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<ul class="nav nav-tabs tab-warning material-nav-tabs"><li class="dropdown pull-right tabdrop hide"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+					<li class="active"><a data-toggle="tab" href="#tab-7-4" aria-expanded="true">Tab one</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-5" aria-expanded="false">Tab two</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-6" aria-expanded="false">Tab three</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab four</a></li>
+				</ul>
+			</div>
+			<div class="panel-body">
+				<div class="tab-content">
+					<div id="tab-7-1" class="tab-pane active">
+						<p>Content goes here</p>
+					</div>
+					<div id="tab-7-2" class="tab-pane">
+						<p>Content goes here</p>
+					</div>
+					<div id="tab-7-3" class="tab-pane">
+						<p>Content goes here</p>
+					</div>
+					<div id="tab-7-31" class="tab-pane">
+						<p>Content goes here</p>
+					</div>
+				</div>
+			</div>
+	  </div>
+  </div>
+</div>	
+<!-- <div class="col-sm-12">
+	<div class="panel panel-default alt">
+		<div class="panel-heading">
+			<ul class="nav nav-tabs tab-warning material-nav-tabs"><li class="dropdown pull-right tabdrop hide"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+			<li class="active"><a data-toggle="tab" href="#tab-7-4" aria-expanded="true">Tab one</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-5" aria-expanded="false">Tab two</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-6" aria-expanded="false">Tab three</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab four</a></li>
+		</ul>
+	</div>
+	<div class="panel-body">
+		<div class="tab-content">
+			<div id="tab-7-1" class="tab-pane active">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-2" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-3" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-31" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>	
+<div class="col-sm-12">
+	<div class="panel panel-default alt">
+		<div class="panel-heading">
+			<ul class="nav nav-tabs tab-warning material-nav-tabs"><li class="dropdown pull-right tabdrop hide"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+			<li class="active"><a data-toggle="tab" href="#tab-7-4" aria-expanded="true">Tab one</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-5" aria-expanded="false">Tab two</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-6" aria-expanded="false">Tab three</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab four</a></li>
+		</ul>
+	</div>
+	<div class="panel-body">
+		<div class="tab-content">
+			<div id="tab-7-1" class="tab-pane active">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-2" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-3" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-31" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>	
+<div class="col-sm-12">
+	<div class="panel panel-default alt">
+		<div class="panel-heading">
+			<ul class="nav nav-tabs tab-warning material-nav-tabs"><li class="dropdown pull-right tabdrop hide"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+			<li class="active"><a data-toggle="tab" href="#tab-7-4" aria-expanded="true">Tab one</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-5" aria-expanded="false">Tab two</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-6" aria-expanded="false">Tab three</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab four</a></li>
+		</ul>
+	</div>
+	<div class="panel-body">
+		<div class="tab-content">
+			<div id="tab-7-1" class="tab-pane active">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-2" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-3" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-31" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>	
+<div class="col-sm-12">
+	<div class="panel panel-default alt">
+		<div class="panel-heading">
+			<ul class="nav nav-tabs tab-warning material-nav-tabs"><li class="dropdown pull-right tabdrop hide"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+			<li class="active"><a data-toggle="tab" href="#tab-7-4" aria-expanded="true">Tab one</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-5" aria-expanded="false">Tab two</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-6" aria-expanded="false">Tab three</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab four</a></li>
+		</ul>
+	</div>
+	<div class="panel-body">
+		<div class="tab-content">
+			<div id="tab-7-1" class="tab-pane active">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-2" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-3" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-31" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>	
+<div class="col-sm-12">
+	<div class="panel panel-default alt">
+		<div class="panel-heading">
+			<ul class="nav nav-tabs tab-warning material-nav-tabs"><li class="dropdown pull-right tabdrop hide"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+			<li class="active"><a data-toggle="tab" href="#tab-7-4" aria-expanded="true">Tab one</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-5" aria-expanded="false">Tab two</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-6" aria-expanded="false">Tab three</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab four</a></li>
+		</ul>
+	</div>
+	<div class="panel-body">
+		<div class="tab-content">
+			<div id="tab-7-1" class="tab-pane active">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-2" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-3" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-31" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>	
+<div class="col-sm-12">
+	<div class="panel panel-default alt">
+		<div class="panel-heading">
+			<ul class="nav nav-tabs tab-warning material-nav-tabs"><li class="dropdown pull-right tabdrop hide"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-angle-down"></i> </a><ul class="dropdown-menu"></ul></li>
+			<li class="active"><a data-toggle="tab" href="#tab-7-4" aria-expanded="true">Tab one</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-5" aria-expanded="false">Tab two</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-6" aria-expanded="false">Tab three</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-7-7" aria-expanded="false">Tab four</a></li>
+		</ul>
+	</div>
+	<div class="panel-body">
+		<div class="tab-content">
+			<div id="tab-7-1" class="tab-pane active">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-2" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-3" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+			<div id="tab-7-31" class="tab-pane">
+				<p>Content goes here</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>	
+</div> -->
+
+{% endblock %}
