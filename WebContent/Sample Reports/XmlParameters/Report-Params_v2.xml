@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportsInfo>
+
+<Report>
+	<RepID>2</RepID>
+	<ReportName>Sample Reports/Oracle_Dept_emp.rpt</ReportName>
+	<ParamSet>
+		<ParamSetName>Param Set 1</ParamSetName>
+	<Parameter>
+			<name>ID</name>
+			<paramId>ID</paramId>
+			<type>NUMBER</type>
+			<value>30</value>
+			<dateFormat></dateFormat>
+	</Parameter>
+	</ParamSet>
+</Report>
+</ReportsInfo>

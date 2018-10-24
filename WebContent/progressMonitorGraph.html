@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<TITLE>Title</TITLE>
+</HEAD>
+<BODY>
+<H2>This is sample HTML text.</H2>
+<BR>
+<APPLET CODE="Support.JAS.TestJAS" ARCHIVE="jas.jar" HEIGHT="800"
+	WIDTH="800" ALIGN="bottom">
+	<PARAM NAME="queryString"
+		VALUE="select trunc((sysdate - trunc(sysdate)) *24*60*60) from dual">
+	<PARAM NAME="queryTitle" VALUE="123">
+	<!-- The Following Information about DB at which Query will be executed -->
+	<PARAM NAME="DBServer" VALUE="127.0.0.1">
+	<PARAM NAME="DBservice" VALUE="xe">
+	<PARAM NAME="userName" VALUE="jccs">
+	<PARAM NAME="passWord" VALUE="jccs123">
+
+
+	This browser does not appear to support Applets.</APPLET>
+</BODY>
+</HTML>

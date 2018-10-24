@@ -1,0 +1,174 @@
+<html>
+<head>
+<title>Defining and using variables</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?definingandusingvariables.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Defining
+		and using variables <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.6',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.8',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Variables
+may be defined in FTCL at the command line or in a valid FTCL script
+file. Once a variable is defined it is then accessible within the FTCL
+script for use in other commands. <br>
+
+<br>
+Variables may be defined at the command line using the following syntax:
+<br>
+
+<br>
+<span style="font-family: Courier; font-size: 10pt; color: #000000">-&lt;variablename&gt;&nbsp;&lt;value&gt;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">java&nbsp;-jar&nbsp;sftp.jar&nbsp;-f&nbsp;scriptfile.txt&nbsp;-filter&nbsp;'*.txt'
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+In the above example a variable named </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">filter</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+is defined with a value of </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">'*.txt'</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">.
+<br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #FF0000"><b>Note</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">In
+		the above example the value is quoted with single quotes. This is to
+		prevent your operating system shell from performing command line
+		expansion of the regular expression *.txt. Failure to surround regular
+		expressions with single quotes will result in undesired effects.
+		&nbsp;<br>
+		</span></td>
+		<td width="51"></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+		<td></td>
+		<td width="51"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<b>Defining variables in scripts</b> <br>
+
+<br>
+You my define variables in scripts using the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000"><a
+	href=scriptingcommands.html#set>set</a></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+command. <br>
+
+<br>
+<b>Referencing variables in scripts</b> <br>
+
+<br>
+Variables defined at the command line or in scripts may be referenced
+using the following syntax: <br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">${&lt;variablename&gt;}</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+<br>
+</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>
+<br>
+</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Below
+is an example of the command issued at the command line and the script
+contents found in scriptfile.txt. <br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">java&nbsp;-jar&nbsp;sftp.jar&nbsp;-f&nbsp;scriptfile.txt&nbsp;-filter&nbsp;'*.txt'</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">/**
+<br>
+*&nbsp;This&nbsp;example&nbsp;demonstrates&nbsp;connecting&nbsp;to&nbsp;a&nbsp;server,&nbsp;performing&nbsp;a&nbsp;directory
+<br>
+*&nbsp;listing&nbsp;and&nbsp;then&nbsp;disconnecting. <br>
+*/ <br>
+
+<br>
+set&nbsp;hostname&nbsp;"ftp.myserver.com" <br>
+set&nbsp;username&nbsp;"jsmith" <br>
+set&nbsp;password&nbsp;"secret" <br>
+connect <br>
+
+<br>
+//&nbsp;perform&nbsp;directory&nbsp;listing&nbsp;using&nbsp;filter&nbsp;supplied&nbsp;at&nbsp;command&nbsp;line&nbsp;
+<br>
+dir&nbsp;"${filter}"&nbsp; <br>
+
+<br>
+disconnect <br>
+</span></span>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>Transferring a directory</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?transferringadirectory.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Transferring
+		a directory <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.3.4',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.3.6',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Once
+you have established a connection to the source and destination FTP
+servers you may transfer an entire directory recursively using the <span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Fxp#transferDir</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. If you wish to change the source or destination directory you
+can do so using the </span><span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Ftp#setDir</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method for the desired </span><span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance prior to invoking the </span><span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Fxp#transferDir</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;set&nbsp;source&nbsp;directory&nbsp;of&nbsp;Ftp&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+source.setDir(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"/src"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;set&nbsp;destination&nbsp;directory&nbsp;of&nbsp;Ftp&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+destination.setDir(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"/dest"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;create&nbsp;new&nbsp;Fxp&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Fxp&nbsp;fxp&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;Fxp();
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;transfer&nbsp;directory&nbsp;"images"&nbsp;from&nbsp;source&nbsp;to&nbsp;destination</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+fxp.transferDir(source,destination,<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"images"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<b>See also</b> <br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+			href=javaScript:parent.reDisplay('2.3.3',1,0)>Establishing a
+		connection</a> &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+			href=javaScript:parent.reDisplay('2.3.4',1,0)>Transferring a file</a>
+		&nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span>
+
+</body>
+</html>

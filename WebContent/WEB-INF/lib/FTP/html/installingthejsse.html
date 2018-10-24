@@ -1,0 +1,172 @@
+<html>
+<head>
+<title>Installing the JSSE</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?installingthejsse.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Installing
+		the JSSE <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('1.2',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('1.2.2',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+JSSE (Java Secure Socket Extension) is a set of optional packages for
+JDK 1.2.x and JDK 1.3.x that enable secure Internet communications using
+SSL (Secure Sockets Layer) and TLS (Transport Layer Security) protocols.
+The JSSE is necessary only if you are using the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class with a JDK prior to JDK 1.4. <br>
+
+<br>
+<b>Download the JSSE</b> <br>
+
+<br>
+The first step in installing the JSSE is to download the optional JSSE
+package provided for JDK versions 1.2.x and 1.3.x. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #0000FF"><u><span
+	class="weblink"><a href="http://java.sun.com/products/jsse/"
+	target="_blank">http://java.sun.com/products/jsse/</a></span></u></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+<b>Install the JSSE jar files</b> <br>
+
+<br>
+After downloading the JSSE extract the contents of the package to a
+directory on your system. In the lib directory of this package you will
+find the files </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">jcert.jar</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">,
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">jnet.jar</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">jsse.jar</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">.
+Copy these files to your </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">&lt;java-home&gt;/lib/ext</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+directory e.g. </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">C:\jdk1.2.2\jre\lib\ext</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">.
+<br>
+
+<br>
+<b>Register the SunJSSE provider</b> <br>
+
+<br>
+In your </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">&lt;java-home&gt;/lib/security/java.security</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+file you should find a section that lists the security providers and
+their preference. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">#
+<br>
+#&nbsp;List&nbsp;of&nbsp;providers&nbsp;and&nbsp;their&nbsp;preference&nbsp;orders&nbsp;(see&nbsp;above):
+<br>
+# <br>
+security.provider.1=sun.security.provider.Sun <br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+Update this section registering the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.sun.net.ssl.internal.ssl.Provider</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class as a provider. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">#
+<br>
+#&nbsp;List&nbsp;of&nbsp;providers&nbsp;and&nbsp;their&nbsp;preference&nbsp;orders&nbsp;(see&nbsp;above):
+<br>
+# <br>
+security.provider.1=sun.security.provider.Sun <br>
+security.provider.2=com.sun.net.ssl.internal.ssl.Provider <br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+</span></span>
+
+</body>
+</html>

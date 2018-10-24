@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Connecting from behind a firewall</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?connectingfrombehindafirew.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Connecting
+		from behind a firewall <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.1.2.2',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.1.2.4',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+<span style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class is firewall friendly in that by default it uses a firewall
+friendly passive connection. Some firewall however may require that you
+route all connections thru the firewall. To do this you must change the
+arguments passed to the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+constructor. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>
+<br>
+
+<br>
+</b>The example below routes the FTP connection thru the firewall. <br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;define&nbsp;connection&nbsp;setting</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+<b>int</b>&nbsp;firewallPort&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">21</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+String&nbsp;firewallHostname&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"192.168.1.1"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+String&nbsp;ftpHostname&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"ftp.myhost.com"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+String&nbsp;ftpUsername&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"jsmith"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+String&nbsp;ftpPassword&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"secret"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;new&nbsp;Ftp&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Ftp&nbsp;ftp&nbsp;=&nbsp;<b>new</b>&nbsp;Ftp(firewallHostname,&nbsp;ftpUsername&nbsp;+&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"@"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;ftpHostname,&nbsp;ftpPassword,&nbsp;firewallPort);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;establish&nbsp;connection&nbsp;thru&nbsp;firewall</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+ftp.connect();</span><span
+	style="font-family: Courier New; font-size: 8pt; color: #000000">
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+<b>See also</b> <br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+			href=javaScript:parent.reDisplay('2.1.2.4',1,0)>Connecting thru a
+		proxy server</a> &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+</span>
+
+</body>
+</html>

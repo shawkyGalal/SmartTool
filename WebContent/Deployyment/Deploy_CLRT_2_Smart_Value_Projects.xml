@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File_Operations>
+<COPY>
+	<DESCRIPTION>Deploy Smart Tool to Removable Hard Drive</DESCRIPTION>
+	<SOURCE>C:\Sources\Reporting\SmartTool\</SOURCE>
+	<DESTINATION>I:\MyWork\JavaWork\Smart Value Products\SmartTool\</DESTINATION>
+	<SKIP_UNCHANGED>Y</SKIP_UNCHANGED>
+</COPY>
+
+<COPY>
+	<DESCRIPTION>Check Again</DESCRIPTION>
+	<SOURCE>C:\Sources\Reporting\SmartTool\</SOURCE>
+	<DESTINATION>I:\MyWork\JavaWork\Smart Value Products\SmartTool\</DESTINATION>
+	<SKIP_UNCHANGED>Y</SKIP_UNCHANGED>
+</COPY>
+
+<UPDATE>
+	<DESCRIPTION>Customize Login Page</DESCRIPTION>
+	<SOURCE>C:\Sources\Reporting\SmartTool\WebContent\loginScreen.jsp</SOURCE>
+	<DESTINATION>I:\MyWork\JavaWork\Smart Value Products\SmartTool\WebContent\loginScreen.jsp</DESTINATION>
+	<CHANGES>
+		<OLD_STRING>System Monitoring And Recovery Tool (SMART)</OLD_STRING>
+		<NEW_STRING>System Monitoring And Recovery Tool For Cairo University</NEW_STRING>
+	</CHANGES>
+	<START_LINE>0</START_LINE>
+	<END_LINE>200</END_LINE>
+</UPDATE>
+
+</File_Operations>
+
+ 

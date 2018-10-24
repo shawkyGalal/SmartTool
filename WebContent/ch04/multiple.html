@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Using multiple XMLHttpRequest objects</title>
+
+<script language="javascript">
+
+      function getData(dataSource)
+      { 
+        var XMLHttpRequestObject = false; 
+
+        if (window.XMLHttpRequest) {
+          XMLHttpRequestObject = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+          XMLHttpRequestObject = new 
+            ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        if(XMLHttpRequestObject) {
+          XMLHttpRequestObject.open("GET", dataSource); 
+
+          XMLHttpRequestObject.onreadystatechange = function() 
+          { 
+            if (XMLHttpRequestObject.readyState == 4 && 
+              XMLHttpRequestObject.status == 200) { 
+                document.getElementById("targetDiv").innerHTML =
+                  XMLHttpRequestObject.responseText; 
+            } 
+          } 
+
+          XMLHttpRequestObject.send(null); 
+        }
+      }
+    </script>
+</head>
+
+<body>
+
+<H1>Using multiple XMLHttpRequest objects</H1>
+
+<form><input type="button" value="Display Message"
+	onclick="getData('data.txt')"> <input type="button"
+	value="Display Message 2" onclick="getData('data2.txt')"></form>
+
+<div id="targetDiv">
+<p>The fetched data will go here.</p>
+</div>
+
+</body>
+</html>

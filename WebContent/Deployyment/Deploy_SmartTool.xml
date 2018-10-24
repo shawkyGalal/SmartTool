@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File_Operations>
+	<COPY>
+		<DESCRIPTION>Deploy Smart Tool to C Drive</DESCRIPTION>
+		<SOURCE>D:\SmartValue\Products\SmartTool\</SOURCE>
+		<DESTINATION>C:\Sources\Reporting\SmartTool\</DESTINATION>
+		<SKIP_UNCHANGED>Y</SKIP_UNCHANGED>
+	</COPY>
+	<COPY>
+		<DESCRIPTION>Deploy To removable Hard Drive</DESCRIPTION>
+		<SOURCE>D:\SmartValue\Products\SmartTool\</SOURCE>
+		<DESTINATION>F:\SmartValue\Products\SmartTool\</DESTINATION>
+		<SKIP_UNCHANGED>Y</SKIP_UNCHANGED>
+	</COPY>
+	<COPY>
+		<DESCRIPTION>Deploy HR to removable Drive</DESCRIPTION>
+		<SOURCE>D:\SmartValue\Products\HR\</SOURCE>
+		<DESTINATION>F:\SmartValue\Products\HR\</DESTINATION>
+		<SKIP_UNCHANGED>Y</SKIP_UNCHANGED>
+	</COPY>
+	<UPDATE>
+		<DESCRIPTION>Customize Login Page For Customer BBBBBB</DESCRIPTION>
+		<SOURCE>D:\SmartValue\Products\SmartTool\WebContent\loginScreen.jsp</SOURCE>
+		<DESTINATION>C:\Sources\Reporting\SmartTool\WebContent\loginScreen.jsp</DESTINATION>
+		<CHANGES>
+			<OLD_STRING>System Monitoring And Recovery Tool (SMART)</OLD_STRING>
+			<NEW_STRING>System Monitoring And Recovery Tool For BBBBB</NEW_STRING>
+		</CHANGES>
+		<START_LINE>0</START_LINE>
+		<END_LINE>200</END_LINE>
+	</UPDATE>
+	<UPDATE>
+		<DESCRIPTION>Customize Login Page For Customer AAAAA</DESCRIPTION>
+		<SOURCE>D:\SmartValue\Products\SmartTool\WebContent\loginScreen.jsp</SOURCE>
+		<DESTINATION>F:\SmartValue\Products\SmartTool\WebContent\loginScreen.jsp</DESTINATION>
+		<CHANGES>
+			<OLD_STRING>System Monitoring And Recovery Tool (SMART)</OLD_STRING>
+			<NEW_STRING>System Monitoring And Recovery Tool For AAAA</NEW_STRING>
+		</CHANGES>
+		<START_LINE>0</START_LINE>
+		<END_LINE>200</END_LINE>
+	</UPDATE>
+</File_Operations>

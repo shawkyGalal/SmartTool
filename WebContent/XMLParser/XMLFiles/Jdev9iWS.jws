@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<workspace nselem="workspace" class="oracle.ide.model.Workspace" xmlns="http://xmlns.oracle.com/jdeveloper/904/workspace">
+   <activeProjectURL path="SmartTool/SmartTool.jpr" id="0"/>
+   <listOfChildren class="oracle.ide.model.DataList">
+      <Item class="oracle.ide.model.Reference">
+         <URL idref="0"/>
+         <nodeClass>oracle.jdeveloper.model.JProject</nodeClass>
+      </Item>
+   </listOfChildren>
+   <properties/>
+</workspace>

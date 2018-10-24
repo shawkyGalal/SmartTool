@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>Establishing a connection</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?establishingaconnection3.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Establishing
+		a connection <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.5.1',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.5.2.2',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">To
+establish a connection create a <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ssh.util.SshParameters</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance providing hostname, username and password arguments. Using this
+constructor you will authenticate with the server using
+username/password authentication. In addition to username/password
+authentication the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Scp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class also supports public key authentication. Using the newly created </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SshParameters</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance as an argument to the constructor, construct a new </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.scp.Scp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance and invoke the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Scp#connect</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><b>import</b>&nbsp;com.jscape.inet.ssh.util.*;
+<br>
+<b>import</b>&nbsp;com.jscape.inet.scp.*; <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;a&nbsp;new&nbsp;SshParameters&nbsp;instance&nbsp;with&nbsp;authentication&nbsp;info</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+SshParameters&nbsp;sshParams(hostanme,username,password); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;a&nbsp;new&nbsp;Scp&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Scp&nbsp;scp&nbsp;=&nbsp;<b>new</b>&nbsp;Scp(sshParams); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;establish&nbsp;a&nbsp;connection</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+scp.connect(); <br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+See also <a href=javaScript:parent.reDisplay('2.5.2.3',1,0)>Public
+key authentication</a> <br>
+
+<br>
+</span></span>
+
+</body>
+</html>

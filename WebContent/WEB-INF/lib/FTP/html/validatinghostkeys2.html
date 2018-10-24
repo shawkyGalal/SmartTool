@@ -1,0 +1,142 @@
+<html>
+<head>
+<title>Validating host keys</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?validatinghostkeys2.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Validating
+		host keys <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.5.2.1',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.5.2.3',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">When
+connecting to an SSH server using the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Scp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class you may define that your login credentials only be submitted to
+hosts that provide a host key with a recognized fingerprint. This
+prevents the possibility of a man in the middle attack. You may specify
+what host keys are allowed using a </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SshHostKeys</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance and the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SshParameters.setHostKeys</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;create&nbsp;new&nbsp;SshParameters&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+SshParameters&nbsp;params&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;SshParameters(hostname,&nbsp;port,&nbsp;username,&nbsp;password);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;create&nbsp;new&nbsp;SshHostKeys&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+SshHostKeys&nbsp;keys&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;SshHostKeys();
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;specify&nbsp;valid&nbsp;remote&nbsp;server&nbsp;address</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+InetAddress&nbsp;address&nbsp;=&nbsp;InetAddress.getByName(hostname); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;add&nbsp;valid&nbsp;fingerprint&nbsp;to&nbsp;SshHostKeys&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+keys.addKey(address,&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"18:bc:ec:a5:0f:9a:fc:1a:60:96:7a:17:c8:ed:73:ac"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);&nbsp;&nbsp;
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;update&nbsp;SshParameters&nbsp;instance&nbsp;to&nbsp;validate&nbsp;against&nbsp;fingerprint&nbsp;in&nbsp;SshHostKeys&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+params.setHostKeys(keys,&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">false</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;create&nbsp;a&nbsp;new&nbsp;Scp&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Scp&nbsp;scp&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;Scp(params);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;establish&nbsp;connection</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+scp.connect(); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;gets&nbsp;updated&nbsp;host&nbsp;keys&nbsp;(if&nbsp;updated)</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+keys&nbsp;=&nbsp;scp.getHostKeys(); <br>
+
+<br>
+
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+
+<br>
+
+<br>
+</span></span>
+
+</body>
+</html>

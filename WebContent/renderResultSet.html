@@ -1,0 +1,197 @@
+ rsmd = rs.getMetaData(); columnCount = rsmd.getColumnCount();
+columnTypes = new String[columnCount+1]; columnNames = new
+String[columnCount+1]; columnSums = new
+java.math.BigDecimal[columnCount+1]; for (int count = 1 ; count<
+columnCount+1 ; count++ ) { columnSums[count] = new
+java.math.BigDecimal("0"); } String rowIdValue = null; String
+rowIdValueUrlEncoded = ""; String rowidColumnName = "ROWID"; String
+tableName =""; String tableOwner=""; int rowIdIndex =
+sqlReader.getRowIDIndex(rsmd , rowidColumnName) ; boolean rowIdFound =
+(rowIdIndex != 0); if (rowIdFound) //----------If its Found ..... {
+tableName = sqlReader.estimateTableName(j); tableOwner =
+sqlReader.estimateTableOwner(j); } %>
+<p>&nbsp;</p>
+<strong><%=titles[j]%> <%=(rowIdFound)?"(<a
+	href=TableInsertForm.jsp?owner= "+tableOwner+"&tableName="+tableName+"
+	target=new><img border=0 src=images/toolplus.gif width=14 height=14
+	alt='Add New Table Entry'></a>)":""%></strong>
+<table border=1>
+	<tr>
+		<% //-------------Rendering Header Data------------------ if
+		(rowIdFound){%>
+		<td bgcolor="#0099CC"><strong><font color="#FFFFFF">E</font></strong></td>
+		<%} String queryString = request.getQueryString(); int
+		orderByIndexInRequest = queryString.indexOf("_Order"); if
+		(orderByIndexInRequest != -1 ) { queryString=
+		queryString.substring(0,orderByIndexInRequest-1); } for (int count = 1
+		; count<=columnCount ; count++ ) { //----Do not show rowid column if
+		(rowIdFound && count == rowIdIndex) { continue; } //---End of Do not
+		show rowid column columnTypes[count] = rsmd.getColumnTypeName(count);
+		columnNames[count] = rsmd.getColumnName(count); %>
+		<td bgcolor="#0099CC" nowrap=true><strong> <font
+			color="#FFFFFF"><%=Support.Misc.repalceAll(columnNames[count],"_","
+		")%></font></strong> <% if (!AutoLog ){ %> <a href="executeQuery.jsp?<%=queryString%>&_OrderAscBy=<%=count%>&_QuerySeq=<%=j%>"
+		><img border="0" src="images/asc.gif" width="12" height="12"></a> <a
+			href="executeQuery.jsp?<%=queryString%>&_OrderDescBy=<%=count%>&_QuerySeq=<%=j%>"
+		><img border="0" src="images/desc.gif" width="12" height="12"></a>
+		<%}%></td>
+		<% } %>
+	</tr>
+	<% //-------rendering Data-------------------- int rownum = -1; String
+	databaseName = con.getMetaData().getDatabaseProductName(); boolean
+	evenRow = true; while (rs.next()) { rownum++; evenRow = !evenRow; %>
+	<tr>
+		<%=(evenRow)? " bgcolor=#F1F4F8":"bgcolor=#FFFFCC" %> ><% if
+		(rowIdFound) //----------if rowid found then render an edit cell at
+		the begining { try{ rowIdValue = rs.getString(rowIdIndex) ; } catch
+		(Exception e) {} rowIdValueUrlEncoded = (rowIdValue != null)?
+		java.net.URLEncoder.encode(rowIdValue) : "Null?"; %>
+		<td><strong> <a target = 'Table Editor ' href = 'tableEditor.jsp?execAgainstRep=<%=( (execAgainstRep)? "Y":"N")%>&tableName=<%=tableOwner+"."+tableName%>&<%=rowidColumnName%>=<%=rowIdValueUrlEncoded%>' > E </a></strong></td><%
+          }
+          
+          String columnValue = "";
+          for (int count = 1 ; count<=columnCount ; count++ )
+          { 
+            //----Do not show rowid column
+            if (rowIdFound && count == rowIdIndex)
+            { continue; }
+            //---End of Do not show rowid column
+            columnValue = "";
+            Vector columnValuePerLine  = new Vector();
+            //--------------------Getting The Column Value---------------
+            int maxDisplayableSize = 4000;
+            try
+            {
+              //--------------For SQL SERVER Database---------
+              if (databaseName.equals("Microsoft SQL Server"))
+              {
+                columnValue= rs.getString(count);
+                columnValue = (columnValue == null )? "&nbsp;": columnValue;
+              }
+              //--------------For Oracle Database---------
+              if (databaseName.equals("Oracle"))
+              {
+               if ( columnTypes[count].toUpperCase().equals("DATE") 
+                    || columnTypes[count].toUpperCase().equals("NUMBER") 
+                    || columnTypes[count].toUpperCase().equals("ROWID") 
+                    || columnTypes[count].toUpperCase().equals("VARCHAR2") 
+                    || columnTypes[count].toUpperCase().equals("RAW") 
+                    || columnTypes[count].toUpperCase().equals("CHAR") 
+                    ||columnTypes[count].toUpperCase().equals("LONG")
+                  ) 
+               { 
+                columnValue= rs.getString(count);
+                columnValue = (columnValue == null )? "&nbsp;": columnValue;
+               }
+               //--------------If Column Type is CLOB 0r LONG --Or a Varchar with size more than maxDisplayableSize---
+               if (columnTypes[count].toUpperCase().equals("BLOB") 
+            		   || columnTypes[count].toUpperCase().equals("CLOB")  
+            		   //||columnTypes[count].toUpperCase().equals("LONG")
+            		   || ( columnValue.length() > maxDisplayableSize && columnValue.indexOf("</a>") == -1) )
+               {
+                 if (rowIdFound)
+                 {
+                	columnValue = "<a target= CLOBReader href = "+appURL+"/oracleCLOBReader.jsp?addXmlHeader=N&execAgainstRep="+ ( (execAgainstRep)? "Y":"N") +"&columnName="+columnNames[count]+"&rowId="+rowIdValueUrlEncoded+"&tableName="+tableName+">"+columnNames[count]+"</a>" ;
+                 }
+                 else 
+                 {
+                 throw new Exception ("Query Contains CLOB Column. it Should include Rowid also");
+                 }
+              }
+            }
+          }
+          catch (Exception e) {  rs.close();   stmt.close(); throw e;}
+            //--------------------Rendering The Column Value---------------
+        
+            if (columnValue.length()> maxDisplayableSize   //------- If column value length > 30 
+                && columnValue.indexOf("</a>") == -1  //---------and it is not heyperLinked then render a button for details
+               ) 
+            {   %>      
+    			<td> <%=columnValue.substring(0,maxDisplayableSize-1) + "..."%> <input name="Det" type="button" onClick=" longTextViewer= window.open(); 
+                                                              <% for (int lineNum = 0 ; lineNum<columnValuePerLine.size() ; lineNum ++  ) 
+                                                              {
+                                                               %>longTextViewer.document.write('<%=columnValuePerLine.elementAt(lineNum)%><br>');<% 
+                                                              } %>
+                                                            " 
+                                                    value="Det"></td>
+              <%
+            }
+            else
+            { 
+                    %> <td> <%=columnValue %> </td> <% 
+            }
+            //------------------End of Rendering The Column Value---------------
+            boolean  isNumber = columnTypes[count].equals("NUMBER")||columnTypes[count].equals("int");
+            boolean isHyberNumber = false;
+            java.math.BigDecimal bd = new java.math.BigDecimal(0);
+            if (isNumber)
+            {
+            	try{bd = rs.getBigDecimal(count);}catch (Exception e) {}
+            }
+            if (Support.HTML.AnchorTag.isAnchor(columnValue) ) //-------if it is a hyperLinked Number 
+            { try
+                {
+                bd = new java.math.BigDecimal(new Support.HTML.AnchorTag(columnValue).getValue());
+                isHyberNumber = true;
+                }
+                catch(Exception e) {}
+            }
+            if (isNumber || isHyberNumber ) //-------------if Column Type is Number 
+            {
+              if (bd != null)
+              {
+                columnSums[count]=  bd.add(columnSums[count]);
+              }
+            }
+          }
+      
+          %></tr>
+	<% } %>
+	<tr>
+		<% //-------------Rendering Sum of Numeric Data------------------ if
+		(rowIdFound) {%>
+		<td><strong> </strong></td>
+		<% } for (int count = 1 ; count<=columnCount ; count++ ) { //----Do
+		not show rowid column if (rowIdFound && count == rowIdIndex) {
+		continue; } //---End of Do not show rowid column %>
+		<td><strong> <%=columnSums[count]%> </strong></td>
+		<% } %>
+	</tr>
+</table>
+
+<% java.util.Date endTime = new java.util.Date(); long execTime =
+endTime.getTime()-startTime.getTime(); boolean loggingRquired =
+sqlReader.isLogExecution(); if (loggingRquired & ! execAgainstRep) {
+//--loging the execution into reposatory DB Statement repstmt =
+repCon.createStatement(); java.text.SimpleDateFormat dateFormatter = new
+java.text.SimpleDateFormat ("dd-MM-yyyy HH:mm:ss");// HH indicates Hours
+in 24 Format while hh indicates Hours in 12 format String insert =
+"insert into exec_stat (queryid, sequance , executed_by, db_url,
+starttime, endtime) values "; insert += "( "+id+","+j+ ", '"+
+con.getMetaData().getUserName() +"', '"+con.getMetaData().getURL()+"',
+to_date('"+dateFormatter.format(startTime)+"','dd-mm-yyyy hh24:mi:ss') ,
+to_date('"+dateFormatter.format(endTime)+"','dd-mm-yyyy hh24:mi:ss') )";
+repstmt.execute(insert); repCon.commit(); repstmt.close(); //--End
+loging the execution into reposatory DB } %>
+<font size="1"><em><strong>(<%=rownum+1 %>)
+Record(s) - Execution Time = <%=execTime%> ms <a
+	title="Display statistics for executing this report"
+	target='Execution Statistics' href="<%=appURL%>/editAndExecute.jsp?execAgainstRep=Y&id=10155&queryId=<%=id%>&seq=<%=j%>"
+>Show exec stat.</a></strong></em></font>
+<%if (! AutoLog) {%>
+<font size="1"><em><strong> <a
+	target='query XML Viewer'
+	Title="Display The result as XML (should not contain hyperlinks)"
+	href='queryToXML.jsp?<%=request.getQueryString()%>&seq=<%=j%>'>To
+XML </a> --- <a target='SOA ' Title="Post Results as XML to a Web Service"
+	href='queryToHttpPoster.jsp?<%=request.getQueryString()%>&seq=<%=j%>'>Post
+To Web Service</a> --- <a target='query Chart Drawer'
+	href='Charts/queryChartDrawer.jsp?<%=request.getQueryString()%>&seq=<%=j%>'
+>Chart Viewer --- <a target='query Chart Drawer' href='AJAX_Chart.jsp?<%=request.getQueryString()%>&seq=<%=j%>'
+>AJAX Chart Viewer </a> --- <a target='query Chart Drawer'
+	href='createMailNotificationBatch.jsp?<%=request.getQueryString()%>&seq=<%=j%>'
+>Email Notification</a> --- <a
+	title="Open Data with XLS sheet (You Can Build You own template)"
+	target='XLS Viewer' href="queryToXLS.jsp?<%=request.getQueryString()%>&seq=<%=j%>"
+><img border=0 src="images/icxls.gif"></img></a></em></font>
+<%}%> <%

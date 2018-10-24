@@ -1,0 +1,736 @@
+<html>
+<head>
+<title>Version history</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?introhistory.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Version
+		history <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('1.7',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.1.1',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+following changes have been incorporated. <br>
+
+<br>
+<b>Version 5.8 <br>
+</b>July 11, 2006 <br>
+
+<br>
+Enhancement: Added <span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Ftp.setDataPort</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Ftp.getDataPort</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods for specifying the local port to listen on in active
+connections. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Ftps.setShutdownCCC</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Ftps.getShutdownCCC</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods to define whether SSL socket should be shutdown after entering
+CCC (Clear Command Channel) mode. These functions were added to address
+some servers which do not correctly require the shutdown of the
+control-channel socket after processing CCC command. <br>
+Enhancement: Added automatic password masking when writing password to
+the debug stream. <br>
+Bug Fix: Fixed 2GB limitation in </span><span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Scp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+Bug Fix: Fixed issue in </span><span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Ftps.getNameListing</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+experienced in empty directories. <br>
+<b> <br>
+
+<br>
+Version 5.7 <br>
+</b>May 10, 2006 <br>
+
+<br>
+Enhancement: Added ASCII file transfer support for sftp servers using
+protocol versions prior to sftp version 4. <br>
+Enhancement: Added ability to get/set line terminator in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class when performing ASCII transfers with servers using sftp protocol
+prior to sftp version 4. See </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp.setLineTerminator</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Sftp.getLineTerminator&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">methods.
+<br>
+Enhancement: </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp.setDir</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+no longer checks whether the remote directory is valid due to some
+servers that do not support this functionality. A new </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp.isPathValid</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method has been added allowing you to check whether a path is valid
+while ensuring compatibility with all servers. <br>
+Enhancement: Added support for XCRC command allowing you to perform
+checksum operations against local and remote files to verify that files
+were transferred without any corruption of data. See </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp.checksum</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps.checksum</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods. <br>
+Enhancement: Added support for setting remote file permissions in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class using UNIX style chmod. See </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp.setFilePermissions</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+Enhancement: Set default connection timeout for </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class to 30000ms. <br>
+Enhancement: Set default protocol version for </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class to version 3 to avoid compatibility issues with servers that do
+not support version 4 of sftp protocol. <br>
+Bug Fix: Fixed issue with </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp.resumeUpload</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+Bug Fix: Fixed issue with </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps.clearCommandChannel</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+<b> <br>
+Version 5.6</b> <br>
+Apr. 6, 2006 <br>
+
+<br>
+Enhancement: Added adaptive transfer block size detection to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Scp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes resulting in improved performance of file transfers. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">clearCommandChannel</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpsTransfer</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class providing support for CCC command. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">getFeatures</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes to return a feature listing in response to FEAT command. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">getMachineDirListing</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes to get a directory listing using the MLSD command. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">getMachineFileListing</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes to get details on a file using the MLST command. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">setPrivateKey</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SshParameters</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class which takes a </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">java.security.KeyPair</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+argument instead of using a keystore. <br>
+Bug Fix: Updated </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpProgressEvent</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+in </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftp&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">and
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes so that when uploading using an </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">InputStream</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+the proper </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">getTotalBytes</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+is returned <br>
+
+<br>
+<b>Version 5.5</b> <br>
+Mar. 17, 2006 <br>
+
+<br>
+Enhancement: Added support for SCP protocol (secure copy over SSH). See
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.scp.Scp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+Enhancement: Added abilty to specify a different key exchange security
+provider using system property </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">jscape.kex.provider</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">.
+<br>
+Enhancement: Improved timeout support in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+
+<br>
+
+<br>
+<b>Version 5.4 <br>
+</b>Feb. 1, 2006 <br>
+
+<br>
+Enhancement: Added CCC (Clear Command Channel) support to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+Enhancement: Added ability to define valid host keys when using sftp
+protocol. See </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ssh.util.SshParameters.setHostKeys</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method and <a href=javaScript:parent.reDisplay('2.6.2.2',1,0)>Classes
+&gt; Sftp &gt; Connecting to an SSH server &gt; Validating host keys</a>
+topic for details.<b> <br>
+</b><b> <br>
+Version 5.3 <br>
+</b>Jan. 3, 2006 <br>
+
+<br>
+Enhancement: Added file resume support to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">,
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes allowing you to specify a different filename than the source
+filename. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpChangeDirEvent&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">to
+capture when remote directory is changed for FTP and FTPS protocols. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpCreateDirEvent</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+to capture when remote directory is created for FTP and FTPS protocols.
+<br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpDeleteDirEvent</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+to capture when remote directory is deleted for FTP and FTPS protocols.
+<br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpDeleteFileEvent</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+to capture when remote file is deleted for FTP and FTPS protocols. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpRenameFileEvent&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">to
+capture when remote file is renamed for FTP and FTPS protocols. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpChangeDirEvent</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+to capture when remote directory is changed for sftp protocol. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpCreateDirEvent</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+to capture when remote directory is created for sftp protocol. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpDeleteDirEvent</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+to capture when remote directory is deleted for sftp protocol. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpDeleteFileEvent</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+to capture when remote file is deleted for sftp protocol. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpRenameFileEvent</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+to capture when remote file is renamed for sftp protocol. <br>
+Enhancement: Added ability to upload a file using an input stream to the
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">,
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes. <br>
+<b> <br>
+
+<br>
+Version 5.2.2 <br>
+</b>Nov. 17, 2005 <br>
+
+<br>
+Bug Fix: Fix in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ftp.Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class that checks for error when suddenly losing connection when
+transferring a file. <br>
+Bug Fix: Fix issue in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class that reported some remote directories as invalid. <br>
+
+<br>
+
+<br>
+<b>Version 5.2.1</b> <br>
+Nov. 11, 2005 <br>
+
+<br>
+Enhancement: Improved performance for ASCII transfers in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes. <br>
+Bug Fix: Return -1 in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp.getResponseCode</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+if FTP server response cannot be parsed. <br>
+<b> <br>
+Version 5.2</b> <br>
+Oct. 4, 2005 <br>
+
+<br>
+Enhancement: Improved public-key authentication support in sftp
+protocol. <br>
+Enhancement: Improved exception handling in sftp protocol. <br>
+Bug Fix: Fixed issue experienced during authentication with some ftps
+servers. <br>
+<b> <br>
+Version 5.1</b> <br>
+Aug. 9, 2005 <br>
+
+<br>
+Enhancement: Changed default connection timeout for </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class to 30 seconds. <br>
+Enhancement: Improved handling of </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">PASV</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+server response in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes when communicating with FTP servers using a proxy, firewall or
+tunnel. <br>
+<b> <br>
+Version 5.0</b> <br>
+Jul. 22, 2005 <br>
+
+<br>
+Enhancement: Added support for FXP (site to site transfers) in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ftp.Fxp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ftps.Fxps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes. <br>
+Enhancement: Added proxy support to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class via </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">setProxyHost</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">setProxyAuthentication</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods. <br>
+
+<br>
+<b>Version 4.8</b> <br>
+Jun. 16, 2005 <br>
+
+<br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">setClientCertificates</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">setServerCertificates</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpsTransfer</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">login()</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">connect(boolean&nbsp;login)</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">classes.
+<br>
+
+<br>
+<b>Version 4.7 <br>
+</b>Jun. 6, 2005 <br>
+
+<br>
+Enhancement: Created separate versions of library to accomodate both IBM
+and Sun JVM. <br>
+Change: Changed order of MAC algorithms placing MD5 with higher priority
+than SHA1 in order to address MAC error on some SSH servers. <br>
+Change: Changed keystore type in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps.setClientCertificates</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps.setServerCertificates</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+to JKS from PKCS12 in order to accomodate importing of existing
+certificates.<b> <br>
+</b><b> <br>
+Version 4.6 <br>
+</b>May 18, 2005<b> <br>
+</b> <br>
+Enhancement: Improved performance of SFTP file transfers. <br>
+Enhancement: Changed default transfer block size in SFTP related classes
+to 4096. <br>
+Bug Fix: Fixed issue in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class where exception was not thrown if </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">setDir</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+was invoked with a file path instead of a directory. <br>
+Bug Fix: Fixed timeout issue in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ssh.SshSession</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+Bug Fix: Fixed issued in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class when downloading files to UNC paths.<b> <br>
+
+<br>
+Version 4.5 <br>
+</b>Apr. 22, 2005<b> <br>
+</b> <br>
+Enhancement: Added support for NAT in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ftp.Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ftp.Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes providing ability to set local address to use when issuing </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">PORT</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+commands in non-passive (active) mode. See </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp#setPortAddress</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps#setPortAddress</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods. <br>
+Enhancement: Added abiltity to specify a client certificate when using
+the </span><span style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ftps.Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.filetransfer</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+package. This package contains a </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FileTransfer&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">interface
+that is implemented by </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpTransfer</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">,
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">FtpsTransfer</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">,
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">FtpsImplicitTransfer</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">SftpTransfer</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes. A set of protocol independent listeners and event classes are
+also provided in this package. This new package benefits users who with
+to use all protocols but do not want to write separate code or wrappers
+for each protocol. <br>
+<b> <br>
+
+<br>
+Version 4.4</b> <br>
+Feb. 27, 2005 <br>
+
+<br>
+Enhancement: Improved authentication performance in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class <br>
+Enhancement: Improved parsing of UNIX directory listings in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes. <br>
+Bug Fix: Fixed issue communicating with older F-Secure servers <br>
+Bug Fix: Fixed NullPointerException encountered when using public-key
+authentication with invalid passphrase <br>
+
+<br>
+<b>Version 4.3</b> <br>
+Feb. 7, 2005 <br>
+
+<br>
+Enhancement: Improved performance of authentication process in SSH
+enabled components <br>
+Bug Fix: Fixed issue of establishing communications with some SFTP
+servers <br>
+
+<br>
+<b>Version 4.2</b> <br>
+Jan. 29, 2005 <br>
+
+<br>
+Enhancement: Added support for JDK 1.2.2 and above to both </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+classes <br>
+Enhancement: Added ftps-implicit protocol option to FTCL set protocol
+command <br>
+
+<br>
+<b>Version 4.1</b> <br>
+Jan. 25, 2005 <br>
+
+<br>
+Enhancement: Added support for Implicit SSL to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">class
+<br>
+Bug-Fix: Fixed issue communicating with VShell and F-Secure servers<b>
+<br>
+
+<br>
+Version 4.0</b> <br>
+Dec. 20, 2004 <br>
+
+<br>
+Enhancement: Added FTPS (FTP over SSL) component. <br>
+Enhancement: Added ASCII file transfer support to SFTP (FTP over SSH)
+component. <br>
+Change: All SFTP related events are now in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.events</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+package. <br>
+Change: Moved SshParameters class to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ssh.util</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+package. <br>
+
+<br>
+<b>Version 3.04</b> <br>
+Nov. 23, 2004 <br>
+
+<br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">promptmask</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+command to FTCL scripting language. <br>
+Bug Fix: Fixed issue with </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp#upload</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method <br>
+
+<br>
+<b>Version 3.0.3</b> <br>
+Oct. 25, 2004 <br>
+
+<br>
+Bug Fix: Fixed issue with </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp#resumeUpload</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method <br>
+
+<br>
+
+<br>
+<b>Version 3.0.2</b> <br>
+Sep. 9, 2004 <br>
+
+<br>
+Enhancement: Added prompt command to FTCL scripting language. <br>
+Enhancement: Improved memory utilization when resuming downloads. <br>
+
+<br>
+
+<br>
+<b>Version 3.0.1</b> <br>
+Aug. 23, 2004 <br>
+
+<br>
+Enhancement: Removed need for </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpFileParser</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+in SFTP component. <br>
+Bug Fix: Fixed </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.ftp.Ftp#download</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method where local file was created if remote file did not exist. <br>
+
+<br>
+
+<br>
+<b>Version 3.0</b> <br>
+Aug. 14, 2004 <br>
+
+<br>
+Enhancement: Added ZLIB compression support to SFTP component. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.Sftp#getNameListing</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+Enhancement: Added support for escaped characters (tabs, newlines,
+quotes etc.) in FTCL quoted strings. <br>
+Enhancement: Added </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.VShellParser</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class for parsing directory listings from VanDyke VShell server for
+Windows. <br>
+Bug Fix: Fixed synchronization issues that were encountered with VanDyke
+VShell server for Windows. <br>
+Bug Fix: Fixed issue in com.jscape.inet.ftp.Ftp#mdownload method
+experienced on some FTP servers. <br>
+Bug Fix: Fixed issue in com.jscape.inet.ftp.UnixParser class parsing
+symbolic links with no group. <br>
+Bug Fix: Fixed resume download issue in FTP and SFTP components. <br>
+
+<br>
+<b>Version 2.2</b> <br>
+Jun. 25, 2004 <br>
+
+<br>
+Enhancement: Added scripting support with FTCL (File Transfer Command
+Line) component <br>
+Enhancement: Much improved downloading speed for SFTP transfers <br>
+
+<br>
+<b>Version 2.1</b> <br>
+May 14, 2004 <br>
+
+<br>
+Enhancement: Added ability to authenticate with SFTP server using
+public-key authentication methods. See new constructor in
+com.jscape.inet.sshutil.SshParameters class. <br>
+Enhancement: Added ability to get filtered directory listings in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">class.
+See </span><span style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.Sftp#getDirListingAsString(String&nbsp;filter)</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+Enhancement: Added timeout support to </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. See </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.Sftp#setTimeout</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+Bug Fix: Fixed issue in </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">com.jscape.inet.sftp.Sftp#getDirListing(String&nbsp;filter)</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. Results are now properly filtered. <br>
+
+<br>
+
+<br>
+<b>Version 2.0</b> <br>
+Feb. 23, 2004 <br>
+
+<br>
+Enhancement: Rewrote SFTP component. SFTP no longer uses port forwarding
+but instead communicates directly with sftp subsystem provided by SSH. <br>
+Enhancement: Added resume upload/download capabilities to FTP and SFTP
+components. See </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp#resumeUpload</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftp#resumeDownload</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods. <br>
+Enhancement: Added NLST support with filter to FTP component. See </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp#getNameListing(String&nbsp;filter)</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+Bug Fix: Fixed issue in FTP component when performing a directory
+listing on NT FTP server with no files matching filter. <br>
+Bug Fix: Fixed date parsing issue in UnixParser class for FTP component.
+<br>
+
+<br>
+
+<br>
+<b>Version 1.0</b> <br>
+Sep. 15, 2003 <br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+</span></span>
+
+</body>
+</html>

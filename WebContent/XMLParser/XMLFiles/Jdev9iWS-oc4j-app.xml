@@ -1,0 +1,10 @@
+<?xml version = '1.0' encoding = 'windows-1256'?>
+<!DOCTYPE orion-application PUBLIC "-//Evermind//DTD J2EE Application runtime 1.2//EN" "http://xmlns.oracle.com/ias/dtds/orion-application.dtd">
+<orion-application>
+	<web-module id="SmartTool"
+		path="D:\MyWork\JavaWork\Jdev9iWS\SmartTool\public_html" />
+	<log>
+		<file path="Jdev9iWS-oc4j-app.log" />
+	</log>
+	<data-sources path="D:\MyWork\JavaWork\Jdev9iWS\Jdev9iWS-data-sources.xml" />
+</orion-application>

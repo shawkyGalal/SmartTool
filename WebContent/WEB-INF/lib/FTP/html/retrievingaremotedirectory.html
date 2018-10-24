@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>Retrieving a remote directory listing</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?retrievingaremotedirectory.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Retrieving
+		a remote directory listing <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.1.4.2',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.1.5.2',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Getting
+a directory listing as a String</b> <br>
+
+<br>
+To get a directory listing returned as a string you may use the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp#getDirListingAsString</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;get&nbsp;directory&nbsp;listing&nbsp;as&nbsp;a&nbsp;string</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+String&nbsp;dirListing&nbsp;=&nbsp;ftp.getDirListingAsString();&nbsp;</span><span
+	style="font-family: Courier New; font-size: 8pt; color: #000000">
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<b>Getting a directory listing as an Enumeration</b> <br>
+
+<br>
+In some cases you will want to evaluate the entries returned in a
+directory listing. In this case you will want to use the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftp#getDirListing</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. This method returns a </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">java.util.Enumeration</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+of </span><span style="font-family: Courier; font-size: 10pt; color: #000000">FtpFile</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">.
+Each </span><span style="font-family: Courier; font-size: 10pt; color: #000000">FtpFile</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance represents a read-only entry in the directory listing and may
+be queried for additional information. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;get&nbsp;directory&nbsp;listing</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Enumeration&nbsp;listing&nbsp;=&nbsp;ftp.getDirListing(); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;enumerate&nbsp;thru&nbsp;listing&nbsp;printing&nbsp;filename&nbsp;for&nbsp;each&nbsp;entry</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+<b>while</b>(listing.hasMoreElements())&nbsp;{ <br>
+&nbsp;&nbsp;FtpFile&nbsp;file&nbsp;=&nbsp;(FtpFile)listing.nextElement();
+<br>
+&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Filename:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;file.getFilename());
+<br>
+} <br>
+</span><span style="font-family: Courier New; font-size: 8pt; color: #000000">
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>See
+also</b> <br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+			href=javaScript:parent.reDisplay('2.1.4.2',1,0)>Setting your
+		remote directory</a> &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+
+</body>
+</html>

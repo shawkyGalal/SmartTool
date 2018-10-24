@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<SADAD>
+	<SignonRq>
+		<ClientDt>2004-10-28T01:01:07</ClientDt>
+		<LanguagePref>en-gb</LanguagePref>
+		<SignonProfile>
+			<Sender>SADAD-001</Sender>
+			<Receiver>003</Receiver>
+			<MsgCode>BCONRQ</MsgCode>
+		</SignonProfile>
+	</SignonRq>
+	<PresSvcRq>
+		<Status>
+			<StatusCode>0</StatusCode>
+			<ShortDesc>Success</ShortDesc>
+			<Severity>Info</Severity>
+		</Status>
+		<RqUID>E718A1F8-AB9C-309C-E033-0A101009309C</RqUID>
+		<BillConfirmationRq>
+			<AsyncRqUID>40832553-27e9-11d9-ba9f-000bcdb526f0</AsyncRqUID>
+			<UploadDt>2004-10-27T10:39:55</UploadDt>
+			<PrcDt>2004-10-28T01:01:01</PrcDt>
+			<SuccessRecordCount>1</SuccessRecordCount>
+			<ErrorRecordCount>0</ErrorRecordCount>
+		</BillConfirmationRq>
+	</PresSvcRq>
+</SADAD>

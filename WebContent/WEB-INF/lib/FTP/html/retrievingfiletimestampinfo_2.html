@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>Retrieving file timestamp information</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?retrievingfiletimestampinfo_2.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Retrieving
+		file timestamp information <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.8.5',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.3.1',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">You
+can retrieve the date a file was last modified using the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps#getFileTimestamp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. All filenames are relative to your current remote directory. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>
+<br>
+</b> <br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;get&nbsp;last&nbsp;modified&nbsp;date&nbsp;of&nbsp;image.gif</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Date&nbsp;date&nbsp;=&nbsp;ftps.getFileTimestamp(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"image.gif"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);&nbsp;</span><span
+	style="font-family: Courier New; font-size: 8pt; color: #000000">
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #FF0000"><b>Note</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps#getFileTimestamp</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		method utilizes a command that is supported by a majority of FTP
+		servers however is not officially recognized by RFC 959 so may not be
+		supported on some FTP servers. &nbsp;<br>
+		</span></span></td>
+		<td width="51"></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+		<td></td>
+		<td width="51"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+<b>See also</b> <br>
+
+<br>
+</span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+			href=javaScript:parent.reDisplay('2.2.4.2',1,0)>Setting your
+		remote directory</a> &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+
+</body>
+</html>

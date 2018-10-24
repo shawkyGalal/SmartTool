@@ -1,0 +1,377 @@
+<html>
+<head>
+<title>Relative v.s. absolute paths</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="getdir">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?relativev_s_absolutepaths.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Relative
+		v.s. absolute paths <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.5',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.7',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Several
+commands in the FTCL language make reference to relative and absolute
+paths. Understanding how relative and absolute paths are used in the
+local and remote environments is important to using the FTCL commands
+properly. The commands that make use of relative and/or absolute paths
+include: <br>
+
+<br>
+<a href=scriptingcommands.html#append>append</a> <br>
+<a href=scriptingcommands.html#cd>cd</a> <br>
+<a href=scriptingcommands.html#del>del</a> <br>
+<a href=scriptingcommands.html#deldir>deldir</a> <br>
+<a href=scriptingcommands.html#get>get</a> <br>
+<a href=scriptingcommands.html#getdir>getdir</a> <br>
+<a href=scriptingcommands.html#lcd>lcd</a> <br>
+<a href=scriptingcommands.html#lcopy>lcopy</a> <br>
+<a href=scriptingcommands.html#ldel>ldel</a> <br>
+<a href=scriptingcommands.html#ldeldir>ldeldir</a> <br>
+<a href=scriptingcommands.html#lmove>lmove</a> <br>
+<a href=scriptingcommands.html#lrename>lrename</a> <br>
+<a href=scriptingcommands.html#put>put</a> <br>
+<a href=scriptingcommands.html#putdir>putdir</a> <br>
+<a href=scriptingcommands.html#rename>rename</a> <br>
+<a href=scriptingcommands.html#setlogfile>set logfile</a> <br>
+<a href=scriptingcommands.html#setprivatekey>set privatekey</a> <br>
+
+<br>
+
+<br>
+<b>Local Environment</b> <br>
+
+<br>
+In the local environment, absolute paths are defined by providing the
+full system path to the desired file or directory. Relative paths are
+defined by providing the path relative to the current local directory.
+The current local directory may be set using the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">lcd</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+command. This directory is used to calculate the absolute path. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+Relative Paths</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+<table border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Current
+		Local Directory</b> <br>
+		</span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Path
+		<br>
+		</b></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Resulting
+		Path <br>
+		</b></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/tmp<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">logs<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/tmp/logs<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/tmp<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">logs.txt<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/tmp/logs.txt<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/tmp<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">logs/logs.txt<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/tmp/logs/logs.txt<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+</table>
+<br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+Absolute Paths</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+When using absolute paths the Current Local Directory is ignored.
+Instead the absolute path is determined by the path provided. <br>
+
+<br>
+<table border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Current
+		Local Directory</b> <br>
+		</span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Path</b>
+		<br>
+		</span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Resulting
+		Path</b> <br>
+		</span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/tmp
+		<br>
+		</span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/www/images<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/www/images<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/tmp<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/logs/archive<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">c:/logs/archive<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+</table>
+<br>
+
+<br>
+<b>Remote Environment</b> <br>
+
+<br>
+In the remote environment, absolute paths are defined by providing the
+full path to the desired file or directory as understood by the FTP/SFTP
+server. Relative paths are defined by providing the path relative to the
+current remote directory. The current remote directory may be set using
+the </span><span style="font-family: Courier; font-size: 10pt; color: #000000">cd</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+command. This directory is used to calculate the absolute path. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+Relative Paths</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+<table border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Current
+		Remote Directory</b> <br>
+		</span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Path
+		</b> <br>
+		</span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Resulting
+		Path</b> <br>
+		</span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/var<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">logs<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/var/logs<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/var<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">logs.txt<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/var/logs.txt<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/var<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">logs/logs.txt<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/var/logs/logs.txt<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+</table>
+<br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+Absolute Paths</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+When using absolute paths the Current Local Directory is ignored.
+Instead the absolute path is determined by the path provided. <br>
+
+<br>
+<table border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Current
+		Remote Directory</b> <br>
+		</span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Path</b>
+		<br>
+		</span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Resulting
+		Path</b> <br>
+		</span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/var<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/home/users<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/home/users<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/var/<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/home/users/jsmith<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="292"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">/home/users/jsmith<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+</table>
+<br>
+</span></span>
+
+</body>
+</html>

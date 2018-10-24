@@ -1,0 +1,332 @@
+<html>
+<head>
+<title>Listening for events</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?listeningforevents7.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Listening
+		for events <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.6.2.5',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.6.3.2',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">For
+an object to listen for events published by the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class the following steps are required: <br>
+
+<br>
+1. Set object to implement </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpListener</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+or extend </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpAdapter</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+2. Overload event handling methods. <br>
+3. Subscribe object to receive events published by </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance. <br>
+
+<br>
+The </span><span style="font-family: Courier; font-size: 10pt; color: #000000">SftpListener</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class is a pure interface and can be used in cases where the class you
+defined to listen for events already extends another class type. The </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpAdapter</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class implements the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpListener</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+interface and can be used in cases where there is no need for class
+inheritance. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #FF0000"><b>Note</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Unless
+		your class requires inheritance it is generally easier to use the <span
+			style="font-family: Courier; font-size: 10pt; color: #000000">SftpAdapter</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		class as it provides default implementations for all the event handler
+		methods defined in the </span><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">SftpListener</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		interface. This allows you to overload only the event handler methods
+		that you are interested in. &nbsp;<br>
+		</span></span></td>
+		<td width="51"></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+		<td></td>
+		<td width="51"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+The example below demonstrates using the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpListener</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><b>import</b>&nbsp;com.jscape.inet.sftp.*;
+<br>
+<b>import</b>&nbsp;com.jscape.inet.sftp.events.*; <br>
+<b>import</b>&nbsp;com.jscape.inet.ssh.util.SshParameters; <br>
+
+<br>
+<b>public</b>&nbsp;<b>class</b>&nbsp;MySftpListener&nbsp;<b>implements</b>&nbsp;SftpListener&nbsp;{
+<br>
+
+<br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>void</b>&nbsp;connected(SftpConnectedEvent&nbsp;event)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Connected&nbsp;to&nbsp;host:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;event.getHostname());
+<br>
+
+<br>
+&nbsp;&nbsp;} <br>
+
+<br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>void</b>&nbsp;disconnected(SftpDisconnectedEvent&nbsp;event)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Disconnected&nbsp;from&nbsp;host:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;event.getHostname());
+<br>
+
+<br>
+&nbsp;&nbsp;} <br>
+
+<br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>void</b>&nbsp;download(SftpDownloadEvent&nbsp;event)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;process&nbsp;event</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;} <br>
+
+<br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>void</b>&nbsp;upload(SftpUploadEvent&nbsp;event)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;&nbsp;&nbsp;&nbsp;process&nbsp;event</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;} <br>
+
+<br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>void</b>&nbsp;progress(SftpProgressEvent&nbsp;event)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;&nbsp;&nbsp;&nbsp;process&nbsp;event</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;} <br>
+
+<br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>void</b>&nbsp;dirListing(SftpListingEvent&nbsp;event)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;&nbsp;&nbsp;&nbsp;process&nbsp;event</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;} <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>static</b>&nbsp;<b>void</b>&nbsp;main(String[]&nbsp;args)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>try</b>&nbsp;{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;hostname&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"ftp.host.com"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;username&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"jsmith"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;password&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"secret"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;connection&nbsp;parameters</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SshParameters&nbsp;sshParams&nbsp;=&nbsp;<b>new</b>&nbsp;SshParameters(hostname,username,password);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sftp&nbsp;sftp&nbsp;=&nbsp;<b>new</b>&nbsp;Sftp(sshParams);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;subscribe&nbsp;listener&nbsp;to&nbsp;published&nbsp;SFTP&nbsp;events</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sftp.addSftpListener(<b>new</b>&nbsp;MySftpListener());
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;connect&nbsp;then&nbsp;disconnect</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sftp.connect(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sftp.disconnect(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<b>catch</b>(SftpException&nbsp;e)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;} <br>
+} <br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+The example below demonstrates using the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">SftpAdapter</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><b>import</b>&nbsp;com.jscape.inet.sftp.*;
+<br>
+<b>import</b>&nbsp;com.jscape.inet.sftp.events.*; <br>
+<b>import</b>&nbsp;com.jscape.inet.ssh.util.SshParameters; <br>
+
+<br>
+<b>public</b>&nbsp;<b>class</b>&nbsp;MySftpAdapter&nbsp;<b>extends</b>&nbsp;SftpAdapter&nbsp;{
+<br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>void</b>&nbsp;connected(SftpConnectedEvent&nbsp;evt)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Connected&nbsp;to&nbsp;host:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;evt.getHostname());
+<br>
+&nbsp;&nbsp;} <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>void</b>&nbsp;disconnected(SftpDisconnectedEvent&nbsp;evt)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Disconnected&nbsp;from&nbsp;host:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;evt.getHostname());
+<br>
+&nbsp;&nbsp;} <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>static</b>&nbsp;<b>void</b>&nbsp;main(String[]&nbsp;args)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>try</b>&nbsp;{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;hostname&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"ftp.host.com"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;username&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"jsmith"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;password&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"secret"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;connection&nbsp;parameters</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SshParameters&nbsp;sshParams&nbsp;=&nbsp;<b>new</b>&nbsp;SshParameters(hostname,username,password);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sftp&nbsp;sftp&nbsp;=&nbsp;<b>new</b>&nbsp;Sftp(sshParams);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;subscribe&nbsp;listener&nbsp;to&nbsp;published&nbsp;SFTP&nbsp;events</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sftp.addSftpListener(<b>new</b>&nbsp;MySftpAdapter());
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;connect&nbsp;then&nbsp;disconnect</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sftp.connect(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sftp.disconnect(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<b>catch</b>(SftpException&nbsp;e)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;} <br>
+}</span><span style="font-family: Courier New; font-size: 8pt; color: #000000">
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span></span>
+
+</body>
+</html>

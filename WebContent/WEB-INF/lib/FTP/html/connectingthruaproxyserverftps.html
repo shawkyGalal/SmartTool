@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>Connecting thru a proxy server</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?connectingthruaproxyserverftps.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Connecting
+		thru a proxy server <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.2.6',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.2.8',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+<span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+component allows for connections through SOCKS4 and SOCKS5 proxy
+servers. To use a proxy server invoke the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps#setProxyHost</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method passing a proxy hostname and port as arguments. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;proxy&nbsp;information</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+String&nbsp;proxyHost&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"10.0.0.1"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+<b>int</b>&nbsp;proxyPort&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">2121</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;Ftps&nbsp;instance&nbsp;and&nbsp;set&nbsp;proxy&nbsp;information</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Ftps&nbsp;ftps&nbsp;=&nbsp;<b>new</b>&nbsp;Ftp(hostname,username,password);
+<br>
+ftps.setProxyHost(proxyHost,proxyPort); <br>
+ftps.connect();</span><span
+	style="font-family: Courier New; font-size: 8pt; color: #000000">
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+If your proxy requires authentication you can set this using the
+Ftps#setProxyAuthentication method. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000">String&nbsp;proxyUsername&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"jsmith"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+String&nbsp;proxyPassword&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"secret"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+
+<br>
+ftps.setProxyAuthentication(proxyUsername,proxyPassword);</span><span
+	style="font-family: Courier New; font-size: 8pt; color: #000000">
+<br>
+
+<br>
+
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>See
+also</b> <br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+			href=javaScript:parent.reDisplay('2.2.2.6',1,0)>Connecting from
+		behind a firewall</a> &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+
+</body>
+</html>

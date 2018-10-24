@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Establishing a connection</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?establishingaconnection2.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Establishing
+		a connection <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.3.2',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.3.4',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">In
+order to begin a FXP session you must first create two <span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Ftp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instances, one representing the source server and another representing
+the destination server and establish connections to both. Upon
+establishing a connection you may create a new </span><span
+	style="font-family: Courier New; font-size: 9pt; color: #000000">Fxp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance that will be used to transfer files between the source and
+destination servers. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;create&nbsp;source&nbsp;and&nbsp;destination&nbsp;servers</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Ftp&nbsp;source&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;Ftp(srcHostname,srcUsername,srcPassword);
+<br>
+Ftp&nbsp;destination&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;Ftp(destHostname,destUsername,destPassword);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;establish&nbsp;connection</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+source.connect(); <br>
+destination.connect(); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;create&nbsp;Fxp&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Fxp&nbsp;fxp&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;Fxp();</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+</span></span>
+
+</body>
+</html>

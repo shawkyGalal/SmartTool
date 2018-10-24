@@ -1,0 +1,39 @@
+<script type="text/javascript" src="/SmartTool/includes/AJAX_new.js"></script>
+<script type="text/javascript" src="/SmartTool/includes/smartTool.js"></script>
+<!--
+<script type="text/javascript" src="/SmartTool/jQueryAssets/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/SmartTool/jQueryAssets/jquery-1.10.2.js"></script>
+-->
+<script type="text/javascript" src="/SmartTool/jQueryAssets/jquery-ui.js"></script>
+
+
+<link href="/SmartTool/jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/SmartTool/jQueryAssets/jquery-ui.css">
+<link href="/SmartTool/jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+function performAction(action)
+{
+	var v_url = '/SmartTool/includes/dbTransc.jsp?'+ action+'=Y' ; 
+	sendAjaxRequestToJsp( v_url , 'sysMessage' ) ; 
+	$( "#sysMessage" ).dialog({modal: true}, { position: { my: "center center", at: "center center", of: window  } });
+}
+</script>
+
+		<a href = 'javascript: closeWindow(); ' ><img title="إغلاق-Close" src="/SmartTool/images/exit.png" width="24"></a>
+		<a href = "javascript:performAction('RollBack');" > 
+			<img src="/SmartTool/images/rollback.gif" 
+				title="RollBack Transactions الغاء جميع التعديلات "
+				onClick="return confirm('سوف يتم الغاء جميع التعديلات التى قمت بها. هل انت متأكد ؟  Are you sure you want to RollBack Your Transaction(s)?');"
+				width="25" height="25" >
+		</a>
+	
+				
+		<a href = "javascript:performAction('Commit');" >				
+			<img src="/SmartTool/images/save.gif" 
+				title="Commit Transactions حفظ نهائى لجميع التعديلات "
+				onClick="return confirm('سوف يتم حفظ نهائى لجميع التعديلات التى قمت بها. هل انت متأكد؟ Are you sure you want to Commit Your Transaction(s)?');"
+				width="25" height="25" >
+		</a>
+		
+

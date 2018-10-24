@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Resuming downloads</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?resumingdownloads2.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Resuming
+		downloads <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.7.6',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.8.1',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">If
+a file fails to download completely you can resume the download using
+any of the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps#resumeDownload</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods. Prior to using the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps#resumeDownload</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method you must first determine how much of the file in bytes was
+successfully downloaded. To do this you may use the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">java.io.File.length</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method which will return the length of the local file in bytes. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;get&nbsp;length&nbsp;of&nbsp;local&nbsp;file</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080">long</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;offset&nbsp;=&nbsp;new&nbsp;File("c:/setup.zip").length();
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;set&nbsp;local&nbsp;directory</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+ftps.setLocalDir(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;File(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"c:/"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">));
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;resume&nbsp;file&nbsp;download&nbsp;starting&nbsp;from&nbsp;offset</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+ftps.resumeDownload("setup.zip",offset); <br>
+
+<br>
+
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #FF0000"><b>Note</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Resuming
+		downloads is only possible when transferring files in binary mode.
+		Resuming a transfer in ASCII mode is not supported. &nbsp;<br>
+		</span></td>
+		<td width="51"></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+		<td></td>
+		<td width="51"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span>
+
+</body>
+</html>

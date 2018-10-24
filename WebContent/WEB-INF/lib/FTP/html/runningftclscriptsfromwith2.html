@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>Running FTCL scripts from within Java</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?runningftclscriptsfromwith2.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Running
+		FTCL scripts from within Java <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.9',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.11',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">FTCL
+scripts may be processed from within Java code by creating a new <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FTCL</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance and invoking the appropriate execute() method. Scripts may be
+executed from a file or from an array of bytes. The necessary FTCL
+classes are located in the Secure FTP Factory sftp.jar file. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><b>import</b>&nbsp;com.jscape.ftcl.FTCL;
+<br>
+<b>import</b>&nbsp;com.jscape.ftcl.FTCLException; <br>
+
+<br>
+<b>import</b>&nbsp;java.io.File; <br>
+
+<br>
+<b>public</b>&nbsp;<b>class</b>&nbsp;FTCLExample&nbsp;{ <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>static</b>&nbsp;<b>void</b>&nbsp;main(String[]&nbsp;args)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;new&nbsp;FTCL&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FTCL&nbsp;ftcl&nbsp;=&nbsp;<b>new</b>&nbsp;FTCL();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;load&nbsp;script&nbsp;file</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;File&nbsp;script&nbsp;=&nbsp;<b>new</b>&nbsp;File(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"c:/ftpscript.txt"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;execute&nbsp;script&nbsp;and&nbsp;capture&nbsp;any&nbsp;exceptions</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>try</b>&nbsp;{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftcl.execute(script);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<b>catch</b>(FTCLException&nbsp;fe)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fe.printStackTrace(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;} <br>
+}&nbsp; <br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><b>import</b>&nbsp;com.jscape.ftcl.FTCL;
+<br>
+<b>import</b>&nbsp;com.jscape.ftcl.FTCLException; <br>
+
+<br>
+<b>public</b>&nbsp;<b>class</b>&nbsp;FTCLExample&nbsp;{ <br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;<b>public</b>&nbsp;<b>static</b>&nbsp;<b>void</b>&nbsp;main(String[]&nbsp;args)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;new&nbsp;FTCL&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;FTCL&nbsp;ftcl&nbsp;=&nbsp;<b>new</b>&nbsp;FTCL();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;buffer&nbsp;that&nbsp;contains&nbsp;commands&nbsp;to&nbsp;execute</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;StringBuffer&nbsp;buffer&nbsp;=&nbsp;<b>new</b>&nbsp;StringBuffer();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;buffer.append(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"set&nbsp;hostname&nbsp;\"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">ftp.myserver.com\<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"\r\n"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;buffer.append(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"set&nbsp;username&nbsp;\"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">jsmith\<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"\r\n"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;buffer.append(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"set&nbsp;password&nbsp;\"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">secret\<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"\r\n"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;buffer.append(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"connect\r\n"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;buffer.append(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"dir\r\n"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;buffer.append(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"disconnect\r\n"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;execute&nbsp;script&nbsp;and&nbsp;capture&nbsp;any&nbsp;exceptions</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>try</b>&nbsp;{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>byte</b>[]&nbsp;data&nbsp;=&nbsp;buffer.toString().getBytes();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ftcl.execute(data);&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<b>catch</b>(FTCLException&nbsp;fe)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fe.printStackTrace(); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;} <br>
+}</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+</span></span>
+
+</body>
+</html>

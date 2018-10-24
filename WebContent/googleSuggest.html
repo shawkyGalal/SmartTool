@@ -1,0 +1,82 @@
+
+<style>
+#targetDiv {
+	background-color: #EEDDBB;
+	width: 45%;
+}
+</style>
+
+<script language="javascript">
+      var XMLHttpRequestObject = false; 
+
+      if (window.XMLHttpRequest) {
+        XMLHttpRequestObject = new XMLHttpRequest();
+      } 
+      else if (window.ActiveXObject) {
+        XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      else {
+    	  XMLHttpRequestObject = new XMLHttpRequest();
+      }
+      function getData(dataSource) 
+      { 
+        if(XMLHttpRequestObject) {
+          XMLHttpRequestObject.open("GET", dataSource); 
+
+          XMLHttpRequestObject.onreadystatechange = function() 
+          { 
+            if (XMLHttpRequestObject.readyState == 4 && 
+              XMLHttpRequestObject.status == 200) {
+                var targetDiv = document.getElementById("targetDiv");
+                targetDiv.innerHTML = XMLHttpRequestObject.responseText;
+                
+            } 
+          } 
+
+          XMLHttpRequestObject.send(null); 
+        }
+      }
+
+      function getGoogleSuggest() 
+      {
+        var input = document.getElementById("text1");
+
+        if (input.value) {
+          getData("http://www.google.com/complete/search?hl=en&js=true&qu=" + input.value);
+          //getData("googleSuggest.php?query=" + input.value);
+        } 
+        else {
+          var targetDiv = document.getElementById("targetDiv");
+
+          targetDiv.innerHTML = "<div></div>";
+        }
+      }
+
+      function sendRPCDone(unusedVariable, searchTerm, arrayTerm, 
+        arrayResults, unusedArray) 
+      {
+        var displayData = "<table>";
+        var loopIndex;
+
+        if (arrayResults.length != 0) {
+          for (var loopIndex = 0; loopIndex < arrayResults.length; 
+            loopIndex++) {
+            displayData += "<tr><td>" +
+            "<a href='http://www.google.com/search?q=" + 
+            arrayTerm[loopIndex] + "'>" + arrayTerm[loopIndex] + 
+            '</a></td><td>' + arrayResults[loopIndex] + "</td></tr>";
+          }
+        }
+
+        displayData += "</table>";
+
+        var targetDiv = document.getElementById("targetDiv");
+
+        targetDiv.innerHTML = displayData;
+      }
+    </script>
+Google Live Search :
+<input id="text1" type="text" name="text1" onkeyup="getGoogleSuggest()">
+
+<div rows="3" cols="10" id="targetDiv"></div>
+

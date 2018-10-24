@@ -1,0 +1,172 @@
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type"
+	content="text/html; charset=windows-1256">
+<title>Query List</title>
+<head>
+Query List
+</head>
+<body>
+
+<p>
+<HEAD>
+<script language='JavaScript'>                                                                    
+ function changeColor(name){                                                                        
+     eval ('document.all.'+ name + ".style.backgroundColor='#ffcc00'");                           
+   	 var index=0;                                                                                   
+     for (var i=0; i<document.anchors.length; i++)                                                  
+        {                                                                                           
+          if (document.anchors[i].name ==name)                                                      
+ 	           {                                                                                      
+         			index=i;                                                                              
+ 	             break;                                                                               
+ 	            }                                                                                     
+ 		     }                                                                                          
+      document.addForm.tableName.value=document.anchors[index].tableName ;                                    
+      document.addForm.selectedId.value=document.anchors[index].id;                            
+      document.addForm.headerId.value=document.anchors[index].headerId;                            
+      document.moveForm.selectedId.value=document.anchors[index].id;                            
+      document.moveForm.selectedHeaderId.value=document.anchors[index].headerId;                            
+      document.moveForm.tableName.value=document.anchors[index].tableName ;                                    
+      document.deleteForm.tableName.value=document.anchors[index].tableName ;                                    
+      document.deleteForm.selectedId.value=document.anchors[index].id;                            
+      document.deleteForm.headerId.value=document.anchors[index].headerId;                            
+      document.deleteForm.isLeaf.value=document.anchors[index].isLeaf;                            
+      if (document.deleteForm.selectedId.value=='0' || document.deleteForm.selectedId.value==""  || document.deleteForm.isLeaf.value=='false')    
+      {                                                   
+      document.deleteForm.submitDelete.disabled=true;     
+      document.deleteForm.submitDelete.style.background="url('/Support/images/deleterecd.gif')" ;  
+      }                                                   
+      else {document.deleteForm.submitDelete.disabled=false;  
+      document.deleteForm.submitDelete.style.background="url('/Support/images/deleterec.gif')" ;  
+      }     
+      if (document.deleteForm.selectedId.value=="" ) 
+      {document.RecycleBinForm.submit.disabled=true;     
+       document.RecycleBinForm.submit.style.background="url('/Support/images/rbd.gif')" ;}     
+      else {document.RecycleBinForm.submit.disabled=false;      
+       document.RecycleBinForm.submit.style.background="url('/Support/images/rba.gif')" ;     
+       }     
+      if (document.deleteForm.selectedId.value=="" ) 
+      {document.addForm.submit.disabled=true;     
+       document.addForm.submit.style.background="url('/Support/images/addnewd.gif')" ;}    
+      else {document.addForm.addSubmit.disabled=false;       
+       document.addForm.addSubmit.style.background="url('/Support/images/addnew.gif')" ;     
+       }     
+      if ( document.moveForm.selectedId==null ) 
+      {document.moveForm.move.disabled=true;     
+       document.moveForm.copy.disabled=true;     
+       document.moveForm.move.style.background="url('/Support/images/moveItem.gif')" ;}    
+      else {document.moveForm.move.disabled=false;       
+            document.moveForm.copy.disabled=false;       
+       document.moveForm.move.style.background="url('/Support/images/moveItem.gif')" ;     
+       document.moveForm.copy.style.background="url('/Support/images/moveItem.gif')" ;     
+       }     
+     }//------end of javascript function                                                                       
+ function UnselectAllLinks()                                                                        
+    {                                                                                               
+     for (var i=0; i<document.anchors.length; i++)                                                  
+        {                                                                                           
+          eval ('document.all.' + document.anchors[i].name + ".style.backgroundColor='#FFFFFF'"); 
+        }                                                                                           
+     }                                                                                              
+ </script>
+</HEAD>
+<Body>
+<p><img src="../../../temp/toolbar_icon_reload_active.gif"
+	width="30" height="30">
+<table border=0>
+	<tr>
+		<td nowrap>
+		<form name='addForm' target=mainFrame method='get'
+			action='queryInsert.jsp'>
+		<p><input type='hidden' name='selectedId'> <input
+			type='hidden' name='headerId'> <input type='hidden'
+			name='tableName'></p>
+		<p><input type='submit'
+			title='Add an Item Under The Selected Item' name='addSubmit' value=''
+			style='background-image: "url(&amp;#039;/images/toolbar_icon_reload_active.gif&amp;#039;)"; background-repeat: repeat; background-attachment: scroll; width: 50; hieght: 100; background-position: 0% 0%'>
+		</p>
+		</form>
+		</td>
+		<td nowrap>
+		<form name='RecycleBinForm' target=mainFrame method='post' action=''>
+		<input type='hidden' name='headerId'> <input type='hidden'
+			name='id'> <input type='hidden' name='tableName'> <input
+			type='submit' title='Show The Deleted Items Under The Selected Item'
+			name='submit' value=' ' disabled=true
+			style='background-image: url(&#039;/Support/images/rbd.gif&#039;); background-repeat: repeat; background-attachment: scroll; width: 32; hieght: 70; height: 32; background-position: 0% 50%'>
+		</form>
+		</td>
+		<td nowrap>
+		<form name='deleteForm' method='get' action='/Support/queryTree.jsp'>
+		<input type='hidden' name='selectedId'> <input type='hidden'
+			name='headerId'> <input type='hidden' name='tableName'>
+		<input type='hidden' name='isLeaf'> <input type='submit'
+			title='Delete The Selected Item'
+			onClick='return confirm("Are You sure You Want To Delete This Item");'
+			name='submitDelete' value='' disabled=true
+			style='background-image: url(&#039;/Support/images/deleterecd.gif&#039;); background-repeat: repeat; background-attachment: scroll; width: 32; hieght: 70; height: 32; background-position: 0% 50%'>
+		</form>
+		</td>
+		<td nowrap>
+		<form name='TreeForm' method='get' action='queryTree.jsp'><input
+			border=1 type='image' name='openAll' src=/Support/images/expand.gif
+			title='Open All Nodes'> <input border=1 type='image'
+			name='closeAll' src=/Support/images/collapse.gif
+			title='Close All Nodes'></form>
+		</td>
+		<td nowrap>
+		<form name=moveForm action='/Support/queryTree.jsp'><input
+			type='hidden' name='tableName'> <input type='submit'
+			title='Copy the Selected Item To Another Parent' name='refreshAll'
+			value='refreshAll'> <input type='submit'
+			title='Copy the Selected Item To Another Parent' name='copy'
+			value='copy' disabled='true'
+			onClick='if (document.moveForm.desc.value==""){alert("Please Select New Parent Node First"); return false; }else return true;'>
+		<input type='submit'
+			title='Move the Selected Item Under Another Parent' name='move'
+			value='move' disabled='true'
+			onClick='if (document.moveForm.desc.value==""){alert("Please Select New Parent Node First"); return false; }else return true;'>
+		<input type='hidden' name='selectedId' size=5> To <input
+			type='hidden' name='desc' size=5
+			onchange='if (this.value==null || this.value==""){document.moveForm.move.disabled=true;} else {document.moveForm.move.disabled=false;}'>
+		<a href=''
+			onmouseover="this.href='LUMoveForm.jsp?tableName=LU_QUERIES&excludedId='+document.addForm.selectedId.value;"
+			name='xxxxx' target='New'>Select New Parent Node</a> <input
+			type='hidden' name='selectedHeaderId'> <input type='hidden'
+			name='newParentId'> <input type='hidden' name='newHeaderId'>
+		</form>
+		</td>
+	</tr>
+</table>
+<table border=0>
+	<tr>
+		<td nowrap>
+
+		<p style="margin-top: -4; margin-bottom: -4"><a
+			href=queryTree.jsp?nodeToBeToggled=73><img border=0
+			src=images/tree_open_bottom.gif width=22 height=22><img
+			border=0 src=images/tree_folder_open.gif width=22 height=22></a>ROOT
+
+		
+		<p style="margin-top: -4; margin-bottom: -4"><img border=0
+			src=images/white_container_bottom_left.gif width=22 height=22><a
+			href=/Support/queryTree.jsp?nodeToBeToggled=74><img border=0
+			src=images/tree_closed_bottom.gif width=22 height=22><img
+			border=0 src=images/tree_folder_closed.gif width=22 height=22></a><a
+			href=editAndExecute.jsp?id=0&tableName=LU_QUERIES target=mainFrame
+			style='background-color: #FFFFFF' id='0' isLeaf='false'
+			tableName='LU_QUERIES' headerId='0' name='_LU_QUERIES0'
+			onClick='UnselectAllLinks(); changeColor(this.name);'>QUERIES</a><a
+			href=queryInsert.jsp?parentId=0&tableName=LU_QUERIES&headerId=0
+			target=mainFrame> <img border=0 src=/Support/images/toolplus.gif
+			width=14 height=14 alt='Add Sub Item'></a>
+		</td>
+	</tr>
+</table>
+</p>
+<p align="center"><a href="selectQueryFile.jsp">Queries from FS</a></p>
+</body>
+</html>

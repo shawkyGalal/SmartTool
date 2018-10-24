@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>Event types</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?eventtypes_2.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Event
+		types <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.3.1',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.4.1',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+<span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class is the source for several FTP related events. All events may be
+captured by registering your class as a listener by implementing the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpListener</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class or subclassing the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">FtpAdapter</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. These events are described below. <br>
+
+<br>
+<table border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Event</b>
+		<br>
+		</span></td>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>Description</b>
+		<br>
+		</span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">FtpConnectedEvent<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">FtpConnectedEvent</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		is published once a connection to the server has been established. See
+		JavaDoc for details on this event. <br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">FtpDisconnectedEvent<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">FtpDisconnectedEvent</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		is published once the connection to the server has been released. See
+		JavaDoc for details on this event. <br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">FtpDownloadEvent<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">FtpDownloadEvent</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		is published for each file downloaded from the server. See JavaDoc for
+		details on this event. <br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">FtpUploadEvent<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">FtpUploadEvent</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		is published for each file uploaded to the server. See JavaDoc for
+		details on this event. <br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">FtpListingEvent<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">FtpListingEvent</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		is published for each directory listing retrieved from the server. See
+		JavaDoc for details on this event. <br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">FtpProgressEvent<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">FtpProgressEvent</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		is published one or more times during the transfer of files to / from
+		the server. See JavaDoc for details on this event. <br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">FtpCommandEvent<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">FtpCommandEvent</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		is published for each command sent to the server. See JavaDoc for
+		details on this event. <br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000">FtpResponseEvent<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="320"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">FtpResponseEvent</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		is published for each response received from the server. See JavaDoc
+		for details on this event. <br>
+		</span></span></td>
+	</tr>
+</table>
+<br>
+</span></span>
+
+</body>
+</html>
