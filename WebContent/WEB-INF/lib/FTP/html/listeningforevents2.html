@@ -1,0 +1,282 @@
+<html>
+<head>
+<title>Listening for events</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?listeningforevents2.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Listening
+		for events <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.3.7',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.3.8.2',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">For
+an object to listen for events published by the <span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">Fxp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class the following steps are required: <br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="28"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">1.</span></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Set
+		object to implement <span
+			style="font-family: Courier; font-size: 10pt; color: #000000">FxpListener</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		class. &nbsp;<br>
+		</span></span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="28"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">2.</span></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Overload
+		event handling methods. &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="28"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">3.</span></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Subscribe
+		object to receive events published by <span
+			style="font-family: Courier; font-size: 10pt; color: #000000">Fxp</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		instance. &nbsp;<br>
+		</span></span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+		<td></td>
+	</tr>
+</table>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">import</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;com.jscape.inet.ftp.*;
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">class</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;FxpExample&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">implements</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;FxpListener&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>/**
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Create&nbsp;new&nbsp;FxpExample&nbsp;instance
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*/</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;FxpExample()&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;create&nbsp;new&nbsp;Fxp&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fxp&nbsp;fxp&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;Fxp();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;subscribe&nbsp;to&nbsp;listener</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fxp.addFxpListener(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">this</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;write&nbsp;additional&nbsp;code&nbsp;here&nbsp;to&nbsp;do&nbsp;transfer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>/**
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Invoked&nbsp;when&nbsp;FXP&nbsp;transfer&nbsp;starts&nbsp;for&nbsp;a&nbsp;file.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* <br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;ev&nbsp;a&nbsp;&lt;code&gt;FxpStartEvent&lt;/code&gt;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;FxpStartEvent <br>
+&nbsp;&nbsp;&nbsp;&nbsp;*/</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">void</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;fxpStart(FxpStartEvent&nbsp;ev)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ftp&nbsp;source&nbsp;=(Ftp)ev.getSource();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ftp&nbsp;dest&nbsp;=&nbsp;(Ftp)ev.getDestination();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Starting&nbsp;transfer&nbsp;of&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;ev.getFilename()&nbsp;+&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"&nbsp;from&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source.getHostname()&nbsp;+&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"&nbsp;to&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;dest.getHostname());
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>/**
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Invoked&nbsp;when&nbsp;FXP&nbsp;transfer&nbsp;ends&nbsp;for&nbsp;a&nbsp;file.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* <br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;ev&nbsp;a&nbsp;&lt;code&gt;FxpEndEvent&lt;/code&gt;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;FxpEndEvent <br>
+&nbsp;&nbsp;&nbsp;&nbsp;*/</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">void</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;fxpEnd(FxpEndEvent&nbsp;ev)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ftp&nbsp;source&nbsp;=(Ftp)ev.getSource();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ftp&nbsp;dest&nbsp;=&nbsp;(Ftp)ev.getDestination();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Ending&nbsp;transfer&nbsp;of&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;ev.getFilename()&nbsp;+&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"&nbsp;from&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source.getHostname()&nbsp;+&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"&nbsp;to&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;dest.getHostname());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>/**
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Invoked&nbsp;when&nbsp;FXP&nbsp;transfer&nbsp;fails&nbsp;for&nbsp;a&nbsp;file.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;* <br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@param&nbsp;ev&nbsp;a&nbsp;&lt;code&gt;FxpFailedEvent&lt;/code&gt;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;FxpFailedEvent <br>
+&nbsp;&nbsp;&nbsp;&nbsp;*/</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">void</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;fxpFailed(FxpFailedEvent&nbsp;ev)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ftp&nbsp;source&nbsp;=(Ftp)ev.getSource();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ftp&nbsp;dest&nbsp;=&nbsp;(Ftp)ev.getDestination();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Failed&nbsp;transfer&nbsp;of&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;ev.getFilename()&nbsp;+&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"&nbsp;from&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source.getHostname()&nbsp;+&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"&nbsp;to&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;dest.getHostname());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+} <br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<b>See also</b> <br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+			href=javaScript:parent.reDisplay('2.3.8.2',1,0)>Event types</a>
+		&nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+
+</body>
+</html>

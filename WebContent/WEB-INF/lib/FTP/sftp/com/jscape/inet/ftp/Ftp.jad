@@ -1,0 +1,2556 @@
+// Decompiled by DJ v3.2.2.67 Copyright 2002 Atanas Neshkov  Date: 05/10/2007 03:16:15
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+
+package com.jscape.inet.ftp;
+
+import a.a.a.c.b.a;
+import com.jscape.util.*;
+import java.io.*;
+import java.util.*;
+
+// Referenced classes of package com.jscape.inet.ftp:
+//            FtpBaseImplementation, FtpException, FtpFile, CRCComputer, 
+//            FtpImplementation, FtpEvent, FtpFileParser, FtpListener
+
+public class Ftp
+{
+
+    public Ftp(FtpImplementation ftpimplementation)
+    {
+        a = null;
+        b = null;
+        c = null;
+        d d1 = new d();
+        if(!com.jscape.inet.ftp.FtpEvent.a)
+        {
+            if(!d1.a())
+                throw new RuntimeException(d1.b());
+            c = ftpimplementation;
+            c.setFtp(this);
+        }
+    }
+
+    public Ftp()
+    {
+        this(((FtpImplementation) (new FtpBaseImplementation())));
+    }
+
+    public Ftp(String s, String s1, String s2, FtpImplementation ftpimplementation)
+    {
+        this(ftpimplementation);
+        c.setHost(s);
+        c.setUser(s1);
+        c.setPassword(s2);
+    }
+
+    public Ftp(String s, String s1, String s2, int k, FtpImplementation ftpimplementation)
+    {
+        this(s, s1, s2, ftpimplementation);
+        c.setPort(k);
+    }
+
+    public Ftp(String s, String s1, String s2, File file, FtpImplementation ftpimplementation)
+    {
+        this(s, s1, s2, ftpimplementation);
+        a = file;
+    }
+
+    public Ftp(String s, String s1, String s2)
+    {
+        this(s, s1, s2, ((FtpImplementation) (new FtpBaseImplementation())));
+    }
+
+    public Ftp(String s, String s1, String s2, String s3)
+    {
+        this(s, s1, s2, ((FtpImplementation) (new FtpBaseImplementation())));
+        setAccount(s3);
+    }
+
+    public Ftp(String s, String s1, String s2, int k)
+    {
+        this(s, s1, s2, k, ((FtpImplementation) (new FtpBaseImplementation())));
+    }
+
+    public Ftp(String s, String s1, String s2, File file)
+    {
+        this(s, s1, s2, file, ((FtpImplementation) (new FtpBaseImplementation())));
+    }
+
+    public static void setProxyAuthentication(String s, String s1)
+    {
+        Properties properties = System.getProperties();
+        properties.put(z[1], s);
+        properties.put(z[0], s1);
+        System.setProperties(properties);
+    }
+
+    public static void setProxyHost(String s, int k)
+    {
+        Properties properties = System.getProperties();
+        properties.put(z[7], s);
+        properties.put(z[6], Integer.toString(k));
+        System.setProperties(properties);
+    }
+
+    public static void clearProxySettings()
+    {
+        Properties properties = System.getProperties();
+        properties.remove(z[7]);
+        properties.remove(z[6]);
+        properties.remove(z[1]);
+        properties.remove(z[0]);
+        System.setProperties(properties);
+    }
+
+    public synchronized void setAscii()
+        throws FtpException
+    {
+        c.setTransferMode(1);
+    }
+
+    public synchronized void setAuto(boolean flag)
+    {
+        c.setAuto(flag);
+    }
+
+    public synchronized void setBinary()
+        throws FtpException
+    {
+        c.setTransferMode(2);
+    }
+
+    public synchronized void setBlockTransferSize(int k)
+    {
+        c.setBlockTransferSize(k);
+    }
+
+    public synchronized int getBlockTransferSize()
+    {
+        return c.getBlockTransferSize();
+    }
+
+    /**
+     * @deprecated Method setCharacterEncoding is deprecated
+     */
+
+    public synchronized void setCharacterEncoding(String s)
+    {
+        c.setEncoding(s);
+    }
+
+    /**
+     * @deprecated Method getCharacterEncoding is deprecated
+     */
+
+    public synchronized String getCharacterEncoding()
+    {
+        return c.getEncoding();
+    }
+
+    public synchronized void setConnectBeforeCommand(boolean flag)
+    {
+        c.setConnectBeforeCommand(flag);
+    }
+
+    public synchronized boolean getConnectBeforeCommand()
+    {
+        return c.getConnectBeforeCommand();
+    }
+
+    public synchronized boolean isConnected()
+    {
+        return c.isConnected();
+    }
+
+    /**
+     * @deprecated Method setDataPort is deprecated
+     */
+
+    public void setDataPort(int k)
+    {
+        try
+        {
+            c.setDataPortStart(k);
+            c.setDataPortEnd(k);
+        }
+        catch(Exception exception)
+        {
+            System.err.println(exception.getMessage());
+        }
+    }
+
+    /**
+     * @deprecated Method getDataPort is deprecated
+     */
+
+    public int getDataPort()
+    {
+        return c.getDataPort();
+    }
+
+    public synchronized int getDataPortEnd()
+    {
+        return c.getDataPortEnd();
+    }
+
+    public synchronized void setDataPortRange(int k, int l)
+    {
+        c.setDataPortEnd(l);
+        c.setDataPortStart(k);
+    }
+
+    public synchronized int getDataPortStart()
+    {
+        return c.getDataPortStart();
+    }
+
+    public synchronized void setDebug(boolean flag)
+    {
+        c.setDebug(flag);
+    }
+
+    public synchronized boolean getDebug()
+    {
+        return c.getDebug();
+    }
+
+    public synchronized void setDebugStream(PrintStream printstream)
+    {
+        c.setDebugStream(printstream);
+    }
+
+    public synchronized PrintStream getDebugStream()
+    {
+        return c.getDebugStream();
+    }
+
+    public synchronized void setDir(String s)
+        throws FtpException
+    {
+        c.setDir(s);
+    }
+
+    public synchronized String getDir()
+        throws FtpException
+    {
+        return c.getDir();
+    }
+
+    public synchronized Enumeration getDirListing(String s)
+        throws FtpException
+    {
+        return c.getDirListing(s).elements();
+    }
+
+    public synchronized Enumeration getDirListing()
+        throws FtpException
+    {
+        return getDirListing("");
+    }
+
+    public synchronized String getDirListingAsString(String s)
+        throws FtpException
+    {
+        return c.getDirListingAsString(s);
+    }
+
+    public synchronized String getDirListingAsString()
+        throws FtpException
+    {
+        return getDirListingAsString("");
+    }
+
+    public synchronized Enumeration getDirListingRegex(String s)
+        throws FtpException
+    {
+        Enumeration enumeration;
+        Vector vector;
+        a.a.a.c.b.e e;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        enumeration = c.getDirListing("").elements();
+        vector = new Vector();
+        e = null;
+        try
+        {
+            e = o.a(s);
+        }
+        catch(a a1)
+        {
+            throw new FtpException(a1.getMessage(), a1);
+        }
+_L4:
+        FtpFile ftpfile;
+        do
+        {
+            if(!enumeration.hasMoreElements())
+                break; /* Loop/switch isn't completed */
+            ftpfile = (FtpFile)enumeration.nextElement();
+        } while(!o.a(e, ftpfile.getFilename()));
+        vector;
+        if(flag) goto _L2; else goto _L1
+_L1:
+        ftpfile;
+        add();
+        JVM INSTR pop ;
+        if(!flag) goto _L4; else goto _L3
+_L3:
+        vector;
+_L2:
+        elements();
+        return;
+    }
+
+    public synchronized void setDirUp()
+        throws FtpException
+    {
+        c.dirUp();
+    }
+
+    public void setErrorOnSizeCommand(boolean flag)
+    {
+        c.setErrorOnSizeCommand(flag);
+    }
+
+    public boolean getErrorOnSizeCommand()
+    {
+        return c.getErrorOnSizeCommand();
+    }
+
+    public boolean isFeatureSupported(String s)
+        throws FtpException
+    {
+        return c.isFeatureSupported(s);
+    }
+
+    public Enumeration getFeatures()
+        throws FtpException
+    {
+        return c.getFeatures().elements();
+    }
+
+    public synchronized void setFileTimestamp(String s, Date date)
+        throws FtpException
+    {
+        c.setFileTimeStamp(s, date);
+    }
+
+    public synchronized Date getFileTimestamp(String s)
+        throws FtpException
+    {
+        return c.getFileTimeStamp(s);
+    }
+
+    public synchronized long getFilesize(String s)
+        throws FtpException
+    {
+        return c.getFileSize(s);
+    }
+
+    public synchronized void setFtpFileParser(FtpFileParser ftpfileparser)
+    {
+        b = ftpfileparser;
+    }
+
+    public FtpFileParser getFtpFileParser()
+    {
+        return b;
+    }
+
+    public synchronized void setHostname(String s)
+    {
+        c.setHost(s);
+    }
+
+    public synchronized void setAccount(String s)
+    {
+        c.setAccount(s);
+    }
+
+    public synchronized String getAccount()
+    {
+        return c.getAccount();
+    }
+
+    public synchronized String getHostname()
+    {
+        return c.getHost();
+    }
+
+    public synchronized InputStream getInputStream(String s, long l)
+        throws FtpException
+    {
+        return c.getInputStream(s, l);
+    }
+
+    public synchronized void setLinger(int k)
+    {
+        c.setLinger(k);
+    }
+
+    public synchronized int getLinger()
+    {
+        return c.getLinger();
+    }
+
+    public synchronized void setLocalDir(File file)
+    {
+        file.exists();
+        if(com.jscape.inet.ftp.FtpEvent.a) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifeq 20;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_13;
+_L4:
+        break MISSING_BLOCK_LABEL_20;
+        file.isDirectory();
+_L2:
+        JVM INSTR ifne 54;
+           goto _L5 _L6
+_L5:
+        break MISSING_BLOCK_LABEL_20;
+_L6:
+        break MISSING_BLOCK_LABEL_54;
+        throw new IllegalArgumentException(z[10] + file.toString());
+        a = file;
+        return;
+    }
+
+    public synchronized File getLocalDir()
+    {
+        a;
+        if(com.jscape.inet.ftp.FtpEvent.a) goto _L2; else goto _L1
+_L1:
+        if(a == null)
+            a();
+        a;
+_L2:
+        return;
+    }
+
+    public synchronized Enumeration getLocalDirListing()
+    {
+        return new i(getLocalDir().toString(), "*", false, true, false);
+    }
+
+    public Enumeration getMachineDirListing(String s)
+        throws FtpException
+    {
+        return c.getMachineDirListing(s).elements();
+    }
+
+    public Enumeration getMachineDirListing(String s, String s1)
+        throws FtpException
+    {
+        return c.getMachineDirListing(s, s1).elements();
+    }
+
+    public FtpFile getMachineFileListing(String s)
+        throws FtpException
+    {
+        return c.getMachineFileListing(s);
+    }
+
+    public synchronized int getMode()
+    {
+        return c.getTransferMode();
+    }
+
+    public synchronized Enumeration getNameListing(String s)
+        throws FtpException
+    {
+        Vector vector = c.getNameListing(s);
+        return vector.elements();
+    }
+
+    public synchronized Enumeration getNameListing()
+        throws FtpException
+    {
+        return getNameListing("");
+    }
+
+    public synchronized OutputStream getOutputStream(String s, long l, boolean flag)
+        throws FtpException
+    {
+        return c.getOutputStream(s, flag, l);
+    }
+
+    public synchronized void setCompression(boolean flag)
+    {
+        c.setCompression(flag);
+    }
+
+    public synchronized boolean getCompression()
+    {
+        return c.getCompression();
+    }
+
+    public void setNATAddress(String s)
+        throws FtpException
+    {
+        c.setNATAddress(s);
+    }
+
+    public synchronized void setPassive(boolean flag)
+    {
+        c.setPassive(flag);
+    }
+
+    public synchronized boolean getPassive()
+    {
+        return c.isPassive();
+    }
+
+    public synchronized void setPassword(String s)
+    {
+        c.setPassword(s);
+    }
+
+    public synchronized String getPassword()
+    {
+        return c.getPassword();
+    }
+
+    public synchronized void setPort(int k)
+    {
+        c.setPort(k);
+    }
+
+    public synchronized int getPort()
+    {
+        return c.getPort();
+    }
+
+    public void setPortAddress(String s)
+    {
+        c.setPortAddress(s);
+    }
+
+    public String getPortAddress()
+    {
+        return c.getPortAddress();
+    }
+
+    public synchronized int getResponseCode()
+    {
+        return c.getResponseCode();
+    }
+
+    public synchronized String getSystemType()
+        throws FtpException
+    {
+        return c.getSystemType();
+    }
+
+    public synchronized void setTimeout(int k)
+    {
+        c.setTimeout(k);
+    }
+
+    public synchronized int getTimeout()
+    {
+        return c.getTimeout();
+    }
+
+    public synchronized void setUsername(String s)
+    {
+        c.setUser(s);
+    }
+
+    public synchronized void setUseEPSV(boolean flag)
+    {
+        c.setUseEPSV(flag);
+    }
+
+    public synchronized boolean getUseEPSV()
+    {
+        return c.getUseEPSV();
+    }
+
+    public synchronized String getUsername()
+    {
+        return c.getUser();
+    }
+
+    public synchronized void setWireEncoding(String s)
+    {
+        c.setWireEncoding(s);
+    }
+
+    public synchronized String getWireEncoding()
+    {
+        return c.getWireEncoding();
+    }
+
+    public synchronized void addFtpListener(FtpListener ftplistener)
+    {
+        c.addListener(ftplistener);
+    }
+
+    public synchronized void changePassword(String s, String s1)
+        throws FtpException
+    {
+        c.changePassword(s, s1);
+    }
+
+    public synchronized boolean checksum(File file, String s)
+        throws FtpException
+    {
+        Exception exception;
+        FileInputStream fileinputstream = null;
+        boolean flag;
+        try
+        {
+            fileinputstream = new FileInputStream(file);
+            flag = a(fileinputstream, s);
+        }
+        catch(IOException ioexception)
+        {
+            throw new FtpException(ioexception.getMessage(), ioexception);
+        }
+        finally
+        {
+            j.a(fileinputstream);
+        }
+        j.a(fileinputstream);
+        return flag;
+        throw exception;
+    }
+
+    public synchronized boolean checksum(byte abyte0[], String s)
+        throws FtpException
+    {
+        return a(new ByteArrayInputStream(abyte0), s);
+    }
+
+    public synchronized void connect()
+        throws FtpException
+    {
+        c.connect();
+    }
+
+    public synchronized void connect(boolean flag)
+        throws FtpException
+    {
+        c.connect(flag);
+    }
+
+    public synchronized void deleteDir(String s, boolean flag)
+        throws FtpException
+    {
+        c.deleteDir(s, flag);
+    }
+
+    public synchronized void deleteDir(String s)
+        throws FtpException
+    {
+        deleteDir(s, false);
+    }
+
+    public synchronized void deleteFile(String s)
+        throws FtpException
+    {
+        c.deleteFile(s);
+    }
+
+    public synchronized void disconnect()
+    {
+        c.disconnect();
+    }
+
+    public synchronized void download(OutputStream outputstream, String s)
+        throws FtpException
+    {
+        c.setTargetFile(s);
+        c.download(outputstream, s, 0L);
+        c.setTargetFile(null);
+        break MISSING_BLOCK_LABEL_40;
+        Exception exception;
+        exception;
+        c.setTargetFile(null);
+        throw exception;
+    }
+
+    public synchronized File download(String s, String s1)
+        throws FtpException
+    {
+        File file;
+        FtpException ftpexception;
+        OutputStream outputstream;
+        file = new File(getLocalDir(), s);
+        ftpexception = null;
+        d(file);
+        outputstream = c(file);
+        c.setTargetPath(file.getAbsolutePath());
+        download(outputstream, s1);
+        c.setTargetPath(null);
+        a(outputstream);
+        break MISSING_BLOCK_LABEL_101;
+        FtpException ftpexception1;
+        ftpexception1;
+        ftpexception = ftpexception1;
+        c.setTargetPath(null);
+        a(outputstream);
+        break MISSING_BLOCK_LABEL_101;
+        Exception exception;
+        exception;
+        c.setTargetPath(null);
+        a(outputstream);
+        throw exception;
+        if(ftpexception == null)
+            break MISSING_BLOCK_LABEL_129;
+        file.length() != 0L;
+        if(com.jscape.inet.ftp.FtpEvent.a) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifne 126;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_121;
+_L4:
+        break MISSING_BLOCK_LABEL_126;
+        file.delete();
+_L2:
+        JVM INSTR pop ;
+        throw ftpexception;
+        return file;
+    }
+
+    public synchronized File download(String s)
+        throws FtpException
+    {
+        return download(s, s);
+    }
+
+    public synchronized void downloadDir(String s)
+        throws FtpException
+    {
+        String s1;
+        File file;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        s1 = getDir();
+        setDir(s);
+        file = getLocalDir();
+        Enumeration enumeration;
+        String s2 = a(s);
+        if(!s2.equals(UP_DIR))
+            setLocalDir(makeLocalDir(s2));
+        enumeration = getDirListing();
+_L9:
+        if(!enumeration.hasMoreElements())
+            break; /* Loop/switch isn't completed */
+        this;
+        if(flag) goto _L2; else goto _L1
+_L1:
+        c;
+        interrupted();
+        JVM INSTR ifne 145;
+           goto _L3 _L4
+_L4:
+        break; /* Loop/switch isn't completed */
+_L3:
+        FtpFile ftpfile = (FtpFile)enumeration.nextElement();
+        ftpfile.isDirectory();
+        if(flag) goto _L6; else goto _L5
+_L5:
+        JVM INSTR ifne 118;
+           goto _L7 _L8
+_L7:
+        download(ftpfile.getFilename());
+        if(!flag) goto _L9; else goto _L8
+_L8:
+        a(ftpfile);
+_L6:
+        JVM INSTR ifne 53;
+           goto _L10 _L9
+_L10:
+        downloadDir(ftpfile.getFilename());
+        if(flag)
+            break MISSING_BLOCK_LABEL_173;
+        if(!flag) goto _L9; else goto _L11
+_L11:
+        setDir(s1);
+        this;
+_L2:
+        file;
+        setLocalDir();
+        break MISSING_BLOCK_LABEL_173;
+        Exception exception;
+        exception;
+        setDir(s1);
+        setLocalDir(file);
+        throw exception;
+    }
+
+    public synchronized void downloadDir(String s, int k, boolean flag)
+        throws FtpException
+    {
+        String s1;
+        File file;
+        boolean flag1;
+        Vector vector;
+        String s3;
+        File file1;
+        int l;
+        boolean flag2;
+        flag2 = com.jscape.inet.ftp.FtpEvent.a;
+        s1 = getDir();
+        setDir(s);
+        file = getLocalDir();
+        flag1 = false;
+        String s2 = a(s);
+        if(!s2.equals(UP_DIR))
+            setLocalDir(makeLocalDir(s2));
+        vector = c(s);
+        Vector vector1 = b(s);
+        b(vector1, new File(s));
+        s3 = getDir();
+        file1 = getLocalDir();
+        l = 0;
+_L6:
+        if(l > k)
+            break; /* Loop/switch isn't completed */
+        c.interrupted();
+        if(flag2) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifne 197;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_116;
+_L4:
+        break; /* Loop/switch isn't completed */
+        a(s3, file1, flag, vector);
+        true;
+_L2:
+        flag1;
+        break MISSING_BLOCK_LABEL_167;
+        Exception exception;
+        exception;
+        if(!flag2)
+        {
+            if(l >= k)
+                throw new FtpException(exception.getMessage());
+            disconnect();
+        }
+        connect();
+        if(flag1)
+        {
+            setDir(s1);
+            setLocalDir(file);
+            if(!flag2)
+                break; /* Loop/switch isn't completed */
+        }
+        l++;
+        if(!flag2) goto _L6; else goto _L5
+_L5:
+    }
+
+    private void a(String s, File file, boolean flag, Vector vector)
+        throws IOException, FtpException
+    {
+        File file1;
+        boolean flag1;
+        flag1 = com.jscape.inet.ftp.FtpEvent.a;
+        file1 = new File(s);
+_L23:
+        if(vector.size() <= 0)
+            break; /* Loop/switch isn't completed */
+        c;
+        if(flag1) goto _L2; else goto _L1
+_L1:
+        interrupted();
+        JVM INSTR ifne 325;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_38;
+_L4:
+        break; /* Loop/switch isn't completed */
+        setDir(s);
+        setLocalDir(file);
+        vector.elementAt(0);
+_L2:
+        (String);
+        String s1;
+        s1;
+        File file2;
+        File file3;
+        file2 = new File(s1);
+        String s2 = j.a(file1, file2);
+        if(!flag1)
+        {
+            if(s2 != null && !s2.equals(""))
+            {
+                setDir(s2);
+                setLocalDir(makeLocalDir(s2));
+            }
+            download(file2.getName());
+        }
+        file3 = new File(getLocalDir() + "/" + file2.getName());
+        file3;
+        if(flag1) goto _L6; else goto _L5
+_L5:
+        length();
+        0L;
+        JVM INSTR lcmp ;
+        JVM INSTR ifle 313;
+           goto _L7 _L8
+_L7:
+        flag;
+        if(flag1) goto _L10; else goto _L9
+_L9:
+        if(!flag) goto _L8; else goto _L11
+_L11:
+        this;
+        if(flag1) goto _L6; else goto _L12
+_L12:
+        z[2];
+        isFeatureSupported();
+_L10:
+        JVM INSTR ifeq 313;
+           goto _L13 _L8
+_L13:
+        String s3 = getDir();
+        s3.endsWith("/");
+        if(flag1) goto _L15; else goto _L14
+_L14:
+        JVM INSTR ifne 263;
+           goto _L16 _L17
+_L16:
+        s3.endsWith("\\");
+        if(flag1) goto _L15; else goto _L18
+_L18:
+        JVM INSTR ifne 263;
+           goto _L19 _L17
+_L19:
+        s3 = s3 + "/";
+_L17:
+        this;
+        if(flag1) goto _L6; else goto _L20
+_L20:
+        file3;
+        s3 + file2.getName();
+        checksum();
+_L15:
+        JVM INSTR ifne 313;
+           goto _L21 _L8
+_L21:
+        throw new FtpException(z[3]);
+_L8:
+        vector.remove(0);
+_L6:
+        JVM INSTR pop ;
+        if(!flag1) goto _L23; else goto _L22
+_L22:
+    }
+
+    public void interrupt()
+    {
+        c.interrupt();
+    }
+
+    public boolean interrupted()
+    {
+        return c.interrupted();
+    }
+
+    public synchronized String issueCommand(String s)
+        throws FtpException
+    {
+        return c.issueCommand(s);
+    }
+
+    public synchronized String issueCommandCheck(String s)
+        throws FtpException
+    {
+        return c.issueCommandCheck(s);
+    }
+
+    public synchronized void login()
+        throws FtpException
+    {
+        c.login();
+    }
+
+    public synchronized void makeDir(String s)
+        throws FtpException
+    {
+        c.makeDir(s);
+    }
+
+    public synchronized void makeDirRecursive(String s)
+        throws FtpException
+    {
+        String s1;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        s1 = getDir();
+        s;
+        s1;
+        if(flag) goto _L2; else goto _L1
+_L1:
+        indexOf();
+        JVM INSTR ifne 32;
+           goto _L3 _L4
+_L3:
+        s;
+        s1;
+_L2:
+        length();
+        substring();
+        s;
+_L4:
+        StringTokenizer stringtokenizer = new StringTokenizer(s, "/");
+_L5:
+        String s2;
+        if(!stringtokenizer.hasMoreElements())
+            break; /* Loop/switch isn't completed */
+        s2 = (String)stringtokenizer.nextElement();
+        setDir(s2);
+        if(flag)
+            break MISSING_BLOCK_LABEL_105;
+          goto _L5
+        FtpException ftpexception;
+        ftpexception;
+        try
+        {
+            makeDir(s2);
+            setDir(s2);
+        }
+        catch(FtpException ftpexception1)
+        {
+            throw ftpexception1;
+        }
+        if(!flag) goto _L5; else goto _L6
+_L6:
+        setDir(s1);
+    }
+
+    public synchronized File makeLocalDir(String s)
+    {
+        File file;
+        file = new File(getLocalDir(), s);
+        d(file);
+        file;
+        if(com.jscape.inet.ftp.FtpEvent.a) goto _L2; else goto _L1
+_L1:
+        exists();
+        JVM INSTR ifne 36;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_31;
+_L4:
+        break MISSING_BLOCK_LABEL_36;
+        file.mkdir();
+        file;
+_L2:
+        return;
+    }
+
+    public synchronized void mdelete(String s)
+        throws FtpException
+    {
+        Enumeration enumeration;
+        a.a.a.c.b.e e;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        enumeration = getDirListing();
+        e = null;
+        try
+        {
+            e = o.a(s);
+        }
+        catch(a a1)
+        {
+            throw new FtpException(a1.getMessage(), a1);
+        }
+_L6:
+        if(!enumeration.hasMoreElements())
+            break; /* Loop/switch isn't completed */
+        c;
+        if(flag) goto _L2; else goto _L1
+_L1:
+        interrupted();
+        JVM INSTR ifne 118;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_61;
+_L4:
+        break; /* Loop/switch isn't completed */
+        enumeration.nextElement();
+_L2:
+        (FtpFile);
+        FtpFile ftpfile;
+        ftpfile;
+        String s1 = ftpfile.getFilename();
+        if(!o.a(e, s1)) goto _L6; else goto _L5
+_L5:
+        if(!ftpfile.isDirectory())
+            break; /* Loop/switch isn't completed */
+        deleteDir(s1);
+        if(!flag) goto _L6; else goto _L7
+_L7:
+        deleteFile(s1);
+        if(!flag) goto _L6; else goto _L8
+_L8:
+    }
+
+    public synchronized void mdownload(Enumeration enumeration)
+        throws FtpException
+    {
+        boolean flag = com.jscape.inet.ftp.FtpEvent.a;
+_L6:
+        if(!enumeration.hasMoreElements())
+            break; /* Loop/switch isn't completed */
+        c;
+        if(flag) goto _L2; else goto _L1
+_L1:
+        interrupted();
+        JVM INSTR ifne 51;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_27;
+_L4:
+        break; /* Loop/switch isn't completed */
+        enumeration.nextElement();
+_L2:
+        toString();
+        String s;
+        s;
+        if(s == null) goto _L6; else goto _L5
+_L5:
+        download(s);
+        if(!flag) goto _L6; else goto _L7
+_L7:
+    }
+
+    public synchronized void mdownload(String s)
+        throws FtpException
+    {
+        Enumeration enumeration;
+        a.a.a.c.b.e e;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        enumeration = getDirListing();
+        e = null;
+        try
+        {
+            e = o.a(s);
+        }
+        catch(a a1)
+        {
+            throw new FtpException(a1.getMessage(), a1);
+        }
+_L8:
+        enumeration.hasMoreElements();
+_L10:
+        JVM INSTR ifeq 113;
+           goto _L1 _L2
+_L1:
+        break MISSING_BLOCK_LABEL_46;
+_L2:
+        break; /* Loop/switch isn't completed */
+        c;
+        if(flag) goto _L4; else goto _L3
+_L3:
+        interrupted();
+        JVM INSTR ifne 113;
+           goto _L5 _L6
+_L5:
+        break MISSING_BLOCK_LABEL_61;
+_L6:
+        break; /* Loop/switch isn't completed */
+        enumeration.nextElement();
+_L4:
+        (FtpFile);
+        FtpFile ftpfile;
+        ftpfile;
+        String s1 = ftpfile.getFilename();
+        if(ftpfile.isDirectory()) goto _L8; else goto _L7
+_L7:
+        o.a(e, s1);
+        if(flag) goto _L10; else goto _L9
+_L9:
+        JVM INSTR ifeq 37;
+           goto _L11 _L8
+_L11:
+        download(s1);
+        if(!flag) goto _L8; else goto _L12
+_L12:
+    }
+
+    public synchronized void mupload(Enumeration enumeration)
+        throws FtpException
+    {
+        boolean flag = com.jscape.inet.ftp.FtpEvent.a;
+_L6:
+        if(!enumeration.hasMoreElements())
+            break; /* Loop/switch isn't completed */
+        c;
+        if(flag) goto _L2; else goto _L1
+_L1:
+        interrupted();
+        JVM INSTR ifne 50;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_27;
+_L4:
+        break; /* Loop/switch isn't completed */
+        enumeration.nextElement();
+_L2:
+        (String);
+        String s;
+        s;
+        if(s == null) goto _L6; else goto _L5
+_L5:
+        upload(s);
+        if(!flag) goto _L6; else goto _L7
+_L7:
+    }
+
+    public synchronized void mupload(String s)
+        throws FtpException
+    {
+        File afile[];
+        a.a.a.c.b.e e;
+        int k;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        afile = getLocalDir().listFiles();
+        e = null;
+        try
+        {
+            e = o.a(s);
+        }
+        catch(a a1)
+        {
+            throw new FtpException(a1.getMessage(), a1);
+        }
+        k = 0;
+_L9:
+        if(k >= afile.length)
+            break; /* Loop/switch isn't completed */
+        o.a(e, afile[k].getName());
+        if(flag) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifeq 92;
+           goto _L3 _L4
+_L3:
+        this;
+        if(flag) goto _L6; else goto _L5
+_L5:
+        c;
+        interrupted();
+_L2:
+        JVM INSTR ifne 92;
+           goto _L7 _L4
+_L7:
+        this;
+_L6:
+        afile[k];
+        upload();
+_L4:
+        k++;
+        if(!flag) goto _L9; else goto _L8
+_L8:
+    }
+
+    public synchronized String noop()
+        throws FtpException
+    {
+        return c.noop();
+    }
+
+    public synchronized void readResponse()
+        throws FtpException
+    {
+        c.readResponse();
+    }
+
+    public synchronized void removeFtpListener(FtpListener ftplistener)
+    {
+        c.removeListener(ftplistener);
+    }
+
+    public synchronized void renameFile(String s, String s1)
+        throws FtpException
+    {
+        c.renameFile(s, s1);
+    }
+
+    public void reset()
+    {
+        c.reset();
+    }
+
+    public synchronized File resumeDownload(String s, long l)
+        throws FtpException
+    {
+        return resumeDownload(s, s, l);
+    }
+
+    public synchronized File resumeDownload(String s, String s1, long l)
+        throws FtpException
+    {
+        if(l == 0L)
+            return download(s, s1);
+        File file = new File(getLocalDir(), s);
+        File file1 = new File(System.currentTimeMillis() + z[11]);
+        FileOutputStream fileoutputstream = null;
+        RandomAccessFile randomaccessfile = null;
+        BufferedInputStream bufferedinputstream = null;
+        try
+        {
+            fileoutputstream = new FileOutputStream(file1);
+            c.setTargetPath(file.getAbsolutePath());
+            c.setTargetFile(s1);
+            c.download(fileoutputstream, s1, l);
+            randomaccessfile = new RandomAccessFile(file, z[12]);
+            randomaccessfile.seek(l);
+            bufferedinputstream = new BufferedInputStream(new FileInputStream(file1));
+            byte abyte0[] = new byte[8096];
+            byte byte0 = -1;
+            do
+            {
+                int k;
+                if((k = bufferedinputstream.read(abyte0)) == -1)
+                    break;
+                randomaccessfile.write(abyte0, 0, k);
+            } while(!com.jscape.inet.ftp.FtpEvent.a);
+        }
+        catch(IOException ioexception)
+        {
+            throw new FtpException(ioexception.getMessage(), ioexception);
+        }
+        finally
+        {
+            c.setTargetPath(null);
+            c.setTargetFile(null);
+            a(fileoutputstream);
+            a(bufferedinputstream);
+            a(randomaccessfile);
+            file1.delete();
+        }
+        return file;
+    }
+
+    public synchronized void resumeUpload(File file, long l)
+        throws FtpException
+    {
+        resumeUpload(file, file.getName(), l);
+    }
+
+    public synchronized void resumeUpload(File file, String s, long l)
+        throws FtpException
+    {
+        InputStream inputstream = b(file);
+        c.setTargetPath(file.getAbsolutePath());
+        c.setTargetFile(s);
+        try
+        {
+            c.upload(inputstream, s, false, l, file.length(), false);
+        }
+        finally
+        {
+            c.setTargetPath(null);
+            c.setTargetFile(null);
+            a(inputstream);
+        }
+    }
+
+    public synchronized void resumeUpload(String s, long l)
+        throws FtpException
+    {
+        resumeUpload(s, s, l);
+    }
+
+    public synchronized void resumeUpload(String s, String s1, long l)
+        throws FtpException
+    {
+        resumeUpload(new File(getLocalDir(), s), s1, l);
+    }
+
+    public synchronized void upload(File file, String s, boolean flag)
+        throws FtpException
+    {
+        boolean flag1 = com.jscape.inet.ftp.FtpEvent.a;
+        file;
+        if(flag1) goto _L2; else goto _L1
+_L1:
+        isFile();
+        JVM INSTR ifne 27;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_17;
+_L4:
+        break MISSING_BLOCK_LABEL_27;
+        uploadDir(file);
+        if(!flag1)
+            break MISSING_BLOCK_LABEL_109;
+        file;
+_L2:
+        b();
+        InputStream inputstream;
+        inputstream;
+        c.setTargetPath(file.getAbsolutePath());
+        c.setTargetFile(s);
+        try
+        {
+            c.upload(inputstream, s, flag, 0L, file.length(), false);
+        }
+        finally
+        {
+            c.setTargetPath(null);
+            c.setTargetFile(null);
+            a(inputstream);
+        }
+    }
+
+    public synchronized void upload(InputStream inputstream, String s, boolean flag)
+        throws FtpException
+    {
+        c.setTargetPath(null);
+        c.setTargetFile(s);
+        int k = -1;
+        try
+        {
+            k = inputstream.available();
+        }
+        catch(IOException ioexception)
+        {
+            k = -1;
+        }
+        try
+        {
+            c.upload(inputstream, s, flag, 0L, k, false);
+        }
+        finally
+        {
+            c.setTargetPath(null);
+            c.setTargetFile(null);
+        }
+    }
+
+    public synchronized void upload(InputStream inputstream, String s)
+        throws FtpException
+    {
+        upload(inputstream, s, false);
+    }
+
+    public synchronized void upload(File file, boolean flag)
+        throws FtpException
+    {
+        upload(file, file.getName(), flag);
+    }
+
+    public synchronized void upload(File file, String s)
+        throws FtpException
+    {
+        upload(file, s, false);
+    }
+
+    public synchronized void upload(File file)
+        throws FtpException
+    {
+        upload(file, false);
+    }
+
+    public synchronized void upload(String s, File file)
+        throws FtpException
+    {
+        boolean flag = com.jscape.inet.ftp.FtpEvent.a;
+        q.a(s);
+        if(flag) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifeq 135;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_17;
+_L4:
+        break MISSING_BLOCK_LABEL_135;
+        s;
+        if(flag) goto _L6; else goto _L5
+_L5:
+        ".";
+        startsWith();
+_L2:
+        JVM INSTR ifeq 58;
+           goto _L7 _L8
+_L7:
+        String s1 = file.getName() + s;
+        if(!flag) goto _L9; else goto _L8
+_L8:
+        file.getName() + "." + s;
+_L6:
+        s1;
+_L9:
+        upload(file, s1);
+        if(c.interrupted())
+            break MISSING_BLOCK_LABEL_141;
+        String s2 = file.getName();
+        try
+        {
+            deleteFile(s2);
+        }
+        catch(FtpException ftpexception) { }
+        try
+        {
+            renameFile(s1, s2);
+            break MISSING_BLOCK_LABEL_141;
+        }
+        catch(FtpException ftpexception1) { }
+        if(!flag)
+            break MISSING_BLOCK_LABEL_141;
+        upload(file, false);
+    }
+
+    public synchronized void upload(String s, String s1, boolean flag)
+        throws FtpException
+    {
+        upload(new File(getLocalDir(), s), s1, flag);
+    }
+
+    public synchronized void upload(String s, String s1)
+        throws FtpException
+    {
+        upload(s, s1, false);
+    }
+
+    public synchronized void upload(String s, boolean flag)
+        throws FtpException
+    {
+        upload(s, s, flag);
+    }
+
+    public synchronized void upload(String s)
+        throws FtpException
+    {
+        upload(s, false);
+    }
+
+    public synchronized void upload(byte abyte0[], String s, boolean flag)
+        throws FtpException
+    {
+        ByteArrayInputStream bytearrayinputstream;
+        bytearrayinputstream = new ByteArrayInputStream(abyte0);
+        c.setTargetFile(s);
+        c.upload(bytearrayinputstream, s, flag, 0L, abyte0.length, false);
+        c.setTargetFile(null);
+        a(bytearrayinputstream);
+        break MISSING_BLOCK_LABEL_69;
+        Exception exception;
+        exception;
+        c.setTargetFile(null);
+        a(bytearrayinputstream);
+        throw exception;
+    }
+
+    public synchronized void upload(byte abyte0[], String s)
+        throws FtpException
+    {
+        upload(abyte0, s, false);
+    }
+
+    public synchronized void uploadDir(File file)
+        throws FtpException
+    {
+        uploadDir(file, null);
+    }
+
+    public synchronized void uploadDir(File file, String s)
+        throws FtpException
+    {
+        FtpException ftpexception;
+        String s1;
+        File file1;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        ftpexception = null;
+        s1 = getDir();
+        if(!flag)
+        {
+            if(!file.exists())
+                throw new FtpException(z[5] + file.getAbsolutePath() + z[4]);
+            try
+            {
+                makeDir(file.getName());
+            }
+            catch(FtpException ftpexception1) { }
+        }
+        setDir(file.getName());
+        file1 = getLocalDir();
+        setLocalDir(file);
+        Enumeration enumeration = getLocalDirListing();
+_L9:
+        if(!enumeration.hasMoreElements())
+            break; /* Loop/switch isn't completed */
+        this;
+        if(flag) goto _L2; else goto _L1
+_L1:
+        c;
+        interrupted();
+        JVM INSTR ifne 191;
+           goto _L3 _L4
+_L4:
+        break; /* Loop/switch isn't completed */
+_L3:
+        File file2 = (File)enumeration.nextElement();
+        file2.isFile();
+        if(flag) goto _L6; else goto _L5
+_L5:
+        JVM INSTR ifeq 166;
+           goto _L7 _L8
+_L7:
+        upload(s, file2);
+        if(!flag) goto _L9; else goto _L8
+_L8:
+        a(file2);
+_L6:
+        JVM INSTR ifne 104;
+           goto _L10 _L9
+_L10:
+        uploadDir(file2, s);
+        if(flag)
+            break MISSING_BLOCK_LABEL_243;
+        if(!flag) goto _L9; else goto _L11
+_L11:
+        setDir(s1);
+        this;
+_L2:
+        file1;
+        setLocalDir();
+        break MISSING_BLOCK_LABEL_243;
+        FtpException ftpexception2;
+        ftpexception2;
+        ftpexception = ftpexception2;
+        setDir(s1);
+        setLocalDir(file1);
+        break MISSING_BLOCK_LABEL_243;
+        Exception exception;
+        exception;
+        setDir(s1);
+        setLocalDir(file1);
+        throw exception;
+        ftpexception;
+        if(flag) goto _L13; else goto _L12
+_L12:
+        if(ftpexception == null) goto _L15; else goto _L14
+_L14:
+        ftpexception;
+_L13:
+        throw ;
+_L15:
+    }
+
+    public synchronized void uploadDir(File file, int k, boolean flag)
+        throws FtpException
+    {
+        uploadDir(file, k, flag, null);
+    }
+
+    public synchronized void uploadDir(File file, int k, boolean flag, String s)
+        throws FtpException
+    {
+        String s1;
+        boolean flag2;
+        flag2 = com.jscape.inet.ftp.FtpEvent.a;
+        s1 = getDir();
+        file.exists();
+        if(flag2) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifne 64;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_23;
+_L4:
+        break MISSING_BLOCK_LABEL_64;
+        throw new FtpException(z[5] + file.getAbsolutePath() + z[4]);
+        false;
+_L2:
+        boolean flag1;
+        flag1;
+        File file1;
+        Vector vector;
+        String s2;
+        int l;
+        try
+        {
+            makeDir(file.getName());
+        }
+        catch(FtpException ftpexception) { }
+        setDir(file.getName());
+        file1 = getLocalDir();
+        setLocalDir(file);
+        vector = j.a(file);
+        s2 = getDir();
+        Vector vector1 = j.b(file);
+        a(vector1, file);
+        l = 0;
+_L10:
+        if(l > k)
+            break; /* Loop/switch isn't completed */
+        c.interrupted();
+        if(flag2) goto _L6; else goto _L5
+_L5:
+        JVM INSTR ifne 230;
+           goto _L7 _L8
+_L7:
+        break MISSING_BLOCK_LABEL_148;
+_L8:
+        break; /* Loop/switch isn't completed */
+        a(s2, flag, s, vector, file);
+        true;
+_L6:
+        flag1;
+        break MISSING_BLOCK_LABEL_200;
+        Exception exception;
+        exception;
+        if(!flag2)
+        {
+            if(l >= k)
+                throw new FtpException(exception.getMessage());
+            disconnect();
+        }
+        connect();
+        if(flag1)
+        {
+            setDir(s1);
+            setLocalDir(file1);
+            if(!flag2)
+                break; /* Loop/switch isn't completed */
+        }
+        l++;
+        if(!flag2) goto _L10; else goto _L9
+_L9:
+    }
+
+    private void a(String s, boolean flag, String s1, Vector vector, File file)
+        throws FtpException, IOException
+    {
+        boolean flag1 = com.jscape.inet.ftp.FtpEvent.a;
+_L31:
+        if(vector.size() <= 0)
+            break; /* Loop/switch isn't completed */
+        c;
+        if(flag1) goto _L2; else goto _L1
+_L1:
+        interrupted();
+        JVM INSTR ifne 289;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_28;
+_L4:
+        break; /* Loop/switch isn't completed */
+        setDir(s);
+        vector.elementAt(0);
+_L2:
+        (String);
+        String s2;
+        s2;
+        File file1;
+        String s3;
+        file1 = new File(s2);
+        s3 = "";
+        s3 = j.a(file, file1);
+        s3;
+        if(flag1) goto _L6; else goto _L5
+_L5:
+        if(s3 == null) goto _L8; else goto _L7
+_L7:
+        s3;
+        if(flag1) goto _L6; else goto _L9
+_L9:
+        "";
+        equals();
+        JVM INSTR ifne 104;
+           goto _L10 _L8
+_L10:
+        d(s3);
+        if(!flag1) goto _L11; else goto _L8
+_L8:
+        s;
+_L6:
+        s3;
+_L11:
+        file1.isFile();
+        if(flag1) goto _L13; else goto _L12
+_L12:
+        JVM INSTR ifeq 276;
+           goto _L14 _L15
+_L14:
+        upload(s1, file1);
+        file1.length() != 0L;
+        if(flag1) goto _L13; else goto _L16
+_L16:
+        JVM INSTR ifle 276;
+           goto _L17 _L15
+_L17:
+        flag;
+        if(flag1) goto _L13; else goto _L18
+_L18:
+        if(!flag) goto _L15; else goto _L19
+_L19:
+        isFeatureSupported(z[2]);
+        if(flag1) goto _L13; else goto _L20
+_L20:
+        JVM INSTR ifeq 276;
+           goto _L21 _L15
+_L21:
+        String s4 = getDir();
+        s4.endsWith("/");
+        if(flag1) goto _L23; else goto _L22
+_L22:
+        JVM INSTR ifne 226;
+           goto _L24 _L25
+_L24:
+        s4.endsWith("\\");
+        if(flag1) goto _L23; else goto _L26
+_L26:
+        JVM INSTR ifne 226;
+           goto _L27 _L25
+_L27:
+        s4 = s4 + "/";
+_L25:
+        checksum(file1, s4 + file1.getName());
+_L23:
+        if(flag1) goto _L13; else goto _L28
+_L28:
+        JVM INSTR ifne 276;
+           goto _L29 _L15
+_L29:
+        throw new FtpException(z[3]);
+_L15:
+        vector.remove(s2);
+_L13:
+        JVM INSTR pop ;
+        if(!flag1) goto _L31; else goto _L30
+_L30:
+    }
+
+    public synchronized String uploadUnique(String s)
+        throws FtpException
+    {
+        return uploadUnique(s, true);
+    }
+
+    public synchronized String uploadUnique(String s, boolean flag)
+        throws FtpException
+    {
+        return uploadUnique(new File(s), flag);
+    }
+
+    public synchronized String uploadUnique(File file)
+        throws FtpException
+    {
+        return uploadUnique(file, true);
+    }
+
+    public synchronized String uploadUnique(File file, boolean flag)
+        throws FtpException
+    {
+        InputStream inputstream = b(file);
+        if(flag)
+            return uploadUnique(inputstream, file.getName());
+        else
+            return uploadUnique(inputstream, ((String) (null)));
+    }
+
+    public synchronized String uploadUnique(InputStream inputstream, String s)
+        throws FtpException
+    {
+        c.setTargetFile(s);
+        String s1 = c.uploadUnique(inputstream, s);
+        a(inputstream);
+        c.setTargetFile(null);
+        return s1;
+        Exception exception;
+        exception;
+        a(inputstream);
+        c.setTargetFile(null);
+        throw exception;
+    }
+
+    private static boolean a(FtpFile ftpfile)
+    {
+        String s;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        s = ftpfile.getFilename();
+        s.equals(".");
+        if(flag) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifne 36;
+           goto _L3 _L4
+_L3:
+        s.equals(UP_DIR);
+        if(flag) goto _L2; else goto _L5
+_L5:
+        JVM INSTR ifeq 40;
+           goto _L4 _L6
+_L4:
+        true;
+          goto _L2
+_L6:
+        false;
+_L2:
+        return;
+    }
+
+    private static boolean a(File file)
+    {
+        String s;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        s = file.getName();
+        s.equals(".");
+        if(flag) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifne 36;
+           goto _L3 _L4
+_L3:
+        s.equals(UP_DIR);
+        if(flag) goto _L2; else goto _L5
+_L5:
+        JVM INSTR ifeq 40;
+           goto _L4 _L6
+_L4:
+        true;
+          goto _L2
+_L6:
+        false;
+_L2:
+        return;
+    }
+
+    private static String a(String s)
+    {
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        s = s.trim();
+        s;
+        if(flag) goto _L2; else goto _L1
+_L1:
+        "/";
+        equals();
+        JVM INSTR ifne 35;
+           goto _L3 _L4
+_L3:
+        s.equals("\\");
+        if(flag) goto _L6; else goto _L5
+_L5:
+        JVM INSTR ifeq 37;
+           goto _L4 _L7
+_L4:
+        s;
+_L2:
+        return;
+_L7:
+        s;
+        if(flag) goto _L9; else goto _L8
+_L8:
+        "/";
+        endsWith();
+_L6:
+        JVM INSTR ifne 63;
+           goto _L10 _L11
+_L10:
+        s.endsWith("\\");
+        if(flag) goto _L13; else goto _L12
+_L12:
+        JVM INSTR ifeq 75;
+           goto _L11 _L14
+_L11:
+        s.substring(0, s.length() - 1);
+_L9:
+        s;
+_L14:
+        s.indexOf("/");
+_L13:
+        -1;
+        if(flag) goto _L16; else goto _L15
+_L15:
+        JVM INSTR icmpeq 102;
+           goto _L17 _L18
+_L17:
+        break MISSING_BLOCK_LABEL_89;
+_L18:
+        break MISSING_BLOCK_LABEL_102;
+        return s.substring(s.lastIndexOf("/") + 1);
+        s;
+        if(flag) goto _L20; else goto _L19
+_L19:
+        "\\";
+        indexOf();
+        -1;
+_L16:
+        JVM INSTR icmpeq 129;
+           goto _L21 _L22
+_L21:
+        break MISSING_BLOCK_LABEL_116;
+_L22:
+        break MISSING_BLOCK_LABEL_129;
+        return s.substring(s.lastIndexOf("\\") + 1);
+        s;
+_L20:
+        return;
+    }
+
+    private static InputStream b(File file)
+        throws FtpException
+    {
+        return new FileInputStream(file);
+        FileNotFoundException filenotfoundexception;
+        filenotfoundexception;
+        throw new FtpException(filenotfoundexception.getMessage(), filenotfoundexception);
+    }
+
+    private boolean b(FtpFile ftpfile)
+        throws FtpException
+    {
+        boolean flag;
+label0:
+        {
+            flag = true;
+            String s = getDir();
+            setDir(ftpfile.getFilename());
+            Enumeration enumeration = getDirListing();
+            do
+            {
+                if(!enumeration.hasMoreElements())
+                    break;
+                FtpFile ftpfile1 = (FtpFile)enumeration.nextElement();
+                if(a(ftpfile1))
+                    continue;
+                flag = false;
+                if(com.jscape.inet.ftp.FtpEvent.a)
+                    break label0;
+                break;
+            } while(true);
+            setDir(s);
+        }
+        return flag;
+    }
+
+    private static OutputStream c(File file)
+        throws FtpException
+    {
+        return new FileOutputStream(file);
+        IOException ioexception;
+        ioexception;
+        throw new FtpException(ioexception.getMessage(), ioexception);
+    }
+
+    private Vector b(String s)
+        throws FtpException
+    {
+        Vector vector;
+        Enumeration enumeration;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        vector = new Vector();
+        enumeration = getDirListing();
+        s.endsWith("/");
+        if(flag) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifne 66;
+           goto _L3 _L4
+_L3:
+        s.endsWith("\\");
+        if(flag) goto _L2; else goto _L5
+_L5:
+        JVM INSTR ifne 66;
+           goto _L6 _L4
+_L6:
+        s = s + "/";
+_L4:
+        enumeration.hasMoreElements();
+_L2:
+        JVM INSTR ifeq 210;
+           goto _L7 _L8
+_L7:
+        break MISSING_BLOCK_LABEL_75;
+_L8:
+        break; /* Loop/switch isn't completed */
+        FtpFile ftpfile = (FtpFile)enumeration.nextElement();
+        if(!ftpfile.isDirectory()) goto _L4; else goto _L9
+_L9:
+        a(ftpfile);
+        if(flag) goto _L11; else goto _L10
+_L10:
+        JVM INSTR ifne 66;
+           goto _L12 _L4
+_L12:
+        this;
+        if(flag) goto _L14; else goto _L13
+_L13:
+        ftpfile;
+        b();
+_L11:
+        JVM INSTR ifeq 153;
+           goto _L15 _L16
+_L15:
+        break MISSING_BLOCK_LABEL_121;
+_L16:
+        break; /* Loop/switch isn't completed */
+        vector.add(s + ftpfile.getFilename());
+        if(!flag) goto _L4; else goto _L17
+_L17:
+        this;
+_L14:
+        getDir();
+        String s1;
+        s1;
+        setDir(ftpfile.getFilename());
+        vector.addAll(b(s + ftpfile.getFilename()));
+        setDir(s1);
+        if(!flag) goto _L4; else goto _L18
+_L18:
+        return vector;
+    }
+
+    private Vector c(String s)
+        throws FtpException
+    {
+        Enumeration enumeration;
+        Vector vector;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        enumeration = getDirListing();
+        vector = new Vector();
+        s = getDir();
+        s.endsWith("/");
+        if(flag) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifne 71;
+           goto _L3 _L4
+_L3:
+        s.endsWith("\\");
+        if(flag) goto _L2; else goto _L5
+_L5:
+        JVM INSTR ifne 71;
+           goto _L6 _L4
+_L6:
+        s = s + "/";
+_L4:
+        enumeration.hasMoreElements();
+_L2:
+        JVM INSTR ifeq 185;
+           goto _L7 _L8
+_L7:
+        break MISSING_BLOCK_LABEL_80;
+_L8:
+        break; /* Loop/switch isn't completed */
+        FtpFile ftpfile = (FtpFile)enumeration.nextElement();
+        ftpfile.isDirectory();
+        if(flag) goto _L10; else goto _L9
+_L9:
+        JVM INSTR ifeq 153;
+           goto _L11 _L12
+_L11:
+        break MISSING_BLOCK_LABEL_104;
+_L12:
+        break; /* Loop/switch isn't completed */
+        a(ftpfile);
+        if(flag) goto _L2; else goto _L13
+_L13:
+        JVM INSTR ifne 71;
+           goto _L14 _L4
+_L14:
+        String s1 = getDir();
+        setDir(ftpfile.getFilename());
+        vector.addAll(c(s));
+        setDir(s1);
+        if(!flag) goto _L4; else goto _L15
+_L15:
+        vector.add(s + ftpfile.getFilename());
+_L10:
+        JVM INSTR pop ;
+        if(!flag) goto _L4; else goto _L16
+_L16:
+        return vector;
+    }
+
+    private static void a(InputStream inputstream)
+    {
+        inputstream;
+        if(com.jscape.inet.ftp.FtpEvent.a) goto _L2; else goto _L1
+_L1:
+        if(inputstream == null)
+            return;
+        inputstream;
+_L2:
+        close();
+        break MISSING_BLOCK_LABEL_19;
+        IOException ioexception;
+        ioexception;
+    }
+
+    private static void a(OutputStream outputstream)
+    {
+        outputstream;
+        if(com.jscape.inet.ftp.FtpEvent.a) goto _L2; else goto _L1
+_L1:
+        if(outputstream == null)
+            return;
+        outputstream;
+_L2:
+        close();
+        break MISSING_BLOCK_LABEL_19;
+        IOException ioexception;
+        ioexception;
+    }
+
+    private static void a(RandomAccessFile randomaccessfile)
+    {
+        randomaccessfile;
+        if(com.jscape.inet.ftp.FtpEvent.a) goto _L2; else goto _L1
+_L1:
+        if(randomaccessfile == null)
+            return;
+        randomaccessfile;
+_L2:
+        close();
+        break MISSING_BLOCK_LABEL_19;
+        Exception exception;
+        exception;
+    }
+
+    private void a(Vector vector, File file)
+        throws FtpException
+    {
+        boolean flag = com.jscape.inet.ftp.FtpEvent.a;
+        Enumeration enumeration;
+        String s;
+        enumeration = vector.elements();
+        s = getDir();
+        s.endsWith("/");
+        if(flag) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifne 68;
+           goto _L3 _L4
+_L3:
+        s.endsWith("\\");
+        if(flag) goto _L2; else goto _L5
+_L5:
+        JVM INSTR ifne 68;
+           goto _L6 _L4
+_L6:
+        s = s + "/";
+_L4:
+        enumeration.hasMoreElements();
+_L2:
+        JVM INSTR ifeq 130;
+           goto _L7 _L8
+_L8:
+        break; /* Loop/switch isn't completed */
+_L7:
+        String s1 = (String)enumeration.nextElement();
+        File file1 = new File(s1);
+        String s2 = j.a(file, file1, false);
+        d(s2);
+        setDir(s);
+        if(!flag && !flag) goto _L4; else goto _L9
+        IOException ioexception;
+        ioexception;
+        throw new FtpException(ioexception.getMessage());
+_L9:
+    }
+
+    private void b(Vector vector, File file)
+        throws FtpException
+    {
+        Enumeration enumeration;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        enumeration = vector.elements();
+_L4:
+        enumeration.hasMoreElements();
+_L6:
+        JVM INSTR ifeq 104;
+           goto _L1 _L2
+_L1:
+        break MISSING_BLOCK_LABEL_19;
+_L2:
+        break; /* Loop/switch isn't completed */
+        String s1;
+        String s = (String)enumeration.nextElement();
+        File file1 = new File(s);
+        s1 = "";
+        try
+        {
+            s1 = j.a(file, file1, false);
+        }
+        catch(IOException ioexception)
+        {
+            throw new FtpException(ioexception.getMessage());
+        }
+        if(s1 == null) goto _L4; else goto _L3
+_L3:
+        s1.equals("");
+        if(flag) goto _L6; else goto _L5
+_L5:
+        JVM INSTR ifne 10;
+           goto _L7 _L4
+_L7:
+        makeLocalDir(s1);
+        if(!flag) goto _L4; else goto _L8
+_L8:
+    }
+
+    private void d(String s)
+        throws FtpException
+    {
+        File file;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        file = new File(s);
+        file.getParent();
+        if(flag) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifnull 34;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_26;
+_L4:
+        break MISSING_BLOCK_LABEL_34;
+        d(file.getParent());
+        file.getName();
+_L2:
+        String s1;
+        s1;
+        s1;
+        if(flag) goto _L6; else goto _L5
+_L5:
+        if(s1 == null)
+            break MISSING_BLOCK_LABEL_67;
+        s1;
+_L6:
+        "";
+        equals();
+        JVM INSTR ifne 62;
+           goto _L7 _L8
+_L7:
+        break MISSING_BLOCK_LABEL_57;
+_L8:
+        break MISSING_BLOCK_LABEL_67;
+        makeDir(s1);
+        break MISSING_BLOCK_LABEL_67;
+        FtpException ftpexception;
+        ftpexception;
+        setDir(s1);
+        return;
+    }
+
+    private String b(InputStream inputstream)
+        throws FtpException
+    {
+        return Long.toHexString((new CRCComputer()).compute(inputstream, inputstream.available()));
+        Exception exception;
+        exception;
+        throw new FtpException(exception.getMessage(), exception);
+    }
+
+    public String getLocalChecksum(File file)
+        throws FtpException
+    {
+        Exception exception;
+        FileInputStream fileinputstream = null;
+        String s;
+        try
+        {
+            fileinputstream = new FileInputStream(file);
+            s = b(fileinputstream);
+        }
+        catch(IOException ioexception)
+        {
+            throw new FtpException(ioexception.getMessage(), ioexception);
+        }
+        finally
+        {
+            j.a(fileinputstream);
+        }
+        j.a(fileinputstream);
+        return s;
+        throw exception;
+    }
+
+    public String getRemoteFileChecksum(String s)
+        throws FtpException
+    {
+        String s1;
+        boolean flag;
+        flag = com.jscape.inet.ftp.FtpEvent.a;
+        if(!isFeatureSupported(z[2]))
+            break MISSING_BLOCK_LABEL_181;
+        s1 = z[8] + s;
+        String s2 = "";
+        String s3;
+        s3 = issueCommandCheck(s1);
+        break MISSING_BLOCK_LABEL_159;
+        FtpException ftpexception;
+        ftpexception;
+        int k;
+        String s4;
+        k = s1.indexOf(" ");
+        s4 = s1.substring(k + 1, s1.length());
+        s4;
+        if(flag) goto _L2; else goto _L1
+_L1:
+        " ";
+        indexOf();
+        -1;
+        JVM INSTR icmpeq 156;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_95;
+_L4:
+        break MISSING_BLOCK_LABEL_156;
+        s1 = s1.substring(0, k + 1) + "\"" + s1.substring(k + 1, s1.length()) + "\"";
+        issueCommandCheck(s1);
+_L2:
+        s3;
+        if(!flag)
+            break MISSING_BLOCK_LABEL_159;
+        throw ftpexception;
+        StringTokenizer stringtokenizer = new StringTokenizer(s3);
+        stringtokenizer.nextToken();
+        return stringtokenizer.nextToken();
+        throw new FtpException(z[9]);
+    }
+
+    private boolean a(InputStream inputstream, String s)
+        throws FtpException
+    {
+        String s1;
+        String s2;
+        s1 = b(inputstream);
+        s2 = getRemoteFileChecksum(s);
+        return s1.equalsIgnoreCase(s2);
+        Exception exception;
+        exception;
+        throw new FtpException(exception.getMessage(), exception);
+    }
+
+    private void d(File file)
+    {
+        File file1;
+        String s = file.getParent();
+        file1 = new File(s);
+        file1.exists();
+        if(com.jscape.inet.ftp.FtpEvent.a) goto _L2; else goto _L1
+_L1:
+        JVM INSTR ifne 37;
+           goto _L3 _L4
+_L3:
+        break MISSING_BLOCK_LABEL_27;
+_L4:
+        break MISSING_BLOCK_LABEL_37;
+        d(file1);
+        file1.mkdir();
+_L2:
+        JVM INSTR pop ;
+    }
+
+    private void a()
+    {
+        synchronized(this)
+        {
+            File file = new File(".");
+            String s = ".";
+            try
+            {
+                s = file.getCanonicalPath().replace('\\', '/');
+            }
+            catch(IOException ioexception) { }
+            a = new File(s);
+        }
+    }
+
+    public static final int AUTO = 0;
+    public static final int ASCII = 1;
+    public static final int BINARY = 2;
+    public static final String CURRENT_DIR = ".";
+    public static final String UP_DIR;
+    private File a;
+    private FtpFileParser b;
+    private FtpImplementation c;
+    private static String z[];
+
+    static 
+    {
+        String as[];
+        as = new String[13];
+        UP_DIR = "\177d";
+        as[0] = ";+dp>?/f?c>)yb>!+abg>8v";
+        as[1] = ";+dp>?/f?c>)yb>$9wc~0'w";
+        as[2] = "\t\t@R";
+        as[3] = "\022\"wr{\"?\1771b4>gc~4.2wq=9w";
+        as[4] = "q.}tcq$}e042{bd\177";
+        as[5] = "\035%qp|q,{}uq%`1t88wrd>8k1";
+        as[6] = "\"%qzc\0018}ii\001%`e";
+        as[7] = "\"%qzc\0018}ii\031%ae";
+        as[8] = "\t\t@R0";
+        as[9] = "\022%\177|q?.2IS\003\t2xcq$}e0\"?ba\177#>wu";
+        as[10] = "=%qp|q.{cu2>}ciq.}tcq$}e042{bdkj";
+        as[11] = "\177>\177a";
+        as[12] = "#=";
+        z = as;
+        break MISSING_BLOCK_LABEL_229;
+        local;
+        toCharArray();
+        JVM INSTR dup ;
+        JVM INSTR arraylength .length;
+        JVM INSTR swap ;
+        int k = 0;
+          goto _L1
+_L3:
+        JVM INSTR dup ;
+        k;
+        JVM INSTR dup2 ;
+        JVM INSTR caload ;
+        byte byte0;
+        switch(k % 5)
+        {
+        case 0: // '\0'
+            byte0 = 0x51;
+            break;
+
+        case 1: // '\001'
+            byte0 = 74;
+            break;
+
+        case 2: // '\002'
+            byte0 = 18;
+            break;
+
+        case 3: // '\003'
+            byte0 = 17;
+            break;
+
+        default:
+            byte0 = 16;
+            break;
+        }
+        byte0;
+        JVM INSTR ixor ;
+        (char);
+        JVM INSTR castore ;
+        k++;
+_L1:
+        JVM INSTR swap ;
+        JVM INSTR dup_x1 ;
+        k;
+        JVM INSTR icmpgt 144;
+           goto _L2 _L3
+_L2:
+        JVM INSTR new #181 <Class String>;
+        JVM INSTR dup_x1 ;
+        JVM INSTR swap ;
+        String();
+        intern();
+        JVM INSTR swap ;
+        JVM INSTR pop ;
+        JVM INSTR ret 0;
+    }
+}

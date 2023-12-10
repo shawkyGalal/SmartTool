@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>Overview</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?overview5.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Overview
+		<br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.8.6',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.3.2',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">FXP
+is an extension to the FTP protocol which allows for server to server
+transfers without actually acquiring the files yourself. For example,
+imagine that you wish transfer files from server A to server B using the
+FTP protocol from client C. Normally when using the FTP protocol you
+would have to do the following: <br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="28"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">1.</span></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Establish
+		FTP client connection from client C to server A. &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="28"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">2.</span></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Download
+		files from server A to client C. &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="28"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">3.</span></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Establish
+		FTP client connection from client C to server B. &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+		<td></td>
+	</tr>
+</table>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="32"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">4.</span></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Upload
+		files from client C to server B. &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+		<td></td>
+	</tr>
+</table>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><span
+	style="font-family: Helvetica, Arial; font-size: 5pt; color: #000000">
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">As
+you can see this process is an inefficient use of bandwidth as it
+requires that a file be transferred twice in order to get to it's final
+destination. This can be especially problematic when the client has a
+slow connection such as a dialup connection. FXP solves this problem by
+allowing the client to issue a series of commands which transfers the
+files directly from server A to server B without first acquiring the
+files by client C. <br>
+
+<br>
+This section is divided into the following topics. <br>
+
+<br>
+<a href=javaScript:parent.reDisplay('2.3.3',1,0)>Establishing a
+connection</a> <br>
+<a href=javaScript:parent.reDisplay('2.3.4',1,0)>Transferring a file</a>
+<br>
+<a href=javaScript:parent.reDisplay('2.3.5',1,0)>Transferring a
+directory</a> <br>
+<a href=javaScript:parent.reDisplay('2.3.6',1,0)>Transferring
+multiple files</a> <br>
+<a href=javaScript:parent.reDisplay('2.3.7',1,0)>Releasing a
+connection</a> <br>
+<a href=javaScript:parent.reDisplay('2.3.8.1',1,0)>Capturing FXP
+related events</a> <br>
+</span></span>
+
+</body>
+</html>

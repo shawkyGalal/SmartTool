@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zip-info>
+   <target compress="false" in-workspace="true"
+      include-java-output="true"
+      location="/SmartTool/WebContent/WEB-INF/lib" manifest="false" name="smartTool.jar">
+      <source/>
+   </target>
+   <target compress="false" in-workspace="false"
+      include-java-output="true"
+      location="D:/SmartValue/Sources/Shared/Web_Lib" manifest="false" name="smartTool.jar">
+      <source/>
+   </target>
+</zip-info>

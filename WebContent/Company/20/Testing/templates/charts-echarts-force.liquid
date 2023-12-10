@@ -1,0 +1,227 @@
+{% extends 'layout' %}
+{% block title %}Force Echarts{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="chord-charts.html">Data zoom Charts</a></li>
+{% endblock %}
+{% block styles %} 
+{{ 'css/echartsHome.css' | asset_url | stylesheet_tag }}
+{{ 'css/codemirror.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+{% block scripts %}
+{{ "js/echarts.js" | asset_url | script_tag }}  
+{{ "js/codemirror.js" | asset_url | script_tag }}
+{{ "js/echartsExample.js" | asset_url | script_tag }}
+<!--{{ "plugins/wijets/wijets.js" | asset_url | script_tag }} --> 
+<script>
+  $(document).ready(function(){
+     $('#reset').click(function () {
+          bootbox.confirm("Are you sure you want to clear Local Storage? This will clear ALL globally set settings", function() {
+              localStorage.clear();
+          }); 
+      });
+  });
+</script>
+{% endblock %}
+{% block content %}
+<div class="row" data-widget-group="group-demo">
+    <div class="col-md-12">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget16"}'>
+          <div class="panel-heading m-n">
+            <ul class="nav nav-tabs tab-warning material-nav-tabs">
+              <li class="active"><a href="#domwell" data-toggle="tab">Force Echarts</a></li>
+              <li><a href="#codewell" data-toggle="tab">Code</a></li>
+            </ul>
+          </div>
+          <div class="panel-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="domwell">
+                <div id="graphic" class="col-md-12">
+                  <div id="main" class="main"></div>
+                  <div>
+                    <button type="button" class="btn btn-success" onclick="refresh(true)">Refresh</button>
+                    <h4>Change Layout</h4>
+                    <select id="theme-select" class='form-control'></select>
+
+                    <span id='wrong-message' style="color:red"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="codewell">
+                <div id="leftbar-code" class='col-md-12'>
+                    <div class="well leftbar-nav">
+                        <div class="nav-header"><a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id ="icon-resize" ></a>option</div>
+                        <textarea id="code" name="code">
+                            var nodes = [];
+                            var links = [];
+                            var constMaxDepth = 2;
+                            var constMaxChildren = 7;
+                            var constMinChildren = 4;
+                            var constMaxRadius = 10;
+                            var constMinRadius = 2;
+
+                            function rangeRandom(min, max) {
+                                return Math.random() * (max - min) + min;
+                            }
+
+                            function createRandomNode(depth, parentNode) {
+                                var node = {
+                                    name : 'NODE_' + nodes.length,
+                                    value : rangeRandom(constMinRadius, constMaxRadius),
+                                    // Custom properties
+                                    id : nodes.length,
+                                    depth : depth,
+                                    category : depth === constMaxDepth ? 0 : 1,
+                                    __parentNode__ : parentNode ? parentNode.id : -1,
+                                    __children__ : [],
+                                    __collapsed__ : false
+                                }
+                                nodes.push(node);
+
+                                return node;
+                            }
+
+                            function forceMockThreeData() {
+                                var depth = 0;
+                                var rootNode = createRandomNode(0);
+                                rootNode.name = 'ROOT';
+                                rootNode.category = 2;
+
+                                function mock(parentNode, depth) {
+                                    var nChildren = Math.round(rangeRandom(constMinChildren, constMaxChildren));
+                                    
+                                    for (var i = 0; i < nChildren; i++) {
+                                        var childNode = createRandomNode(depth, parentNode);
+                                        links.push({
+                                            source : parentNode.id,
+                                            target : childNode.id,
+                                            weight : 1
+                                        });
+                                        parentNode.__children__.push(childNode.id);
+                                        if (depth < constMaxDepth) {
+                                            mock(childNode, depth + 1);
+                                        }
+                                    }
+                                }
+
+                                mock(rootNode, 0);
+                            }
+
+                            forceMockThreeData();
+
+                            option = {
+                                title : {
+                                    text: 'Tectonic',
+                                    subtext: 'Force Chart',
+                                    x:'right',
+                                    y:'bottom'
+                                },
+                                tooltip : {
+                                    trigger: 'item',
+                                    formatter: '{a} : {b}'
+                                },
+                                toolbox: {
+                                    show : true,
+                                    feature : {
+                                        restore : {show: true},
+                                        magicType: {show: true, type: ['force', 'chord']},
+                                        saveAsImage : {show: true}
+                                    }
+                                },
+                                legend: {
+                                    x: 'left',
+                                    data:['data1','data2', 'data3']
+                                },
+                                series : [
+                                    {
+                                        type:'force',
+                                        name : "Force tree",
+                                        ribbonType: false,
+                                        categories : [
+                                            {
+                                                name: 'data1'
+                                            },
+                                            {
+                                                name: 'data2'
+                                            },
+                                            {
+                                                name: 'data3'
+                                            }
+                                        ],
+                                        itemStyle: {
+                                            normal: {
+                                                label: {
+                                                    show: false
+                                                },
+                                                nodeStyle : {
+                                                    brushType : 'both',
+                                                    strokeColor : 'rgba(255,215,0,0.6)',
+                                                    lineWidth : 1
+                                                }
+                                            }
+                                        },
+                                        minRadius : constMinRadius,
+                                        maxRadius : constMaxRadius,
+                                        coolDown: 0.995,
+                                        nodes : nodes,
+                                        links : links
+                                    }
+                                ]
+                            };
+
+                            function isAscendant(node1, node2) {
+                                var parent = nodes[node2.__parentNode__];
+                                while(parent) {
+                                    if (parent.id === node1.id) {
+                                        return true;
+                                    }
+                                    parent = nodes[parent.__parentNode__];
+                                }
+                                return false;
+                            }
+
+                            function addChildrenToChart(node) {
+                                for (var i = 0; i < node.__children__.length; i++) {
+                                    var childNode = nodes[node.__children__[i]];
+                                    childNode.ignore = false;
+
+                                    addChildrenToChart(childNode);
+                                }
+                            }
+
+                            var ecConfig = require('echarts/config');
+                            function focus(param) {
+                                var data = param.data;
+                                if (
+                                    data.source !== undefined
+                                    && data.target !== undefined
+                                ) {
+                                } else { // ?????
+                                    var targetNode = nodes[data.id];
+                                
+                                    if (!targetNode.__collapsed__) {
+                                        option.series[0].nodes = nodes.map(function (node) {
+                                            node.ignore = isAscendant(data, node);
+                                            return node;
+                                        });
+                                    } else {
+                                        addChildrenToChart(targetNode);
+                                    }
+
+                                    targetNode.__collapsed__ = ! targetNode.__collapsed__;
+                                    myChart.setOption(option, true);
+                                }
+                            }
+                            myChart.on(ecConfig.EVENT.CLICK, focus);
+
+                        </textarea>
+                    </div><!--/.well -->
+                </div><!--/span-->
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

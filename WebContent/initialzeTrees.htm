@@ -1,0 +1,104 @@
+<% 
+String treeIdInSession = "queriesTree" ; 
+queriesTree = new Support.LookupTreeV10(treeIdInSession);
+queriesTree.setImagepath("images/");
+//queriesTree.setTargetUrl("editAndExecute.jsp");
+queriesTree.setAddFormUrl("queryInsert.jsp");
+queriesTree.setTargetFrame("mainFrame");
+queriesTree.setAddFormTargetFram("mainFrame");
+queriesTree.setShowAddLink(true); queriesTree.setShowToolBar(true);
+queriesTree.sethyperlinkLastTableItemsOnly(true);
+queriesTree.showRecycleBinButton(false);
+queriesTree.setShowCheckBox(false); queriesTree.setShowMoveForm(true);
+//---------This Section to Display only Node for the logged User Standard -------- 
+java.util.Vector nodesIncluded = new java.util.Vector(); 
+String loggedUer =con.getMetaData().getUserName().toUpperCase() ; 
+String query = "select id from SUPPORT.LU_QUERIES where code = '" + loggedUer +"'" ; 
+//java.sql.ResultSet rs = repCon.createStatement().executeQuery(query); rs.next();
+//nodesIncluded.addElement("LU_QUERIES"+rs.getString("id"));
+//rs.close();
+ 
+	java.sql.Statement stmt =  repCon.createStatement();
+	java.sql.ResultSet rs = null;
+    try 
+	{
+	    rs = stmt.executeQuery( "select id from Support.LU_QUERIES where code = '" + loggedUer +"'" );
+    	try {
+        	while ( rs.next() ) {  nodesIncluded.addElement("LU_QUERIES"+rs.getString("id"));	}
+    	} 
+    	finally { try { rs.close(); } catch (Exception ignore) { } }
+	} 
+	finally { try { stmt.close(); } catch (Exception ignore) { } }
+nodesIncluded.addElement("LU_QUERIES305");
+
+//---------Include The Standard Node 
+queriesTree.includeOnlySubNodes(nodesIncluded);
+//nodesIncluded 
+//---------This Section to Display only Node for the logged User + Standard --------
+queriesTree.initialize(application,session,request,response,out);
+queriesTree.setDBConnection(repCon);
+
+queriesTree.setTreeData("LU_QUERIES",false); 
+if (request.getParameter("nodeToBeToggled") == null)
+{
+   com.implex.database.map.SecUsrDta loggedUser1 = (com.implex.database.map.SecUsrDta) session.getAttribute("loggedUser") ;
+   //out.print(loggedUser1.getUsrNameValue() ) ;
+   //out.print(loggedUser1.getAttribute("USR_UD1") )  ; 
+	try { // By default open Carrent system nodes 
+		String[] treeOpenNodes = loggedUser1.getUsrUd1Value().split(",");
+		for (String nodeId : treeOpenNodes )
+		{
+			queriesTree.TogNodesStatusAsBitSet(queriesTree.getindex2("LU_QUERIES" + nodeId ) ); // Tree opened
+		}
+	   }
+		catch (Exception e ){System.out.println(e.getMessage());}
+}
+
+//----------This Method internally check if the reload button pressed or not 
+
+//session.setAttribute("queriesTree", queriesTree); 
+//End of Query Tree Initialization
+
+//********************************************************************
+
+
+//Start of Executables Tree Initialization 
+executeTree = new Support.LookupTreeV10("executeTree"); executeTree.setImagepath("images/");
+executeTree.setTargetUrl("editAndExecuteExecutable.jsp");
+executeTree.setAddFormUrl("executableInsert.jsp");
+executeTree.setTargetFrame("mainFrame");
+executeTree.setAddFormTargetFram("mainFrame");
+executeTree.setShowAddLink(true); executeTree.setShowToolBar(true);
+executeTree.sethyperlinkLastTableItemsOnly(true);
+executeTree.showRecycleBinButton(false);
+executeTree.setShowCheckBox(false); executeTree.setShowMoveForm(true);
+//---------This Section to Display only Node for the logged User + Standard -------- 
+nodesIncluded = new java.util.Vector(); 
+//query = "select id from lu_executables where code = '" + loggedUer +"'" ; 
+//rs = repCon.createStatement().executeQuery(query); 
+//rs.next();
+//nodesIncluded.addElement("LU_EXECUTABLES"+rs.getString("id"));
+    stmt =  repCon.createStatement();
+    try 
+	{
+	    rs = stmt.executeQuery( "select id from Support.lu_executables where code = '" + loggedUer +"'" );
+    	try {
+        	while ( rs.next() ) {  nodesIncluded.addElement("LU_EXECUTABLES"+rs.getString("id"));	}
+    	} 
+    	finally { try { rs.close(); } catch (Exception ignore) { } }
+	} 
+	finally { try { stmt.close(); } catch (Exception ignore) { } }
+
+nodesIncluded.addElement("LU_EXECUTABLES20161"); 
+//---------Include The Standard Node 
+executeTree.includeOnlySubNodes(nodesIncluded);
+//nodesIncluded 
+//---------This Section to Display only Node for the logged User + Standard --------
+
+executeTree.initialize(application,session,request,response,out );
+executeTree.setDBConnection(repCon);
+executeTree.setTreeData("LU_EXECUTABLES",false); 
+//----------This Method internally check if the reload button pressed or not
+
+//End of Executables Tree Initialization 
+%>

@@ -1,0 +1,83 @@
+{% extends "layout-asides-leftbar-small" %}
+{% block title %}Notes{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li>Functional Apps</li>
+<li class="active"><a href="app-inbox.html">Inbox</a></li>
+{% endblock %}
+{% block styles %}
+{{ "plugins/summernote/dist/summernote.css" | asset_url | stylesheet_tag }} <!-- Summernote -->
+{% endblock %}
+{% block scripts %}
+{{ "plugins/summernote/dist/summernote.js" | asset_url | script_tag }}   <!-- Summernote -->
+{{ "demo/demo-notes.js" | asset_url | script_tag }}
+{% endblock %}
+{% block content %} 
+<div class="notes-container aside-wrapper">
+  <div class="aside-body" id="panel-advancedoptions">
+    <div class="aside-cell aside-col">
+      <div class="aside-bar b-r">
+        <div class="aside-bar-header p-md b-b">
+          <input type="text" class="form-control inbox-search-input" placeholder="Search notes...">
+        </div>
+        <div class="aside-bar-body">
+          <div class="notes-sidebar">
+            <div class="notes-list scroll-pane">
+              <div class="scroll-content">
+                <div class="notes-snippet active">
+                  <h6 class="notes-title">...</h6>
+                  <span class="notes-date">9/23/2014 at 11:32 PM</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="aside-bar-footer">
+          <div class="notes-options p-md clearfix b-t">
+            <a href="#" class="pull-left btn btn-success">New</a>
+            <div class="pull-right">
+              <a href="#" class="btn btn-default btn-danger"><i class="ion-android-delete"></i></a> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="aside-cell" style="background: #f5f7f7;">
+      <div class="panel-inbox">
+        <div class="panel-body">
+          <div class="inbox-mail-heading">
+            <div class="clearfix">
+              <div class="pull-left">
+                <div class="btn-group dropdown">
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Select All</a></li>
+                    <li><a href="#">Unselect All</a></li>
+                    <li><a href="#">Another Action</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated Link</a></li>
+                  </ul>
+                </div>
+                <div class="btn-group">
+                  <a class="btn btn-default" href="#"><i class="ion-android-archive"></i></a>
+                  <a class="btn btn-default" href="#"><i class="ion-android-create"></i></a>
+                  <a class="btn btn-default" href="#"><i class="ion-android-delete"></i></a>
+                </div>
+              </div>
+              <div class="pull-right">
+                <span class="pull-left"></span>
+                <div class="btn-group pull-right">
+                  <a class="btn btn-default" href="#"><i class="ion-android-arrow-back"></i></a>
+                  <a class="btn btn-default" href="#"><i class="ion-android-arrow-forward"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="note scroll-pane" spellcheck="false">
+            <div class="scroll-content p-xl"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

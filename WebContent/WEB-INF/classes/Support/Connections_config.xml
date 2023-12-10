@@ -1,0 +1,103 @@
+<?xml version='1.0' ?>
+<Configuration>
+	<Connection>
+		<TYPE>JDBC</TYPE>
+		<Name>(LOCAL ORCL)</Name>
+		<URL>jdbc:oracle:thin:@10.0.0.15:1521:orcl</URL>
+		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
+		<SQLBINDVAR>
+			<BINDVARNAME>RepSchemaName</BINDVARNAME>
+			<BINDVARVALUE>side</BINDVARVALUE>
+		</SQLBINDVAR>
+		RepSchemaName
+		<Active>Y</Active>
+	</Connection>
+		<Connection>
+		<TYPE>JDBC</TYPE>
+		<DBTYPE>MSSQL</DBTYPE>
+		<URL>jdbc:jtds:sqlserver://10.0.0.81:1433;databasename=DB_PROD</URL>
+		<DRIVER>net.sourceforge.jtds.jdbc.Driver</DRIVER>
+		<Name>HRMS</Name>
+		<Active>Y</Active>
+	</Connection>
+	<Connection>
+		<TYPE>JDBC</TYPE>
+		<DBTYPE>ORACLE</DBTYPE>
+		<Name>Side Reporting(SUN)</Name>
+		<URL>jdbc:oracle:thin:@10.10.0.228:1521:orcl</URL>
+		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
+		<SQLBINDVAR>
+			<BINDVARNAME>RepSchemaName</BINDVARNAME>
+			<BINDVARVALUE>side</BINDVARVALUE>
+		</SQLBINDVAR>
+		<Active>Y</Active>
+	</Connection>
+	<Connection>
+		<TYPE>JDBC</TYPE>
+		<DBTYPE>MSSQL</DBTYPE>
+		<URL>jdbc:jtds:sqlserver://localhost:1433;databasename=sidedb</URL>
+		<DRIVER>net.sourceforge.jtds.jdbc.Driver</DRIVER>
+		<Name>Side Reporting(LOCAL SQL)</Name>
+		<SQLBINDVAR>
+			<BINDVARNAME>RepSchemaName</BINDVARNAME>
+			<BINDVARVALUE>sidedb.dbo</BINDVARVALUE>
+		</SQLBINDVAR>
+		<Active>Y</Active>
+	</Connection>
+	<Connection>
+		<TYPE>JDBC</TYPE>
+		<URL>jdbc:oracle:thin:@192.168.253.74:1521:orcl</URL>
+		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
+		<Name>Side Reporting (Viking)</Name>
+		<SQLBINDVAR>
+			<BINDVARNAME>RepSchemaName</BINDVARNAME> <!-- Trading network Schema-->
+			<BINDVARVALUE>side</BINDVARVALUE> <!-- MNWMCI0301-->
+		</SQLBINDVAR>
+		<Active>Y</Active>
+	</Connection>
+	<Connection>
+		<TYPE>JDBC</TYPE>
+		<DBTYPE>MSSQL</DBTYPE>
+		<Name>SCDB (LOCAL SQL)</Name>
+		<URL>jdbc:jtds:sqlserver://localhost:1433;databasename=scdb</URL>
+		<DRIVER>net.sourceforge.jtds.jdbc.Driver</DRIVER>
+		<Active>Y</Active>
+	</Connection>
+	<Connection>
+		<TYPE>JDBC</TYPE>
+		<Name>SCDB (LOCAL ORCL)</Name>
+		<URL>jdbc:oracle:thin:@localhost:1521:orcl</URL>
+		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
+		<Active>Y</Active>
+	</Connection>
+	<Connection>
+		<TYPE>JDBC</TYPE>
+		<Name>نظام معلومات كلية العلاج الطبيعى</Name>
+		<URL>jdbc:oracle:thin:@localhost:1521:orcl</URL>
+		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
+		<Active>Y</Active>
+	</Connection>
+	<Connection>
+		<TYPE>JDBC</TYPE>
+		<Name>MyLabtop</Name>
+		<URL>jdbc:oracle:thin:@localhost:1521:orcl</URL>
+		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
+		<Active>Y</Active>
+		<SQLBINDVAR>
+			<BINDVARNAME>SchemaName</BINDVARNAME>
+			<BINDVARVALUE>Scott</BINDVARVALUE>
+		</SQLBINDVAR>
+	</Connection>
+	<REPOSATORYCONN>
+		<TYPE>JDBC</TYPE>
+		<Name>Local Host Reposatory</Name>
+		<URL>jdbc:oracle:thin:@localhost:1521:orcl</URL>
+		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
+		<Active>Y</Active>
+		<userName>support</userName>
+		<password>support</password>
+		<MAX_POOL_SIZE>10</MAX_POOL_SIZE>
+		<MIN_POOL_SIZE>2</MIN_POOL_SIZE>
+		<WAIT_TIMEOUT>1</WAIT_TIMEOUT>
+	</REPOSATORYCONN>
+</Configuration>

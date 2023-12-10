@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Setting client and server certificates</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?settingclientandservercert.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Setting
+		client and server certificates <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.2.3',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.2.5',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">When
+establishing a connection you may define any optional client
+certificates that should be used for authentication purposes when
+establishing an SSL connection. In addition you may define any optional
+server certificates that should be validated against to ensure that the
+server you are communicating with this the server you are expecting.
+Client and server certificates should be stored in separate Java
+keystore files and protected using a keystore password. <br>
+
+<br>
+Existing certificates may be imported into a Java keystore using the
+keytool.exe utility provided with the JDK. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">keytool.exe&nbsp;-import&nbsp;-file&nbsp;x509.cer&nbsp;-keystore&nbsp;your_store_name</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+The example above imports the certificate x509.cer into a keystore named
+your_store_name <br>
+
+<br>
+Provided you have existing keystores you may set the client and server
+certificates using the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps#setClientCertificates</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and </span><span style="font-family: Courier; font-size: 10pt; color: #000000">Ftps#setServerCertificates</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods respectively. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;set&nbsp;client&nbsp;certificates</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+ftps.setClientCertificates(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"c:/certs/client_keystore"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">,<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"secret"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;set&nbsp;server&nbsp;certificates</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+ftps.setServerCertificates(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"c:/certs/server_keystore"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">,<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"secret"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);&nbsp;</span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000"> <br>
+</span></span>
+
+</body>
+</html>

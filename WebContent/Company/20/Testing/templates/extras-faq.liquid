@@ -1,0 +1,26 @@
+{% extends 'layout' %}
+{% block title %}Frequently Askeq Questions{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Extras</a></li>
+<li class="active"><a href="extras-faq.html">FAQ</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+	// There is no special integration in BS between list-group and tabs, so we add it
+	 $('.list-group-item').on('click',function(e){
+     	var previous = $(this).closest(".list-group").children(".active");
+     	previous.removeClass('active'); // previous list-item
+     	$(e.target).addClass('active'); // activated list-item
+   	});
+</script>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

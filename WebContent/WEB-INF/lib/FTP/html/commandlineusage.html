@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>Command line usage</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?commandlineusage.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Command
+		line usage <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.1',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.3',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span style="font-family: Courier; font-size: 10pt; color: #000000">Usage&nbsp;EXE:&nbsp;ftcl&nbsp;-f&nbsp;scriptfile&nbsp;[-options]
+<br>
+Usage&nbsp;JAR:&nbsp;java&nbsp;-jar&nbsp;ftcl.jar&nbsp;-f&nbsp;scriptfile&nbsp;[-options]
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+Usage EXE</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">ftcl&nbsp;-f&nbsp;ftpscript.txt&nbsp;-h&nbsp;ftp.myhost.com&nbsp;-u&nbsp;jsmith&nbsp;-p&nbsp;secret
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+Usage JAR</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">java&nbsp;-jar&nbsp;ftcl.jar&nbsp;-f&nbsp;ftpscript.txt&nbsp;-h&nbsp;ftp.myhost.com&nbsp;-u&nbsp;jsmith&nbsp;-p&nbsp;secret
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+The above examples use FTCL to connect to the host ftp.myhost.com with
+the username </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">jsmith</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+and password </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">secret</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">.
+Once connected the commands in the script file </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">ftpscript.txt</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+are executed on the remote host. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #FF0000"><b>Notes</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">1.
+		When using the EXE version the ftcl.exe executable must be in your
+		system path or current directory. The EXE version may be used on the
+		Windows operating system only. &nbsp;<br>
+		</span></td>
+		<td width="51"></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		&nbsp;<br>
+		</span></td>
+		<td width="51"></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">2.
+		When using the JAR version the java.exe executable must be in your
+		system path or current directory and the full path to the ftcl.jar
+		file must be specified if not located in your current directory. The
+		JAR version is platform independent and may be used on all platforms.
+		&nbsp;<br>
+		</span></td>
+		<td width="51"></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="51"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+		<td></td>
+		<td width="51"></td>
+	</tr>
+</table>
+
+</body>
+</html>

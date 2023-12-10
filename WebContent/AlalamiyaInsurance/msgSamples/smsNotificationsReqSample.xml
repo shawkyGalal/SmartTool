@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmartValue>
+	
+	<SignonRq>
+		<ClientDt>2004-10-28T01:01:07</ClientDt>
+		<LanguagePref>en-gb</LanguagePref>
+		<SignonProfile>
+			<Sender>Al-ALAMIYA</Sender>
+			<SenderPassword>abc123</SenderPassword>
+			<Receiver>SMARTVALUE</Receiver>
+			<MsgCode>SMSNOTRQ</MsgCode>
+		</SignonProfile>
+	</SignonRq>
+	
+	<SmsNotificationRequest>
+		<RqUID>E718A1F8-AB9C-309C-E033-0A101009309C</RqUID>
+		
+		<NotificationRequestParams>
+			<PolicyNo>12345</PolicyNo>
+			<ClaimNo>765765765</ClaimNo>
+			<CustMobileNo>966564627751</CustMobileNo>
+			<SMSMessage>بسم الله الرحمن الرحيم Your Claim is Under Processing</SMSMessage>
+		</NotificationRequestParams>
+		
+		<NotificationRequestParams>
+			<PolicyNo>65657</PolicyNo>
+			<ClaimNo>87987897</ClaimNo>
+			<CustMobileNo>9665646277</CustMobileNo>
+			<SMSMessage>Your Claim is rejected</SMSMessage>
+		</NotificationRequestParams>
+
+		<NotificationRequestParams>
+			<PolicyNo>86867</PolicyNo>
+			<ClaimNo>987808899</ClaimNo>
+			<CustMobileNo>9665646251</CustMobileNo>
+			<SMSMessage>Your Claim Has been Approved, Please contact our Head Office </SMSMessage>
+		</NotificationRequestParams>
+
+	</SmsNotificationRequest>
+	
+	<Signature>
+		<XPath>kkjhkjhkj</XPath>
+		<SignatureValue>.kjhkjhkjhkjh kjh kjh kjh kjh kjh kjhiyiuyuytuytuytyutiuyutetrwtrewerw</SignatureValue>
+	</Signature>
+	
+</SmartValue>

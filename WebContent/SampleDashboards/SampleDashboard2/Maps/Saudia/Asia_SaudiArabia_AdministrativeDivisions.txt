@@ -1,0 +1,18 @@
+Data Fields
+ADMIN_NAME      C 23
+
+Object Names
+Al Bahah
+Al Jawf
+Al Madinah
+Ash Sharqiyah
+Al Qasim
+Al Qurayyat
+Ar Riyad
+'Asir
+Ha'il
+Makkah
+Al Hudud ash Shamaliyah
+Najran
+Jizan
+Tabuk

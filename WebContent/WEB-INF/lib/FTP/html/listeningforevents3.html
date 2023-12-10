@@ -1,0 +1,271 @@
+<html>
+<head>
+<title>Listening for events</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?listeningforevents3.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Listening
+		for events <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.5.2.4',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.5.3.2',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">For
+an object to listen for events published by the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Scp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class the following steps are required: <br>
+
+<br>
+1. Set object to implement </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">ScpEventListener</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+2. Overload event handling methods. <br>
+3. Subscribe object to receive events published by </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Scp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+instance. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+The example below demonstrates using the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">ScpEventListener</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class. <br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000">import&nbsp;java.io.*;
+<br>
+import&nbsp;com.jscape.inet.scp.Scp; <br>
+import&nbsp;com.jscape.inet.scp.events.*; <br>
+import&nbsp;com.jscape.inet.ssh.util.SshParameters; <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #0000FF">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">class</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;ScpExample&nbsp;implements&nbsp;ScpEventListener&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;ScpExample(String&nbsp;hostname,&nbsp;String&nbsp;username,&nbsp;String&nbsp;password,&nbsp;String&nbsp;filename,&nbsp;String&nbsp;destination)&nbsp;throws&nbsp;Exception&nbsp;&nbsp;&nbsp;&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;create&nbsp;new&nbsp;SshParamters&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SshParameters&nbsp;params&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;SshParameters(hostname,username,password);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;create&nbsp;new&nbsp;Scp&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scp&nbsp;scp&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;Scp(params);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;register&nbsp;event&nbsp;listener</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scp.addListener(<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">this</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;establish&nbsp;connection</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scp.connect();&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;upload&nbsp;file</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scp.upload(<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;File(filename),destination);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;disconnect</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scp.disconnect(); <br>
+&nbsp;&nbsp;&nbsp;} <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">void</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;download(ScpFileDownloadedEvent&nbsp;evt)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Downloaded&nbsp;file:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;evt.getFilename());&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">void</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;upload(ScpFileUploadedEvent&nbsp;evt)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Uploaded&nbsp;file:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;evt.getFilename());
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">void</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;progress(ScpTransferProgressEvent&nbsp;evt)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Transfer&nbsp;progress:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;evt.getFilename()&nbsp;+&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;evt.getTransferredBytes()&nbsp;+&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"&nbsp;bytes."</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">void</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;connected(ScpConnectedEvent&nbsp;evt)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Connected&nbsp;to&nbsp;host:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;evt.getHost());
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">void</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;disconnected(ScpDisconnectedEvent&nbsp;evt)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Disconnected&nbsp;from&nbsp;host:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;+&nbsp;evt.getHost());
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">public</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">static</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">void</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;main(String[]&nbsp;args)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">try</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #008000"><i>//&nbsp;collect&nbsp;connection&nbsp;details&nbsp;and&nbsp;launch&nbsp;example</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufferedReader&nbsp;reader&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;BufferedReader(<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;InputStreamReader(System.in));
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Enter&nbsp;SCP&nbsp;hostname:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;hostname&nbsp;=&nbsp;reader.readLine();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Enter&nbsp;SCP&nbsp;username:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;username&nbsp;=&nbsp;reader.readLine();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Enter&nbsp;SCP&nbsp;password:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;password&nbsp;=&nbsp;reader.readLine();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Enter&nbsp;file&nbsp;to&nbsp;upload&nbsp;e.g.&nbsp;c:/tmp/test.txt&nbsp;:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;filename&nbsp;=&nbsp;reader.readLine();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.print(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"Enter&nbsp;destination&nbsp;directory&nbsp;with&nbsp;ending&nbsp;path&nbsp;separator&nbsp;e.g.&nbsp;/home/user/&nbsp;:&nbsp;"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;destination&nbsp;=&nbsp;reader.readLine();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ScpExample&nbsp;example&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">new</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">&nbsp;ScpExample(hostname,username,password,&nbsp;filename,&nbsp;destination);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #0000FF">catch</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">(Exception&nbsp;e)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace();
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;} <br>
+} <br>
+</span></span>
+
+</body>
+</html>

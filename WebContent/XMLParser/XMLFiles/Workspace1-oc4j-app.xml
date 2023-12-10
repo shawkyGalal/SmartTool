@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<!DOCTYPE orion-application PUBLIC "-//Evermind//DTD J2EE Application runtime 1.2//EN" "http://xmlns.oracle.com/ias/dtds/orion-application.dtd">
+<orion-application>
+	<web-module id="BankSimulator" path="D:\MyWork\BankSimulator\public_html" />
+	<web-module id="Support" path="D:\MyWork\Support\public_html" />
+	<web-module id="SADAD" path="D:\MyWork\SADAD\public_html" />
+	<web-module id="Workspace1-Project1-webapp" path="D:\MyWork\Project1\public_html" />
+	<client-module path="D:\MyWork\BankSimulator\public_html\applet" />
+	<library path="D:\MyWork\BankSimulator\public_html\applet" />
+	<library path="D:\DevSuiteHome\jdev\lib\jdev-rt.jar" />
+	<library path="D:\DevSuiteHome\j2ee\home\lib\ojsp.jar" />
+	<library path="D:\DevSuiteHome\j2ee\home\jsp\lib\taglib\ojsputil.jar" />
+	<library path="D:\DevSuiteHome\j2ee\home\oc4j.jar" />
+	<library path="D:\DevSuiteHome\j2ee\home\lib\servlet.jar" />
+	<library path="D:\DevSuiteHome\jdev\lib\ojc.jar" />
+	<library path="D:\DevSuiteHome\j2ee\home\oc4j.jar" />
+	<library path="D:\DevSuiteHome\j2ee\home\lib\servlet.jar" />
+	<library path="D:\DevSuiteHome\jdbc\lib\classes12.jar" />
+	<library path="D:\DevSuiteHome\jdbc\lib\nls_charset12.jar" />
+	<library path="D:\MyWork\SADAD\classes\UUID_Java _enerator\jug.jar" />
+	<log>
+		<file path="Workspace1-oc4j-app.log" />
+	</log>
+	<data-sources path="D:\MyWork\Workspace1-data-sources.xml" />
+</orion-application>

@@ -1,0 +1,61 @@
+{% extends 'layout' %}
+{% block title %}File-Uploader{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+
+{% block styles %} 
+{{ 'plugins/kartik-file-uploader/css/fileinput.min.css' | asset_url | stylesheet_tag }}
+{{ 'plugins/dropzone/css/dropzone.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %} 
+{{ 'plugins/kartik-file-uploader/js/fileinput.min.js' | asset_url | script_tag }}
+{{ 'demo/kartik-file-uploader/data.js' | asset_url | script_tag }}
+{{ 'plugins/dropzone/dropzone.js' | asset_url | script_tag }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+            <div class="panel-heading">
+                <h2>Kartik File-Uploader</h2>
+                <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg icon"><i class="ion-android-arrow-down"></i></span></div>
+            </div>
+            <div class="panel-body">
+                <form enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input id="file-4" type="file" class="file" data-upload-url="#">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-warning" type="button">Disable Test</button>
+                        <button class="btn btn-info" type="reset">Refresh Test</button>
+                        <button class="btn btn-primary">Submit</button>
+                        <button class="btn btn-default" type="reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-info" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+            <div class="panel-heading">
+                <h2>DropZone File-Uploader</h2>
+                <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg icon"><i class="ion-android-arrow-down"></i></span></div>
+            </div>
+            <div class="panel-body">
+                <form action="upload.php" class="dropzone dz-clickable">
+                    <div class="dz-default dz-message">
+                        <span class="hidden-xs">Drop files here to upload</span>
+                        <span class="visible-xs"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

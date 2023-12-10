@@ -1,0 +1,389 @@
+{% extends 'layout' %}
+{% block title %}Customizer{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a class="active" href="customizer.html">Customizer</a></li>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet/less" type="text/css" href="assets/less/customizer.less" />
+{{ "plugins/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js" | asset_url | script_tag }} <!-- Color Picker -->
+<script>
+less = {
+	env: "development"
+};
+</script>
+{{ "js/less.js" | asset_url | script_tag }} <!-- LESS -->
+<script>
+	var vars = {};
+	vars['@leftbar-custom-bg-color'] = '#252f3d';
+	vars['@leftbar-custom-color'] = '#5d6d82';
+	vars['@leftbar-custom-link-color'] = '#98AFCC';
+	vars['@leftbar-custom-link-hover-color'] = '#fff';
+	vars['@leftbar-custom-menu-color'] = '#98AFCC';
+	vars['@leftbar-custom-menu-icon-color'] = '#5d6d82';
+	vars['@leftbar-custom-menu-hover-color'] = '#fff';
+	vars['@leftbar-custom-menu-hover-bg-color'] = '#192029';
+	vars['@leftbar-custom-menu-active-color'] = '#fff';
+	vars['@leftbar-custom-menu-active-bg-color'] = '#2f3b4d';
+	vars['@leftbar-custom-menu-border-color'] = '#e91e63';
+	vars['@leftbar-custom-submenu-bg-color'] = '#192029';
+	vars['@leftbar-custom-submenu-color'] = '#5d6d82';
+	vars['@leftbar-custom-submenu-hover-color'] = '#fff';
+	vars['@leftbar-custom-submenu-hover-bg-color'] = '#1f2833';
+	vars['@leftbar-custom-muted-color'] = '#445263';
+	vars['@leftbar-custom-custom-color1'] = '#11171f';
+	vars['@leftbar-custom-custom-color2'] = '#11171f';
+	vars['@leftbar-custom-custom-color3'] = '#11171f';
+	vars['@leftbar-custom-custom-color4'] = '#11171f';
+
+	vars['@topnav-custom-bg-color'] = '#192029';
+	vars['@topnav-custom-color'] = '#5d6d82';
+	vars['@topnav-custom-link-color'] = '#98AFCC';
+	vars['@topnav-custom-link-hover-color'] = '#fff';
+	vars['@topnav-custom-link-bg-color'] = '#252f3d';
+	vars['@topnav-custom-link-hover-bg-color'] = '#2a3545';
+	vars['@topnav-custom-link-active-color'] = '#fff';
+	vars['@topnav-custom-link-active-bg-color'] = '#2a3545';
+	vars['@topnav-custom-link-disabled-color'] = '#445263';
+
+	$('.cpicker')
+	.colorpicker()
+	.on('changeColor.colorpicker', function (event) {
+		var varVar = $(this).attr('data-var-name');
+		console.log(varVar);
+		vars['@'+varVar] = event.color.toHex();
+		less.modifyVars(vars);
+	});
+
+	$(function () {
+		setTimeout(function () {
+			$('.static-leftbar-wrapper').addClass('leftbar-custom');
+			$('#topnav').addClass('navbar-custom');
+		}, 100);
+
+		less.modifyVars(vars);
+		less.refreshStyles();
+	});
+
+	$(".leftbar-bunting").css('border-right', 0);
+	$(".leftbar-bunting .widget nav.widget-body > ul.acc-menu > li > a").css('border-right', 0);
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="alert alert-dismissable alert-info">
+			<strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="panel panel-default alt with-footer">
+			<div class="panel-heading">
+				<h2>Leftbar Brands</h2>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<form action="" class="form-horizontal row-border label-left">
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-bg-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-bg-color">
+										<input type="text" value="#252f3d" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-color">
+										<input type="text" value="#5d6d82" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-link-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-link-color">
+										<input type="text" value="#98AFCC" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-link-hover-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-link-hover-color">
+										<input type="text" value="#fff" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-menu-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-menu-color">
+										<input type="text" value="#98AFCC" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-menu-icon-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-menu-icon-color">
+										<input type="text" value="#5d6d82" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-menu-hover-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-menu-hover-color">
+										<input type="text" value="#fff" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-menu-hover-bg-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-menu-hover-bg-color">
+										<input type="text" value="#192029" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-menu-active-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-menu-active-color">
+										<input type="text" value="#fff" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-menu-active-bg-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-menu-active-bg-color">
+										<input type="text" value="#2f3b4d" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-menu-border-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-menu-border-color">
+										<input type="text" value="#e91e63" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-submenu-bg-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-submenu-bg-color">
+										<input type="text" value="#192029" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-submenu-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-submenu-color">
+										<input type="text" value="#5d6d82" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-submenu-hover-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-submenu-hover-color">
+										<input type="text" value="#fff" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-submenu-hover-bg-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-submenu-hover-bg-color">
+										<input type="text" value="#1f2833" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-muted-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-muted-color">
+										<input type="text" value="#445263" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-custom-color1</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-custom-color1">
+										<input type="text" value="#11171f" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-custom-color2</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-custom-color2">
+										<input type="text" value="#11171f" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-custom-color3</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-custom-color3">
+										<input type="text" value="#11171f" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">leftbar-custom-custom-color4</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="leftbar-custom-custom-color4">
+										<input type="text" value="#11171f" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<button class="btn btn-primary">Save</button>
+				<button class="btn btn-default">Revert to Default</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="panel panel-default alt with-footer">
+			<div class="panel-heading">
+				<h2>Topnav Brands</h2>
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<form action="" class="form-horizontal row-border label-left">
+							<div class="form-group">
+								<label class="col-sm-6 control-label">topnav-custom-bg-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="topnav-custom-bg-color">
+										<input type="text" value="#192029" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">topnav-custom-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="topnav-custom-color">
+										<input type="text" value="#5d6d82" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">topnav-custom-link-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="topnav-custom-link-color">
+										<input type="text" value="#98AFCC" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">topnav-custom-link-hover-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="topnav-custom-link-hover-color">
+										<input type="text" value="#fff" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">topnav-custom-link-bg-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="topnav-custom-link-bg-color">
+										<input type="text" value="#252f3d" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">topnav-custom-link-hover-bg-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="topnav-custom-link-hover-bg-color">
+										<input type="text" value="#2a3545" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">topnav-custom-link-active-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="topnav-custom-link-active-color">
+										<input type="text" value="#fff" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">topnav-custom-link-active-bg-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="topnav-custom-link-active-bg-color">
+										<input type="text" value="#2a3545" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">topnav-custom-link-disabled-color</label>
+								<div class="col-sm-6">
+									<div class="input-group cpicker" data-var-name="topnav-custom-link-disabled-color">
+										<input type="text" value="#445263" class="form-control" />
+										<span class="input-group-addon"><i></i></span>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<button class="btn btn-primary">Save</button>
+				<button class="btn btn-default">Revert to Default</button>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

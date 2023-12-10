@@ -1,0 +1,52 @@
+<div class="leftbar">
+  <div id="widget-treeview" class="widget" style="display: block;">
+        <div class="widget-heading">
+            Treeview
+        </div>
+        <div class="widget-body">
+          <div id="tree-default">
+                <ul>
+                    <li>
+                         Root node 1
+                        <ul>
+                            <li data-jstree='{ "selected" : true }'>
+                                <a href="#">
+                                Initially selected </a>
+                            </li>
+                            <li data-jstree='{ "icon" : "ion-briefcase text-success " }'>
+                                 custom icon URL
+                            </li>
+                            <li data-jstree='{ "opened" : true }'>
+                                 initially open
+                                <ul>
+                                    <li data-jstree='{ "disabled" : true }'>
+                                         Disabled Node
+                                    </li>
+                                    <li data-jstree='{ "type" : "file" }'>
+                                         Another Node
+                                    </li>
+                                    <li data-jstree='{ "icon" : "ion-information-circled text-warning" }'>
+                                         Custom Node
+                                    </li>
+                                    <li data-jstree='{ "type" : "file" }'>
+                                         New Node
+                                    </li>
+                                </ul>
+                            </li>
+                            <li data-jstree='{ "icon" : "ion-android-warning text-danger" }'>
+                                 Custom icon class
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-jstree='{ "type" : "file" }'>
+                        <a href="http://www.jstree.com">
+                        Clickanle link node </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+  </div>
+  <div class="widget stay-on-collapse" id="widget-leftbar">
+        {% include navigation %}
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE ConfigurationControlFile SYSTEM "ConfigurationControlFile.dtd" []>
+<ConfigurationControlFile Version="1.0"
+	Editable="Y" CFiOwned="N" Name="BillUpload" Description=""
+	ReleaseAdded="" IncludeFiles="Payments">
+	<ConfigSetting Name="LoadXmlsSettings" Description=""
+		ExtraInfo="" ReleaseAdded="1.0" Advanced="false" Enabled="true">
+		<ConfigStringValue
+			DefaultValue="-Xms256m -Xmx512m -cp /opt/CheckFree/java/sadad_ebpp_2.0.0.0_08_33.jar:/opt/CheckFree/java/sadad_ebpp_2.0.0.0_08_14.jar:/opt/CheckFree/java/sadad_ebpp_2.0.0.0_08_11.jar:/opt/CheckFree/java/sadad_ebpp_2.0.0.0_08_05.jar:/opt/CheckFree/java/Bill_Upload_Out_Of_Memory_Patch.jar:/opt/CheckFree/java/SadadEbpp.jar:/opt/CheckFree/java/sadad.jar:/opt/CheckFree/java/CoreServer.jar:/opt/CheckFree/java/CFiXerces_201.jar:/opt/CheckFree/java/Core.jar:/opt/CheckFree/java/Csp.jar:/opt/CheckFree/java/CspServer.jar:/opt/CheckFree/java/PaymentsServer.jar:/opt/oraclient/ora92/jdbc/lib/classes12.jar:/opt/CheckFree/java/icu4j_2_8.jar:/opt/CheckFree/java/castor-0.9.5.3-xml.jar  -DBGROOT=/opt/CheckFree -Dfile.encoding=UTF-8"
+			MaximumLength="0" IncludeFilter="" ExcludeFilter="" AcceptedValues=""></ConfigStringValue>
+	</ConfigSetting>
+	<ConfigSetting
+		Name="com.sadad.foundation.services.rules.clientadmin.SDBusinessRuleServices"
+		Description="" ExtraInfo="" ReleaseAdded="1.0" Advanced="false"
+		Enabled="true">
+		<ConfigStringValue
+			DefaultValue="com.sadad.foundation.services.rules.clientadmin.jx.SDCachedBusinessRuleServices"
+			MaximumLength="0" IncludeFilter="" ExcludeFilter="" AcceptedValues=""></ConfigStringValue>
+	</ConfigSetting>
+	<ConfigSetting Name="QueryDelayTime" Description=""
+		ExtraInfo="" ReleaseAdded="1.0" Advanced="false" Enabled="true">
+		<ConfigStringValue DefaultValue="10000"
+			MaximumLength="0" IncludeFilter="" ExcludeFilter="" AcceptedValues=""></ConfigStringValue>
+	</ConfigSetting>
+	<ConfigSettingOverride Name="AutoCreateAccounts">
+		<ConfigBooleanValue DefaultValue="true"></ConfigBooleanValue>
+	</ConfigSettingOverride>
+	<ConfigSettingOverride Name="Control CenterWarnVerbosity">
+		<ConfigIntegerValue DefaultValue="9"
+			AcceptedValues="0,1,2,3,4,5,6,7,8,9"></ConfigIntegerValue>
+	</ConfigSettingOverride>
+	<ConfigSettingOverride Name="Mode">
+		<ConfigStringValue DefaultValue="Promiscuous"
+			MaximumLength="0" IncludeFilter="" ExcludeFilter=""
+			AcceptedValues="Promiscuous,Strict,Lossy,Learn,"></ConfigStringValue>
+	</ConfigSettingOverride>
+	<ConfigSettingOverride Name="NumUpdatesBetweenCommits">
+		<ConfigIntegerValue DefaultValue="200"
+			AcceptedValues=""></ConfigIntegerValue>
+	</ConfigSettingOverride>
+	<ConfigSettingOverride Name="ShowStatementIds">
+		<ConfigBooleanValue DefaultValue="false"></ConfigBooleanValue>
+	</ConfigSettingOverride>
+	<ConfigSettingOverride Name="StatementRunListener">
+		<ConfigStringValue DefaultValue="com.sadad.upload.bill.bgls.BillUploadListener"
+			MaximumLength="0" IncludeFilter="" ExcludeFilter="" AcceptedValues=""></ConfigStringValue>
+	</ConfigSettingOverride>
+	<ConfigSettingOverride Name="TransactionMaxSeconds">
+		<ConfigIntegerValue DefaultValue="30"
+			AcceptedValues=""></ConfigIntegerValue>
+	</ConfigSettingOverride>
+	<ConfigSettingOverride Name="TransactionMaxSize">
+		<ConfigIntegerValue DefaultValue="500"
+			AcceptedValues=""></ConfigIntegerValue>
+	</ConfigSettingOverride>
+	<ConfigSettingOverride Name="ValidateXml">
+		<ConfigBooleanValue DefaultValue="false"></ConfigBooleanValue>
+	</ConfigSettingOverride>
+	<ConfigSettingOverride Name="WaitForFileTimeout">
+		<ConfigIntegerValue DefaultValue="0"
+			AcceptedValues=""></ConfigIntegerValue>
+	</ConfigSettingOverride>
+</ConfigurationControlFile>

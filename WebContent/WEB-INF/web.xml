@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:javaee="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<context-param>
+		<param-name>com.sideinternational.swaf.CONFIGURATION_SUB_DIRECTORY</param-name>
+		<param-value>smartTool</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value> /WEB-INF/en-faces/side-faces.xml ,
+			/WEB-INF/en-faces/scdbEvents-faces.xml ,
+			/WEB-INF/en-faces/jrnl-faces.xml ,
+			/WEB-INF/en-faces/smartTool-faces.xml </param-value>
+		<description>Comma separated list of URIs of (additional) faces
+			config files. (e.g. /WEB-INF/my-config.xml) </description>
+	</context-param>
+	<context-param>
+		<param-name>org.apache.myfaces.PRETTY_HTML</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.apache.myfaces.ALLOW_JAVASCRIPT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.apache.myfaces.DETECT_JAVASCRIPT</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.apache.myfaces.AUTO_SCROLL</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name> org.apache.myfaces.CHECK_EXTENSIONS_FILTER </param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.apache.myfaces.ADD_RESOURCE_CLASS</param-name>
+		<param-value>
+			org.apache.myfaces.renderkit.html.util.DefaultAddResource 
+		</param-value>
+	</context-param>
+<!--  for Crystal -->
+	<context-param>
+		<param-name>crystal_image_uri</param-name>
+		<param-value>crystalreportviewers</param-value>
+	</context-param>
+	<context-param>
+		<param-name>crystal_image_use_relative</param-name>
+		<param-value>webapp</param-value>
+	</context-param>
+
+<!-- Extensions Filter -->
+	<filter>
+		<filter-name>extensionsFilter</filter-name>
+		<filter-class> org.apache.myfaces.webapp.filter.ExtensionsFilter 
+		</filter-class>
+		<init-param>
+			<param-name>uploadMaxFileSize</param-name>
+			<param-value>1m</param-value>
+			<description>Set the size limit for uploaded files. Format: 10 -
+				10 bytes 10k - 10 KB 10m - 10 MB 1g - 1 GB </description>
+		</init-param>
+		<init-param>
+			<param-name>uploadThresholdSize</param-name>
+			<param-value>100k</param-value>
+			<description>Set the threshold size - files below this limit are
+				stored in memory, files above this limit are stored on disk. Format:
+				10 - 10 bytes 10k - 10 KB 10m - 10 MB 1g - 1 GB </description>
+		</init-param>
+	</filter>
+	
+
+	<filter>
+		<filter-name>AuthenticationFilter</filter-name>
+		<filter-class>com.smartValue.filters.AuthenticationFilter</filter-class>
+	</filter>
+		
+	<filter-mapping>
+    	<filter-name>AuthenticationFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+    	<dispatcher>REQUEST</dispatcher>
+  	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>extensionsFilter</filter-name>
+		<url-pattern>/faces/myFacesExtensionResource/*</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>defaultServlet</servlet-name>
+		<servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>listings</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- 
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	 
+	<servlet>
+		<servlet-name>Jenia servlet</servlet-name>
+		<servlet-class>org.jenia.faces.util.Servlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Jenia servlet</servlet-name>
+		<url-pattern>/jenia4faces/*</url-pattern>
+	</servlet-mapping>
+	-->
+	<listener>
+		<listener-class>Support.Listeners.SessionListner</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.sideinternational.web.swaf.ApplicationContextListener</listener-class>
+	</listener>
+
+<!--  Servlet & Mappings -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<!--
+		<error-page> <error-code>500</error-code>
+		<location>/errorPage.jsp</location> </error-page>
+	-->
+</web-app>

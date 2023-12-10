@@ -1,0 +1,30 @@
+<% //---New Method of 
+String SSIuserName = request.getParameter("SSIuserName");
+java.sql.Connection repCon = (java.sql.Connection)session.getAttribute("repCon"); 
+if (repCon == null)
+{ response.sendRedirect("loginScreen.jsp" ); }
+
+Support.singleSignOnAccessor ssi = new Support.singleSignOnAccessor (repCon); 
+String password = ssi.getPassword(serverName, SSIuserName); 
+ft = new Ftp(serverName,SSIuserName , password);<br> 
+/* if (
+serverName.equals("10.16.17.9") || serverName.equals("10.16.17.13"))
+//--Production WD servers { ft = new Ftp(serverName, "wmex0201" ,
+"wmadmin02"); } else if ( serverName.equals("10.16.17.49") ||
+serverName.equals("10.16.17.50")) //--Production WD servers { ft = new
+Ftp(serverName, "wasadm" , "gram30"); } else if
+(serverName.equals("10.16.16.51")|| serverName.equals("10.16.16.52"))
+//--Production DX servers { ft = new Ftp(serverName, "wmin0101" ,
+"wmadmin02"); } else if ( serverName.equals("10.16.24.17") ||
+serverName.equals("10.16.24.21")) //--DR DX servers { ft = new
+Ftp(serverName, "wmin0101" , "sdwm3160"); // "sdwm3160"); } else if (
+serverName.equals("10.16.25.9") || serverName.equals("10.16.25.13"))
+//--DR WD servers { ft = new Ftp(serverName, "wmex0101" , "at0s0rigin");
+} else if ( serverName.equals("10.16.16.17")) //--------- AIX Servers {
+ft = new Ftp(serverName, "wmin0101" , "wmadmin02"); } else if (
+serverName.equals("10.16.16.21")) //--------- AIX Servers { ft = new
+Ftp(serverName, "wmin0101" , "wmadmin02"); } else if (
+serverName.equals("10.16.24.21")) //---------IT AIX Servers { ft = new
+Ftp(serverName, "wmex02" , "wmex02"); } else { throw new Exception
+("Shawky: AIX Server is not defined "); } */ 
+%>

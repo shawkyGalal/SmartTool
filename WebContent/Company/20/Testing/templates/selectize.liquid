@@ -1,0 +1,137 @@
+{% extends 'layout' %}
+{% block title %}Selectize{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+
+{% block styles %} 
+{% endblock %}
+
+{% block scripts %} 
+    {{ 'plugins/selectizejs/selectize.js' | asset_url | script_tag }}
+    {{ 'plugins/selectizejs/index.js' | asset_url | script_tag }} 
+    {{ 'plugins/selectizejs/demo.js' | asset_url | script_tag }} 
+    <script> 
+    $(document).ready(function(){
+        $('.selectize-control').addClass('col-sm-8 col-xs-8');
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default alt">
+            <div class="panel-heading"><h2>Email Contacts</h2></div>
+            <div class="panel-body">
+                <div class="demo">
+                    <div class="control-group form-group m-n">
+                        <label class="col-sm-2 col-xs-2 control-label" for="select-to" class="col-sm-2 control-label" >Email:</label>
+                        <select id="select-to" class="contacts" placeholder="Pick some people..."></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default alt">
+            <div class="panel-heading"><h2>Remote Data</h2></div>
+            <div class="panel-body">
+                <div class="demo">
+                    <div class="control-group form-group m-n">
+                        <label class="col-sm-2 col-xs-2 control-label" for="select-repo">Repository:</label>
+                        <select id="select-repo" class="repositories" placeholder="Pick a repository...">
+                            <option selected value="https://github.com/brianreavis/selectize.js" data-data="{&quot;type&quot;:&quot;repo&quot;,&quot;username&quot;:&quot;brianreavis&quot;,&quot;name&quot;:&quot;selectize.js&quot;,&quot;owner&quot;:&quot;brianreavis&quot;,&quot;homepage&quot;:null,&quot;description&quot;:&quot;A highly customizable select control with autocomplete.&quot;,&quot;language&quot;:&quot;JavaScript&quot;,&quot;watchers&quot;:6,&quot;followers&quot;:6,&quot;forks&quot;:0,&quot;size&quot;:216,&quot;open_issues&quot;:1,&quot;score&quot;:14.659029,&quot;has_downloads&quot;:true,&quot;has_issues&quot;:true,&quot;has_wiki&quot;:true,&quot;fork&quot;:false,&quot;private&quot;:false,&quot;url&quot;:&quot;https://github.com/brianreavis/selectize.js&quot;,&quot;created&quot;:&quot;2012-08-29T18:31:57Z&quot;,&quot;created_at&quot;:&quot;2012-08-29T18:31:57Z&quot;,&quot;pushed_at&quot;:&quot;2013-05-05T19:13:48Z&quot;,&quot;pushed&quot;:&quot;2013-05-05T19:13:48Z&quot;}">selectize.js</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default alt">
+            <div class="panel-heading"><h2>Plugin: "remove_button"</h2></div>
+            <div class="panel-body">
+                <div class="demo">
+                    <div class="row">
+                        <div class="control-group form-group m-n">
+                            <label class="col-sm-2 col-xs-2 control-label" for="input-tags">Tags:</label>
+                            <input type="text" id="input-tags" class="input-tags demo-default " value="awesome,neat">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="control-group form-group m-n">
+                            <label class="col-sm-2 col-xs-2 control-label" for="input-tags2">Tags:</label>
+                            <input type="text" disabled id="input-tags2" class="input-tags demo-default " value="awesome,neat">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default alt">
+            <div class="panel-heading"><h2>Plugin: "dropdown_header"</h2></div>
+            <div class="panel-body">
+                <div class="demo">
+                    <div class="control-group form-group m-n">
+                        <label class="col-sm-2 col-xs-2 control-label" for="select-code-language">Single:</label>
+                        <select id="select-code-language" class="demo-code-language" placeholder="Select a language...">
+                            <option value="txt">Text</option>
+                            <option value="md">Markdown</option>
+                            <option value="html">HTML</option>
+                            <option value="php">PHP</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="js" selected>JavaScript</option>
+                            <option value="c#">Ruby</option>
+                            <option value="c#">VHDL</option>
+                            <option value="c#">Verilog</option>
+                            <option value="c#">C#</option>
+                            <option value="c++">C/C++</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-default alt">
+            <div class="panel-heading"><h2>Plugin: "restore_on_backspace"</h2></div>
+            <div class="panel-body">
+                <div class="demo">
+                    <div class="control-group form-group m-n">
+                        <label class="col-sm-2 col-xs-2 control-label" for="input-tags6">Tags:</label>
+                        <input type="text" id="input-tags6" class="demo-default " value="awesome,neat">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default alt">
+            <div class="panel-heading"><h2>Plugin: "drag_drop"</h2></div>
+            <div class="panel-body">
+                <div class="demo">
+                    <div class="row">
+                        <div class="control-group form-group m-n">
+                            <label class="col-sm-2 col-xs-2 control-label" for="input-sortable">Tags:</label>
+                            <input type="text" id="input-sortable" class="input-sortable demo-default " value="drag,these,items,around">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="control-group form-group m-n">
+                            <label class="col-sm-2 col-xs-2 control-label" for="input-sortable2">Tags:</label>
+                            <input type="text" id="input-sortable2" disabled class="input-sortable demo-default " value="drag,these,items,around">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

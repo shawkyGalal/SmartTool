@@ -1,0 +1,1744 @@
+<html>
+<head>
+<title>Scripting commands</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?scriptingcommands.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Scripting
+		commands <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.3',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.7.5',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">The
+following commands may be used in a script file when invoking File
+Transfer Command Line. <br>
+
+<br>
+<a href=scriptingcommands.html#append>append</a> <br>
+<a href=scriptingcommands.html#cd>cd</a> <br>
+<a href=scriptingcommands.html#connect>connect</a> <br>
+<a href=scriptingcommands.html#del>del</a> <br>
+<a href=scriptingcommands.html#deldir>deldir</a> <br>
+<a href=scriptingcommands.html#disconnect>disconnect</a> <br>
+<a href=scriptingcommands.html#exec>exec</a> <br>
+<a href=scriptingcommands.html#get>get</a> <br>
+<a href=scriptingcommands.html#getdir>getdir</a> <br>
+<a href=scriptingcommands.html#lcd>lcd</a> <br>
+<a href=scriptingcommands.html#lcopy>lcopy</a> <br>
+<a href=scriptingcommands.html#ldel>ldel</a> <br>
+<a href=scriptingcommands.html#ldeldir>ldeldir</a> <br>
+<a href=scriptingcommands.html#lmove>lmove</a> <br>
+<a href=scriptingcommands.html#lrename>lrename</a> <br>
+<a href=scriptingcommands.html#mget>mget</a> <br>
+<a href=scriptingcommands.html#mode>mode</a> <br>
+<a href=scriptingcommands.html#mput>mput</a> <br>
+<a href=scriptingcommands.html#msg>msg</a> <br>
+<a href=scriptingcommands.html#prompt>prompt</a> <br>
+<a href=scriptingcommands.html#promptmask>promptmask</a> <br>
+<a href=scriptingcommands.html#put>put</a> <br>
+<a href=scriptingcommands.html#putdir>putdir</a> <br>
+<a href=scriptingcommands.html#rename>rename</a> <br>
+<a href=scriptingcommands.html#set>set</a> <br>
+<a href=scriptingcommands.html#setdebug>set debug</a> <br>
+<a href=scriptingcommands.html#sethostname>set hostname</a> <br>
+<a href=scriptingcommands.html#setlogfile>set logfile</a> <br>
+<a href=scriptingcommands.html#setpassword>set password</a> <br>
+<a href=scriptingcommands.html#setprotocol>set protocol</a> <br>
+<a href=scriptingcommands.html#setport>set port</a> <br>
+<a href=scriptingcommands.html#setprivatekey>set privatekey</a> <br>
+<a href=scriptingcommands.html#setsecure>set secure</a> <br>
+<a href=scriptingcommands.html#settimeout>set timeout </a> <br>
+<a href=scriptingcommands.html#setusername>set username</a> <br>
+<a href=scriptingcommands.html#wait>wait</a> <br>
+
+<br>
+The above commands are resevered words in the FTCL language and may not
+be used as variable names when using the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">or
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">prompt&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">commands.
+<br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #FF0000"><i>Bad</i></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">prompt&nbsp;dir&nbsp;"Enter&nbsp;directory&nbsp;name:&nbsp;"</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+The variable named </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">"dir"</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+may not be used as this is a reserved word for use by the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">"dir"</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+command used to get a directory listing. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #007F00"><i>Good</i></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier; font-size: 10pt; color: #000000">prompt&nbsp;mydir&nbsp;"Enter&nbsp;directory&nbsp;name:&nbsp;"&nbsp;</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+The variable named </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">"mydir"</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+is not a reserved word so may be used. <br>
+
+<br>
+<table border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="append"></a>append</b>&nbsp;"&lt;file&gt;"&nbsp;["&lt;destination&gt;"]<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Appends
+		contents of local file to remote file with same name. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;file&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative filename or absolute path <br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;destination&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		optional quoted remote filename to append to <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">append&nbsp;"log.txt"&nbsp;"mylog.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">append&nbsp;"log.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="cd"></a>cd</b>&nbsp;"&lt;directory&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Sets
+		directory on remote server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;directory&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative directory name or absolute path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">cd&nbsp;"jsmith"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+		<br>
+		</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">cd&nbsp;"/home/users/jsmith"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="connect"></a>connect</b><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Establishes
+		connection with remote server. <br>
+		</span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="del"></a>del</b>&nbsp;"&lt;file&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Deletes
+		remote filename. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;file&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative filename or absolute path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">del&nbsp;"logs.txt"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">del&nbsp;"/home/user/logs.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="deldir"></a>deldir</b>&nbsp;"&lt;directory&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Deletes
+		remote directory recursively <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;directory&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative directory name or absolute path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">deldir&nbsp;"logs"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">deldir&nbsp;"/home/users/jsmith/logs"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="disconnect"></a>disconnect</b><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Disconnects
+		from remote server. <br>
+		</span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="exec"></a>exec</b>&nbsp;"&lt;command&gt;&nbsp;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Executes
+		command on local machine. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;command&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		valid command to be interpreted by the local operating system. <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">exec&nbsp;"dir&nbsp;c:/tmp&nbsp;&gt;&nbsp;c:/tmp/dirout.txt"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also</b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="get"></a>get</b>&nbsp;"&lt;file&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Downloads
+		file from remote server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;file&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative filename or absolute path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">get&nbsp;"logs.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="getdir"></a>getdir</b>&nbsp;"&lt;directory&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Downloads
+		directory recursively from remote server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;directory&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative directory name or absolute path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">getdir&nbsp;"logs"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+		<br>
+		</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">getdir&nbsp;"/var/logs"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="lcd"></a>lcd</b>&nbsp;"&lt;directory&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Sets
+		current working directory on local machine. This directory is used
+		when uploading files using relative paths and when downloading files.
+		<br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;directory&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted absolute path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">lcd&nbsp;"c:/tmp"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also</b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="lcopy"></a>lcopy</b>&nbsp;"&lt;path&gt;"&nbsp;"&lt;destination&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Copies
+		a local file to a local destination. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;path&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative or absolute file or directory path <br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;destination&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative or absolute file or directory path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">lcopy&nbsp;"logs.txt"&nbsp;"logs.txt.old"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example
+		<br>
+		</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">lcopy&nbsp;"c:/tmp/logs.txt"&nbsp;"c:/tmp/logs.txt.old"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also</b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="ldel"></a>ldel</b>"&lt;file&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Deletes
+		local filename. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;file&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative filename or absolute path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">ldel&nbsp;"logs.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">ldel&nbsp;"c:/tmp/logs.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also</b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="ldeldir"></a>ldeldir</b>&nbsp;"&lt;directory&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Deletes
+		local directory recursively <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;directory&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative directory name or absolute path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">ldeldir&nbsp;"tmp"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">ldeldir&nbsp;"c:/tmp"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also</b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="lmove"></a>lmove</b>&nbsp;"&lt;path&gt;"&nbsp;"&lt;destination&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Moves
+		a local file to a local destination. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;path&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative or absolute file or directory path <br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;destination&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative or absolute file or directory path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">move&nbsp;"logs.txt"&nbsp;"archive/logs.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">move&nbsp;"c:/tmp/logs.txt"&nbsp;"c:/tmp/archive/logs.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also </b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="lrename"></a>lrename</b>&nbsp;"&lt;path&gt;"&nbsp;"&lt;destination&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Renames
+		file on local machine. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;path&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative or absolute file or directory path <br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;destination&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative or absolute file or directory path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">lrename&nbsp;"logs.txt"&nbsp;"logs.txt.old"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">lrename&nbsp;"c:/tmp/logs.txt"&nbsp;"c:/tmp/logs.txt.old"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also</b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="mget"></a>mget</b>&nbsp;"&lt;filter&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Downloads
+		files from current remote directory matching filter. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;filter&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted wildcard regular expression <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">mget&nbsp;"*.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="mode"></a>mode</b>&nbsp;"&lt;mode&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Sets
+		transfer mode to ASCII or binary. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;mode&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted transfer mode of "ascii" or "binary" <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">mode&nbsp;"ascii"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="mput"></a>mput</b>&nbsp;"&lt;filter&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Uploads
+		local files in current working directory matching filter to remote
+		server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;filter&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted wildcard regular expression <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">mput&nbsp;"*.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="msg"></a>msg</b>&nbsp;"&lt;message&gt;&nbsp;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Sends
+		message to current debugging stream. By default the console is the
+		current debug stream and debugging is enabled. <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">msg&nbsp;"connecting&nbsp;to&nbsp;FTP&nbsp;server"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="prompt"></a>prompt</b>&nbsp;&lt;variablename&gt;&nbsp;"&lt;prompt&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Prompts
+		user to enter a value to be read from the command line and stores this
+		value in the variable name used in the first argument. The value
+		stored in this variable is then available for use later in the script.
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">prompt&nbsp;username&nbsp;"Enter&nbsp;username:&nbsp;"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="promptmask"></a>promptmask</b>&nbsp;&lt;variablename&gt;&nbsp;"&lt;prompt&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Prompts
+		user to enter a value to be read from the command line and stores this
+		value in the variable name used in the first argument. The value
+		stored in this variable is then available for use later in the script.
+		Value entered is masked to user. <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">promptmask&nbsp;password&nbsp;"Enter&nbsp;password:&nbsp;"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="put"></a>put</b>&nbsp;"&lt;file&gt;"&nbsp;["&lt;destination&gt;"]<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Uploads
+		local file to remote server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;file&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative filename or absolute path <br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;destination&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		optional quoted remote filename or absolute path to store file as <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">put&nbsp;"c:/tmp/logs.txt"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">put&nbsp;"c:/tmp/logs.txt"&nbsp;"mylogs.txt"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also</b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="putdir"></a>putdir</b>&nbsp;"&lt;directory&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Uploads
+		local directory recursively to remote server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;directory&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative directory name or absolute path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">putdir&nbsp;"logs"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">putdir&nbsp;"c:/tmp/logs"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also</b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="rename"></a>rename</b>&nbsp;"&lt;path&gt;"&nbsp;"&lt;destination&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Renames
+		file on remote server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;path&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative or absolute file or directory path <br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;destination&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a quoted relative or absolute file or directory path <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">rename&nbsp;"logs.txt"&nbsp;"logs.txt.old"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">rename&nbsp;"/var/logs/logs.txt"&nbsp;"/var/logs/logs.txt.old"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="set"></a>set</b>&nbsp;&lt;variablename&gt;&nbsp;&lt;value&gt;<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Creates
+		a user defined variable for use within a script. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;variablename&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		A variable name used to reference the variable. Must begin with a
+		letter, and may be followed by 0 or more letters or digits. <br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;value&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		The value the variable name represents. Valid values include boolean
+		values of true or false, any valid integer or any quoted string. <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;myNumberVariable&nbsp;12
+		<br>
+		</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;myBooleanVariable&nbsp;true</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;myStringVariable&nbsp;"testing&nbsp;1.2.3"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		Variables created may later be referenced using the
+		${&lt;variablename&gt;} notation. <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;myNumberVariable&nbsp;12
+		<br>
+
+		<br>
+		msg&nbsp;"value&nbsp;of&nbsp;myNumberVariable&nbsp;is:&nbsp;{myNumberVariable}"
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="setdebug"></a>set debug</b> &lt;boolean&gt;<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Specifies
+		whether debugging is enabled or disabled. By default debugging is
+		enabled and all debugging information is sent to the console. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;boolean&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		true, false <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;debug&nbsp;false</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="sethostname"></a>set hostname</b>&nbsp;"&lt;hostname&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Specified
+		the hostname of the remote server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;hostname&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a valid quoted hostname or IP address <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;hostname&nbsp;"192.168.10.2"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="setlogfile"></a>set logfile</b>&nbsp;"&lt;file&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Specifies
+		the path of the log file to write debug data to. By default all output
+		is sent to the console. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;file&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a valid relative or absolute file path on local machine <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;logfile&nbsp;"c:/tmp/log.txt"&nbsp;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		<b>See also </b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=javaScript:parent.reDisplay('2.7.11',1,0)>Escape sequences</a>
+				&nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="setpassword"></a>set password</b>&nbsp;"&lt;password&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Specifies
+		the password to use when logging into the remote server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;password&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a valid quoted password for specified username on remote server <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;password&nbsp;"secret"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="setprotocol"></a>set protocol</b>&nbsp;&lt;protocol&gt;<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Specifies
+		the protocol to use when establishing a connection. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;protocol&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		the protocol to use. Valid options are "ftp", "ftps", "ftps-implicit"
+		and "sftp" for the protocols FTP, FTP over SSL (AUTH SSL), FTP over
+		SSL (Implicit SSL) and SFTP (FTP over SSH) respectively. Default
+		protocol is "ftp" <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #FF0000"><b>Note</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="51"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">When
+				using "ftps-implicit" setting you must set the port to the server
+				port responsible for handling implicit SSL connections. This is
+				typically handled on port 990. &nbsp;<br>
+				</span></td>
+				<td width="51"></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="51"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+				<td></td>
+				<td width="51"><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;protocol&nbsp;"ftps"
+		<br>
+
+		<br>
+		</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>See
+		also</b> <br>
+
+		<br>
+		</span></span>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+					href=scriptingcommands.html#setport>set port</a> &nbsp;<br>
+				</span></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr valign="top">
+				<td width="14"></td>
+				<td><span
+					style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="setport"></a>set port</b>&nbsp;&lt;port&gt;<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Specifies
+		the port of the remote server. The default ports for FTP and SFTP
+		protocols are 21 and 22 respectively. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;port&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		A valid integer between 1-65535 <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;port&nbsp;2021</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="setprivatekey"></a>set privatekey</b>&nbsp;"&lt;file&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Specifies
+		the path of private key file to use when authenticating with SFTP
+		server. Valid for use in SFTP protocol only. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;file&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a valid relative or absolute file path on local machine <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;privatekey&nbsp;"c:/ssh/keys/id_dsa"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="setsecure"></a>set secure</b>&nbsp;&lt;boolean&gt;<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Specifies
+		that the secure SFTP protocol be used. FTP protocol is used by
+		default. Requires that SSH version 2.0 or above be installed on remote
+		server and SFTP be enabled. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;boolean&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		true, false <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;secure&nbsp;true</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="settimeout"></a>set timeout</b>&nbsp;&lt;seconds&gt;<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Sets
+		the maximum timeout used when establishing a connection, sending data
+		or receiving data. If timeout is exceeded script will abort. Default
+		value is 60 seconds. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;seconds&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		the maximum number of seconds to wait <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;timeout&nbsp;30</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="setusername"></a>set username</b>&nbsp;"&lt;username&gt;"<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Specifies
+		the username to use when logging into the remote server. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;username&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		a valid quoted username for remote server <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">set&nbsp;username&nbsp;"jsmith"</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Courier; font-size: 10pt; color: #000000"><b><a
+			name="wait"></a>wait</b>&nbsp;&lt;seconds&gt;<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+		<td align="left" valign="top" width="439"><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">Pauses
+		execution of script for specified number of seconds. <br>
+
+		<br>
+		<span style="font-family: Courier; font-size: 10pt; color: #000000">&lt;seconds&gt;</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		the number of seconds to wait <br>
+
+		<br>
+		<span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+
+		<br>
+		</span><span style="font-family: Courier; font-size: 10pt; color: #000000">wait&nbsp;5</span><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+		<br>
+		</span></span></td>
+	</tr>
+</table>
+<br>
+</span></span>
+
+</body>
+</html>

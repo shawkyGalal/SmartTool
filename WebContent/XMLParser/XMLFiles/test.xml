@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='windows-1256'?>
+<allData>
+	<Data rowNo='0'>
+		<APP_ID>1</APP_ID>
+		<APP_DESC>CSC_RENEWAL</APP_DESC>
+		<ATT1>RENEWAL</ATT1>
+		<ATT2>edge</ATT2>
+		<ATT3></ATT3>
+	</Data>
+	<Data rowNo='1'>
+		<APP_ID>2</APP_ID>
+		<APP_DESC>e_manafith</APP_DESC>
+		<ATT1></ATT1>
+		<ATT2>edge2</ATT2>
+		<ATT3>rep_server_manafith</ATT3>
+	</Data>
+	<Data rowNo='2'>
+		<APP_ID>3</APP_ID>
+		<APP_DESC>Complaints</APP_DESC>
+		<ATT1></ATT1>
+		<ATT2>130.1.2.91</ATT2>
+		<ATT3>rep_complaints</ATT3>
+	</Data>
+</allData>

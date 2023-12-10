@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!--
+********************************************************************************
+Copyright (c) 1997-2003 CheckFree Corporation
+All Rights Reserved
+
+File AuditMessage.dtd
+
+Description:
+
+This is the SGML Document Type Definition (DTD) for defining the context of
+data in an AuditLog.
+********************************************************************************
+-->
+
+<!--
+================================================================================
+    A U D I T  M E S S A G E
+
+    Root element, wraps the Resource (Rsc), OwnedObject (OwnedObj),
+    MessageArg (MsgArg), and PropertyChange (PropChg) elements.
+================================================================================
+-->
+<!ELEMENT AuditMessage (Rsc, OwnedObj*, MsgArg*, PropChg*)>
+
+<!--
+================================================================================
+    R S C
+    (Resource)
+
+    Contains the data required to locate external message text for an AuditLog.
+    Attributes are BundleName (BndlNm) and Key.
+================================================================================
+-->
+<!ELEMENT Rsc EMPTY>
+<!ATTLIST Rsc
+	BndlNm CDATA #REQUIRED
+	Key CDATA #REQUIRED>
+
+<!--
+================================================================================
+    O W N E D  O B J
+    (OwnedObject)
+
+    Represents a sub-object of the target of the AuditLog, that the original
+    event passed through, before being audited by the parent object.
+    
+    ex. A name change for a LoginEntity, would have OwnedObj elements for the
+    PersonName object that was changed and the Contact object that owns it.
+================================================================================
+-->
+<!ELEMENT OwnedObj EMPTY>
+<!ATTLIST OwnedObj
+	ClsNm CDATA #REQUIRED
+	StrVal CDATA #IMPLIED>
+
+<!--
+================================================================================
+    M S G  A R G
+    (MessageArg)
+
+    Contains any data relevant to the audit that will be used by the text
+    representation of the audit when viewing.
+================================================================================
+-->
+<!ELEMENT MsgArg EMPTY>
+<!ATTLIST MsgArg
+	Ser CDATA "false"
+	Val CDATA #REQUIRED>
+
+<!--
+================================================================================
+    P R O P  C H G
+    (PropertyChange)
+
+    Represents a property on a persistent object that was updated. The property
+    name, old value, and new value are specified as attributes.
+================================================================================
+-->
+<!ELEMENT PropChg EMPTY>
+<!ATTLIST PropChg
+	PropNm CDATA #REQUIRED
+	OldVal CDATA #REQUIRED
+	NewVal CDATA #REQUIRED>

@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Working with two XMLHttpRequest objects</title>
+
+<script language="javascript">
+      var XMLHttpRequestObject = false; 
+      var XMLHttpRequestObject2 = false; 
+
+      if (window.XMLHttpRequest) {
+        XMLHttpRequestObject = new XMLHttpRequest();
+        XMLHttpRequestObject2 = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+        XMLHttpRequestObject2 = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      function getData(dataSource) 
+      { 
+        if(XMLHttpRequestObject) {
+          var obj = document.getElementById("targetDiv"); 
+          XMLHttpRequestObject.open("GET", dataSource); 
+
+          XMLHttpRequestObject.onreadystatechange = function() 
+          { 
+            if (XMLHttpRequestObject.readyState == 4 && 
+              XMLHttpRequestObject.status == 200) { 
+                obj.innerHTML = XMLHttpRequestObject.responseText; 
+            } 
+          } 
+
+          XMLHttpRequestObject.send(null); 
+        }
+      }
+
+      function getData2(dataSource, divID) 
+      { 
+        if(XMLHttpRequestObject2) {
+          var obj = document.getElementById("targetDiv"); 
+          XMLHttpRequestObject2.open("GET", dataSource); 
+
+          XMLHttpRequestObject2.onreadystatechange = function() 
+          { 
+            if (XMLHttpRequestObject2.readyState == 4 && 
+              XMLHttpRequestObject2.status == 200) { 
+                obj.innerHTML = XMLHttpRequestObject2.responseText; 
+            } 
+          } 
+
+          XMLHttpRequestObject2.send(null); 
+        }
+      }
+
+    </script>
+</head>
+
+<body>
+
+<H1>Working with two XMLHttpRequest objects</H1>
+
+<form><input type="button" value="Get Message"
+	onclick="getData('data.txt')"> <input type="button"
+	value="Get Message 2" onclick="getData2('data2.txt')"></form>
+
+<div id="targetDiv">
+<p>The fetched data will go here.</p>
+</div>
+
+</body>
+</html>

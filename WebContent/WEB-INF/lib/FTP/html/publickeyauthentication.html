@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Public key authentication</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?publickeyauthentication.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Public
+		key authentication <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.5.2.2',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.5.2.4',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">In
+addition to username/password authentication, the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Scp</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+class supports another authentication method known as public key
+authentication. Using this method you can authenticate with the SSH
+server using a username, private key and optional pass phrase to protect
+the private key. Please consult you SSH server documentation for how to
+generate keys and enable public key authentication. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b><i>
+<br>
+</i></b> <br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;define&nbsp;path&nbsp;of&nbsp;private&nbsp;key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+File&nbsp;privateKey&nbsp;=&nbsp;<b>new</b>&nbsp;File(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"c:/keys/ssh/id_dsa"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;SshParameters&nbsp;instance&nbsp;using&nbsp;public&nbsp;key&nbsp;authentication</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+SshParameters&nbsp;params&nbsp;=&nbsp;<b>new</b>&nbsp;SshParameters(hostname,username,privateKey);
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;create&nbsp;new&nbsp;Scp&nbsp;instance</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+Scp&nbsp;scp&nbsp;=&nbsp;<b>new</b>&nbsp;Scp(params); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;connect&nbsp;and&nbsp;authenticate</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+scp.connect();</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span></span>
+
+</body>
+</html>

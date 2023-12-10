@@ -1,0 +1,370 @@
+{% extends 'layout' %}
+{% block title %}Tables{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="ui-tables.html">Tables</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Basic Tables</h2>
+				<div class="options">
+
+				</div>
+			</div>
+			<div class="panel-body">
+				<p>For basic styling—light padding and only horizontal dividers—add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>
+				<table class="table mb-n">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Striped Tables</h2>
+				<div class="options">
+
+				</div>
+			</div>
+			<div class="panel-body">
+				<p>Adds zebra-striping to any table row within <code>&lt;tbody&gt;</code> by adding the <code>.table-striped</code> to the base class</p>
+				<table class="table table-striped mb-n">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Bordered Tables</h2>
+				<div class="options">
+
+				</div>
+			</div>
+			<div class="panel-body">
+				<p>Adds borders to any table row within <code>&lt;tbody&gt;</code> by adding the <code>.table-bordered</code> to the base class</p>
+				<table class="table table-bordered mb-n" cellspacing="0">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Hover Tables</h2>
+				<div class="options">
+
+				</div>
+			</div>
+			<div class="panel-body">
+				<p>Enables a hover state within <code>&lt;tbody&gt;</code> by adding the <code>.table-hover</code> to the base class</p>
+				<table class="table table-hover mb-n">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Condensed Tables</h2>
+				<div class="options">
+
+				</div>
+			</div>
+			<div class="panel-body">
+				<p>Makes tables more compact by cutting down cell-padding in half by adding the <code>.table-condensed</code></p>
+				<table class="table table-condensed mb-n">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Responsive Tables</h2>
+				<div class="options">
+
+				</div>
+			</div>
+			<div class="panel-body">
+				<p>Makes tables responsive by adding the <code>.table-responsive</code></p>
+				<table class="table table-responsive mb-n">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Tables with colored rows</h2>
+			</div>
+			<div class="panel-body">
+				<p>Custom colors in the rows by the addition of <code>success</code>, <code>warning</code>, <code>danger</code> and <code>info</code> classes respectively</p>
+				<table class="table table-hover mb-n">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="success">
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr class="warning">
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr class="danger">
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>No Panel Padding Tables</h2>
+				<div class="options">
+
+				</div>
+			</div>
+			<div class="panel-body p-n">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

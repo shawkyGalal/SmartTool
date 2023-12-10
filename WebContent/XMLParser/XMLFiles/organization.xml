@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='windows-1256'?>
+<allData>
+	<Data rowNo='0'>
+		<ID>2000</ID>
+		<BUSINESSPROCESSNAME>Bill Upload Process</BUSINESSPROCESSNAME>
+		<DESCRIPTION>Bill Upload Process</DESCRIPTION>
+	</Data>
+	<Data rowNo='1'>
+		<ID>2001</ID>
+		<BUSINESSPROCESSNAME>Payment Upload Process</BUSINESSPROCESSNAME>
+		<DESCRIPTION>Payment Upload Process</DESCRIPTION>
+	</Data>
+	<Data rowNo='2'>
+		<ID>2002</ID>
+		<BUSINESSPROCESSNAME>Staging File System</BUSINESSPROCESSNAME>
+		<DESCRIPTION>Staging File System</DESCRIPTION>
+	</Data>
+	<Data rowNo='3'>
+		<ID>2003</ID>
+		<BUSINESSPROCESSNAME>Payment Initialisation</BUSINESSPROCESSNAME>
+		<DESCRIPTION>Payment Initialisation</DESCRIPTION>
+	</Data>
+	<Data rowNo='4'>
+		<ID>2004</ID>
+		<BUSINESSPROCESSNAME>Payment Notification</BUSINESSPROCESSNAME>
+		<DESCRIPTION>Payment Notification</DESCRIPTION>
+	</Data>
+	<Data rowNo='5'>
+		<ID>2005</ID>
+		<BUSINESSPROCESSNAME>Bank Reconciliation</BUSINESSPROCESSNAME>
+		<DESCRIPTION>Bank Reconciliation</DESCRIPTION>
+	</Data>
+	<Data rowNo='6'>
+		<ID>2007</ID>
+		<BUSINESSPROCESSNAME>Payment Settlement</BUSINESSPROCESSNAME>
+		<DESCRIPTION>Payment Settlement</DESCRIPTION>
+	</Data>
+	<Data rowNo='7'>
+		<ID>2008</ID>
+		<BUSINESSPROCESSNAME>Biller Reconciliation</BUSINESSPROCESSNAME>
+		<DESCRIPTION>Biller Reconciliation</DESCRIPTION>
+	</Data>
+	<Data rowNo='8'>
+		<ID>2009</ID>
+		<BUSINESSPROCESSNAME>SADAD Utilities</BUSINESSPROCESSNAME>
+		<DESCRIPTION>SADAD Utilities</DESCRIPTION>
+	</Data>
+	<Data rowNo='9'>
+		<ID>2010</ID>
+		<BUSINESSPROCESSNAME>Account Upload Process</BUSINESSPROCESSNAME>
+		<DESCRIPTION>Account Upload Process</DESCRIPTION>
+	</Data>
+</allData>

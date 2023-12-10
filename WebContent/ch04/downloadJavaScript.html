@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Ajax at work</title>
+
+<script language="javascript">
+      var XMLHttpRequestObject = false; 
+
+      if (window.XMLHttpRequest) {
+        XMLHttpRequestObject = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      function getData(dataSource) 
+      { 
+        if(XMLHttpRequestObject) {
+          XMLHttpRequestObject.open("GET", dataSource); 
+
+          XMLHttpRequestObject.onreadystatechange = function() 
+          { 
+            if (XMLHttpRequestObject.readyState == 4 && 
+              XMLHttpRequestObject.status == 200) { 
+                eval(XMLHttpRequestObject.responseText);  
+            }
+          } 
+
+          XMLHttpRequestObject.send(null); 
+        }
+      }
+
+      function display() 
+      { 
+        var obj = document.getElementById("targetDiv"); 
+        obj.innerHTML = "Downloaded the JavaScript.";
+      }
+
+    </script>
+</head>
+
+<body>
+
+<H1>Downloading JavaScript</H1>
+
+<form><input type="button" value="Display Message"
+	onclick="getData('javascript.txt')"></form>
+
+<div id="targetDiv">
+<p>The message will appear here.</p>
+</div>
+
+</body>
+</html>

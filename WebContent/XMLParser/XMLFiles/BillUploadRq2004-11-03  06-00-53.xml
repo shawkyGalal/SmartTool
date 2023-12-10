@@ -1,0 +1,1559 @@
+<?xml version="1.0"?>
+<SADAD>
+	<SignonRq>
+		<ClientDt>2004-11-03T06:00:51</ClientDt>
+		<SignonProfile>
+			<Sender>003</Sender>
+			<Receiver>SADAD-001</Receiver>
+			<MsgCode>BUPLRQ</MsgCode>
+		</SignonProfile>
+	</SignonRq>
+	<PresSvcRq>
+		<RqUID>91fe53c5-2d44-11d9-8dd1-000bcdb526f0</RqUID>
+		<BillUploadRq>
+			<ServiceType>INSR</ServiceType>
+			<Timestamp>2004-11-03T06:00:51</Timestamp>
+			<BillRec>
+				<SupercedeBillNumber>2903023</SupercedeBillNumber>
+				<BillStatusCode>BillUpdated</BillStatusCode>
+				<CustId>
+					<OfficialId>1011777842</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ???? ??? ?? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2903023</BillNumber>
+					<BillingAcct>2903023</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-11-13T21:00:00.0</DueDt>
+					<ExpDt>2004-11-13T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2903023 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2101674</SupercedeBillNumber>
+				<BillStatusCode>BillUpdated</BillStatusCode>
+				<CustId>
+					<OfficialId>2056472745</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2101674</BillNumber>
+					<BillingAcct>2101674</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-11-04T21:00:00.0</DueDt>
+					<ExpDt>2004-11-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2101674 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2896766</SupercedeBillNumber>
+				<BillStatusCode>BillUpdated</BillStatusCode>
+				<CustId>
+					<OfficialId>2178002180</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>en-gb</LanguagePref>
+					<Text>?????? ?. ???????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2896766</BillNumber>
+					<BillingAcct>2896766</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-11-04T21:00:00.0</DueDt>
+					<ExpDt>2004-11-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2896766 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2896757</SupercedeBillNumber>
+				<BillStatusCode>BillUpdated</BillStatusCode>
+				<CustId>
+					<OfficialId>2026499240</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>en-gb</LanguagePref>
+					<Text>?????? ??????? ?.</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2896757</BillNumber>
+					<BillingAcct>2896757</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-11-04T21:00:00.0</DueDt>
+					<ExpDt>2004-11-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2896757 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2153052</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1006154098</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ?????? ???? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2153052</BillNumber>
+					<BillingAcct>2153052</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-08T21:00:00.0</DueDt>
+					<ExpDt>2004-12-08T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2153052 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2131534</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2002960967</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>en-gb</LanguagePref>
+					<Text>????? ?. ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2131534</BillNumber>
+					<BillingAcct>2131534</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-02T21:00:00.0</DueDt>
+					<ExpDt>2004-12-02T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2131534 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2133386</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2021841370</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2133386</BillNumber>
+					<BillingAcct>2133386</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-02T21:00:00.0</DueDt>
+					<ExpDt>2004-12-02T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2133386 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2133383</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2112004094</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ???? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2133383</BillNumber>
+					<BillingAcct>2133383</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2133383 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>138804</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2029262611</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>en-gb</LanguagePref>
+					<Text>????? ?????? ???? ????????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>138804</BillNumber>
+					<BillingAcct>138804</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-02T21:00:00.0</DueDt>
+					<ExpDt>2004-12-02T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 138804 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>138805</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2077152466</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ??????? ???? ???</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>138805</BillNumber>
+					<BillingAcct>138805</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-02T21:00:00.0</DueDt>
+					<ExpDt>2004-12-02T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 138805 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2915751</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1048302499</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ???? ??????? ???????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2915751</BillNumber>
+					<BillingAcct>2915751</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-09T21:00:00.0</DueDt>
+					<ExpDt>2004-12-09T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2915751 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2151778</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2103345852</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ????????? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2151778</BillNumber>
+					<BillingAcct>2151778</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 375.00</AmountDue>
+					<DueDt>2004-12-08T21:00:00.0</DueDt>
+					<ExpDt>2004-12-08T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2151778 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2133840</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2115809838</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>en-gb</LanguagePref>
+					<Text>??????? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2133840</BillNumber>
+					<BillingAcct>2133840</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 747.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2133840 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2133838</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2113318287</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>?????? ??? ??? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2133838</BillNumber>
+					<BillingAcct>2133838</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2133838 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>268964</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2171205285</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ??????? ????? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>268964</BillNumber>
+					<BillingAcct>268964</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 268964 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2905847</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2103404501</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???????? ????? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2905847</BillNumber>
+					<BillingAcct>2905847</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 718.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2905847 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906814</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1027097565</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ????????? ????????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906814</BillNumber>
+					<BillingAcct>2906814</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 3531.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906814 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2915861</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1032493502</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ??? ???? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2915861</BillNumber>
+					<BillingAcct>2915861</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-09T21:00:00.0</DueDt>
+					<ExpDt>2004-12-09T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2915861 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2914111</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2173113982</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>????????? ???? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2914111</BillNumber>
+					<BillingAcct>2914111</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 730.00</AmountDue>
+					<DueDt>2004-12-06T21:00:00.0</DueDt>
+					<ExpDt>2004-12-06T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2914111 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906120</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2108531936</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ??? ??????? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906120</BillNumber>
+					<BillingAcct>2906120</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-02T21:00:00.0</DueDt>
+					<ExpDt>2004-12-02T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906120 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906149</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2049184639</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ???? ???? ???</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906149</BillNumber>
+					<BillingAcct>2906149</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906149 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2914647</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1036673505</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ????? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2914647</BillNumber>
+					<BillingAcct>2914647</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-06T21:00:00.0</DueDt>
+					<ExpDt>2004-12-06T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2914647 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2914649</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1036903068</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ?????? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2914649</BillNumber>
+					<BillingAcct>2914649</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-06T21:00:00.0</DueDt>
+					<ExpDt>2004-12-06T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2914649 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2914639</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1036903084</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>?????? ??? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2914639</BillNumber>
+					<BillingAcct>2914639</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 1175.00</AmountDue>
+					<DueDt>2004-12-06T21:00:00.0</DueDt>
+					<ExpDt>2004-12-06T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2914639 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906596</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2028239461</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ?????? ???????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906596</BillNumber>
+					<BillingAcct>2906596</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906596 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2907135</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2118262019</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>?????? ???? ???? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2907135</BillNumber>
+					<BillingAcct>2907135</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2907135 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2911849</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1029656707</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ??? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2911849</BillNumber>
+					<BillingAcct>2911849</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-05T21:00:00.0</DueDt>
+					<ExpDt>2004-12-05T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2911849 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2907134</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2112366154</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ????? ???? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2907134</BillNumber>
+					<BillingAcct>2907134</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2907134 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2914642</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1055765109</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??????? ??????? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2914642</BillNumber>
+					<BillingAcct>2914642</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-06T21:00:00.0</DueDt>
+					<ExpDt>2004-12-06T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2914642 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2918817</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1002068037</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ???????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2918817</BillNumber>
+					<BillingAcct>2918817</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-10T21:00:00.0</DueDt>
+					<ExpDt>2004-12-10T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2918817 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2140200</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1035850922</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ??? ?????? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2140200</BillNumber>
+					<BillingAcct>2140200</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-04T21:00:00.0</DueDt>
+					<ExpDt>2004-12-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2140200 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2137341</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2157013497</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??????? ???? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2137341</BillNumber>
+					<BillingAcct>2137341</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2137341 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2137332</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2017192705</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ???</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2137332</BillNumber>
+					<BillingAcct>2137332</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2137332 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2135240</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2024679140</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ????? ???????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2135240</BillNumber>
+					<BillingAcct>2135240</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2135240 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2135755</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2148642099</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??????? ????? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2135755</BillNumber>
+					<BillingAcct>2135755</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 375.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2135755 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2140253</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2031028836</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>????? ???? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2140253</BillNumber>
+					<BillingAcct>2140253</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-04T21:00:00.0</DueDt>
+					<ExpDt>2004-12-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2140253 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2141956</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2006666230</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>????? ???? ???</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2141956</BillNumber>
+					<BillingAcct>2141956</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-05T21:00:00.0</DueDt>
+					<ExpDt>2004-12-05T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2141956 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2141953</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2005902982</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ????? ???????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2141953</BillNumber>
+					<BillingAcct>2141953</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-05T21:00:00.0</DueDt>
+					<ExpDt>2004-12-05T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2141953 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2140242</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1039796980</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ??? ??? ???? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2140242</BillNumber>
+					<BillingAcct>2140242</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-04T21:00:00.0</DueDt>
+					<ExpDt>2004-12-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2140242 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2140232</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1039796972</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>????? ??? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2140232</BillNumber>
+					<BillingAcct>2140232</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-04T21:00:00.0</DueDt>
+					<ExpDt>2004-12-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2140232 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2140215</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1039857667</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??????? ??? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2140215</BillNumber>
+					<BillingAcct>2140215</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-04T21:00:00.0</DueDt>
+					<ExpDt>2004-12-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2140215 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2905445</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1017617307</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ???? ???? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2905445</BillNumber>
+					<BillingAcct>2905445</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2905445 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2905448</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1030941254</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>????? ???? ????? ?? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2905448</BillNumber>
+					<BillingAcct>2905448</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2905448 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2905455</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2033433059</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ????? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2905455</BillNumber>
+					<BillingAcct>2905455</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 1975.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2905455 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906187</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2079141954</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>????? ???????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906187</BillNumber>
+					<BillingAcct>2906187</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906187 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2909919</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2067415774</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ????? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2909919</BillNumber>
+					<BillingAcct>2909919</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-04T21:00:00.0</DueDt>
+					<ExpDt>2004-12-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2909919 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2907065</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2055441592</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ??? ?????? ????? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2907065</BillNumber>
+					<BillingAcct>2907065</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-02T21:00:00.0</DueDt>
+					<ExpDt>2004-12-02T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2907065 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2907139</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2125584983</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ???? ?????????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2907139</BillNumber>
+					<BillingAcct>2907139</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2907139 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906239</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2172307700</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906239</BillNumber>
+					<BillingAcct>2906239</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-02T21:00:00.0</DueDt>
+					<ExpDt>2004-12-02T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906239 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2909979</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2183895198</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>en-gb</LanguagePref>
+					<Text>????? ???? ???</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2909979</BillNumber>
+					<BillingAcct>2909979</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-04T21:00:00.0</DueDt>
+					<ExpDt>2004-12-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2909979 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2909962</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2154236638</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>????? ???? ???? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2909962</BillNumber>
+					<BillingAcct>2909962</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-04T21:00:00.0</DueDt>
+					<ExpDt>2004-12-04T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2909962 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906734</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2132290822</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ????? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906734</BillNumber>
+					<BillingAcct>2906734</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-02T21:00:00.0</DueDt>
+					<ExpDt>2004-12-02T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906734 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2908352</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2122850304</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>?????? ???? ???? ???</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2908352</BillNumber>
+					<BillingAcct>2908352</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2908352 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906290</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1026400521</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ???? ???? ?? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906290</BillNumber>
+					<BillingAcct>2906290</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906290 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906980</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2088720079</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ??? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906980</BillNumber>
+					<BillingAcct>2906980</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906980 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906948</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2200720411</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>en-gb</LanguagePref>
+					<Text>?.?.????? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906948</BillNumber>
+					<BillingAcct>2906948</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906948 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906937</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2105058826</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??????? ????? ??????? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906937</BillNumber>
+					<BillingAcct>2906937</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906937 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906626</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1044712873</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ??? ?????????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906626</BillNumber>
+					<BillingAcct>2906626</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 735.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906626 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2908105</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2166423471</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ?????? ???? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2908105</BillNumber>
+					<BillingAcct>2908105</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2908105 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2906810</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2128179419</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>??? ???? ??? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2906810</BillNumber>
+					<BillingAcct>2906810</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2906810 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2908058</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2055112037</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>????? ???? ??? ?????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2908058</BillNumber>
+					<BillingAcct>2908058</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-03T21:00:00.0</DueDt>
+					<ExpDt>2004-12-03T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2908058 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2911647</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1016106484</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ???? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2911647</BillNumber>
+					<BillingAcct>2911647</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-05T21:00:00.0</DueDt>
+					<ExpDt>2004-12-05T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2911647 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2920722</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1015360264</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ??????? ?? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2920722</BillNumber>
+					<BillingAcct>2920722</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-11T21:00:00.0</DueDt>
+					<ExpDt>2004-12-11T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2920722 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2915624</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2150385272</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ????? ???????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2915624</BillNumber>
+					<BillingAcct>2915624</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-09T21:00:00.0</DueDt>
+					<ExpDt>2004-12-09T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2915624 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2919353</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>1033545060</OfficialId>
+					<OfficialIdType>NAT</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ????? ??? ?? ????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2919353</BillNumber>
+					<BillingAcct>2919353</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-10T21:00:00.0</DueDt>
+					<ExpDt>2004-12-10T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2919353 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2919344</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2142517438</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>???? ???? ???? ??????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2919344</BillNumber>
+					<BillingAcct>2919344</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-10T21:00:00.0</DueDt>
+					<ExpDt>2004-12-10T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2919344 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+			<BillRec>
+				<SupercedeBillNumber>2919338</SupercedeBillNumber>
+				<BillStatusCode>BillNew</BillStatusCode>
+				<CustId>
+					<OfficialId>2040040830</OfficialId>
+					<OfficialIdType>IQA</OfficialIdType>
+				</CustId>
+				<Msg>
+					<LanguagePref>ar-sa</LanguagePref>
+					<Text>?????? ???????</Text>
+				</Msg>
+				<BillInfo>
+					<BillCategory>Ruk_Ren</BillCategory>
+					<ServiceType>INSR</ServiceType>
+					<BillNumber>2919338</BillNumber>
+					<BillingAcct>2919338</BillingAcct>
+					<BillerId>003</BillerId>
+					<AmountDue> 385.00</AmountDue>
+					<DueDt>2004-12-10T21:00:00.0</DueDt>
+					<ExpDt>2004-12-10T21:00:00.0</ExpDt>
+					<BillRefInfo>Policy No = 2919338 </BillRefInfo>
+				</BillInfo>
+			</BillRec>
+		</BillUploadRq>
+	</PresSvcRq>
+</SADAD>

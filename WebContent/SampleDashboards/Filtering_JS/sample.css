@@ -1,0 +1,11 @@
+ul.optionslist
+{
+     font-family: Tahoma;
+     font-size: 10px; 
+     list-style:none;
+     
+}
+.optionslist li{display:inline; margin-right:6px; }
+.optionslist li img {margin-right:5px; vertical-align: middle;}
+.optionslist li input{margin-right:5px;}
+.optionslist li label{display:inline;}

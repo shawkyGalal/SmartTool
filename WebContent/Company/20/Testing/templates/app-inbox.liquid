@@ -1,0 +1,370 @@
+{% extends "layout-asides-leftbar-small" %}
+{% block title %}Inbox{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li>Functional Apps</li>
+<li class="active"><a href="app-inbox.html">Inbox</a></li>
+{% endblock %}
+{% block styles %}
+{% endblock %}
+{% block scripts %}
+<script>
+    $('table.table-inbox tbody tr').click(function () {
+        window.location.href = 'app-inbox-read.html';
+    });
+
+    enquire.register("screen and (max-width: 992px)", {
+        match : function() {
+            //small
+            $( ".table-inbox tr" ).each(function( index ) {
+                $(this).find("td.inbox-msg-snip").prepend($(this).find("td.inbox-msg-from div").addClass("inbox-from-name"));
+            });
+        },  
+        unmatch : function() {
+            //big
+            $( ".table-inbox tr" ).each(function( index ) {
+                $(this).find("td.inbox-msg-from").append($(this).find(".inbox-from-name"));
+            });
+        }
+    });
+    $('.inbox-msg-check').click(function(e){
+        e.stopPropagation();
+    });
+</script>
+{% endblock %}
+{% block content %}
+<div class="aside-wrapper">
+  <div class="aside-body">
+    <div class="aside-cell aside-col">
+      <div class="aside-bar b-r">
+        <div class="aside-bar-header p-md b-b">
+          <input type="text" class="form-control inbox-search-input" placeholder="Search mail...">
+        </div>
+        <div class="aside-bar-body">
+          <div class="p-md">
+            <a class="btn btn-block btn-teal btn-compose" href="app-inbox-compose.html">Compose</a>
+          </div>
+          <ul class="acc-menu">
+            <li class="nav-separator">Folders</li>
+            <li class="active"><a href="app-inbox.html"><span class="icon"><i class="ion-arrow-down-a"></i></span><span class="text">Inbox</span><span class="badge badge-info">2</span></a></li>
+            <li><a href="#"><span class="icon"><i class="ion-close"></i></span><span class="text">Junk</span></a></li>
+            <li><a href="#"><span class="icon"><i class="ion-android-create"></i></span><span class="text">Drafts</span></a></li>
+            <li><a href="#"><span class="icon"><i class="ion-forward"></i></span><span class="text">Sent</span></a></li>
+            <li><a href="#"><span class="icon"><i class="ion-android-delete"></i></span><span class="text">Deleted</span></a></li>
+            <li class="nav-separator">Quick Links</li>
+            <li><a href="#"><span class="icon"><i class="ion-android-image"></i></span><span class="text">Images</span><span class="badge badge-deep-purple">99</span></a></li>
+            <li><a href="#"><span class="icon"><i class="ion-android-document"></i></span><span class="text">Documents</span></a></li>
+            <li class="nav-separator">Custom</li>
+            <li><a href="#"><span class="icon">
+              <i class="ion-stop" style="color: #2196f3;:hover {background: #2196f3}"></i></span><span class="text">Work</span></a>
+            </li>
+            <li><a href="#"><span class="icon">
+              <i class="ion-stop" style="color: #8bc34a;:hover {background: #8bc34a}"></i></span><span class="text">Projects</span></a>
+            </li>
+            <li><a href="#"><span class="icon">
+              <i class="ion-stop" style="color: #3f51b5;:hover {background: #3f51b5}"></i></span><span class="text">Family</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="aside-cell">
+      <div class="row">
+        <div class="col-md-12">                 
+          <div class="panel-inbox">
+            <div class="panel-body">
+              <div class="inbox-mail-heading">
+                <div class="clearfix">
+                  <div class="pull-left">
+                    <div class="btn-group dropdown">
+                      <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="checkbox pull-left">
+                          <input type="checkbox" class="tectonic" id="option151" value="" name="ham">
+                          <label for="option151" class="pl-n"></label>
+                        </span>
+                        <i class="caret"></i>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Select All</a></li>
+                        <li><a href="#">Unselect All</a></li>
+                        <li><a href="#">Another Action</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated Link</a></li>
+                      </ul>
+                    </div>
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-default"><i class="ion-android-archive"></i></a>
+                      <a href="#" class="btn btn-default"><i class="ion-android-folder"></i></a>
+                      <a href="#" class="btn btn-default"><i class="ion-android-delete"></i></a>
+                    </div>
+                  </div>
+                  <div class="pull-right">
+                    <span class="pull-left"></span>
+                    <div class="btn-group pull-right">
+                      <a href="#" class="btn btn-default"><i class="ion-android-arrow-back"></i></a>
+                      <a href="#" class="btn btn-default"><i class="ion-android-arrow-forward"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-hover table-inbox mb0 table-vam">
+                <tbody>
+                  <tr class="unread">
+                    <td class="inbox-msg-check" width="5%">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option111" value="" name="ham">
+                        <label for="option111" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm" width="20%"><div>Terrell Tilson</div></td>
+                    <td class="inbox-msg-snip"><span class="label label-deep-purple" width="58%">Work</span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</td>
+                    <td class="inbox-msg-attach"><i class="fa fa-paperclip" width="5%"></i> </td>
+                    <td class="inbox-msg-time" width="12%">13:42</td>
+                  </tr>
+                  <tr class="unread">
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option1122" value="" name="ham">
+                        <label for="option1122" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Tyler Charlebois</div></td>
+                    <td class="inbox-msg-snip"><span class="label label-info" width="58%">Family</span>Accusantium doloremque laudantium totam rem aperiam</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">1:31</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option113" value="" name="ham">
+                        <label for="option113" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Carrol Granados</div></td>
+                    <td class="inbox-msg-snip">Eaque ipsa quae ab illo inventore veritatis et quasi</td>
+                    <td class="inbox-msg-attach"><i class="fa fa-paperclip"></i> </td>
+                    <td class="inbox-msg-time">9/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option114" value="" name="ham">
+                        <label for="option114" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Sang Roles</div></td>
+                    <td class="inbox-msg-snip">Voluptas sit aspernatur aut odit aut fugit sed quia consequuntur</td>
+                    <td class="inbox-msg-attach"><i class="fa fa-paperclip"></i> </td>
+                    <td class="inbox-msg-time">9/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option115" value="" name="ham">
+                        <label for="option115" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Avery Hooper</div></td>
+                    <td class="inbox-msg-snip">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">8/03/14</td>
+                  </tr>
+                  <tr class="unread">
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option116" value="" name="ham">
+                        <label for="option116" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Alex Murphy</div></td>
+                    <td class="inbox-msg-snip"><span class="label label-deep-purple" width="58%">Work</span>Consectetur adipisci velit sed quia non numquam eius</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">8/03/14</td>
+                  </tr>
+                  <tr class="unread">
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option117" value="" name="ham">
+                        <label for="option117" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Bernie Maldonado</div></td>
+                    <td class="inbox-msg-snip">Quis autem vel eum iure reprehenderit qui in ea voluptate</td>
+                    <td class="inbox-msg-attach"><i class="fa fa-paperclip"></i> </td>
+                    <td class="inbox-msg-time">8/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option118" value="" name="ham">
+                        <label for="option118" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Dominique Slay</div></td>
+                    <td class="inbox-msg-snip">Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">7/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option119" value="" name="ham">
+                        <label for="option119" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Jc Doney</div></td>
+                    <td class="inbox-msg-snip">Ullam corporis suscipit laboriosam nisi ut</td>
+                    <td class="inbox-msg-attach"><i class="fa fa-paperclip"></i> </td>
+                    <td class="inbox-msg-time">7/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option120" value="" name="ham">
+                        <label for="option120" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Brock Wulff</div></td>
+                    <td class="inbox-msg-snip"><span class="label label-danger" width="58%">Important</span>Numquam eius modi tempora incidunt ut labore</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">7/03/14</td>
+                  </tr>
+                  <tr class="unread">
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option121" value="" name="ham">
+                        <label for="option121" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Mohamed Stamand</div></td>
+                    <td class="inbox-msg-snip">Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">6/03/14</td>
+                  </tr>
+                  <tr class="unread">
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option122" value="" name="ham">
+                        <label for="option122" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Justin Selander</div></td>
+                    <td class="inbox-msg-snip">Nemo enim ipsam voluptatem quia voluptas sit</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">6/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option123" value="" name="ham">
+                        <label for="option123" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Dwight Malmberg</div></td>
+                    <td class="inbox-msg-snip">At vero eos et accusamus et iusto odio dignissimos ducimus</td>
+                    <td class="inbox-msg-attach"><i class="fa fa-paperclip"></i> </td>
+                    <td class="inbox-msg-time">6/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option125" value="" name="ham">
+                        <label for="option125" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Ellis Elswick</div></td>
+                    <td class="inbox-msg-snip">Qui blanditiis praesentium voluptatum deleniti atque corrupti quos</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">5/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option126" value="" name="ham">
+                        <label for="option126" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Mckinley Townes</div></td>
+                    <td class="inbox-msg-snip">Nam libero tempore cum soluta nobis est eligendi</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">4/03/14</td>
+                  </tr>
+                  <tr class="unread">
+                    <td class="inbox-msg-check"><span class="checkbox pull-left m-n">
+                      <input type="checkbox" class="tectonic" id="option127" value="" name="ham">
+                      <label for="option127" class="pl-n"></label>
+                    </span></td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Garry Quintana</div></td>
+                    <td class="inbox-msg-snip">Temporibus autem quibusdam et aut officiis debitis aut rerum</td>
+                    <td class="inbox-msg-attach"><i class="fa fa-paperclip"></i> </td>
+                    <td class="inbox-msg-time">4/03/14</td>
+                  </tr>
+                  <tr class="unread">
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option128" value="" name="ham">
+                        <label for="option128" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Hector Croke</div></td>
+                    <td class="inbox-msg-snip">Et harum quidem rerum facilis est et expedita distinctio</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">4/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option129" value="" name="ham">
+                        <label for="option129" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Kent Beckmann</div></td>
+                    <td class="inbox-msg-snip">Similique sunt in culpa qui officia deserunt mollitia</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">3/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option130" value="" name="ham">
+                        <label for="option130" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Wyatt Choice</div></td>
+                    <td class="inbox-msg-snip">Saepe eveniet ut et voluptates repudiandae sint et</td>
+                    <td class="inbox-msg-attach"></td>
+                    <td class="inbox-msg-time">3/03/14</td>
+                  </tr>
+                  <tr>
+                    <td class="inbox-msg-check">
+                      <span class="checkbox pull-left m-n">
+                        <input type="checkbox" class="tectonic" id="option131" value="" name="ham">
+                        <label for="option131" class="pl-n"></label>
+                      </span>
+                    </td>
+                    <td class="inbox-msg-from hidden-xs hidden-sm"><div>Issac Campos</div></td>
+                    <td class="inbox-msg-snip">Consequatur aut perferendis doloribus asperiores repellat</td>
+                    <td class="inbox-msg-attach"><i class="fa fa-paperclip"></i> </td>
+                    <td class="inbox-msg-time">2/03/14</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="inbox-mail-footer">
+                <div class="clearfix">
+                  <div class="pull-right">
+                    <span class="pull-left"></span>
+                    <div class="btn-group pull-right">
+                      <a href="#" class="btn btn-default"><i class="ion-android-arrow-back"></i></a>
+                      <a href="#" class="btn btn-default"><i class="ion-android-arrow-forward"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

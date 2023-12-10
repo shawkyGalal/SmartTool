@@ -1,0 +1,112 @@
+{% extends "layout-asides-leftbar-small" %}
+{% block title %}Inbox{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li>Functional Apps</li>
+<li><a href="#">Inbox</a></li>
+<li class="active"><a href="app-inbox-compose.html">Compose</a></li>
+{% endblock %}
+{% block styles %}
+{{ "plugins/form-tokenfield/bootstrap-tokenfield.css" | asset_url | stylesheet_tag }}       <!-- Tokenfield -->
+{{ "plugins/summernote/dist/summernote.css" | asset_url | stylesheet_tag }} 				<!-- Summernote -->
+{% endblock %}
+{% block scripts %}
+{{ "plugins/form-tokenfield/bootstrap-tokenfield.min.js" | asset_url | script_tag }}     	<!-- Tokenfield -->
+{{ "plugins/summernote/dist/summernote.js" | asset_url | script_tag }}  					<!-- Summernote -->
+{{ "demo/demo-app-inbox-compose.js" | asset_url | script_tag }}
+{% endblock %}
+{% block content %} 
+<div class="aside-wrapper">
+	<div class="aside-body">
+		<div class="aside-cell aside-col">
+		    <div class="aside-bar b-r">
+		        <div class="aside-bar-header p-md b-b">
+		        	<input type="text" class="form-control inbox-search-input" placeholder="Search mail...">
+		        </div>
+		        <div class="aside-bar-body">
+		            <div class="p-md">
+		                <a class="btn btn-block btn-teal btn-compose" href="app-inbox-compose.html">Compose</a>
+		            </div>
+		            <ul class="acc-menu">
+		                <li class="nav-separator">Folders</li>
+		                <li><a href="app-inbox.html"><span class="icon"><i class="ion-arrow-down-a"></i></span><span class="text">Inbox</span><span class="badge badge-info">2</span></a></li>
+		                <li><a href="#"><span class="icon"><i class="ion-close"></i></span><span class="text">Junk</span></a></li>
+		                <li><a href="#"><span class="icon"><i class="ion-android-create"></i></span><span class="text">Drafts</span></a></li>
+		                <li><a href="#"><span class="icon"><i class="ion-forward"></i></span><span class="text">Sent</span></a></li>
+		                <li><a href="#"><span class="icon"><i class="ion-android-delete"></i></span><span class="text">Deleted</span></a></li>
+		                <li class="nav-separator">Quick Links</li>
+		                <li><a href="#"><span class="icon"><i class="ion-android-image"></i></span><span class="text">Images</span><span class="badge badge-deep-purple">99</span></a></li>
+		                <li><a href="#"><span class="icon"><i class="ion-android-document"></i></span><span class="text">Documents</span></a></li>
+		                <li class="nav-separator">Custom</li>
+		                <li><a href="#"><span class="icon">
+		                	<i class="ion-stop" style="color: #2196f3;:hover {background: #2196f3}"></i></span><span class="text">Work</span></a>
+		                </li>
+		                <li><a href="#"><span class="icon">
+		                	<i class="ion-stop" style="color: #8bc34a;:hover {background: #8bc34a}"></i></span><span class="text">Projects</span></a>
+		                </li>
+		                <li><a href="#"><span class="icon">
+		                	<i class="ion-stop" style="color: #3f51b5;:hover {background: #3f51b5}"></i></span><span class="text">Family</span></a>
+		            	</li>
+		            </ul>
+		        </div>
+		    </div>
+		</div>
+		<div class="aside-cell" style="background-color: #fafafa;">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel-inbox">
+						<div class="panel-body">
+							<div class="inbox-mail-heading">
+								<div class="clearfix">
+									<div class="pull-left">
+										<a href="app-inbox" class="btn btn-default"><i class="ion-android-arrow-back"></i></a>
+										<div class="btn-group">
+											<a href="#" class="btn btn-default"><i class="ion-android-archive"></i></a>
+											<a href="#" class="btn btn-default"><i class="ion-android-delete"></i></a>
+										</div>
+								    </div>
+								    <div class="pull-right">
+								    	<a href="#" class="btn btn-success"><i class="ion-android-send visible-xs"></i><span class="hidden-xs">Send</span></a>
+								    </div>
+								</div>
+							</div>
+							<form action="" role="form" id="inbox-compose-form" class="form-horizontal p-md">
+								<div class="form-group mb-md">
+									<div class="col-md-12">
+										<div class="input-icon right">
+											<a href="#" class="icon show-next-formgroup">CC</a>
+											<input type="text" class="form-control tokenfield-email" value="" placeholder="Type email here...">
+										</div>
+									</div>
+								</div>
+								<div class="form-group mb-md" style="display: none;">
+									<div class="col-md-12">
+										<div class="input-icon right">
+											<a href="#" class="icon show-next-formgroup">BCC</a>
+											<input type="text" class="form-control tokenfield-email" value="">
+										</div>
+									</div>
+								</div>
+								<div class="form-group mb-md" style="display:none;">
+									<div class="col-md-12"><input type="text" class="form-control"></div>
+								</div>
+								<div class="form-group mb-md">
+									<div class="col-md-12"><input type="text" class="form-control" placeholder="Subject for email"></div>
+								</div>
+								<div class="form-group mb-n">
+									<div class="col-xs-12">
+										<div class="composer">
+											<h3>Default Editor</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, nobis laboriosam repellat ipsum deserunt voluptate eos praesentium atque eligendi libero. Nam, id, eligendi natus facilis ullam pariatur numquam amet illum repudiandae ex porro labore in perferendis vero nobis iure ratione? Repudiandae, vel, quo, dolores velit vero debitis sed non odio culpa quasi excepturi tempore saepe atque quod repellendus aliquam eum neque dolorem beatae veniam quis id deserunt dignissimos voluptatum incidunt necessitatibus inventore reprehenderit consequatur esse perferendis ipsum earum pariatur et eaque sequi a harum sit similique itaque dicta expedita unde. Animi, quo, facilis laudantium quas commodi aut harum reprehenderit explicabo.</p>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

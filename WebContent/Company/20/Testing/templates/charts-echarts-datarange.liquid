@@ -1,0 +1,120 @@
+{% extends 'layout' %}
+{% block title %}Data range Echarts{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="chord-charts.html">Chord Charts</a></li>
+{% endblock %}
+{% block styles %} 
+{{ 'css/echartsHome.css' | asset_url | stylesheet_tag }}
+{{ 'css/codemirror.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+{% block scripts %}
+{{ "js/echarts.js" | asset_url | script_tag }}  
+{{ "js/codemirror.js" | asset_url | script_tag }}
+{{ "js/echartsExample.js" | asset_url | script_tag }}
+<!--{{ "plugins/wijets/wijets.js" | asset_url | script_tag }} -->
+<script>
+    $(document).ready(function(){
+        // $("#leftbar-code").hide();
+    });
+</script>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default alt">
+            <div class="panel-heading m-n">
+                    <ul class="nav nav-tabs tab-warning material-nav-tabs">
+                      <li class="active"><a href="#domwell" data-toggle="tab">Data range Echarts</a></li>
+                      <li><a href="#codewell" data-toggle="tab">Code</a></li>
+                    </ul>
+            </div>
+            <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="domwell">
+                             <div id="graphic" class="col-md-12">
+                    <div id="main" class="main"></div>
+                    <div>
+                        <button type="button" class="btn btn-success" onclick="refresh(true)">Refresh</button>
+                        <h4>Change Layout</h4>
+                        <select id="theme-select" class='form-control'></select>
+
+                        <span id='wrong-message' style="color:red"></span>
+                    </div>
+                </div>
+                        </div>
+                        <div class="tab-pane" id="codewell">
+                <div id="leftbar-code" class='col-md-12'>
+                    <div class="well leftbar-nav">
+                        <div class="nav-header"><a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id ="icon-resize" ></a>option</div>
+                        <textarea id="code" name="code">
+                            option = {
+                                tooltip : {
+                                    trigger: 'item'
+                                },
+                                toolbox: {
+                                    show : true,
+                                    feature : {
+                                        mark : {show: true},
+                                        dataZoom : {show: true},
+                                        dataView : {show: true, readOnly: false},
+                                        restore : {show: true},
+                                        saveAsImage : {show: true}
+                                    }
+                                },
+                                dataRange: {
+                                    min: 0,
+                                    max: 100,
+                                    y: 'center',
+                                    text:['High','Low'],           // ??,???????
+                                    color:['lightgreen','yellow'],
+                                    calculable : true
+                                },
+                                xAxis : [
+                                    {
+                                        type : 'value',
+                                        scale : true
+                                    }
+                                ],
+                                yAxis : [
+                                    {
+                                        type : 'value',
+                                        position:'right',
+                                        scale : true
+                                    }
+                                ],
+                                animation: false,
+                                series : [
+                                    {
+                                        name:'scatter1',
+                                        type:'scatter',
+                                        symbolSize:5,
+                                        data: (function () {
+                                            var d = [];
+                                            var len = 500;
+                                            var value;
+                                            while (len--) {
+                                                value = (Math.random()*100).toFixed(2) - 0;
+                                                d.push([
+                                                    (Math.random()*value + value).toFixed(2) - 0,
+                                                    (Math.random()*value).toFixed(2) - 0,
+                                                    value
+                                                ]);
+                                            }
+                                            return d;
+                                        })()
+                                    }
+                                ]
+                            };
+   
+                        </textarea>
+                    </div><!--/.well -->
+                </div><!--/span-->
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

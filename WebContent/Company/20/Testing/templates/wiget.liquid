@@ -1,0 +1,60 @@
+{% extends 'layout' %}
+{% block title %}Tree View{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Custom Components</a></li>
+<li class="active"><a href="custom-jstree.html">Tree View</a></li>
+{% endblock %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function(){
+        var $wrapper = $('.col-md-12');
+
+        $wrapper.find('[data-percentage]').sort(function (a, b) {
+            return +a.getAttribute('data-percentage') - +b.getAttribute('data-percentage');
+        })
+        .appendTo( $wrapper );
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="testWrapper">
+            <div class="test" data-percentage="30"></div>
+            <div class="test" data-percentage="62"></div>
+            <div class="test" data-percentage="10"></div>
+            <div class="test" data-percentage="43"></div>
+        </div>
+    </div>
+</div>
+<style>
+    div[data-percentage] {
+        font-family: sans-serif;
+        background: teal;
+        padding: 10px;
+        font-weight: bold;
+        color: #023636;
+        text-shadow: 0 1px 0 #58BBBB;
+        font-size: 20px;
+        width: 100px;
+        margin: 4px auto;
+        text-align: center;
+    }
+
+    div[data-percentage]:before {
+        content: attr(data-percentage);
+    }
+</style>
+
+<script>
+
+</script>
+{% endblock %}

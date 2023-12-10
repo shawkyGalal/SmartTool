@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<web-app-deployment nselem="web-app-deployment" class="oracle.jdeveloper.deploy.war.WarProfile" xmlns="http://xmlns.oracle.com/jdeveloper/904/deploy/j2ee-war">
+   <appletArchiveName/>
+   <appletArchives>
+      <archives/>
+      <selectionMode>0</selectionMode>
+   </appletArchives>
+   <appletDeployedAsArchive>false</appletDeployedAsArchive>
+   <appletDeployment>false</appletDeployment>
+   <appletFiles>
+      <autoInclude>true</autoInclude>
+      <deploySourceAs>0</deploySourceAs>
+      <files/>
+      <selectionFilters>
+         <Item id="0">oracle.jdevimpl.deploy.common.JavaSelectionFilter</Item>
+      </selectionFilters>
+   </appletFiles>
+   <appletLocation/>
+   <archiveOptions>
+      <additionalManifests/>
+      <compressed>false</compressed>
+      <hasManifest>false</hasManifest>
+      <mainClass/>
+   </archiveOptions>
+   <cdaSettings>
+      <additionalArchives/>
+      <afterFilters/>
+      <beforeFilters/>
+      <duringFilters/>
+      <selectedArchives>
+         <archives>
+            <Item path="public_html/WEB-INF/lib/javamail-1.4.1/lib/dsn.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/javamail-1.4.1/lib/imap.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/javamail-1.4.1/lib/mailapi.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/javamail-1.4.1/lib/pop3.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/javamail-1.4.1/lib/smtp.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/FTP/sftp.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/Oracle_JDBC/classes12.zip" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/Oracle_JDBC/nls_charset12.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/jug.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/JDBC_for_SQL_Server/sqljdbc.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/JDBC_for_SQL_Server/sqljdbc1.2.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/Oracle_XML/xmlcomp.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/Oracle_XML/xmlparserv2.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/Telnet/inetfactory.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/activation.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/connector.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/cos.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/crimson.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/ejb.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/http_client.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jaas.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/javax-ssl-1_2.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/javax77.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/javax88.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jaxp.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jcert.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jdbc.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jem.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jms.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jmxgrinder.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jmxri.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jmxtools.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jndi.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jnet.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jsse.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jssl-1_2.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/jta.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/mail.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/ojsp.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/J2EE/servlet.jar" jar-entry=""/>
+            <Item path="../../../../DevSuitHome/jdev/lib/jdev-rt.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/JSP_RunTime/oc4j.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/JSP_RunTime/ojc.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/JSP_RunTime/ojsp.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/JSP_RunTime/ojsputil.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/JSP_RunTime/servlet.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/BC4J/bc4j_jclient_common.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/BC4J/bc4jhtml.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/BC4J/bc4juixtags.jar" jar-entry=""/>
+            <Item path="public_html/WEB-INF/lib/BC4J/datatags.jar" jar-entry=""/>
+         </archives>
+         <selectionMode>0</selectionMode>
+      </selectedArchives>
+   </cdaSettings>
+   <contextRoot>SmartToolx</contextRoot>
+   <defaultConnection class="java.lang.String"/>
+   <deployClientMaxHeapSize/>
+   <earURL path="deploy/SmartToolx.ear"/>
+   <enterpriseAppName>SmartToolx</enterpriseAppName>
+   <javaFiles>
+      <autoInclude>true</autoInclude>
+      <deploySourceAs>0</deploySourceAs>
+      <files class="[Ljava.net.URL;"/>
+      <selectionFilters>
+         <Item idref="0"/>
+      </selectionFilters>
+   </javaFiles>
+   <profileDeps/>
+   <properties/>
+   <warURL path="deploy/SmartToolx.war"/>
+   <webSelectionRules>
+      <rules>
+         <Item>
+            <pattern>**/CVS/</pattern>
+            <type>1</type>
+         </Item>
+         <Item>
+            <pattern>**.contrib</pattern>
+            <type>1</type>
+         </Item>
+         <Item>
+            <pattern>**.keep</pattern>
+            <type>1</type>
+         </Item>
+         <Item>
+            <pattern>**.rvi</pattern>
+            <type>1</type>
+         </Item>
+         <Item>
+            <pattern>**</pattern>
+            <type>0</type>
+         </Item>
+      </rules>
+   </webSelectionRules>
+</web-app-deployment>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.dialog.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.resizable.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.button.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.autocomplete.min.css" rel="stylesheet" type="text/css">
+<link href="jQueryAssets/jquery.ui.menu.min.css" rel="stylesheet" type="text/css">
+<script src="jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="jQueryAssets/jquery-ui-1.9.2.dialog.custom.min.js" type="text/javascript"></script>
+<script src="jQueryAssets/jquery-ui-1.9.2.button.custom.min.js" type="text/javascript"></script>
+<script src="jQueryAssets/jquery-ui-1.9.2.autocomplete.custom.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<button class="ui-button-icons-only" id="Button1">
+<p class="ui-button">Button</p>
+</button>
+
+<form id="form1">
+<input name="b1" type="button" id="b1" form="form1" title="بسم الله" value="بسم الله Open Dialog">
+<a href="#" title="sss" target="_parent" >xxx</a>
+<div id="Dialog1" title="قراءة عداد العودة">برجاء تسجيل عداد عودة السيارة</div>
+
+<label for="datetime-local1">DateTime-Local2:</label>
+<input name="datetime-local1" type="datetime-local" id="datetime-local1" max="2013-01-01" min="2010-01-01" title="xxxx" >
+
+
+<label for="datetime-local2">DateTime-Local2:</label>
+  <input name="var<%=i%>" type="datetime-local" id="varxxx<%=i%>" 
+							max="2013-01-01" min="2010-01-01" value="<%=varValue%>T00:00:00">
+
+  <strong><em><font color='00FF00' > Error : xxxx </font> </em></strong>
+</form>
+<input type="text" id="Autocomplete1">
+<script type="text/javascript">
+$(function() {
+	$( "#Dialog1" ).dialog({
+		autoOpen:false
+	});
+	$( "#Button1" ).click(function(){
+ 		$( "#Dialog1" ).dialog("open");
+	});
+});
+$(function() {
+	$( "#Button1" ).button({
+		label:"jquery button",
+		icons:{primary: "ui-icon-search", secondary: "ui-icon-gear"}
+	}); 
+});
+$(function() {
+	$( "#Autocomplete1" ).autocomplete(); 
+});
+</script>
+</body>
+</html>

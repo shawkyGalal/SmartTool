@@ -1,0 +1,408 @@
+{% extends 'layout-page-tabs' %}
+{% block title %}Jquery Widgets{% endblock %}
+
+{% block breadcrumb %}
+<li class=""><a href="index.html">Home</a></li>
+<li class="active"><a href="index.html">Jquery Widgets</a></li>
+{% endblock %}
+
+{% block styles %}
+{{ "plugins/charts-chartistjs/chartist.min.css" | asset_url | stylesheet_tag}}              <!-- Chartist -->
+{{ "plugins/switchery/switchery.css" | asset_url | stylesheet_tag }}                        <!-- Switchery -->
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/wijets/wijets.js" | asset_url | script_tag }}                                   <!-- Wijet -->
+{{ "plugins/charts-chartistjs/chartist.min.js" | asset_url | script_tag }}                  <!-- Chartist -->
+{{ "plugins/charts-chartistjs/chartist-plugin-tooltip.js" | asset_url | script_tag }}       <!-- Chartist -->
+{{ "plugins/switchery/switchery.js" | asset_url | script_tag }}                             <!-- Switchery -->
+{{ "plugins/easypiechart/jquery.easypiechart.min.js" | asset_url | script_tag }}            <!-- EasyPieChart-->
+{{ "plugins/jQuery-Mapael/js/jquery.mapael.js" | asset_url | script_tag }}                  <!-- jQuery Mapael -->
+{{ "plugins/fullcalendar/fullcalendar.min.js" | asset_url | script_tag }}               <!-- jQuery Mapael -->
+{{ "demo/demo.js" | asset_url | script_tag }}                                         <!-- demo -->
+
+<script>
+    $('#reset').click(function () {
+        bootbox.confirm("Are you sure you want to clear Local Storage? This will clear ALL globally set settings", function() {
+            localStorage.clear();
+        }); 
+    });
+
+    $.wijets().make();
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3">
+        <a href="#" class="info-tile tile-white has-footer">
+            <div class="tile-heading">
+                <div class="pull-left text-gray">Earnings</div>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="tile-body">
+                <div class="pull-left"><sup>$</sup>5,799</div>
+                <div class="pull-right"><div id="pierightbar"></div></div>
+            </div>
+            <div class="tile-footer">
+                <div class="pull-left text-gray">Go to earnings</div>
+                <div class="pull-right percent-change icon text-danger">-2.5%</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="#" class="info-tile tile-white has-footer">
+            <div class="tile-heading">
+                <div class="pull-left text-gray">Referrals</div>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="tile-body">
+                <div class="pull-left"><sup>$</sup>2,160</div>
+                <div class="pull-right"><div id="pie2"></div></div>
+            </div>
+            <div class="tile-footer">
+                <div class="pull-left text-gray">Go to referrals</div>
+                <div class="pull-right percent-change icon text-success">+7.5%</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="#" class="info-tile tile-info has-footer">
+            <div class="tile-heading">
+                <div class="pull-left text-light">Earnings</div>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="tile-body">
+                <div class="pull-left"><sup>$</sup>5,799</div>
+                <div class="pull-right"><div id="pie3"></div></div>
+            </div>
+            <div class="tile-footer">
+                <div class="pull-left text-dark">Go to earnings</div>
+                <div class="pull-right percent-change icon text-light">-2.5%</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="#" class="info-tile tile-indigo has-footer">
+            <div class="tile-heading">
+                <div class="pull-left text-light">Referrals</div>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="tile-body">
+                <div class="pull-left"><sup>$</sup>2,160</div>
+                <div class="pull-right"><div id="pie4"></div></div>
+            </div>
+            <div class="tile-footer">
+                <div class="pull-left text-dark">Go to referrals</div>
+                <div class="pull-right percent-change icon text-light">+7.5%</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-md-5">
+                    <span class="stack-text">ITEMS</span>
+                    <h3 class="mb-xs">6,170</h3>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            Items sold this week
+                        </div>
+                        <div class="pull-right icon text-danger">
+                            -1.5%
+                        </div>
+                    </div>
+                    <h3 class="mb-xs">520</h3>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            New member
+                        </div>
+                        <div class="pull-right icon text-danger">
+                            -4.2%
+                        </div>
+                    </div>
+                    <h3 class="mb-xs">47</h3>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            Referrals
+                        </div>
+                        <div class="pull-right icon text-success">
+                            +9.5%
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div id="sparkline-item2"></div>
+                    <div class="tabular">
+                        <div class="tabular-row">
+                            <div class="tabular-cell">
+                                <div class="week-day sun">S</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day mon">M</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day tue">T</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day wed">W</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day thu">T</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day fri">F</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day sat">S</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-md-7">
+                    <div id="line-dashboard1"></div>
+                    <div class="tabular">
+                        <div class="tabular-row">
+                            <div class="tabular-cell">
+                                <div class="week-day sun">S</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day mon">M</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day tue">T</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day wed">W</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day thu">T</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day fri">F</div>
+                            </div>
+                            <div class="tabular-cell">
+                                <div class="week-day sat">S</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <div class="col-md-5">
+                    <span class="stack-text">ITEMS</span>
+                    <h3 class="mb-xs">6,170</h3>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            Items sold this week
+                        </div>
+                        <div class="pull-right icon text-danger">
+                            -1.5%
+                        </div>
+                    </div>
+                    <h3 class="mb-xs">520</h3>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            New member
+                        </div>
+                        <div class="pull-right icon text-danger">
+                            -4.5%
+                        </div>
+                    </div>
+                    <h3 class="mb-xs">47</h3>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            Referrals
+                        </div>
+                        <div class="pull-right icon text-success">
+                            +9.5%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <a href="#" class="info-tile tile-white has-footer">
+            <div class="tile-heading">
+                <div class="pull-left text-gray">Earnings</div>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="tile-body">
+                <div class="pull-left"><sup>$</sup>5,799</div>
+                <div class="pull-right"><div id="barrdashboard"></div></div>
+            </div>
+            <div class="tile-footer">
+                <div class="pull-left text-gray">Go to earnings</div>
+                <div class="pull-right percent-change icon text-danger">-2.5%</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="#" class="info-tile tile-white has-footer">
+            <div class="tile-heading">
+                <div class="pull-left text-gray">Referrals</div>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="tile-body">
+                <div class="pull-left"><sup>$</sup>2,160</div>
+                <div class="pull-right"><div id="linedashboard"></div></div>
+            </div>
+            <div class="tile-footer">
+                <div class="pull-left text-gray">Go to referrals</div>
+                <div class="pull-right percent-change icon text-success">+7.5%</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="#" class="info-tile tile-success has-footer">
+            <div class="tile-heading">
+                <div class="pull-left text-light">Earnings</div>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="tile-body">
+                <div class="pull-left"><sup>$</sup>5,799</div>
+                <div class="pull-right"><div id="barrdashboard1"></div></div>
+            </div>
+            <div class="tile-footer">
+                <div class="pull-left text-dark">Go to earnings</div>
+                <div class="pull-right percent-change icon text-light">-2.5%</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-3">
+        <a href="#" class="info-tile tile-green has-footer">
+            <div class="tile-heading">
+                <div class="pull-left text-light">Referrals</div>
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="tile-body">
+                <div class="pull-left"><sup>$</sup>2,160</div>
+                <div class="pull-right"><div id="linedashboard1"></div></div>
+            </div>
+            <div class="tile-footer">
+                <div class="pull-left text-dark">Go to referrals</div>
+                <div class="pull-right percent-change icon text-light">+7.5%</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+        <div class="panel panel-default alt">
+            <div class="panel-heading">
+                <h2>Progress</h2>
+                <div class="panel-ctrls">
+                    <span class="icon"><i class="ion-android-sync"></i></span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="easypiechart" id="spanpie" data-percent="25">
+                    <span class="percent percent-big"></span>
+                </div>
+                <div class="percent-desc text-center">
+                    Completed
+                </div>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-left">
+                    <h4 class="mt-n mb-n pt-xs text-left">75</h4><small class="mt-n mb-sm text-left">Taking List</small>
+                </div>
+                <div class="pull-right text-right">
+                    <h4 class="mt-n mb-n pt-xs">100</h4><small class="mt-n mb-sm">Pending Task</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="panel panel-default alt">
+            <div class="panel-heading">
+                <h2>Revenues</h2>
+                <div class="panel-ctrls">
+                    <span class="icon"><i class="ion-android-sync"></i></span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="text-center" id="piedashboard"></div>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-left">
+                    <h4 class="mt-n mb-n pt-xs text-left"><sup>$</sup>18,400</h4><small class="mt-n mb-sm text-left">Sales Volume</small>
+                </div>
+                <div class="pull-right text-right">
+                    <h4 class="mt-n mb-n pt-xs">7,920</h4><small class="mt-n mb-sm">Items Sold</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="panel panel-default alt">
+            <div class="panel-heading">
+                <h2>Server</h2>
+                <div class="panel-ctrls">
+                    <span class="switch">
+                        <input type="checkbox" id="toggle1" name="toggle1" class="toggle-input">
+                        <label for="toggle1"></label>
+                    </span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="text-center" id="line-dashboard"></div>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-left">
+                    <h4 class="mt-n mb-n pt-xs text-left">512<sup>MB</sup></h4><small class="mt-n mb-sm text-left">RAM usage</small>
+                </div>
+                <div class="pull-right text-right">
+                    <h4 class="mt-n mb-n pt-xs">78<sup>%</sup></h4><small class="mt-n mb-sm">CPU load</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="panel panel-default alt">
+            <div class="panel-heading">
+                <h2>Live Visitors</h2>
+                <div class="panel-ctrls">
+                    <span class="switch">
+                        <input type="checkbox" id="toggle2" name="toggle2" class="toggle-input">
+                        <label for="toggle2"></label>
+                    </span>
+                </div>
+            </div>
+            <div class="panel-body text-center">
+                <div class="text-center" id="sparkline-dashboard"></div>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-left">
+                    <h4 class="mt-n mb-n pt-xs text-left">10,400</h4><small class="mt-n mb-sm text-left">Visitors today</small>
+                </div>
+                <div class="pull-right text-right">
+                    <h4 class="mt-n mb-n pt-xs">12</h4><small class="mt-n mb-sm">Right now</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

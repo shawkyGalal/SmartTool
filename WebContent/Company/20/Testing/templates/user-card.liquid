@@ -1,0 +1,1178 @@
+{% extends 'layout-page-tabs' %}
+{% block title %}User Card{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+
+{% block styles %} 
+{{ 'less/user-card.less' | asset_url | stylesheet_tag }}
+
+{% endblock %}
+
+{% block scripts %} 
+
+{% endblock %}
+
+{% block tablist %}
+<li class="active"><a aria-expanded="false" href="#squarecard" data-toggle="tab">Square Card</a></li>
+<li class=""><a aria-expanded="true" href="#circlecard" data-toggle="tab">Circle Card</a></li>
+<li class=""><a aria-expanded="true" href="#dropdowncard" data-toggle="tab">Dropdown Card</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="tab-content">
+					<div class="tab-pane active" id="squarecard">
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive text-center" alt="" src="assets/demo/avatar/1.jpg">
+										<div class="image-overflow">
+											<div class="btn-group">
+												<button class="btn btn-info" type="button"><i class="ion-social-facebook"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-twitter"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-googleplus"></i></button>
+											</div>
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Nathan Jacobson</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive text-center" alt="" src="assets/demo/avatar/2.jpg">
+										<div class="image-overflow">
+											<div class="btn-group">
+												<button class="btn btn-info" type="button"><i class="ion-social-facebook"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-twitter"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-googleplus"></i></button>
+											</div>
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Eric Collier</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive text-center" alt="" src="assets/demo/avatar/3.jpg">
+										<div class="image-overflow">
+											<div class="btn-group">
+												<button class="btn btn-info" type="button"><i class="ion-social-facebook"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-twitter"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-googleplus"></i></button>
+											</div>
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Elena Neal</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive text-center" alt="" src="assets/demo/avatar/4.jpg">
+										<div class="image-overflow">
+											<div class="btn-group">
+												<button class="btn btn-info" type="button"><i class="ion-social-facebook"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-twitter"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-googleplus"></i></button>
+											</div>
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Edwin Bryan</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive text-center" alt="" src="assets/demo/avatar/5.jpg">
+										<div class="image-overflow">
+											<div class="btn-group">
+												<button class="btn btn-info" type="button"><i class="ion-social-facebook"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-twitter"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-googleplus"></i></button>
+											</div>
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Denise Klein</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive text-center" alt="" src="assets/demo/avatar/6.jpg">
+										<div class="image-overflow">
+											<div class="btn-group">
+												<button class="btn btn-info" type="button"><i class="ion-social-facebook"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-twitter"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-googleplus"></i></button>
+											</div>
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Edward Dean</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive text-center" alt="" src="assets/demo/avatar/7.jpg">
+										<div class="image-overflow">
+											<div class="btn-group">
+												<button class="btn btn-info" type="button"><i class="ion-social-facebook"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-twitter"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-googleplus"></i></button>
+											</div>
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Grant Powell</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive text-center" alt="" src="assets/demo/avatar/8.jpg">
+										<div class="image-overflow">
+											<div class="btn-group">
+												<button class="btn btn-info" type="button"><i class="ion-social-facebook"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-twitter"></i></button>
+												<button class="btn btn-info" type="button"><i class="ion-social-googleplus"></i></button>
+											</div>
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Rose Holt</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="circlecard">
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive img-circle text-center" alt="" src="assets/demo/avatar/1.jpg"/>
+										<div class="image-overflow image-round">
+											
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Nathan Jacobson</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive img-circle text-center" alt="" src="assets/demo/avatar/2.jpg"/>
+										<div class="image-overflow image-round">
+											
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Eric Collier</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive img-circle text-center" alt="" src="assets/demo/avatar/3.jpg"/>
+										<div class="image-overflow image-round">
+											
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Elena Neal</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive img-circle text-center" alt="" src="assets/demo/avatar/4.jpg"/>
+										<div class="image-overflow image-round">
+											
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Edwin Bryan</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive img-circle text-center" alt="" src="assets/demo/avatar/5.jpg"/>
+										<div class="image-overflow image-round">
+											
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Denise Klein</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive img-circle text-center" alt="" src="assets/demo/avatar/6.jpg"/>
+										<div class="image-overflow image-round">
+											
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Edward Dean</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive img-circle text-center" alt="" src="assets/demo/avatar/7.jpg"/>
+										<div class="image-overflow image-round">
+											
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Grant Powell</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="user-card">
+								<div class="card-holder">
+									<div class="image-container">
+										<img class="img-responsive img-circle text-center" alt="" src="assets/demo/avatar/8.jpg"/>
+										<div class="image-overflow image-round">
+											
+										</div>
+									</div>
+									<div class="caption text-center">
+										<h6 class="mb-xs">Rose Holt</h6>
+										<small class="">Lead UX designer</small>
+										<div class="row">
+											<ul class="tweet-desc list-inline pt-xl">
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">tweets</p>
+														<p class="number">781</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">following</p>
+														<p class="number">209</p>
+													</a>
+												</li>
+												<li class="col-md-4">
+													<a data-container="body" title="" data-popup="tooltip" href="#">
+														<p class="title">followers</p>
+														<p class="number">2.5k</p>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="dropdowncard">
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-circle img-responsive" src="assets/demo/avatar/1.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Nathan Jacobson</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-circle img-responsive" src="assets/demo/avatar/2.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Eric Collier</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-circle img-responsive" src="assets/demo/avatar/3.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Elena Neal</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-circle img-responsive" src="assets/demo/avatar/4.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Edwin Bryan</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-circle img-responsive" src="assets/demo/avatar/5.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Denise Klein</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-circle img-responsive" src="assets/demo/avatar/6.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Edward Dean</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-circle img-responsive" src="assets/demo/avatar/7.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Grant Powell</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-circle img-responsive" src="assets/demo/avatar/8.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Rose Holt</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-responsive" src="assets/demo/avatar/1.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Nathan Jacobson</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-responsive" src="assets/demo/avatar/2.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Eric Collier</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-responsive" src="assets/demo/avatar/3.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Elena Neal</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-responsive" src="assets/demo/avatar/4.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Edwin Bryan</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-responsive" src="assets/demo/avatar/5.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Denise Klein</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-responsive" src="assets/demo/avatar/6.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Edward Dean</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-responsive" src="assets/demo/avatar/7.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Grant Powell</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="media-card">
+								<div class="media mt-md">
+									<div class="media-left">
+										<a href="#">
+											<img class="img-responsive" src="assets/demo/avatar/8.jpg" alt="" width="80" height="80"/>
+										</a>
+									</div>
+
+									<div class="media-body">
+										<h6 class="media-heading">Rose Holt</h6>
+										<span class="text-muted">Lead UX designer</span>
+									</div>
+
+									<div class="media-right media-middle">
+										<ul class="list-unstyled">
+											<li class="dropdown">
+												<a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="ion-navicon-round"></i></a>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+													<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+													<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+													<li class="divider"></li>
+													<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

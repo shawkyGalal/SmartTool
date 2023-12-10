@@ -1,0 +1,42 @@
+{% extends 'layout' %}
+{% block title %}Gallery Elastic{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+
+{% block styles %} 
+{{ 'plugins/gridlayout/layout1/css/demo.css' | asset_url | stylesheet_tag }}
+{{ 'plugins/gridlayout/layout1/css/elastic_grid.min.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+
+{% block scripts %} 
+{{ 'plugins/gridlayout/layout1/js/modernizr.custom.js' | asset_url | script_tag }}
+{{ 'plugins/gridlayout/layout1/js/classie.js' | asset_url | script_tag }}
+{{ 'plugins/gridlayout/layout1/js/elastic_grid.min.js' | asset_url | script_tag }}
+{{ "demo/gridlayout/layout1.js" | asset_url | script_tag }}
+
+
+{{ "plugins/shufflejs/modernizr.custom.min.js" | asset_url | script_tag }}  <!-- Dependency for Shuffle.js -->
+{{ "plugins/shufflejs/jquery.shuffle.min.js" | asset_url | script_tag }}    <!-- Shuffle.js -->
+
+<script>
+$(document).ready(function(){
+	$('#portfolio-filter').tabdrop();
+});
+</script>
+ <!-- Bootstrap Tabdrop -->
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12" id="elastic_grid_demo">
+    	
+    </div>
+</div>
+
+
+{% endblock %}

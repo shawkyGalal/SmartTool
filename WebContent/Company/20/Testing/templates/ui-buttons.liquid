@@ -1,0 +1,996 @@
+{% extends 'layout' %}
+{% block title %}Buttons{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="ui-buttons.html">Buttons</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $('.loading-example-btn').click(function () {
+    var btn = $(this);
+    btn.button('loading');
+    setTimeout(function () {
+      btn.button('reset');
+    },3000 );
+    
+  });
+</script>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="row" data-widget-group="group-demo">
+    <div class="col-sm-4">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget03"}'>
+            <div class="panel-heading">
+                <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title alt">Button Dropdown<small>Secondary Heading</small></h2>               
+        </div>
+        <div class="panel-editbox" data-widget-controls=""></div>
+        <div class="panel-body">
+            <p>Dropdowns default in different colors with <code>.dropdown</code></p></br>  
+            <ul class="demo-btns ">
+                <li>
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                            Dropdown <i class="pl-xs ion-ios-arrow-down"></i>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                            <i class="ion-ios-gear pr-sm"></i><i class="ion-ios-arrow-down"></i>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group">
+                        <a class="btn btn-inverse" href="#">Dropdown</a>
+                        <a data-toggle="dropdown" class="btn btn-inverse dropdown-toggle" href="#"><i class="ion-ios-arrow-down"></i></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group">
+                        <a class="btn btn-inverse" href="#"><i class="ion-ios-gear"></i></a>
+                        <a data-toggle="dropdown" class="btn btn-inverse dropdown-toggle" href="#"><i class="ion-ios-arrow-down"></i></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <p>Dropups default in different colors with <code>.dropup</code></p></br>  
+            <ul class="demo-btns">
+                <li>
+                    <div class="btn-group dropup">
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                            Dropdown <i class="pl-xs ion-ios-arrow-up"></i>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group dropup">
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                            <i class="ion-ios-gear pr-sm"></i><i class="ion-ios-arrow-up"></i>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group dropup">
+                        <a class="btn btn-inverse" href="#">Dropdown</a>
+                        <a data-toggle="dropdown" class="btn btn-inverse dropdown-toggle" href="#"><i class="ion-ios-arrow-up"></i></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group dropup">
+                        <a class="btn btn-inverse" href="#"><i class="ion-ios-gear"></i></a>
+                        <a data-toggle="dropdown" class="btn btn-inverse dropdown-toggle" href="#"><i class="ion-ios-arrow-up"></i></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Block Button<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Block level buttons in default and alternate styles with different sizes <code>.btn-block</code></p></br> 
+        <a class="btn btn-primary btn-block" href="#">Block Button</a>
+        <div class="btn-group btn-block">
+            <button data-toggle="dropdown" class="btn btn-block btn-inverse dropdown-toggle" type="button">
+                <i class="ion-ios-gear pr-xs"></i> Settings <i class="pl-xs ion-ios-arrow-down"></i>
+            </button>
+            <ul role="menu" class="dropdown-menu col-xs-12">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+        <div class="btn-group btn-block dropup">
+            <button data-toggle="dropdown" class="btn btn-block btn-default dropdown-toggle" type="button">
+                <i class="ion-ios-gear pr-xs"></i> Settings <i class="ion-ios-arrow-up pl-xs"></i>
+            </button>
+            <ul role="menu" class="dropdown-menu col-xs-12">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Grouped Buttons<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Grouped buttons variations in default style with <code>.btn-group</code></p></br>  
+        <div class="btn-group mb10 col-md-12">
+            <button class="btn btn-inverse" type="button">Left</button>
+            <button class="btn btn-inverse" type="button">Middle</button>
+            <button class="btn btn-inverse" type="button">Right</button>
+        </div>
+        <div class="btn-group mb10 col-md-12">
+            <button type="button" class="btn btn-info"><i class="ion-checkmark-round"></i></button>
+            <button type="button" class="btn btn-info"><i class="ion-android-cloud"></i></button>
+            <button type="button" class="btn btn-info"><i class="ion-android-menu"></i></button>
+            <button type="button" class="btn btn-info"><i class="ion-ios-gear"></i></button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="row" data-widget-group="group-demo">
+    <div class="col-sm-4">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget03"}'>
+            <div class="panel-heading">
+                <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title alt">Button Dropdown<small>Secondary Heading</small></h2>
+            
+        </div>
+        <div class="panel-editbox" data-widget-controls=""></div>
+        <div class="panel-body">
+            <p>Dropdowns default in different colors with <code>.dropdown</code></p></br>  
+            <div aria-label="Vertical button group" role="group" class="btn-group-vertical"> 
+                <button class="btn btn-inverse" type="button">Button</button> 
+                <div role="group" class="btn-group"> 
+                    <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="btn btn-inverse dropdown-toggle" type="button" id="btnGroupVerticalDrop1"> Dropdown <i class="pl-xs ion-ios-arrow-down"></i> </button> 
+                    <ul aria-labelledby="btnGroupVerticalDrop1" class="dropdown-menu"> 
+                        <li><a href="#">Dropdown link</a></li> 
+                        <li><a href="#">Dropdown link</a></li> 
+                    </ul> 
+                </div> 
+                <button class="btn btn-inverse" type="button">Button</button> 
+                <div role="group" class="btn-group"> 
+                    <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="btn btn-inverse dropdown-toggle" type="button" id="btnGroupVerticalDrop2"> Dropdown <i class="pl-xs ion-ios-arrow-down"></i> </button> 
+                    <ul aria-labelledby="btnGroupVerticalDrop2" class="dropdown-menu"> 
+                        <li><a href="#">Dropdown link</a></li> 
+                        <li><a href="#">Dropdown link</a></li> 
+                    </ul> 
+                </div> 
+            </div>
+            <div class="btn-group-vertical">
+                <a href="#" class="btn btn-success"><i class="ion-cloud"></i></a>
+                <a href="#" class="btn btn-success"><i class="ion-ios-gear"></i></a>
+                <a href="#" class="btn btn-success"><i class="ion-pricetags"></i></a>
+                <a href="#" class="btn btn-success"><i class="ion-help-buoy"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Block Button<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Block level buttons in default and alternate styles with different sizes <code>.btn-block</code></p></br>  
+        <div aria-label="Justified button group" role="group" class="btn-group btn-group-justified mb10"> 
+            <a role="button" class="btn btn-default" href="#">Left</a> 
+            <a role="button" class="btn btn-default" href="#">Middle</a> 
+            <a role="button" class="btn btn-default" href="#">Right</a> 
+        </div>
+        <div aria-label="Justified button group with nested dropdown " role="group" class="btn-group btn-group-justified"> 
+            <a role="button" class="btn btn-default" href="#">Left</a> 
+            <a role="button" class="btn btn-default" href="#">Middle</a> 
+            <div role="group" class="btn-group"> 
+                <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle" href="#"> Dropdown <i class="ion-ios-arrow-down pl-xs"></i>
+                </a> 
+                <ul class="dropdown-menu"> 
+                    <li><a href="#">Action</a></li> 
+                    <li><a href="#">Another action</a></li> 
+                    <li><a href="#">Something else here</a></li> 
+                    <li class="divider" role="separator"></li> 
+                    <li><a href="#">Separated link</a></li> 
+                </ul> 
+            </div> 
+        </div>
+    </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Toolbar Button<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Block level buttons in default and alternate styles with different sizes <code>.btn-block</code></p></br>  
+        <div class="btn-toolbar">
+            <div class="btn-group mb10">
+                <button type="button" class="btn btn-default">1</button>
+                <button type="button" class="btn btn-default">2</button>
+                <button type="button" class="btn btn-default">3</button>
+                <button type="button" class="btn btn-default">4</button>
+                <button type="button" class="btn btn-default dropdown-toggle pl-sm pr-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                    <i class="pl-xs ion-ios-arrow-down"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <button class="btn btn-default" type="button">1</button>
+                <button class="btn btn-default" type="button">2</button>
+                <button class="btn btn-default" type="button">3</button>
+                <button class="btn btn-default" type="button">4</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default" type="button">5</button>
+                <button class="btn btn-default" type="button">6</button>
+                <button class="btn btn-default" type="button">7</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default" type="button">8</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="row" data-widget-group="group-demo">
+    <div class="col-sm-4">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget03"}'>
+            <div class="panel-heading">
+                <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title alt">Label Buttons<small>Secondary Heading</small></h2>
+            
+        </div>
+        <div class="panel-editbox" data-widget-controls=""></div>
+        <div class="panel-body">
+            <p>Adding a <code>.btn-label</code> class to the button will increase focus on the attached icon</p></br>              
+            <ul class="demo-btns">
+                <li><a href="#" class="btn btn-lg btn-inverse btn-label"><i class="ion-ios-gear"></i> Settings</a></li>
+                <li><a href="#" class="btn btn-lg btn-inverse btn-label"><i class="ion-android-download"></i> Download</a></li>
+                
+            </ul>
+            <ul class="demo-btns">
+                <li><a href="#" class="btn btn-success btn-label"><i class="ion-android-done"></i>Checked</a></li>
+                <li><a href="#" class="btn btn-success btn-label"><i class="ion-android-stopwatch"></i> Activity</a></li>
+                <li><a href="#" class="btn btn-success btn-label"><i class="ion-android-create"></i> Edit</a></li>
+                
+            </ul>
+            <ul class="demo-btns">
+                <li><a href="#" class="btn btn-sm btn-teal btn-label"><i class="ion-bookmark"></i> Bookmark</a></li>
+                <li><a href="#" class="btn btn-sm btn-teal btn-label"><i class="ion-cloud"></i> Cloud</a></li>
+                <li><a href="#" class="btn btn-sm btn-teal btn-label"><i class="ion-ios-flag"></i> Flag</a></li>
+                
+            </ul>
+            <ul class="demo-btns">
+                <li><a href="#" class="btn btn-xs btn-info btn-label"><i class="ion-android-cancel"></i> Cancel</a></li>
+                <li><a href="#" class="btn btn-xs btn-info btn-label"><i class="ion-android-delete"></i> Delete</a></li>
+                <li><a href="#" class="btn btn-xs btn-info btn-label"><i class="ion-android-remove-circle"></i> Remove</a></li>   
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Social buttons<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Included Social Icons with relevant background colors with <code>.btn-social</code> class</p></br>  
+        <ul class="demo-btns">
+            <li><a class="btn btn-social btn-facebook" href="#"><i class="ion-social-facebook"></i></a></li>
+            <li><a class="btn btn-social btn-twitter" href="#"><i class="ion-social-twitter"></i></a></li>
+            <li><a class="btn btn-social btn-github" href="#"><i class="ion-social-github"></i></a></li>
+            <li><a class="btn btn-social btn-behance" href="#"><i class="ion-social-whatsapp"></i></a></li>
+            <li><a class="btn btn-social btn-flickr" href="#"><i class="ion-aperture"></i></a></li>
+            <li><a class="btn btn-social btn-jsfiddle" href="#"><i class="ion-social-nodejs"></i></a></li>
+            <li><a class="btn btn-social btn-reddit" href="#"><i class="ion-android-cloud"></i></a></li>
+            <li><a class="btn btn-social btn-youtube" href="#"><i class="ion-social-youtube"></i></a></li>
+            <li><a class="btn btn-social btn-foursquare" href="#"><i class="ion-social-foursquare"></i></a></li>
+            <li><a class="btn btn-social btn-google" href="#"><i class="ion-social-google"></i></a></li>
+            <li><a class="btn btn-social btn-apple" href="#"><i class="ion-social-apple"></i></a></li>
+            <li><a class="btn btn-social btn-soundcloud" href="#"><i class="ion-social-pinterest"></i></a></li>
+            <li><a class="btn btn-social btn-steam" href="#"><i class="ion-steam"></i></a></li>
+            <li><a class="btn btn-social btn-spotify" href="#"><i class="ion-social-reddit"></i></a></li>
+            <li><a class="btn btn-social btn-wordpress" href="#"><i class="ion-social-wordpress"></i></a></li>
+            <li><a class="btn btn-social btn-tealpe" href="#"><i class="ion-social-skype"></i></a></li>
+            <li><a class="btn btn-social btn-android" href="#"><i class="ion-social-android"></i></a></li>
+            <li><a class="btn btn-social btn-digg" href="#"><i class="ion-social-vimeo"></i></a></li>
+            <li><a class="btn btn-social btn-linkedin" href="#"><i class="ion-social-linkedin"></i></a></li>
+            <li><a class="btn btn-social btn-googleplus" href="#"><i class="ion-social-googleplus"></i></a></li>
+            <li><a class="btn btn-social btn-instagram" href="#"><i class="ion-social-instagram"></i></a></li>
+            <li><a class="btn btn-social btn-windows" href="#"><i class="ion-social-windows"></i></a></li>
+        </ul>
+    </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Toolbar Button<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <ul class="demo-btns">
+            <p>Use them in conjecture with label buttons <code>.btn-label.btn-social</code></p></br>
+            <li><a class="btn btn-label btn-social btn-facebook" href="#"><i class="ion-social-facebook"></i>Facebook</a></li>
+            <li><a class="btn btn-label btn-social btn-twitter" href="#"><i class="ion-social-twitter"></i>Twitter</a></li>
+            <li><a class="btn btn-label btn-social btn-github" href="#"><i class="ion-social-github"></i>Github</a></li>
+            <li><a class="btn btn-label btn-social btn-behance" href="#"><i class="ion-social-pinterest"></i>pinterest</a></li>
+            <li><a class="btn btn-label btn-social btn-jsfiddle" href="#"><i class="ion-social-nodejs"></i>jsFiddle</a></li>
+            <li><a class="btn btn-label btn-social btn-youtube" href="#"><i class="ion-social-youtube"></i>YouTube</a></li>
+            <li><a class="btn btn-label btn-social btn-tealpe" href="#"><i class="ion-social-skype"></i>Skype</a></li>
+            <li><a class="btn btn-label btn-social btn-linkedin" href="#"><i class="ion-social-linkedin"></i>LinkedIn</a></li>
+            <li><a class="btn btn-label btn-social btn-googleplus" href="#"><i class="ion-social-googleplus"></i>Google Plus+</a></li>
+            <li><a class="btn btn-label btn-social btn-instagram" href="#"><i class="ion-social-instagram"></i>Instagram</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="row" data-widget-group="group-demo">
+    <div class="col-sm-4">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget03"}'>
+            <div class="panel-heading">
+                <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title alt">Button Dropdown<small>Secondary Heading</small></h2>               
+        </div>
+        <div class="panel-editbox" data-widget-controls=""></div>
+        <div class="panel-body">
+            <p>Dropdowns default in different colors with <code>.dropdown</code></p></br>  
+            <ul class="demo-btns">
+                <li>
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-default-alt alt dropdown-toggle" type="button">
+                            Dropdown <i class="pl-xs ion-ios-arrow-down"></i>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-default-alt alt dropdown-toggle" type="button">
+                            <i class="ion-ios-gear pr-sm"></i><i class="ion-ios-arrow-down"></i>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group">
+                        <a class="btn btn-inverse-alt alt" href="#">Dropdown</a>
+                        <a data-toggle="dropdown" class="btn btn-inverse-alt alt dropdown-toggle" href="#"><i class="ion-ios-arrow-down"></i></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group">
+                        <a class="btn btn-inverse-alt alt" href="#"><i class="ion-ios-gear"></i></a>
+                        <a data-toggle="dropdown" class="btn btn-inverse-alt alt alt dropdown-toggle" href="#"><i class="ion-ios-arrow-down"></i></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <p>Dropups default in different colors with <code>.dropup</code></p></br>  
+            <ul class="demo-btns">
+                <li>
+                    <div class="btn-group dropup">
+                        <button data-toggle="dropdown" class="btn btn-default-alt alt dropdown-toggle" type="button">
+                            Dropdown <i class="pl-xs ion-ios-arrow-up"></i>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group dropup">
+                        <button data-toggle="dropdown" class="btn btn-default-alt alt dropdown-toggle" type="button">
+                            <i class="ion-ios-gear pr-sm"></i><i class="ion-ios-arrow-up"></i>
+                        </button>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group dropup">
+                        <a class="btn btn-inverse-alt alt" href="#">Dropdown</a>
+                        <a data-toggle="dropdown" class="btn btn-inverse-alt alt dropdown-toggle" href="#"><i class="ion-ios-arrow-up"></i></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="btn-group dropup">
+                        <a class="btn btn-inverse-alt alt" href="#"><i class="ion-ios-gear"></i></a>
+                        <a data-toggle="dropdown" class="btn btn-inverse-alt alt dropdown-toggle" href="#"><i class="ion-ios-arrow-up"></i></a>
+                        <ul role="menu" class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Block Button<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Block level buttons in default and alternate styles with different sizes <code>.btn-block</code></p></br>  
+        <a class="btn btn-primary-alt btn-block" href="#">Block Button</a>
+        <div class="btn-group btn-block">
+            <button data-toggle="dropdown" class="btn btn-block btn-inverse-alt alt alt dropdown-toggle" type="button">
+                <i class="ion-ios-gear pr-xs"></i> Settings <i class="pl-xs ion-ios-arrow-down"></i>
+            </button>
+            <ul role="menu" class="dropdown-menu col-xs-12">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+        <div class="btn-group btn-block dropup">
+            <button data-toggle="dropdown" class="btn btn-block btn-default-alt alt dropdown-toggle" type="button">
+                <i class="ion-ios-gear pr-xs"></i> Settings <i class="ion-ios-arrow-up pl-xs"></i>
+            </button>
+            <ul role="menu" class="dropdown-menu col-xs-12">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Grouped Buttons<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Grouped buttons variations in default style with <code>.btn-group</code></p></br>
+        <div class="btn-group mb10 col-md-12">
+            <button class="btn btn-inverse-alt alt" type="button">Left</button>
+            <button class="btn btn-inverse-alt alt" type="button">Middle</button>
+            <button class="btn btn-inverse-alt alt" type="button">Right</button>
+        </div>
+        <div class="btn-group mb10 col-md-12">
+            <button type="button" class="btn btn-info-alt alt"><i class="ion-checkmark-round"></i></button>
+            <button type="button" class="btn btn-info-alt alt"><i class="ion-android-cloud"></i></button>
+            <button type="button" class="btn btn-info-alt alt"><i class="ion-android-menu"></i></button>
+            <button type="button" class="btn btn-info-alt alt"><i class="ion-ios-gear"></i></button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="row" data-widget-group="group-demo">
+    <div class="col-sm-4">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget03"}'>
+            <div class="panel-heading">
+                <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title alt">Button Dropdown<small>Secondary Heading</small></h2>
+            
+        </div>
+        <div class="panel-editbox" data-widget-controls=""></div>
+        <div class="panel-body">
+            <p>Dropdowns default in different colors with <code>.dropdown</code></p></br>  
+            <div aria-label="Vertical button group" role="group" class="btn-group-vertical"> 
+                <button class="btn btn-inverse-alt alt" type="button">Button</button> 
+                <div role="group" class="btn-group"> 
+                    <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="btn btn-inverse-alt alt dropdown-toggle" type="button" id="btnGroupVerticalDrop1"> Dropdown <i class="ion-ios-arrow-down pl-xs"></i> </button> 
+                    <ul aria-labelledby="btnGroupVerticalDrop1" class="dropdown-menu"> 
+                        <li><a href="#">Dropdown link</a></li> 
+                        <li><a href="#">Dropdown link</a></li> 
+                    </ul> 
+                </div> 
+                <button class="btn btn-inverse-alt alt" type="button">Button</button> 
+                <div role="group" class="btn-group"> 
+                    <button aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" class="btn btn-inverse-alt alt dropdown-toggle" type="button" id="btnGroupVerticalDrop2"> Dropdown <i class="ion-ios-arrow-down pl-xs"></i> </button> 
+                    <ul aria-labelledby="btnGroupVerticalDrop2" class="dropdown-menu"> 
+                        <li><a href="#">Dropdown link</a></li> 
+                        <li><a href="#">Dropdown link</a></li> 
+                    </ul> 
+                </div> 
+            </div>
+            <div class="btn-group-vertical">
+                <a href="#" class="btn btn-success-alt alt"><i class="ion-cloud"></i></a>
+                <a href="#" class="btn btn-success-alt alt"><i class="ion-ios-gear"></i></a>
+                <a href="#" class="btn btn-success-alt alt"><i class="ion-pricetags"></i></a>
+                <a href="#" class="btn btn-success-alt alt"><i class="ion-help-buoy"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Block Button<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Block level buttons in default and alternate styles with different sizes <code>.btn-block</code></p></br>  
+        <div aria-label="Justified button group" role="group" class="btn-group btn-group-justified mb10"> 
+            <a role="button" class="btn btn-default-alt alt" href="#">Left</a> 
+            <a role="button" class="btn btn-default-alt alt" href="#">Middle</a> 
+            <a role="button" class="btn btn-default-alt alt" href="#">Right</a> 
+        </div>
+        <div aria-label="Justified button group with nested dropdown " role="group" class="btn-group btn-group-justified"> 
+            <a role="button" class="btn btn-default-alt alt" href="#">Left</a> 
+            <a role="button" class="btn btn-default-alt alt" href="#">Middle</a> 
+            <div role="group" class="btn-group"> 
+                <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="btn btn-default-alt alt dropdown-toggle" href="#"> Dropdown <i class="ion-ios-arrow-down pl-xs"></i>
+                </a> 
+                <ul class="dropdown-menu"> 
+                    <li><a href="#">Action</a></li> 
+                    <li><a href="#">Another action</a></li> 
+                    <li><a href="#">Something else here</a></li> 
+                    <li class="divider" role="separator"></li> 
+                    <li><a href="#">Separated link</a></li> 
+                </ul> 
+            </div> 
+        </div>
+    </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Toolbar Button<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Block level buttons in default and alternate styles with different sizes <code>.btn-block</code></p></br>  
+        <div class="btn-toolbar">
+            <div class="btn-group mb10">
+                <button type="button" class="btn btn-default-alt alt">1</button>
+                <button type="button" class="btn btn-default-alt alt">2</button>
+                <button type="button" class="btn btn-default-alt alt">3</button>
+                <button type="button" class="btn btn-default-alt alt">4</button>
+                <button type="button" class="btn btn-default-alt alt dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                    <i class="ion-ios-arrow-down pl-xs"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <button class="btn btn-default-alt alt" type="button">1</button>
+                <button class="btn btn-default-alt alt" type="button">2</button>
+                <button class="btn btn-default-alt alt" type="button">3</button>
+                <button class="btn btn-default-alt alt" type="button">4</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default-alt alt" type="button">5</button>
+                <button class="btn btn-default-alt alt" type="button">6</button>
+                <button class="btn btn-default-alt alt" type="button">7</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-default-alt alt" type="button">8</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="row" data-widget-group="group-demo">
+    <div class="col-sm-4">
+        <div class="panel panel-default alt" data-widget='{"id" : "wiget03"}'>
+            <div class="panel-heading">
+                <div class="panel-ctrls" 
+                data-actions-container="" 
+                data-action-collapse='{"target": ".panel-body"}'
+                data-action-colorpicker=''
+                data-action-edit=''
+                data-action-expand=''
+                data-action-refresh=''
+                data-action-close=''
+                >
+            </div>
+            <h2 class="title alt">Label Buttons<small>Secondary Heading</small></h2>
+            
+        </div>
+        <div class="panel-editbox" data-widget-controls=""></div>
+        <div class="panel-body">
+            <p>Adding a <code>.btn-label</code> class to the button will increase focus on the attached icon</p></br>              
+            <ul class="demo-btns">
+                <li><a href="#" class="btn btn-lg btn-inverse-alt btn-label"><i class="ion-ios-gear"></i> Settings</a></li>
+                <li><a href="#" class="btn btn-lg btn-inverse-alt btn-label"><i class="ion-android-download"></i> Download</a></li>
+                
+            </ul>
+            <ul class="demo-btns">
+                <li><a href="#" class="btn btn-success-alt btn-label"><i class="ion-android-done"></i>Checked</a></li>
+                <li><a href="#" class="btn btn-success-alt btn-label"><i class="ion-android-stopwatch"></i> Activity</a></li>
+                <li><a href="#" class="btn btn-success-alt btn-label"><i class="ion-android-create"></i> Edit</a></li>
+                
+            </ul>
+            <ul class="demo-btns">
+                <li><a href="#" class="btn btn-sm btn-teal-alt btn-label"><i class="ion-bookmark"></i> Bookmark</a></li>
+                <li><a href="#" class="btn btn-sm btn-teal-alt btn-label"><i class="ion-cloud"></i> Cloud</a></li>
+                <li><a href="#" class="btn btn-sm btn-teal-alt btn-label"><i class="ion-ios-flag"></i> Flag</a></li>
+                
+            </ul>
+            <ul class="demo-btns">
+                <li><a href="#" class="btn btn-xs btn-info-alt btn-label"><i class="ion-android-cancel"></i> Cancel</a></li>
+                <li><a href="#" class="btn btn-xs btn-info-alt btn-label"><i class="ion-android-delete"></i> Delete</a></li>
+                <li><a href="#" class="btn btn-xs btn-info-alt btn-label"><i class="ion-android-remove-circle"></i> Remove</a></li>   
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Social buttons<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Included Social Icons with relevant background colors with <code>.btn-social</code> class</p></br>  
+        <ul class="demo-btns">
+            <li><a class="btn btn-social alt btn-facebook-alt btn-facebook" href="#"><i class="ion-social-facebook"></i></a></li>
+            <li><a class="btn btn-social alt btn-twitter-alt btn-twitter" href="#"><i class="ion-social-twitter"></i></a></li>
+            <li><a class="btn btn-social alt btn-github-alt btn-github" href="#"><i class="ion-social-github"></i></a></li>
+            <li><a class="btn btn-social alt btn-behance-alt btn-behance" href="#"><i class="ion-social-whatsapp"></i></a></li>
+            <li><a class="btn btn-social alt btn-flickr-alt btn-flickr" href="#"><i class="ion-aperture"></i></a></li>
+            <li><a class="btn btn-social alt btn-reddit-alt btn-reddit" href="#"><i class="ion-android-cloud"></i></a></li>
+            <li><a class="btn btn-social alt btn-youtube-alt btn-youtube" href="#"><i class="ion-social-youtube"></i></a></li>
+            <li><a class="btn btn-social alt btn-foursquare-alt btn-foursquare" href="#"><i class="ion-social-foursquare"></i></a></li>
+            <li><a class="btn btn-social alt btn-google-alt btn-google" href="#"><i class="ion-social-google"></i></a></li>
+            <li><a class="btn btn-social alt btn-apple-alt btn-apple" href="#"><i class="ion-social-apple"></i></a></li>
+            <li><a class="btn btn-social alt btn-soundcloud-alt btn-soundcloud" href="#"><i class="ion-social-pinterest"></i></a></li>
+            <li><a class="btn btn-social alt btn-steam-alt btn-steam" href="#"><i class="ion-steam"></i></a></li>
+            <li><a class="btn btn-social alt btn-spotify-alt btn-spotify" href="#"><i class="ion-social-reddit"></i></a></li>
+            <li><a class="btn btn-social alt btn-wordpress-alt btn-wordpress" href="#"><i class="ion-social-wordpress"></i></a></li>
+            <li><a class="btn btn-social alt btn-tealpe-alt btn-tealpe" href="#"><i class="ion-social-skype"></i></a></li>
+            <li><a class="btn btn-social alt btn-android-alt btn-android" href="#"><i class="ion-social-android"></i></a></li>
+            <li><a class="btn btn-social alt btn-digg-alt btn-digg" href="#"><i class="ion-social-vimeo"></i></a></li>
+            <li><a class="btn btn-social alt btn-linkedin-alt btn-linkedin" href="#"><i class="ion-social-linkedin"></i></a></li>
+            <li><a class="btn btn-social alt btn-googleplus-alt btn-googleplus" href="#"><i class="ion-social-googleplus"></i></a></li>
+            <li><a class="btn btn-social alt btn-instagram-alt btn-instagram" href="#"><i class="ion-social-instagram"></i></a></li>
+            <li><a class="btn btn-social alt btn-windows-alt btn-windows" href="#"><i class="ion-social-windows"></i></a></li>
+        </ul>
+    </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget04"}'>
+        <div class="panel-heading">
+            <div class="panel-ctrls" 
+            data-actions-container="" 
+            data-action-collapse='{"target": ".panel-body"}'
+            data-action-colorpicker=''
+            data-action-edit=''
+            data-action-expand=''
+            data-action-refresh=''
+            data-action-close=''
+            >
+        </div>
+        <h2 class="title alt">Toolbar Button<small>Secondary Heading</small></h2>              
+    </div>
+    <div class="panel-editbox" data-widget-controls=""></div>
+    <div class="panel-body">
+        <p>Use them in conjecture with label buttons <code>.btn-label.btn-social</code></p></br>  
+        <ul class="demo-btns">
+            <li><a class="btn btn-label btn-social btn-facebook-alt btn-facebook" href="#"><i class="ion-social-facebook"></i>Facebook</a></li>
+            <li><a class="btn btn-label btn-social btn-twitter-alt btn-twitter" href="#"><i class="ion-social-twitter"></i>Twitter</a></li>
+            <li><a class="btn btn-label btn-social btn-github-alt btn-github" href="#"><i class="ion-social-github"></i>Github</a></li>
+            <li><a class="btn btn-label btn-social btn-behance-alt btn-behance" href="#"><i class="ion-social-pinterest"></i>pinterest</a></li>
+            <li><a class="btn btn-label btn-social btn-youtube-alt btn-youtube" href="#"><i class="ion-social-youtube"></i>YouTube</a></li>
+            <li><a class="btn btn-label btn-social btn-tealpe-alt btn-tealpe" href="#"><i class="ion-social-skype"></i>Skype</a></li>
+            <li><a class="btn btn-label btn-social btn-linkedin-alt btn-linkedin" href="#"><i class="ion-social-linkedin"></i>LinkedIn</a></li>
+            <li><a class="btn btn-label btn-social btn-googleplus-alt btn-googleplus" href="#"><i class="ion-social-googleplus"></i>Google Plus+</a></li>
+            <li><a class="btn btn-label btn-social btn-instagram-alt btn-instagram" href="#"><i class="ion-social-instagram"></i>Instagram</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

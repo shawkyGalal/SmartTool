@@ -1,0 +1,7 @@
+*.log
+**/logs
+/logfiles
+/.settings
+/EPM_DOCS
+/WebPivotTable4.2.0/node_modules/*
+/Smart_Docs/Smart_Tool_Demos

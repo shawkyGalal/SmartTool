@@ -1,0 +1,331 @@
+{% extends 'layout' %}
+{% block title %}Circular Wizards{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+{% endblock %}
+
+{% block styles %} 
+
+{% endblock %}
+
+{% block scripts %} 
+{{ 'plugins/wizard/circular-wizard/js/wizard.js' | asset_url | script_tag }}
+{{ 'plugins/wizard/x-wizard/js/jquery.bootstrap.wizard.js' | asset_url | script_tag }}
+{{ 'plugins/wizard/x-wizard/js/jquery.validate.min.js' | asset_url | script_tag }}
+{{ 'plugins/wizard/x-wizard/js/wizard.js' | asset_url | script_tag }}
+{{ 'plugins/wizard/x-wizard/js/jquery-birthday-picker.min.js' | asset_url | script_tag }}                   <!-- Validate Plugin -->
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+            <div class="panel-heading">
+                <h2 class="title alt">Circular Wizard<small>Secondary Heading</small></h2>
+                <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+            </div>
+            <div class="panel-body p-n stepy-info">
+                <div class="board board-info">
+                    <div class="board-inner">
+                        <ul class="nav nav-tabs pb-md pt-md" id="myTab">
+                            <li class="active"><a href="#step1" data-toggle="tab" title="Step One"><i class="ion-android-create icon"></i><span class="text">Account</span></a></li>
+                            <li class="disabled"><a href="#step2" data-toggle="tab" title="Step Two"><i class="ion-settings icon"></i><span class="text">Shipping</span></a></li>
+                            <li class="disabled"><a href="#step3" data-toggle="tab" title="Step Three"><i class="ion-android-document icon"></i><span class="text">Payment</span></a></li>
+                            <li class="disabled"><a href="#step4" data-toggle="tab" title="Step Four"><i class="ion-android-done icon"></i><span class="text">Done</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content p-md">
+                        <div class="tab-pane fade in active" id="step1">
+                            <form class="form-horizontal row-border" id="step1_form" name="step1_form" role="form" novalidate="novalidate">
+                                <legend>Account</legend>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">User Name<small style="color: red;">*</small></label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="mediuminput1" placeholder="username" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Email ID<small style="color: red;">*</small></label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control" id="mediuminput2" placeholder="username" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Password<small style="color: red;">*</small></label>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" id="mediuminput3" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Re-password<small style="color: red;">*</small></label>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control" id="mediuminput4" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="form-group pb-n">
+                                    <div class="col-sm-12 clearfix">
+                                        <fieldset>
+                                            <button type="button" href="#step2" name="step1_form" class="btn-submit pull-right btn btn-success">Next</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade in" id="step2">
+                            <form class="form-horizontal row-border" id="step2_form" name="step2_form" role="form">
+                                <legend>Shipping</legend>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Shipping Address</label>
+                                    <div class="col-sm-6">
+                                        <textarea name="" class="form-control" id="" cols="10" rows="5"></textarea>   
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Select</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control">
+                                            <option id="days1" value="Select">Select Method</option>
+                                            <option id="days2" value="DHL">DHL</option>
+                                            <option id="days3" value="Amazon">Amazon</option>
+                                            <option id="days4" value="China Mail">China Mail</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group pb-n">
+                                    <div class="col-sm-12 clearfix">
+                                        <fieldset>
+                                            <button type="button" href="#step1" name="step1_form" class="btn-submit pull-left btn btn-default">Previous</button>
+                                            <button type="button" href="#step3" name="step1_form" class="btn-submit pull-right btn btn-success">Next</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade in" id="step3">
+                            <form class="form-horizontal row-border" id="step3_form" name="step3_form" role="form">
+                                <legend>Payment</legend>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Cardholder Name</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="mediuminput6" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Card Type</label>
+                                    <div class="col-sm-8">
+                                        <span class="radio inline">
+                                            <input type="radio" name="ham" value="1" id="Visa" class="tectonic">
+                                            <label for="Visa"></label>
+                                            <span>Visa</span>
+                                        </span>
+                                        <span class="radio inline">
+                                            <input type="radio" name="ham" value="1" id="Master Card" class="tectonic">
+                                            <label class="" for="Master Card"></label>
+                                            <span class="">Master Card</span>
+                                        </span>
+                                        <span class="radio inline">
+                                            <input type="radio" name="ham" value="1" id="Maestro" class="tectonic">
+                                            <label class="" for="Maestro"></label>
+                                            <span class="">Maestro</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Card Number</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="mediuminput7" placeholder="" >
+                                    </div>
+                                </div>                                    
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="#">Card Expiration Date</label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="mark">
+                                            <option value="">Month</option>
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="model">
+                                            <option value="">Year</option>
+                                            <option value="">2001</option>
+                                            <option value="">2002</option>
+                                            <option value="">2003</option>
+                                            <option value="">2004</option>
+                                            <option value="">2005</option>
+                                            <option value="">2006</option>
+                                            <option value="">2007</option>
+                                            <option value="">2008</option>
+                                            <option value="">2009</option>
+                                            <option value="">2010</option>
+                                            <option value="">2012</option>
+                                            <option value="">2013</option>
+                                            <option value="">2014</option>
+                                            <option value="">2015</option>
+                                            <option value="">2016</option>
+                                        </select>
+                                    </div>    
+                                </div>
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Security Code</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="mediuminput8" placeholder="" >
+                                    </div>
+                                </div>
+                                <div class="form-group pb-n">
+                                    <div class="col-sm-12 clearfix">
+                                        <fieldset>
+                                            <button type="button" href="#step2" name="step1_form" class="btn-submit pull-left btn btn-default">Previous tab</button>
+                                            <button type="button" href="#step4" name="step1_form" class="btn-submit pull-right btn btn-success">Next tab</button>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="tab-pane fade in" id="step4">
+                            <form class="form-horizontal row-border" id="step4_form" name="step4_form" role="form">
+                                <legend>Done</legend>
+                                <div class="panel panel-transparent" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                                    <div class="panel-body">
+                                        <div class="row mb-xl">
+                                            <div class="col-md-12">
+                                                <div class="panel" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                                                    <div class="panel-body no-padding">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-bordered m-n">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Item</th>
+                                                                        <th class="text-right">Quantity</th>
+                                                                        <th class="text-right">Unit Cost</th>
+                                                                        <th class="text-right">Total</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <span class="checkbox inline">
+                                                                                <input type="checkbox" name="ham" id="product1" class="tectonic">
+                                                                                <label for="product1"></label>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td>Dolor</td>
+                                                                        <td class="text-right">1</td>
+                                                                        <td class="text-right">$30.00</td>
+                                                                        <td class="text-right">$30.00</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <span class="checkbox inline">
+                                                                                <input type="checkbox" name="ham" id="product2" class="tectonic">
+                                                                                <label for="product2"></label>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td>Quaestio</td>
+                                                                        <td class="text-right">3</td>
+                                                                        <td class="text-right">$75.00</td>
+                                                                        <td class="text-right">$225.00</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <span class="checkbox inline">
+                                                                                <input type="checkbox" name="ham" id="product3" class="tectonic">
+                                                                                <label for="product3"></label>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td>Offendit Interpretaris</td>
+                                                                        <td class="text-right">1</td>
+                                                                        <td class="text-right">$12.50</td>
+                                                                        <td class="text-right">$12.50</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <span class="checkbox inline">
+                                                                                <input type="checkbox" name="ham" id="product4" class="tectonic">
+                                                                                <label for="product4"></label>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td>Noluisse</td>
+                                                                        <td class="text-right">1</td>
+                                                                        <td class="text-right">$20.00</td>
+                                                                        <td class="text-right">$20.00</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <span class="checkbox inline">
+                                                                                <input type="checkbox" name="ham" id="product5" class="tectonic">
+                                                                                <label for="product5"></label>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td>Wisi Blandit</td>
+                                                                        <td class="text-right">4</td>
+                                                                        <td class="text-right">$150.00</td>
+                                                                        <td class="text-right">$600.00</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-3 pull-right">
+                                                        <p class="text-right"><strong>SUB TOTAL: $887.50</strong></p>
+                                                        <p class="text-right">DISCOUNT: 12.5%</p>
+                                                        <hr>
+                                                        <h4 style="font-weight: bold;" class="text-right">USD 893.05</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 mt-xlpt">
+                                                <hr>
+                                                <div class="">
+                                                    <span class="checkbox inline pl pt-n">
+                                                        <input type="checkbox" id="accept" class="tectonic"name="terms" data-parsley-multiple="terms" data-parsley-id="6873" checked>
+                                                        <label for="accept"></label>
+                                                        <span>Accept Terms &amp; Conditions</span>
+                                                    </span>
+                                                    <span class="help-block" id="parsley-id-multiple-terms"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group pb-n">
+                                    <div class="col-sm-12 clearfix">
+                                        <fieldset>
+                                            <button type="button" href="#step3" name="step1_form" class="btn-submit pull-left btn btn-default">Previous tab</button>
+                                            <button type="button" href="#" name="step1_form" class="btn-submit pull-right btn btn-success">Finish</button>
+                                            <a class="btn btn-inverse ripple-effect pull-right mr-sm" href="javascript:window.print()"><i class="ion-printer"></i></a>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Checking header data</title>
+
+<script language="javascript">
+      var XMLHttpRequestObject = false; 
+
+      if (window.XMLHttpRequest) {
+        XMLHttpRequestObject = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      function getData(dataSource, divID) 
+      { 
+        if(XMLHttpRequestObject) {
+          var targetDiv = document.getElementById(divID); 
+          XMLHttpRequestObject.open("HEAD", dataSource); 
+
+          XMLHttpRequestObject.onreadystatechange = function() 
+          { 
+            if (XMLHttpRequestObject.readyState == 4 && 
+              XMLHttpRequestObject.status == 200) { 
+                targetDiv.innerHTML =  
+                  XMLHttpRequestObject.getAllResponseHeaders(); 
+            } 
+          } 
+
+          XMLHttpRequestObject.send(null); 
+        }
+      }
+    </script>
+</head>
+
+<body>
+
+<H1>Checking header data</H1>
+
+<form><input type="button" value="Get header information"
+	onclick="getData('head.html', 'targetDiv')"></form>
+
+<div id="targetDiv">
+<div></div>
+</div>
+
+</body>
+</html>

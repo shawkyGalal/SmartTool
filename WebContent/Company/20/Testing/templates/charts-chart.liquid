@@ -1,0 +1,93 @@
+{% extends 'layout' %}
+{% block title %}Chart.js{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Charts</a></li>
+<li class="active"><a href="charts-chart.html">Chart.js</a></li>
+{% endblock %}
+{% block styles %}
+<style>
+    canvas {display: block;margin: 0 auto;}
+    .row{
+        overflow: hidden;;
+    }
+</style>
+{% endblock %}
+{% block scripts %}
+{{ "plugins/charts-chartjs/Chart.min.js" | asset_url | script_tag }}
+{{ "demo/demo-chartjs.js" | asset_url | script_tag }}
+{% endblock %}
+{% block content %}
+<div class="alert alert-info">
+    <h3>Chart.js</h3>
+    <p>Easy, object oriented client side graphs for designers and developers</p>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h2>Line Chart</h2>
+      </div>
+      <div class="panel-body" height="350">
+        <canvas id="line-chart"  style="border-radius: 0 0 2px 2px; float: left;width: 100% !important;height: 350px !important;"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h2>Bar Chart</h2>
+      </div>
+      <div class="panel-body" height="350">
+        <canvas id="bar-chart" height="300"   style="border-radius: 0 0 2px 2px; float: left;width: 100% !important;max-height: 350px !important;"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h2>Radar Chart</h2>
+      </div>
+      <div class="panel-body" height="350">
+        <canvas id="radar-chart"  style="border-radius: 0 0 2px 2px; float: none;max-width: 100% !important;height: 350px !important;"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h2>Polar Area Chart</h2>
+      </div>
+      <div class="panel-body" height="330">
+        <canvas id="pie-chart"   style="border-radius: 0 0 2px 2px; max-width: 100% !important;height: 330px !important;"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h2>Pie Chart</h2>
+      </div>
+      <div class="panel-body" height="350">
+        <canvas id="donut-chart"  style="border-radius: 0 0 2px 2px; max-width: 100% !important;height: 350px !important;"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <h2>Polar Area Chart</h2>
+      </div>
+      <div class="panel-body" height="350">
+        <canvas id="polar-area-chart"  style="border-radius: 0 0 2px 2px; max-width: 100% !important;height: 350px !important;"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

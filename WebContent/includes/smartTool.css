@@ -1,0 +1,19 @@
+
+table.basicTable {
+    border-collapse: collapse;
+    border: 2px solid powderblue ;
+    //width : 100%;
+}
+
+th, td {
+    // text-align: left;
+    padding: 2px;
+}
+
+tr.basicTable:nth-child(odd){background-color: #FFFFCC}
+tr.basicTable:nth-child(even){background-color: #F1F4F8}
+
+th {
+    background-color: ##0099CC;
+    color: black;
+}

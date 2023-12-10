@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <xs:element name="SmartValue" type="SmartValueMessage_type">
+        <xs:annotation>
+        	<xs:documentation>Root Element</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="SmartValueMessage_type">
+    	<xs:choice>
+	    	<xs:sequence>
+	    		<xs:element ref="SignonRq" minOccurs="1" maxOccurs="1"/>
+	    		<xs:choice>
+	    			<xs:element name="SmsNotificationRequest" 	type="SmsNotificationRequest_Type" minOccurs="0" maxOccurs="1"> 	</xs:element>
+	    		</xs:choice>
+	    		<xs:element ref="Signature" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence >
+			<xs:sequence>
+				<xs:element ref="SignonRs" minOccurs="1" maxOccurs="1"/>
+				<xs:choice>
+	 				<xs:element name="SmsNotificationResponse" 	type="SmsNotificationResponse_Type" minOccurs="0" maxOccurs="1"> </xs:element>
+	 			</xs:choice>
+	 			<xs:element ref="Signature" minOccurs="0" maxOccurs="unbounded"/>
+	    	</xs:sequence>
+    	</xs:choice>
+    </xs:complexType>
+    
+    <xs:complexType name="SmsNotificationRequest_Type">
+    	<xs:sequence>
+    		<xs:element ref="RqUID"/>
+    		<xs:element name="NotificationRequestParams" type="NotificationRequestParams_Type" minOccurs="1" 	maxOccurs="unbounded">  </xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+     <xs:complexType name="SmsNotificationResponse_Type">
+    	<xs:sequence>
+    		<xs:element ref="AsyncRqUID"/>
+    		<xs:element ref="SuccessRecordCount"/>
+			<xs:element ref="ErrorRecordCount"/>
+    		<xs:element name="SmsNotificationStatus" type="SmsNotificationStatus_Type" minOccurs="1" 	maxOccurs="unbounded">  </xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+     <xs:complexType name="SmsNotificationStatus_Type">
+    	<xs:sequence>
+    		<xs:element name="Status" type="Status_Type" minOccurs="1" 	maxOccurs="1">  </xs:element>
+    		<xs:element name="NotificationRequestParams" type="NotificationRequestParams_Type" minOccurs="1" 	maxOccurs="1">  </xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="NotificationRequestParams_Type">
+		<xs:sequence>
+    		<xs:element name="PolicyNo" type="C32_Type" minOccurs="0" 	maxOccurs="1">  </xs:element>
+    		<xs:element name="ClaimNo" type="C32_Type" minOccurs="1" 	maxOccurs="1"> 	</xs:element>
+    		<xs:element name="CustMobileNo" type="C32_Type" minOccurs="1" 	maxOccurs="1"> 	</xs:element>
+    		<xs:element name="SMSMessage" type="C2048_Type" minOccurs="1" maxOccurs="1"></xs:element>
+    	</xs:sequence>    
+    
+    </xs:complexType>
+    
+    <xs:complexType name="SignonRq_Type">
+		<xs:annotation>
+			<xs:documentation>-used to authenticate a SmartValue client</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ClientDt"/>
+			<xs:element ref="LanguagePref" minOccurs="0"/>
+			<xs:element ref="SignonProfile"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignonRs_Type">
+		<xs:annotation>
+			<xs:documentation>-serves a dual role of both authentication and status report of the associated request</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="ClientDt" minOccurs="0"/>
+			<xs:element name="ServerDt" type="Date_Type"/>
+			<xs:element ref="LanguagePref" minOccurs="0"/>
+			<xs:element ref="SignonProfile"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Status_Type">
+		<xs:annotation>
+			<xs:documentation>-used in each response to indicate the status of the message</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="StatusCode"/>
+			<xs:element name="ShortDesc" type="C255_Type" minOccurs="0"/>
+			<xs:element ref="Severity"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SignonProfile_Type">
+		<xs:annotation>
+			<xs:documentation>-used in both the SignonRq and SignonRs aggregates to identify the message sender and the intended recipient</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="Sender"/>
+			<xs:element ref="SenderPassword"/>
+			<xs:element ref="Receiver" minOccurs="0"/>
+			<xs:element ref="MsgCode"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+    <xs:complexType name="Signature_Type">
+		<xs:annotation>
+			<xs:documentation>-carries a digital signature for integrity, authenticity and non-repudiation </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="XPath"/>
+			<xs:element ref="SignatureValue"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="SenderPassword" type="Password_Type"/>
+    <xs:element name="MsgCode" type="Identifier_Type"/>
+	<xs:element name="Sender" type="Identifier_Type"/>
+	<xs:element name="Receiver" type="Identifier_Type"/>
+	<xs:element name="RqUID" type="UUID_Type"/>
+    <xs:element name="AsyncRqUID" type="UUID_Type"/>
+    <xs:element name="SuccessRecordCount" type="xs:long"/>
+    <xs:element name="ErrorRecordCount" type="xs:long"/>
+    <xs:element name="SignatureValue" type="C2147483647_Type"/>
+    <xs:element name="Signature" type="Signature_Type"/>
+	<xs:element name="XPath" type="C256_Type"/>    
+    <xs:element name="SignonRq" type="SignonRq_Type"/>
+    <xs:element name="SignonRs" type="SignonRs_Type"/>
+    <xs:element name="ClientDt" type="Date_Type"/>
+    <xs:element name="SignonProfile" type="SignonProfile_Type"/>
+    <xs:element name="LanguagePref" type="LanguagePref_Type"/>
+    <xs:element name="StatusCode" type="xs:long"/>
+    <xs:element name="Severity" type="Severity_Type"/>
+    
+    <xs:simpleType name="Password_Type">
+		<xs:annotation>
+			<xs:documentation>32 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="6"/>
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+    
+    <xs:simpleType name="C32_Type">
+		<xs:annotation>
+			<xs:documentation>32 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+    <xs:simpleType name="NC32_Type">
+		<xs:annotation>
+			<xs:documentation>32 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="NC36_Type">
+		<xs:annotation>
+			<xs:documentation>32 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="C40_Type">
+		<xs:annotation>
+			<xs:documentation>40 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--	[17-April-2006][PD] Added C64_Type simpleType as per Ext.Msg.Spec r2.0-->
+	<xs:simpleType name="C64_Type">
+		<xs:annotation>
+			<xs:documentation>64 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C128_Type">
+		<xs:annotation>
+			<xs:documentation>128 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C255_Type">
+		<xs:annotation>
+			<xs:documentation>255 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C256_Type">
+		<xs:annotation>
+			<xs:documentation>255 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C2048_Type">
+		<xs:annotation>
+			<xs:documentation>255 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2048"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C4096_Type">
+		<xs:annotation>
+			<xs:documentation>4096 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4096"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C2147483647_Type">
+		<xs:annotation>
+			<xs:documentation>2147483647 character Unicode string</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2147483647"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Currency_Type">
+		<xs:annotation>
+			<xs:documentation>currency amount</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="LanguagePref_Type">
+		<xs:annotation>
+			<xs:documentation>Two letter country code as defined in RFC-1766</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ar-sa"/>
+			<xs:enumeration value="en-gb"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Date_Type">
+		<xs:annotation>
+			<xs:documentation>Date or DateTime type</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:dateTime"/>
+	</xs:simpleType>
+    
+    	<xs:simpleType name="OfficialIdType_Type">
+		<xs:annotation>
+			<xs:documentation>Closed Enum: An OfficialId is a unique identifier for a bill-paying entity, including people and companies.  </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C32_Type">
+			<xs:enumeration value="NAT"/>
+			<xs:enumeration value="IQA"/>
+			<xs:enumeration value="BIS"/>
+			<xs:enumeration value="ACT"/>
+			<xs:enumeration value="SID"/>
+			<xs:enumeration value="BTL"/>
+			<xs:enumeration value="BED"/>
+			<xs:enumeration value="BIE"/>
+			<xs:enumeration value="SED"/>
+			<xs:enumeration value="PAS"/>
+			<!--			[03-Oct-2005][PD]:Added “PAS” to the OfficialIDType closed enum (EMS 1.7.2).-->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhoneNumber_Type">
+		<xs:annotation>
+			<xs:documentation>International phone number</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\+\d{1,3}-\d+-\d+(\+\d+)?"/>
+		</xs:restriction>
+	</xs:simpleType>
+    
+    <xs:simpleType name="UUID_Type">
+		<xs:annotation>
+			<xs:documentation>A UUID is an identifier that is unique across both space and time, with respect to the space of all UUIDs.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".{8}-.{4}-.{4}-.{4}-.{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Severity_Type">
+		<xs:annotation>
+			<xs:documentation>Closed Enum: The Severity enum classifies XML documents transferred between Banks/Billers and SADAD into distinct groups</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC32_Type">
+			<xs:enumeration value="Error"/>
+			<xs:enumeration value="Warning"/>
+			<xs:enumeration value="Info"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Identifier_Type">
+		<xs:annotation>
+			<xs:documentation>Object identifier</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC36_Type"/>
+	</xs:simpleType>
+		
+        
+</xs:schema>

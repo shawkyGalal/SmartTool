@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<SADAD>
+	<SignonRq>
+		<ClientDt>2006-04-09T10:33:12</ClientDt>
+		<LanguagePref>en-gb</LanguagePref>
+		<SignonProfile>
+			<Sender>SADAD-001</Sender>
+			<Receiver>001</Receiver>
+			<MsgCode>BCONRQ</MsgCode>
+		</SignonProfile>
+	</SignonRq>
+	<PresSvcRq>
+		<Status>
+			<StatusCode>2</StatusCode>
+			<ShortDesc>Failure</ShortDesc>
+			<Severity>Error</Severity>
+		</Status>
+		<RqUID>10FB808A-A505-8134-E043-0A1018158134</RqUID>
+		<BillConfirmationRq>
+			<AsyncRqUID>b74eb983-2ac9-4a49-a183-67e48cb6bb74</AsyncRqUID>
+			<UploadDt>2006-04-08T14:53:32</UploadDt>
+			<PrcDt>2006-04-09T10:32:48</PrcDt>
+			<SuccessRecordCount>0</SuccessRecordCount>
+			<ErrorRecordCount>5</ErrorRecordCount>
+			<PendingRecordCount>0</PendingRecordCount>
+			<BillInfoError>
+				<Error>
+					<ErrorCode>20029</ErrorCode>
+					<ErrorMsg> A newer version of the corresponding bill already exists
+						in the system</ErrorMsg>
+				</Error>
+				<BillingAcct>00847806540</BillingAcct>
+				<BillerId>001</BillerId>
+				<BillCategory>GSHT</BillCategory>
+				<ServiceType>GSM</ServiceType>
+			</BillInfoError>
+			<BillInfoError>
+				<Error>
+					<ErrorCode>20029</ErrorCode>
+					<ErrorMsg> A newer version of the corresponding bill already exists
+						in the system</ErrorMsg>
+				</Error>
+				<BillingAcct>00843461174</BillingAcct>
+				<BillerId>001</BillerId>
+				<BillCategory>GSHT</BillCategory>
+				<ServiceType>GSM</ServiceType>
+			</BillInfoError>
+			<BillInfoError>
+				<Error>
+					<ErrorCode>20029</ErrorCode>
+					<ErrorMsg> A newer version of the corresponding bill already exists
+						in the system</ErrorMsg>
+				</Error>
+				<BillingAcct>00822569633</BillingAcct>
+				<BillerId>001</BillerId>
+				<BillCategory>GSHT</BillCategory>
+				<ServiceType>GSM</ServiceType>
+			</BillInfoError>
+			<BillInfoError>
+				<Error>
+					<ErrorCode>20029</ErrorCode>
+					<ErrorMsg> A newer version of the corresponding bill already exists
+						in the system</ErrorMsg>
+				</Error>
+				<BillingAcct>00820524608</BillingAcct>
+				<BillerId>001</BillerId>
+				<BillCategory>GSHT</BillCategory>
+				<ServiceType>GSM</ServiceType>
+			</BillInfoError>
+			<BillInfoError>
+				<Error>
+					<ErrorCode>20029</ErrorCode>
+					<ErrorMsg> A newer version of the corresponding bill already exists
+						in the system</ErrorMsg>
+				</Error>
+				<BillingAcct>00820523903</BillingAcct>
+				<BillerId>001</BillerId>
+				<BillCategory>GSHT</BillCategory>
+				<ServiceType>GSM</ServiceType>
+			</BillInfoError>
+		</BillConfirmationRq>
+	</PresSvcRq>
+</SADAD>

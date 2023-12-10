@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Filtering</title>
+   <link rel="stylesheet" type="text/css" href="http://www.jchartfx.com/libs/v7/current/styles/jchartfx.css"/>
+   <link rel="stylesheet" type="text/css" href="sample.css"/>
+  
+   <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.system.js"></script>
+   <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.coreVector.js"></script>
+   <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.advanced.js"></script>   
+   <script type="text/javascript" src="http://www.jchartfx.com/libs/v7/current/js/jchartfx.animation.js"></script>   
+   
+   <script type="text/javascript" src="sample.js"></script>
+   
+</head>
+<body>
+	<ul class="optionslist">
+		<li>	
+			<label><img src="sampleImages/1-rect.png" alt="" /><input id="Checkbox1" type="checkbox" checked="CHECKED" onclick="onFilter(1,Checkbox1);" /> Argentina</label>
+		</li>
+		<li>
+			<label><img src="sampleImages/2-rect.png" alt="" /><input id="Checkbox2" type="checkbox" checked="CHECKED" onclick="onFilter(2,Checkbox2);" /> USA</label>
+		</li>
+		<li>
+			<label><img src="sampleImages/3-rect.png" alt="" /><input id="Checkbox3" type="checkbox" onclick="onFilter(3,Checkbox3);" /> Germany</label>
+		</li>
+		<li>
+			<label><img src="sampleImages/4-rect.png" alt="" /><input id="Checkbox4" type="checkbox" onclick="onFilter(4,Checkbox4);" /> South Africa</label>
+		</li>
+		<li>
+			<label><img src="sampleImages/5-rect.png" alt="" /><input id="Checkbox5" type="checkbox" onclick="onFilter(5,Checkbox5);" /> Japan</label>
+		</li>
+	</ul>
+					<div class="demo" id="myDiv" style="width:550px;height:400px;display:inline-block;margin:3px;"></div>
+					<div class="demo" id="myDiv2" style="width:550px;height:300px;display:inline-block;margin:3px;"></div>
+
+</body>
+</html>

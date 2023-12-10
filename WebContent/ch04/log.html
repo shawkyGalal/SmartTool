@@ -1,0 +1,71 @@
+<html>
+<head>
+
+<title>Select your username</title>
+
+<style>
+#targetDiv {
+	background-color: #FFDDDD;
+	width: 40%;
+}
+</style>
+
+<script language="javascript">
+      var XMLHttpRequestObject = false; 
+
+      if (window.XMLHttpRequest) {
+        XMLHttpRequestObject = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      function getData(dataSource) 
+      { 
+        if(XMLHttpRequestObject) {
+          XMLHttpRequestObject.open("GET", dataSource); 
+
+          XMLHttpRequestObject.onreadystatechange = function() 
+          { 
+            if (XMLHttpRequestObject.readyState == 4 && 
+              XMLHttpRequestObject.status == 200) { 
+                if(XMLHttpRequestObject.responseText == "notOK"){
+            var targetDiv = document.getElementById("targetDiv");
+
+            targetDiv.innerHTML = 
+              "<div>Sorry, that name is taken.</div>";
+                }
+            } 
+          } 
+
+          XMLHttpRequestObject.send(null); 
+        }
+      }
+
+      function checker() 
+      {
+        var targetDiv = document.getElementById("targetDiv");
+        targetDiv.innerHTML = "<div></div>";
+
+        if (document.getElementById("textField").value) {
+          getData("log.php?qu=" + 
+            document.getElementById("textField").value);
+        } 
+      }
+    </script>
+
+</head>
+
+<body>
+
+<H1>Select your username</H1>
+
+Username:
+<input id="textField" type="text" name="textField" onkeyup="checker()">
+
+<div id="targetDiv">
+<div></div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Uploading files from memory</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?uploadingfilesfrommemory2.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Uploading
+		files from memory <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.6.6.6',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.6.6.8',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">You
+can upload data from memory using any of the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp#upload</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+methods that take a byte array as it's first argument. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;data&nbsp;to&nbsp;upload</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+String&nbsp;data&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"this&nbsp;is&nbsp;a&nbsp;test"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;destination&nbsp;file&nbsp;to&nbsp;store&nbsp;data&nbsp;in</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+String&nbsp;file&nbsp;=&nbsp;<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"data.txt"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">;
+<br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;upload&nbsp;byte&nbsp;array</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+sftp.upload(data.getBytes(),file);</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+</span></span>
+
+</body>
+</html>

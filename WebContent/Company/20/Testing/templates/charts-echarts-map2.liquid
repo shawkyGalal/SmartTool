@@ -1,0 +1,158 @@
+{% extends 'layout' %}
+{% block title %}Map2 Echarts{% endblock %}
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="chord-charts.html">Chord Charts</a></li>
+{% endblock %}
+{% block styles %} 
+{{ 'css/echartsHome.css' | asset_url | stylesheet_tag }}
+{{ 'css/codemirror.css' | asset_url | stylesheet_tag }}
+{% endblock %}
+{% block scripts %}
+{{ "js/echarts.js" | asset_url | script_tag }}  
+{{ "js/codemirror.js" | asset_url | script_tag }}
+{{ "js/echartsExample.js" | asset_url | script_tag }}
+{% endblock %}
+{% block content %}
+<div class="row" data-widget-group="group-demo">
+  <div class="col-md-12">
+    <div class="panel panel-default alt" data-widget='{"id" : "wiget16"}'>
+      <div class="panel-heading m-n">
+        <ul class="nav nav-tabs tab-warning material-nav-tabs">
+          <li class="active"><a href="#domwell" data-toggle="tab">Map2 chart</a></li>
+          <li><a href="#codewell" data-toggle="tab">Code</a></li>
+        </ul>
+      </div>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div class="tab-pane active" id="domwell">
+            <div id="graphic" class="col-md-12">
+              <div id="main" class="main"></div>
+              <div>
+                <button type="button" class="btn btn-success" onclick="refresh(true)">Refresh</button>
+                <h4>Change Layout</h4>
+                <select id="theme-select" class='form-control'></select>
+                <span id='wrong-message' style="color:red"></span>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="codewell">
+            <div id="leftbar-code" class='col-md-12'>
+              <div class="well leftbar-nav">
+                <div class="nav-header"><a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id ="icon-resize" ></a>option</div>
+                <textarea id="code" name="code">
+                  option = {
+                                title : {
+                                    text: 'Orders',
+                                    subtext: 'Fictitious',
+                                    x:'center'
+                                },
+                                tooltip : {
+                                    trigger: 'item'
+                                },
+                                legend: {
+                                    orient: 'vertical',
+                                    x:'left',
+                                    data:['Orders']
+                                },
+                                dataRange: {
+                                    x: 'left',
+                                    y: 'bottom',
+                                    splitList: [
+                                        {start: 1500},
+                                        {start: 900, end: 1500},
+                                        {start: 310, end: 1000},
+                                        {start: 200, end: 300},
+                                        {start: 10, end: 200, label: '10 To 200（customize label）'},
+                                        {start: 5, end: 5, label: '5（Custom special colors）', color: 'black'},
+                                        {end: 10}
+                                    ],
+                                    color: ['#E0022B', '#E09107', '#A3E00B']
+                                },
+                                toolbox: {
+                                    show: true,
+                                    orient : 'vertical',
+                                    x: 'right',
+                                    y: 'center',
+                                    feature : {
+                                        mark : {show: true},
+                                        dataView : {show: true, readOnly: false},
+                                        restore : {show: true},
+                                        saveAsImage : {show: true}
+                                    }
+                                },
+                                roamController: {
+                                    show: true,
+                                    x: 'right',
+                                    mapTypeControl: {
+                                        'china': true
+                                    }
+                                },
+
+                                series : [
+                                    {
+                                        name: '订单量',
+                                        type: 'map',
+                                        mapType: 'china',
+                                        roam: false,
+                                        itemStyle:{
+                                            normal:{
+                                                label:{
+                                                    show:true,
+                                                    textStyle: {
+                                                       color: "rgb(249, 249, 249)"
+                                                    }
+                                                }
+                                            },
+                                            emphasis:{label:{show:true}}
+                                        },
+                                        data:[
+                                            {name: '北京',value: Math.round(Math.random()*2000)},
+                                            {name: '天津',value: Math.round(Math.random()*2000)},
+                                            {name: '上海',value: Math.round(Math.random()*2000)},
+                                            {name: '重庆',value: Math.round(Math.random()*2000)},
+                                            {name: '河北',value: 0},
+                                            {name: '河南',value: Math.round(Math.random()*2000)},
+                                            {name: '云南',value: 5},
+                                            {name: '辽宁',value: 305},
+                                            {name: '黑龙江',value: Math.round(Math.random()*2000)},
+                                            {name: '湖南',value: 200},
+                                            {name: '安徽',value: Math.round(Math.random()*2000)},
+                                            {name: '山东',value: Math.round(Math.random()*2000)},
+                                            {name: '新疆',value: Math.round(Math.random()*2000)},
+                                            {name: '江苏',value: Math.round(Math.random()*2000)},
+                                            {name: '浙江',value: Math.round(Math.random()*2000)},
+                                            {name: '江西',value: Math.round(Math.random()*2000)},
+                                            {name: '湖北',value: Math.round(Math.random()*2000)},
+                                            {name: '广西',value: Math.round(Math.random()*2000)},
+                                            {name: '甘肃',value: Math.round(Math.random()*2000)},
+                                            {name: '山西',value: Math.round(Math.random()*2000)},
+                                            {name: '内蒙古',value: Math.round(Math.random()*2000)},
+                                            {name: '陕西',value: Math.round(Math.random()*2000)},
+                                            {name: '吉林',value: Math.round(Math.random()*2000)},
+                                            {name: '福建',value: Math.round(Math.random()*2000)},
+                                            {name: '贵州',value: Math.round(Math.random()*2000)},
+                                            {name: '广东',value: Math.round(Math.random()*2000)},
+                                            {name: '青海',value: Math.round(Math.random()*2000)},
+                                            {name: '西藏',value: Math.round(Math.random()*2000)},
+                                            {name: '四川',value: Math.round(Math.random()*2000)},
+                                            {name: '宁夏',value: Math.round(Math.random()*2000)},
+                                            {name: '海南',value: Math.round(Math.random()*2000)},
+                                            {name: '台湾',value: Math.round(Math.random()*2000)},
+                                            {name: '香港',value: Math.round(Math.random()*2000)},
+                                            {name: '澳门',value: Math.round(Math.random()*2000)}
+                                        ]
+                                    }
+                                ]
+                  };
+                </textarea>
+              </div><!--/.well -->
+            </div><!--/span-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,1373 @@
+{% extends 'layout' %}
+{% block title %}Forms{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">UI Elements</a></li>
+<li class="active"><a href="ui-forms.html">Forms</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-sm-12">
+		<div class="alert alert-inverse">
+			Use the <strong>same</strong> code as you would in <a class="alert-link" href="http://getbootstrap.com/">Twitter's Bootstrap</a>!
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>
+		<div class="panel panel-default alt with-footer">
+			<div class="panel-heading">
+				<ul class="nav nav-tabs tab-warning material-nav-tabs">
+					<li><a href="#vertical-form" data-toggle="tab">Vertical Form</a></li>
+					<li class="active"><a href="#horizontal-form" data-toggle="tab">Horizontal Form</a></li>
+					<li><a href="#bordered-row" data-toggle="tab">Bordered Row</a></li>
+					<li><a href="#tabular-form" data-toggle="tab">Tabular Form</a></li>
+				</ul>
+			</div>
+			<div class="panel-body">
+				<div class="tab-content">
+					<div class="tab-pane active" id="horizontal-form">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Focused Input</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="focusedinput" placeholder="Default Input">
+								</div>
+								<div class="col-sm-2">
+									<p class="help-block">Your help text!</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="disabledinput" class="col-sm-2 control-label">Disabled Input</label>
+								<div class="col-sm-8">
+									<input disabled type="text" class="form-control" id="disabledinput" placeholder="Disabled Input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+								<div class="col-sm-8">
+									<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="checkbox" class="col-sm-2 control-label">Checkbox</label>
+								<div class="col-sm-8">
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="unckecked1" value="1" name="ham">
+										<label for="unckecked1" class="pl-n"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="ckecked1" value="1" name="ham" checked>
+										<label for="ckecked1" class="pl-n"></label>
+										<span>Checked</span>
+									</div>
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="cskeckeds" value="1" name="ham"disabled>
+										<label for="cskeckeds" class="pl-n"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="ckssecked2" value="1" name="ham" checked disabled>
+										<label for="ckssecked2" class="pl-n"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="checkbox" class="col-sm-2 control-label">Checkbox Inline</label>
+								<div class="col-sm-8">
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="unckecked" value="1" name="ham">
+										<label for="unckecked"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="ckecked" value="1" name="ham" checked>
+										<label for="ckecked"></label>
+										<span>Checked</span>
+									</div>
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="cskecked" value="1" name="ham"disabled>
+										<label for="cskecked"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="ckssecked" value="1" name="ham" checked disabled>
+										<label for="ckssecked"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="selector1" class="col-sm-2 control-label">Dropdown Select</label>
+								<div class="col-sm-8"><select name="selector1" id="selector1" class="form-control">
+									<option>Lorem ipsum dolor sit amet.</option>
+									<option>Dolore, ab unde modi est!</option>
+									<option>Illum, fuga minus sit eaque.</option>
+									<option>Consequatur ducimus maiores voluptatum minima.</option>
+								</select></div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Multiple Select</label>
+								<div class="col-sm-8">
+									<select multiple="" class="form-control">
+										<option>Option 1</option>
+										<option>Option 2</option>
+										<option>Option 3</option>
+										<option>Option 4</option>
+										<option>Option 5</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="txtarea1" class="col-sm-2 control-label">Textarea</label>
+								<div class="col-sm-8"><textarea name="txtarea1" id="txtarea1" cols="50" rows="4" class="form-control"></textarea></div>
+							</div>
+							<div class="form-group">
+								<label for="radio" class="col-sm-2 control-label">Radio</label>
+								<div class="col-sm-8">
+									<div class="radio block">
+										<input type="radio" name="ham" value="1" id="option1s" class="tectonic">
+										<label class="labelbtn p-n" for="option1s"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="radio block">
+										<input type="radio" name="ham" value="2" id="option1a" class="tectonic" checked>
+										<label class="labelbtn p-n" for="option1a"></label>
+										<span>Checked</span>
+									</div>
+									<div class="radio block">
+										<input type="radio" name="ham" value="3" id="option1e" class="tectonic" disabled>
+										<label class="labelbtn p-n" for="option1e"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="radio block">
+										<input type="radio" name="ham" value="4" id="option1r" class="tectonic" disabled checked>
+										<label class="labelbtn p-n" for="option1r"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="radio" class="col-sm-2 control-label">Radio Inline</label>
+								<div class="col-sm-8">
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="options1s" class="tectonic">
+										<label class="labelbtn p-n" for="options1s"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="optiona1a" class="tectonic" checked>
+										<label class="labelbtn" for="optiona1a"></label>
+										<span>Checked</span>
+									</div>
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="options1e" class="tectonic" disabled>
+										<label class="labelbtn" for="options1e"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="options1r" class="tectonic" disabled checked>
+										<label class="labelbtn" for="options1r"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="smallinput" class="col-sm-2 control-label label-input-sm">Small Input</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control input-sm" id="smallinput" placeholder="Small Input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="mediuminput" class="col-sm-2 control-label">Medium Input</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="mediuminput" placeholder="Medium Input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="largeinput" class="col-sm-2 control-label label-input-lg">Large Input</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control input-lg" id="largeinput" placeholder="Large Input">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane" id="vertical-form">
+						<form>
+							<div class="form-group">
+								<label for="focusedinput" class="control-label">Focused Input</label>
+								<input type="text" class="form-control" id="focusedinput" placeholder="Default Input">
+							</div>
+							<div class="form-group">
+								<label for="disabledinput" class="control-label">Disabled Input</label>
+								<input disabled type="text" class="form-control" id="disabledinput" placeholder="Disabled Input">
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="control-label">Password</label>
+								<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+							</div>
+							<div class="form-group">
+								<label for="checkbox" class="control-label">Checkbox</label>
+								<div class="checkbox block">
+									<input type="checkbox" class="tectonic" id="Unchecked" value="14" name="ham">
+									<label for="Unchecked" class="pl-n"></label>
+									<span>Unchecked</span>
+								</div>
+								<div class="checkbox block">
+									<input type="checkbox" class="tectonic" id="Checked" value="15" name="ham" checked>
+									<label for="Checked" class="pl-n"></label>
+									<span>Checked</span>
+								</div>
+								<div class="checkbox block">
+									<input disabled type="checkbox" class="tectonic" id="Disabled Unchecked" value="16" name="ham">
+									<label for="Disabled Unchecked" class="pl-n"></label>
+									<span>Disabled Unchecked</span>
+								</div>
+								<div class="checkbox block">
+									<input disabled type="checkbox" class="tectonic" id="Disabled Checked" value="17" name="ham" checked>
+									<label for="Disabled Checked" class="pl-n"></label>
+									<span>Disabled Checked</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="selector1" class="control-label">Dropdown Select</label>
+								<select name="selector1" id="selector1" class="form-control">
+									<option>Lorem ipsum dolor sit amet.</option>
+									<option>Dolore, ab unde modi est!</option>
+									<option>Illum, fuga minus sit eaque.</option>
+									<option>Consequatur ducimus maiores voluptatum minima.</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Multiple Select</label>
+								<select multiple="" class="form-control">
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+									<option>Option 4</option>
+									<option>Option 5</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="txtarea1" class="control-label">Textarea</label>
+								<textarea name="txtarea1" id="txtarea1" cols="50" rows="4" class="form-control"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="radio" class="control-label">Radio</label>
+								<div class="radio block">
+									<input type="radio" class="tectonic" id="Uncheecked" value="1" name="ham">
+									<label for="Uncheecked" class="pl-n"></label>
+									<span>Unchecked</span>
+								</div>
+								<div class="radio block">
+									<input type="radio" class="tectonic" id="Disabled sChecked" value="1" name="ham" checked>
+									<label for="Disabled sChecked" class="pl-n"></label>
+									<span>Checked</span>
+								</div>
+								<div class="radio block">
+									<input type="radio" class="tectonic" id="Disabled Unhecked" value="1" name="ham">
+									<label for="Disabled Checked" class="pl-n"></label>
+									<span>Disabled Unchecked</span>
+								</div>
+								<div class="radio block">
+									<input type="radio" class="tectonic" id="Disabled Checked" value="1" name="ham" checked>
+									<label for="Disabled Checked" class="pl-n"></label>
+									<span>Disabled Checked</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="smallinput" class="control-label label-input-sm">Small Input</label>
+								<input type="text" class="form-control input-sm" id="smallinput" placeholder="Small Input">
+							</div>
+							<div class="form-group">
+								<label for="mediuminput" class="control-label">Medium Input</label>
+								<input type="text" class="form-control" id="mediuminput" placeholder="Medium Input">
+							</div>
+							<div class="form-group">
+								<label for="largeinput" class="control-label label-input-lg">Large Input</label>
+								<input type="text" class="form-control input-lg" id="largeinput" placeholder="Large Input">
+							</div>
+						</form>
+					</div>
+					<div class="tab-pane" id="bordered-row">
+
+						<form class="form-horizontal row-border">
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Focused Input</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="focusedinput" placeholder="Default Input">
+								</div>
+								<div class="col-sm-2">
+									<p class="help-block">Your help text!</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="disabledinput" class="col-sm-2 control-label">Disabled Input</label>
+								<div class="col-sm-8">
+									<input disabled type="text" class="form-control" id="disabledinput" placeholder="Disabled Input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+								<div class="col-sm-8">
+									<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="checkbox" class="col-sm-2 control-label">Checkbox</label>
+								<div class="col-sm-8">
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="unckeckeds1" value="1" name="ham">
+										<label for="unckeckeds1" class="pl-n"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="ckecsked1" value="1" name="ham" checked>
+										<label for="ckecsked1" class="pl-n"></label>
+										<span>Checked</span>
+									</div>
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="cskecskeds" value="1" name="ham"disabled>
+										<label for="cskecskeds" class="pl-n"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="ckssecssked2" value="1" name="ham" checked disabled>
+										<label for="ckssecssked2" class="pl-n"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="checkbox" class="col-sm-2 control-label">Checkbox Inline</label>
+								<div class="col-sm-8">
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="unckecked123" value="1" name="ham">
+										<label for="unckecked123"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="ckecked159" value="1" name="ham" checked>
+										<label for="ckecked159"></label>
+										<span>Checked</span>
+									</div>
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="cskecked777" value="1" name="ham"disabled>
+										<label for="cskecked777"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="ckssecked98" value="1" name="ham" checked disabled>
+										<label for="ckssecked98"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="selector1" class="col-sm-2 control-label">Dropdown Select</label>
+								<div class="col-sm-8"><select name="selector1" id="selector1" class="form-control">
+									<option>Lorem ipsum dolor sit amet.</option>
+									<option>Dolore, ab unde modi est!</option>
+									<option>Illum, fuga minus sit eaque.</option>
+									<option>Consequatur ducimus maiores voluptatum minima.</option>
+								</select></div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Multiple Select</label>
+								<div class="col-sm-8">
+									<select multiple="" class="form-control">
+										<option>Option 1</option>
+										<option>Option 2</option>
+										<option>Option 3</option>
+										<option>Option 4</option>
+										<option>Option 5</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="txtarea1" class="col-sm-2 control-label">Textarea</label>
+								<div class="col-sm-8"><textarea name="txtarea1" id="txtarea1" cols="50" rows="4" class="form-control"></textarea></div>
+							</div>
+							<div class="form-group">
+								<label for="radio" class="col-sm-2 control-label">Radio</label>
+								<div class="col-sm-8">
+									<div class="radio block">
+										<input type="radio" name="ham" value="1" id="option1sa45" class="tectonic">
+										<label class="labelbtn p-n" for="option1sa45"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="radio block">
+										<input type="radio" name="ham" value="1" id="option1aa" class="tectonic" checked>
+										<label class="labelbtn p-n" for="option1aa"></label>
+										<span>Checked</span>
+									</div>
+									<div class="radio block">
+										<input type="radio" name="ham" value="1" id="option1ea" class="tectonic" disabled>
+										<label class="labelbtn p-n" for="option1ea"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="radio block">
+										<input type="radio" name="ham" value="1" id="option1ra" class="tectonic" disabled checked>
+										<label class="labelbtn p-n" for="option1ra"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="radio" class="col-sm-2 control-label">Radio Inline</label>
+								<div class="col-sm-8">
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="options1s44" class="tectonic">
+										<label class="labelbtn p-n" for="options1s44"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="optiona1aas" class="tectonic" checked>
+										<label class="labelbtn" for="optiona1aas"></label>
+										<span>Checked</span>
+									</div>
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="options1eas" class="tectonic" disabled>
+										<label class="labelbtn" for="options1eas"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="options1ras" class="tectonic" disabled checked>
+										<label class="labelbtn" for="options1ras"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="smallinput" class="col-sm-2 control-label label-input-sm">Small Input</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control input-sm" id="smallinput" placeholder="Small Input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="mediuminput" class="col-sm-2 control-label">Medium Input</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="mediuminput" placeholder="Medium Input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="largeinput" class="col-sm-2 control-label label-input-lg">Large Input</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control input-lg" id="largeinput" placeholder="Large Input">
+								</div>
+							</div>
+						</form>					
+					</div>
+					<div class="tab-pane" id="tabular-form">
+						<form class="form-horizontal tabular-form">
+							<div class="form-group">
+								<label for="focusedinput" class="col-sm-2 control-label">Focused Input</label>
+								<div class="col-sm-8 tabular-border">
+									<input type="text" class="form-control" id="focusedinput" placeholder="Default Input">
+								</div>
+								<div class="col-sm-2">
+									<p class="help-block">Your help text!</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="disabledinput" class="col-sm-2 control-label">Disabled Input</label>
+								<div class="col-sm-8 tabular-border">
+									<input disabled type="text" class="form-control" id="disabledinput" placeholder="Disabled Input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+								<div class="col-sm-8 tabular-border">
+									<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="checkbox" class="col-sm-2 control-label">Checkbox</label>
+								<div class="col-sm-8 tabular-border">
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="saunckecked1" value="1" name="ham">
+										<label for="saunckecked1" class="pl-n"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="sackecked1" value="1" name="ham" checked>
+										<label for="sackecked1" class="pl-n"></label>
+										<span>Checked</span>
+									</div>
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="sacskeckeds" value="1" name="ham"disabled>
+										<label for="sacskeckeds" class="pl-n"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="checkbox block">
+										<input type="checkbox" class="tectonic" id="sackssecked2" value="1" name="ham" checked disabled>
+										<label for="sackssecked2" class="pl-n"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="checkbox" class="col-sm-2 control-label">Checkbox Inline</label>
+								<div class="col-sm-8 tabular-border">
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="unckecked55654" value="1" name="ham">
+										<label for="unckecked55654"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="ckecked46456" value="1" name="ham" checked>
+										<label for="ckecked46456"></label>
+										<span>Checked</span>
+									</div>
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="cskecked4456" value="1" name="ham" disabled>
+										<label for="cskecked4456"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="checkbox inline">
+										<input type="checkbox" class="tectonic" id="ckssecked14417" value="1" name="ham" checked disabled>
+										<label for="ckssecked14417"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="selector1" class="col-sm-2 control-label">Dropdown Select</label>
+								<div class="col-sm-8 tabular-border"><select name="selector1" id="selector1" class="form-control">
+									<option>Lorem ipsum dolor sit amet.</option>
+									<option>Dolore, ab unde modi est!</option>
+									<option>Illum, fuga minus sit eaque.</option>
+									<option>Consequatur ducimus maiores voluptatum minima.</option>
+								</select></div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Multiple Select</label>
+								<div class="col-sm-8 tabular-border">
+									<select multiple="" class="form-control">
+										<option>Option 1</option>
+										<option>Option 2</option>
+										<option>Option 3</option>
+										<option>Option 4</option>
+										<option>Option 5</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="txtarea1" class="col-sm-2 control-label">Textarea</label>
+								<div class="col-sm-8 tabular-border"><textarea name="txtarea1" id="txtarea1" cols="50" rows="4" class="form-control"></textarea></div>
+							</div>
+							<div class="form-group">
+								<label for="radio" class="col-sm-2 control-label">Radio</label>
+								<div class="col-sm-8 tabular-border">
+									<div class="radio block">
+										<input type="radio" name="ham" value="1" id="option1s54" class="tectonic">
+										<label class="labelbtn p-n" for="option1s54"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="radio block">
+										<input type="radio" name="ham" value="1" id="option1a534" class="tectonic" checked>
+										<label class="labelbtn p-n" for="option1a534"></label>
+										<span>Checked</span>
+									</div>
+									<div class="radio block">
+										<input type="radio" name="ham" value="1" id="option1e45" class="tectonic" disabled>
+										<label class="labelbtn p-n" for="option1e45"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="radio block">
+										<input type="radio" name="ham" value="1" id="option1r234" class="tectonic" disabled checked>
+										<label class="labelbtn p-n" for="option1r234"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="radio" class="col-sm-2 control-label">Radio Inline</label>
+								<div class="col-sm-8 tabular-border">
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="options1s342" class="tectonic">
+										<label class="labelbtn p-n" for="options1s342"></label>
+										<span>Unchecked</span>
+									</div>
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="optiona1a12" class="tectonic" checked>
+										<label class="labelbtn" for="optiona1a12"></label>
+										<span>Checked</span>
+									</div>
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="opti123ons1e" class="tectonic" disabled>
+										<label class="labelbtn" for="opti123ons1e"></label>
+										<span>Disabled Unchecked</span>
+									</div>
+									<div class="radio inline">
+										<input type="radio" name="ham" value="1" id="option123s1r" class="tectonic" disabled checked>
+										<label class="labelbtn" for="option123s1r"></label>
+										<span>Disabled Checked</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="smallinput" class="col-sm-2 control-label label-input-sm">Small Input</label>
+								<div class="col-sm-8 tabular-border">
+									<input type="text" class="form-control input-sm" id="smallinput" placeholder="Small Input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="mediuminput" class="col-sm-2 control-label">Medium Input</label>
+								<div class="col-sm-8 tabular-border">
+									<input type="text" class="form-control" id="mediuminput" placeholder="Medium Input">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="largeinput" class="col-sm-2 control-label label-input-lg">Large Input</label>
+								<div class="col-sm-8 tabular-border">
+									<input type="text" class="form-control input-lg" id="largeinput" placeholder="Large Input">
+								</div>
+							</div>
+						</form>					
+					</div>
+				</div>
+
+				
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<button class="btn-primary btn">Submit</button>
+						<button class="btn-default btn">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default alt with-footer">
+			<div class="panel-heading">
+				<h2>Form Layout</h2>
+			</div>
+			<div class="panel-body">
+				<h3 class="mt0">Input Addons and Icons</h3>
+				<p class="mb20">Input addons with icons and validation states</p>
+				<form role="form" class="form-horizontal">
+					<div class="form-group">
+						<label class="col-md-2 control-label">Email Address</label>
+						<div class="col-md-8">
+							<div class="input-group">							
+								<span class="input-group-addon">
+									<i class="ion-android-mail"></i>
+								</span>
+								<input type="text" class="form-control" placeholder="Email Address">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Password</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="ion-key"></i>
+								</span>
+								<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Email Address</label>
+						<div class="col-md-8">
+							<div class="input-group input-icon right">
+								<span class="input-group-addon">
+									<i class="ion-android-mail"></i>
+								</span>
+								<i class="fa fa-exclamation-circle tooltips" data-original-title="Invalid email!" data-container="body"></i>
+								<input id="email" class="input-error form-control" type="text" placeholder="Email Address">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<p class="help-block">With tooltip</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Password</label>
+						<div class="col-md-8">
+							<div class="input-group input-icon right">
+								<span class="input-group-addon">
+									<i class="ion-key"></i>
+								</span>
+								<i class="fa fa-exclamation-circle tooltips" data-original-title="Password too long!" data-container="body"></i>
+								<input type="password" class="input-error form-control" placeholder="Password">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<p class="help-block">With tooltip</p>
+						</div>
+					</div>
+					<div class="form-group has-success">
+						<label class="col-md-2 control-label">Input Addon Success</label>
+						<div class="col-md-8">
+							<div class="input-group input-icon right">
+								<span class="input-group-addon">
+									<i class="ion-android-mail"></i>
+								</span>
+								<i class="fa fa-check-circle tooltips" data-original-title="Email is valid!" data-container="body"></i>
+								<input id="email" class="input-error form-control" type="text" placeholder="Email Address">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<p class="help-block">Email is valid!</p>
+						</div>
+					</div>
+					<div class="form-group has-error">
+						<label class="col-md-2 control-label">Input Addon Error</label>
+						<div class="col-md-8">
+							<div class="input-group input-icon right">
+								<span class="input-group-addon">
+									<i class="ion-key"></i>
+								</span>
+								<i class="fa fa-exclamation-circle tooltips" data-original-title="Password too long!" data-container="body"></i>
+								<input type="password" class="input-error form-control" placeholder="Password">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<p class="help-block">Error!</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Left Icon</label>
+						<div class="col-md-8">
+							<div class="input-icon">
+								<i class="ion-android-notifications"></i>
+								<input type="text" class="form-control" placeholder="Left icon">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Right Icon</label>
+						<div class="col-md-8">
+							<div class="input-icon right">
+								<i class="ion-android-notifications"></i>
+								<input type="text" class="form-control" placeholder="Right icon">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<p class="help-block">Icon on right</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Checkbox Addon</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<input type="checkbox" class="tectonic" id="ss" value="1" name="ham">
+									<label for="ss"></label>
+								</div>
+								<input type="text" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Checkbox Addon</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<input type="text" class="form-control">
+								<div class="input-group-addon">
+									<input type="checkbox" class="tectonic" id="s" value="1" name="ham" checked>
+									<label for="s"></label>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<p class="help-block">Checkbox on right</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Radio Addon</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<div class="input-group-addon radio">
+									<input id="option1ssdf" class="tectonic" type="radio" value="1" name="ham">
+									<label class="labelbtn p-n" for="option1ssdf"></label>
+								</div>
+								<input type="text" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Radio Addon</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<input type="text" class="form-control">
+								<div class="input-group-addon radio">
+									<input id="option1sdfs" class="tectonic" type="radio" value="1" name="ham">
+									<label class="labelbtn p-n" for="option1sdfs"></label>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<p class="help-block">Radio on right</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Input Processing</label>
+						<div class="col-md-8">
+							<div class="input-icon left spinner">
+								<i class="ion-load-a fa-spin"></i>
+								<input id="email" class="input-error form-control" type="text" placeholder="Processing...">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Input Processing</label>
+						<div class="col-md-8">
+							<div class="input-icon right spinner">
+								<i class="ion-load-a fa-spin"></i>
+								<input id="email" class="input-error form-control" type="text" placeholder="Processing...">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<p class="help-block">Processing right</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Static Paragraph</label>
+						<div class="col-md-8">
+							<p class="form-control m-n">email@example.com</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Readonly</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" placeholder="Readonly" readonly="">
+						</div>
+					</div>
+				</form>
+				
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-sm-8 col-sm-offset-2">
+						<button class="btn-success btn">Submit</button>
+						<button class="btn-default btn">Cancel</button>
+						<button class="btn-inverse btn">Reset</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default alt">
+			<div class="panel-heading"><h2>Fluid Input Groups</h2></div>
+			<div class="panel-body">
+				<h3 class="mt0">Addon Groups</h3>
+				<p class="mb20">Input group addons with buttons</p>
+				<form role="form" class="form-horizontal">
+
+					<div class="form-group">
+						<label class="col-md-2 control-label">Button Left</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">Action</button>
+								</span>
+								<input type="text" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Button Right</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<input type="text" class="form-control">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">Action</button>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label">Button Left and Right</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">Action</button>
+								</span>
+								<input type="text" class="form-control">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">Action</button>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label">Dropdown Left</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<div class="input-group-btn dropdown">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown <i class="fa fa-angle-down"></i></button>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action </a></li>
+										<li><a href="#">Another action </a></li>
+										<li><a href="#">Something else here </a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link </a></li>
+									</ul>
+								</div>
+								<input type="text" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Dropdown Right</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<input type="text" class="form-control">
+								<div class="input-group-btn dropdown">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown <i class="fa fa-angle-down"></i></button>
+									<ul class="dropdown-menu right-dropdown-menu">
+										<li><a href="#">Action </a></li>
+										<li><a href="#">Another action </a></li>
+										<li><a href="#">Something else here </a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link </a></li>
+									</ul>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label">Both Sides</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<div class="input-group-btn dropdown">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown <i class="fa fa-angle-down"></i></button>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action </a></li>
+										<li><a href="#">Another action </a></li>
+										<li><a href="#">Something else here </a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link </a></li>
+									</ul>
+								</div>
+								<input type="text" class="form-control">
+								<div class="input-group-btn dropdown">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Dropdown <i class="fa fa-angle-down"></i></button>
+									<ul class="dropdown-menu right-dropdown-menu pull-right">
+										<li><a href="#">Action </a></li>
+										<li><a href="#">Another action </a></li>
+										<li><a href="#">Something else here </a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link </a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label">Dropdown Group Left</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<div class="input-group-btn dropdown">
+									<button type="button" class="btn btn-default" tabindex="-1">Action</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+										<i class="fa fa-angle-down"></i>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Action </a></li>
+										<li><a href="#">Another action </a></li>
+										<li><a href="#">Something else here </a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link </a></li>
+									</ul>
+								</div>
+								<input type="text" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Dropdown Group Right</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<input type="text" class="form-control">
+								<div class="input-group-btn dropdown">
+									<button type="button" class="btn btn-default" tabindex="-1">Action</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1"><i class="fa fa-angle-down"></i></button>
+									<ul class="dropdown-menu right-dropdown-menu pull-right" role="menu">
+										<li><a href="#">Action </a></li>
+										<li><a href="#">Another action </a>
+										</li><li><a href="#">Something else here </a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link </a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group mb0">
+						<label class="col-md-2 control-label">Both Sides</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<div class="input-group-btn dropdown">
+									<button type="button" class="btn btn-default" tabindex="-1">Action</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1"><i class="fa fa-angle-down"></i></button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Action </a></li>
+										<li><a href="#">Another action </a>
+										</li><li><a href="#">Something else here </a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link </a></li>
+									</ul>
+								</div>
+								<input type="text" class="form-control">
+								<div class="input-group-btn dropdown">
+									<button type="button" class="btn btn-default" tabindex="-1">Action</button>
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1"><i class="fa fa-angle-down"></i></button>
+									<ul class="dropdown-menu right-dropdown-menu pull-right" role="menu">
+										<li><a href="#">Action </a></li>
+										<li><a href="#">Another action </a>
+										</li><li><a href="#">Something else here </a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link </a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="panel panel-default alt">
+			<div class="panel-heading"><h2>Inline Forms</h2></div>
+			<div class="panel-body">
+				<form class="form-inline" role="form">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="sr-only" for="exampleInputEmail2">Email address</label>
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="exampleInputPassword2">Password</label>
+								<input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+							</div>
+							<div class="form-group">
+								<div class="checkbox block">
+									<input type="checkbox" class="tectonic" id="unckecked" value="1" name="ham">
+									<label for="unckecked"></label>
+									<span>Remember me</span>
+								</div>
+							</div>
+							
+						</div>
+
+						<div class="col-md-6">
+							<button type="submit" class="btn btn-default">Sign in</button>
+							<a href="#modal-form" class="btn btn-success" data-toggle="modal">Modal Form</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="panel panel-default alt">
+			<div class="panel-heading"><h2>Validation States</h2></div>
+			<div class="panel-body pb0">
+				<p class="mb20">Validation states with icons in left and right</p>
+				<div class="row">
+					<div class="col-md-6">
+
+						<form>
+							<div class="form-group">
+								<div class="input-icon right">
+									<i class="ion-information-circled tooltips" data-original-title="Email address" data-container="body"></i>
+									<input type="text" class="form-control" placeholder="Email address">
+								</div>
+							</div>
+							<div class="form-group has-success">
+								<div class="input-icon right">
+									<i class="ion-checkmark-circled tooltips" data-original-title="You look OK!" data-container="body"></i>
+									<input type="text" class="form-control" placeholder="Success!">
+								</div>
+							</div>
+							<div class="form-group has-warning">
+								<div class="input-icon right">
+									<i class="ion-android-warning tooltips" data-original-title="please provide an email" data-container="body"></i>
+									<input type="text" class="form-control" placeholder="Warning!">
+								</div>
+							</div>
+							<div class="form-group has-error">
+								<div class="input-icon right">
+									<i class="ion-android-alert tooltips" data-original-title="please write a valid email" data-container="body"></i>
+									<input type="text" class="form-control" placeholder="Error!">
+								</div>
+							</div>
+						</form>
+
+					</div>
+					<div class="col-md-6">
+
+						<form>
+							<div class="form-group">
+								<div class="input-icon left">
+									<i class="ion-information-circled tooltips" data-original-title="Email address" data-container="body"></i>
+									<input type="text" class="form-control" placeholder="Email address">
+								</div>
+							</div>
+							<div class="form-group has-success">
+								<div class="input-icon left">
+									<i class="ion-checkmark-circled tooltips" data-original-title="You look OK!" data-container="body"></i>
+									<input type="text" class="form-control" placeholder="Success!">
+								</div>
+							</div>
+							<div class="form-group has-warning">
+								<div class="input-icon left">
+									<i class="ion-android-warning tooltips" data-original-title="please provide an email" data-container="body"></i>
+									<input type="text" class="form-control" placeholder="Warning!">
+								</div>
+							</div>
+							<div class="form-group has-error">
+								<div class="input-icon left">
+									<i class="ion-android-alert tooltips" data-original-title="please write a valid email" data-container="body"></i>
+									<input type="text" class="form-control" placeholder="Error!">
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modal-form" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Sign in</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-6">
+						<p>Sign in to meet your friends!</p>
+						<form>
+							<div class="form-group">
+								<label for="">Email</label>
+								<input type="email" class="form-control" placeholder="email@address.com">
+							</div>
+							<div class="form-group">
+								<label for="">Password</label>
+								<input type="password" class="form-control" placeholder="Enter Password">
+							</div>
+							<div class="clearfix">
+								<div class="checkbox pull-left">
+									<label for=""><input type="checkbox"> Remember Me</label>
+								</div>
+								<a href="#" class="btn btn-success pull-right">Log In</a>
+							</div>
+						</form>
+					</div>
+					<div class="col-xs-6">
+						<h4>Not a Member?</h4>
+						<p>You can create an account <a href="#">here</a>.</p>
+						<p>OR</p>
+						<a href="#" class="btn btn-primary btn-block"><i class="fa fa-facebook pull-left"></i> Sign in with Facebook</a>
+						<a href="#" class="btn btn-info btn-block"><i class="fa fa-twitter pull-left"></i> Sign in with Twitter</a>
+						<a href="#" class="btn btn-danger btn-block"><i class="fa fa-google-plus pull-left"></i> Sign in with Google+</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="panel panel-default alt">
+			<div class="panel-heading">
+				<h2>Grids</h2>
+			</div>
+			<div class="panel-body">
+				<p class="mb20">Using <a href="scaffolding-grids.php">Grids</a>, any input box can be placed anywhere and be of any size!</p>
+				<form>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-12">
+								<input type="text" class="form-control" placeholder=".col-xs-12">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+							<div class="col-xs-10">
+								<input type="text" class="form-control" placeholder=".col-xs-10">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-3">
+								<input type="text" class="form-control" placeholder=".col-xs-3">
+							</div>
+							<div class="col-xs-9">
+								<input type="text" class="form-control" placeholder=".col-xs-9">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-4">
+								<input type="text" class="form-control" placeholder=".col-xs-4">
+							</div>
+							<div class="col-xs-8">
+								<input type="text" class="form-control" placeholder=".col-xs-8">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-5">
+								<input type="text" class="form-control" placeholder=".col-xs-5">
+							</div>
+							<div class="col-xs-7">
+								<input type="text" class="form-control" placeholder=".col-xs-7">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-6">
+								<input type="text" class="form-control" placeholder=".col-xs-6">
+							</div>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" placeholder=".col-xs-6">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-4">
+								<input type="text" class="form-control" placeholder=".col-xs-4">
+							</div>
+							<div class="col-xs-4">
+								<input type="text" class="form-control" placeholder=".col-xs-4">
+							</div>
+							<div class="col-xs-4">
+								<input type="text" class="form-control" placeholder=".col-xs-4">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-3">
+								<input type="text" class="form-control" placeholder=".col-xs-3">
+							</div>
+							<div class="col-xs-6">
+								<input type="text" class="form-control" placeholder=".col-xs-6">
+							</div>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" placeholder=".col-xs-3">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+							<div class="col-xs-8">
+								<input type="text" class="form-control" placeholder=".col-xs-8">
+							</div>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-3">
+								<input type="text" class="form-control" placeholder=".col-xs-3">
+							</div>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" placeholder=".col-xs-3">
+							</div>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" placeholder=".col-xs-3">
+							</div>
+							<div class="col-xs-3">
+								<input type="text" class="form-control" placeholder=".col-xs-3">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-xs-5">
+								<input type="text" class="form-control" placeholder=".col-xs-5">
+							</div>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+							<div class="col-xs-5">
+								<input type="text" class="form-control" placeholder=".col-xs-5">
+							</div>
+						</div>
+					</div>
+					<div class="form-group mb0">
+						<div class="row">
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" placeholder=".col-xs-2">
+							</div>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>Uploading binary files</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?uploadingbinaryfiles_2.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Uploading
+		binary files <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.6.1',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.2.6.3',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">To
+upload binary files you must set the transfer mode to binary (the
+default) using the <span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Ftps#setBinary</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. All files with relative paths will be uploaded from your current
+local directory. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;turn&nbsp;off&nbsp;auto&nbsp;transfer&nbsp;mode&nbsp;detection&nbsp;if&nbsp;enabled</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+ftps.setAuto(<b>false</b>); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;set&nbsp;transfer&nbsp;mode&nbsp;to&nbsp;binary</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+ftps.setBinary(); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;upload&nbsp;all&nbsp;files&nbsp;in&nbsp;current&nbsp;local&nbsp;directory</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+ftps.mupload(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"*.*"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);</span><span
+	style="font-family: Courier New; font-size: 8pt; color: #000000">
+<br>
+
+<br>
+
+<br>
+</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><b>See
+also</b> <br>
+
+<br>
+</span></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"><a
+			href=javaScript:parent.reDisplay('2.2.4.1',1,0)>Setting your
+		local directory</a> &nbsp;<br>
+		</span></td>
+	</tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="14"></td>
+		<td><span
+			style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000"></span></td>
+	</tr>
+</table>
+
+</body>
+</html>

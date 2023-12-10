@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Automatically detecting the transfer mode</title>
+<meta name="generator" content="Help & Manual">
+<meta name="keywords" content="">
+</head>
+
+
+<!-- Redirect browser to index page if page is not in the content frame.
+       This script is only valid for regular HTML export -->
+<script language="JavaScript">
+       <!--
+           if(top.frames.length==0) top.location.href='index.html?automaticallydetectingthetr3.html'
+       //-->
+  </script>
+
+
+<body bgcolor="#FFFFFF">
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2"
+	bgcolor="#E2E2E2">
+	<tr>
+		<td align="left"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000000"><span
+			style="font-family: Helvetica, Arial; font-size: 12pt; color: #000080"><b>Automatically
+		detecting the transfer mode <br>
+		</b></span></span></td>
+		<td align="right"><font face="Arial" size="2"> <a
+			href="javaScript:parent.reDisplay('1.1',1,0)"><img
+			src="ico_nav_up.gif" border=0 alt="Top"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.6.5.2',1,0)"><img
+			src="ico_nav_back.gif" border=0 alt="Previous"></a>&nbsp; <a
+			href="javaScript:parent.reDisplay('2.6.6.2',1,0)"><img
+			src="ico_nav_next.gif" border=0 alt="Next"></a> </font></td>
+	</tr>
+</table>
+<br>
+
+
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">When
+uploading files the transfer mode is by default set to binary. Using the
+<span style="font-family: Courier; font-size: 10pt; color: #000000">Sftp#setAuto</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method you may set it to automatically detect the transfer mode to use (
+ASCII or binary) based on the file extension of the file transferred. If
+you are uploading multiple files it is often convenient to have the
+transfer mode automatically detected and set based on the type of file
+being uploaded. <br>
+
+<br>
+Binary files such as images should be uploaded using the binary transfer
+mode. ASCII files such as text documents should be uploaded using the
+ASCII transfer mode. You can have this handled automatically using the </span><span
+	style="font-family: Courier; font-size: 10pt; color: #000000">Sftp#setAuto</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+method. <br>
+
+<br>
+<span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #008000"><b>Example</b></span></span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+
+<br>
+</span><span style="font-family: Courier New; font-size: 10pt; color: #000000"><span
+	style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;automatically&nbsp;detect&nbsp;transfer&nbsp;mode</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+sftp.setAuto(<b>true</b>); <br>
+
+<br>
+<span style="font-family: Courier New; font-size: 10pt; color: #000080"><i>//&nbsp;upload&nbsp;all&nbsp;files&nbsp;in&nbsp;current&nbsp;local&nbsp;directory</i></span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">
+<br>
+sftp.mupload(<span
+	style="font-family: Courier New; font-size: 10pt; color: #000080">"*.*"</span></span><span
+	style="font-family: Courier New; font-size: 10pt; color: #000000">);</span><span
+	style="font-family: Helvetica, Arial; font-size: 10pt; color: #000000">
+<br>
+</span></span>
+
+</body>
+</html>

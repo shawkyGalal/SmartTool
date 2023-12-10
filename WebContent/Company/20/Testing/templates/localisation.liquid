@@ -1,0 +1,32 @@
+{% extends 'layout' %}
+{% block title %}Localisation{% endblock %}
+
+{% block breadcrumb %}
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Advanced Tables</a></li>
+<li class="active"><a href="tables-data.html">Data Tables</a></li>
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{{ "plugins/localisation/js/jquery.localize.min.js" | asset_url | script_tag }}
+{{ "plugins/localisation/js/demo-localisation.js" | asset_url | script_tag }}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class='col-md-6'>
+        <select id="changeLocale" class="form-control">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+       <h1>Test localization...</h1>
+       <p data-localize="header_message">Header message loaded</p>
+       <p data-localize="footer_message">Footer message loaded</p>
+   </div>
+</div>
+{% endblock %}
