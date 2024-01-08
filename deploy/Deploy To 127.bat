@@ -1,1 +1,0 @@
-copy %1 \\10.16.18.127\Support_public_html

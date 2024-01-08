@@ -1,0 +1,23 @@
+# This file must contains all modifications applied to the attached resource file.
+#
+# Operator list:
+# +	: stands for an entry added
+# -	: stands for an entry removed
+# %	: stands for an entry modified
+# 
+# Format to follow:
+# Operator<tab>entry property key name
+# 
+# Example:
+# +	MyPropertyKeyLabel
+#
+
+# Label (SPP 0.9.10)
++ SIDE-SYSM1028
+
+# Label (clrt)
++ SIDE-SYSM1029
++ SIDE-SYSM1030
++ SIDE-SYSM1031
++ SIDE-SYSM1032
++ SIDE-SYSM1033

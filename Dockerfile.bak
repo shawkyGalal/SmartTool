@@ -1,5 +1,0 @@
-# Use an official Tomcat runtime as a parent image
-FROM tomcat:latest
-
-# Copy the war file to the container at the specified Tomcat webapps directory
-COPY "G:\My Drive\SmartValue\war\SmartTool.war" /usr/local/tomcat/webapps/

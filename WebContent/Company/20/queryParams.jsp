@@ -1,4 +1,5 @@
 <%@page import="Support.SelectionTree"%>
+<%@page import="com.implex.database.map.SecUsrDta"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.net.URLEncoder"%>
 <%@ page errorPage="../../errorPage.jsp"%>
@@ -16,7 +17,7 @@
 <link href="<%=appURL%>/jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
 <script src="<%=appURL%>/jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
 
-
+<% String origin = Support.Misc.getRequestOrigin(request) ; %>
 <script type="text/javascript" src="<%=appURL%>/includes/AJAX_new.js"></script>
 <script type="text/javascript" src="<%=appURL%>/includes/smartTool.js"></script>
 <%@ include file = "jsScripts.html" %>
@@ -41,6 +42,8 @@ if( request.getParameter("Submit") != null && request.getParameter("updateOnly")
         <div class="page-content">
             <div class="page-heading" style=" padding-top: 0px; padding-bottom: 0px;  margin-bottom: 0px;"> 
 <%
+  SecUsrDta loggedUserObj =  Misc.getLoggedUserFromSession(session) ;
+  boolean isSmartToolAdmin =loggedUserObj.isSmartToolAdmin() ;
   request.setCharacterEncoding("UTF-8");
   java.sql.Connection  con = (java.sql.Connection)session.getAttribute("con");
   Support.XMLConfigFileReader supportConfig =  Misc.getXMLConfigFileReader(false ) ; 
@@ -97,12 +100,10 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
       java.sql.Statement stmt = repCon.createStatement();
       String loggedUser = Misc.getConnectionUserName(con).toUpperCase() ;
       Support.SqlReader  sqr1 =null ;
-      sqr1 =  new Support.SqlReader(repCon, "lu_queries" , "QUERY_BODY",  "72541" , session , request, true );
+      sqr1 =  new Support.SqlReader(repCon, "lu_queries" , "QUERY_BODY",  "65379" , session , request, true );
       String queryStr = sqr1.getQueryStatments()[0] ;
-      queryStr= Misc.repalceAll(queryStr, "$$queryId", queryId) ;
-      queryStr= Misc.repalceAll(queryStr, "$$loggedUser", loggedUser) ;
       /*
-      String queryStr = " Select * from "
+    		  queryStr = " Select * from "
           	  + " \n("
           	  + " \n -- User Specific  "
         	  + " \nselect sqlbv.* , sqlbv.rowid sqlVvRowid from support.sql_bound_vars sqlbv  where active = 'Y'" 
@@ -138,7 +139,10 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
               + " \n  ) "
     	      + " \n  order by sn " ;
       */
-      java.sql.ResultSet rs ; 
+    	      queryStr= Misc.repalceAll(queryStr, "$$queryId", queryId) ;
+    	      queryStr= Misc.repalceAll(queryStr, "$$loggedUser", loggedUser) ;
+      
+      java.sql.ResultSet rs ;
       try{
       rs =  stmt.executeQuery(queryStr ) ;
       }
@@ -171,9 +175,7 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 	   }
        catch (Exception e){}
 		String nodeHelpLink = "(<a target = 'Report Meta Data' title = 'Click for More Details and Help Docs related to this node in the Main System Tree'  href = 'editAndExecute.jsp?id=13654&lookupTableName=LU_QUERIES&query_id="+queryId+ "' ><img src='"+appURL+"/images/help.gif' ></img></a>)" ; 
-		boolean isSmartToolAdmin = Support.Misc.getLoggedUserFromSession(session).isSmartToolAdmin() ; 
       %>
-   	   
 	   <h1 title = "<%= queryHyperLinkTitle%>"> 
 	   		<a href="javaScript: sendAjaxRequestToJsp('/SmartTool/Company/20/mainScreen.jsp' , 'contentDiv'  );" title="الصفحة الرئيسية"><img src="/SmartTool/images/homeIcon.jpg" width="20"></a>	
 	   		<font size="5" style="Bold">
@@ -307,9 +309,9 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 		        	 <div><input readonly type="text"  onBlur() ="alert('abc');"
 							name="var<%=i%>" id="var<%=i%>"  value='<%=varValue %>'
 							onchange=" 
-							           updaetHref_var( this , document.getElementById('var<%=i%>_TreeLink')  ) ;  
-							           document.getElementById('updateOnlyButtonId').click(); 	 	  	
-							         "  
+							           //updaetHref_var<%=i%>( this ) ;
+							           document.getElementById('updateOnlyButtonId').click(); ;
+							         "
 							size="10" title="">
 						
 						 <a target = "tree Selection"  id="var<%=i%>_TreeLink"
@@ -319,6 +321,33 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 						<div id="var<%=i%>_label"><%=itemsDesc %></div>
 					 
 		        	  	</div>
+	            	 	<script type="text/javascript">
+					        // as an opener window listen only to message from the new tree window
+					        window.addEventListener("message", console.log) ;  
+					        window.addEventListener("message", function(event) {
+					        // Check the origin of the message -- Ignore messages from other origins
+					        if (event.origin !== "<%=origin%>") { return; }
+					        // Check the source of the message -- Ignore messages from the same window
+					        if (event.source === window) { return; }
+					        // Handle the message
+					        alert("Received message from the tree window:", event.data);
+					        processTreeMessage<%=i%>(event.data); 
+					        //if needed Send a response back to the new window
+					        //event.source.postMessage("Please kill Your self", event.origin);
+					        });
+
+					        function processTreeMessage<%=i%>(message)
+	            	 		{
+					        	var<%=i%>.value = message.selectedIds;
+					        	var<%=i%>.innerHTML = message.selectedDescs;
+					        	var<%=i%>.onchange() ;
+		            	 		var newhref = "javascript:window.open('selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select From Tree' , 'width=400, height=600' )" ;
+	    		                var<%=i%>_TreeLink.href =  newhref ;
+	            	 		}
+
+	            	 	</script>
+
+
 		        	<%
 	
 	         	}

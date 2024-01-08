@@ -12,17 +12,18 @@
 <%@page import="Support.LookupTreeV10"%><html>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 <head>
-<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
-<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
-<script src="jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
-
 <% String appURL = Support.Misc.getAppURL(request) ;  %>
+<link href="<%=appURL%>/jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
+<link href="<%=appURL%>/jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
+<script src="<%=appURL%>/jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
+
+<% String origin = Support.Misc.getRequestOrigin(request) ;%>
 <script type="text/javascript" src="<%=appURL%>/includes/AJAX_new.js"></script>
 <script src="<%=appURL%>/jQueryAssets/jquery-1.10.2.js"></script>
 <script src="<%=appURL%>/jQueryAssets/jquery-ui.js"></script>
 
 
-<%@ include file="includes/jquery_commons.js"%>
+<%@ include file="/includes/jquery_commons.js"%>
 
 </head>
 
@@ -93,12 +94,10 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
       java.sql.Statement stmt = repCon.createStatement();
       String loggedUser = Misc.getConnectionUserName(con).toUpperCase() ;
       Support.SqlReader  sqr1 =null ;
-      sqr1 =  new Support.SqlReader(repCon, "lu_queries" , "QUERY_BODY",  "72541" , session , request, true );
+      sqr1 =  new Support.SqlReader(repCon, "lu_queries" , "QUERY_BODY",  "65379" , session , request, true );
       String queryStr = sqr1.getQueryStatments()[0] ;
-      queryStr= Misc.repalceAll(queryStr, "$$queryId", queryId) ;
-      queryStr= Misc.repalceAll(queryStr, "$$loggedUser", loggedUser) ;
       /*
-    		  " Select * from "
+    		  queryStr = " Select * from "
           	  + " \n("
           	  + " \n -- User Specific  "
         	  + " \nselect sqlbv.* , sqlbv.rowid sqlVvRowid from support.sql_bound_vars sqlbv  where active = 'Y'"
@@ -134,6 +133,9 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
               + " \n  ) "
     	      + " \n  order by sn " ;
       */
+    	      queryStr= Misc.repalceAll(queryStr, "$$queryId", queryId) ;
+    	      queryStr= Misc.repalceAll(queryStr, "$$loggedUser", loggedUser) ;
+      
       java.sql.ResultSet rs ;
       try{
       rs =  stmt.executeQuery(queryStr ) ;
@@ -206,21 +208,25 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 	for (int i = 0 ; i< titles.size() ; i++)
     {
 	   	String queryParamToBeRendred = sqlBoundVar.elementAt(i).toString().substring(2) ;
-	   	String queryParamValueFromRequest = request.getParameter(queryParamToBeRendred) ;
-	   	boolean queryParamSentInRequest = queryParamValueFromRequest != null ;
-	   	boolean renderParamHtmlInput = queryParams.contains(queryParamToBeRendred.toUpperCase()) ; //  && ! queryParamSentInRequest ;
-
-		if ( renderParamHtmlInput  )
-		{
-
-			elementsCounter ++ ;
+    	boolean queryParamSentInRequest = request.getParameter(queryParamToBeRendred) != null ;
+    	boolean renderParamHtmlInput = queryParams.contains(queryParamToBeRendred.toUpperCase()) ; //  && ! queryParamSentInRequest ; 
+    	
+		
+    	if ( renderParamHtmlInput )
+      	{
+    		
+        %>
+       	<label class="control-label text-left"  style="width: 100%"  title="(<%=sqlBoundVar.elementAt(i)%>)"><%=titles.elementAt(i)%></label>
+		<input name="sqlBoundVar<%=i%>"  type='hidden' value='<%=sqlBoundVar.elementAt(i)%>' readonly size="3">
+        <% 
+			elementsCounter ++ ; 
 	      	boolean isDate = (dataTypes.elementAt(i).toString().toUpperCase().equals("DATE")) ? true : false ;
 	      	boolean isDateTime = (dataTypes.elementAt(i).toString().toUpperCase().equals("DATETIME")) ? true : false ;
 	      	boolean isList = (dataTypes.elementAt(i).toString().toUpperCase().equals("LIST")) ? true : false ;
 	      	boolean isMultiSelectTree = (dataTypes.elementAt(i).toString().toUpperCase().equals("MULTI_SELECT_TREE")) ? true : false ;
 	      	boolean isSingleSelectTree = (dataTypes.elementAt(i).toString().toUpperCase().equals("SINGLE_SELECT_TREE")) ? true : false ;
-
-
+	      	String queryParamValueFromRequest = request.getParameter(queryParamToBeRendred) ;
+	      	
     	  	String varName = sqlBoundVar.elementAt(i).toString().substring(2) ;
       	   	String defaultValue = defaultValues.get(i).toString();
     	  	String varValue = (sqlBoundNames.indexOf("$$"+varName) != -1 ) ?  sqlBoundValues.elementAt(sqlBoundNames.indexOf("$$"+varName)) : defaultValue ;
@@ -309,32 +315,49 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 					SelectionTree tmdTree = (SelectionTree)session.getAttribute(treeIdInSession);
 		         	String itemsDesc = null;
 		         	try {itemsDesc = (isMultiSelectTree)? tmdTree.getDescForListOfIds(varValue.replaceAll("\n" , "")) : tmdTree.getDesc( tmdTree.getindex2(varValue)) ; }
-		         	catch (Exception e) {e.printStackTrace(); } ;
-
+		         	catch (Exception e) {// e.printStackTrace(); 
+		         						} ; 
 		         	int treeQuerySource = 2 ; // inform Tree to get query from tmd
-		        	 %>
-		        	 <td width="150">
+		        	%>
+		        	<td width="150">
 						<div align="left"><input readonly type="text"  onBlur() ="alert('abc');"
 							name="var<%=i%>" id="var<%=i%>"  value='<%=varValue %>'
 							onchange="
-							           updaetHref_var<%=i%>( this ) ;
+							           //updaetHref_var<%=i%>( this ) ;
 							           document.getElementById('updateOnlyButtonId').click(); ;
 							         "
 							size="10" title="">
 
 						 <a target = "tree Selection"  id="var<%=i%>_TreeLink"
 		        	      		title = "Click To Selected Items from Tree"
-		        	      					href = "javascript:window.open('<%=appURL%>/selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_boundVarName=<%=sqlBoundVar.elementAt(i).substring(2) %>&_selectedIDs=<%=varValue %>&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select_From_Tree' , 'width=400, height=600' ) " ><img width="25" height = "25"  src="images/treeIcon.jpg"> </a>
+		        	      					href = "#" onclick = "window.open('<%=appURL%>/selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_boundVarName=<%=sqlBoundVar.elementAt(i).substring(2) %>&_selectedIDs=<%=varValue %>&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select_From_Tree' , 'width=400, height=600' ) " ><img width="25" height = "25"  src="images/treeIcon.jpg"> </a>
 
 						<div id="var<%=i%>_label"><%=itemsDesc %></div>
 
 		        	  	</div>
 	            	 	<script type="text/javascript">
-	            	 			function updaetHref_var<%=i%>(m_object)
-	            	 			{
-		            	 			var newhref = "javascript:window.open('selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select From Tree' , 'width=400, height=600' )" ;
-	    		            	    var<%=i%>_TreeLink.href =  newhref ;
-	            	 			}
+					        // as an opener window listen only to message from the new tree window
+					        window.addEventListener("message", console.log) ;  
+					        window.addEventListener("message", function(event) {
+					        // Check the origin of the message -- Ignore messages from other origins
+					        if (event.origin !== "<%=origin%>") { return; }
+					        // Check the source of the message -- Ignore messages from the same window
+					        if (event.source === window) { return; }
+					        // Handle the message
+					        alert("Received message from the tree window:", event.data);
+					        processTreeMessage<%=i%>(event.data); 
+					        //if needed Send a response back to the new window
+					        //event.source.postMessage("Please kill Your self", event.origin);
+					        });
+
+					        function processTreeMessage<%=i%>(message)
+	            	 		{
+					        	var<%=i%>.value = message.selectedIds;
+					        	var<%=i%>.innerHTML = message.selectedDescs;
+					        	var<%=i%>.onchange() ;
+		            	 		var newhref = "javascript:window.open('selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select From Tree' , 'width=400, height=600' )" ;
+	    		                var<%=i%>_TreeLink.href =  newhref ;
+	            	 		}
 
 	            	 	</script>
 
@@ -374,7 +397,7 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 		<td width="69"><input type="submit" id = "updateOnlyButtonId" name="updateOnly"
 			value="Update Only"></td>
 		<td><a href = "index.jsp?reportTopOpen=<%=queryId%>" target = top title="الصفحة الرئيسية"><img src="images/homeIcon.jpg" width="30"></a></td>
-		<td> <a hre = "javaScript : showDesign() ; " >Design</a></td>
+		<td> <a href = "javaScript : showDesign() ; " >Design</a></td>
 
 
 	<%}%>

@@ -11,7 +11,8 @@
 	</head>
 	<title>Tree Selection </title>
 	<body>
-	<% 	 java.sql.Connection  con = (java.sql.Connection)session.getAttribute("con");
+	<% String origin = Support.Misc.getRequestOrigin(request) ;  
+		 java.sql.Connection  con = (java.sql.Connection)session.getAttribute("con");
 		  if (con == null || con.isClosed() )
 		 {response.sendRedirect("loginScreen.jsp?comeFrom=selectionTree.jsp"+request.getQueryString());}
 				 
@@ -168,24 +169,32 @@
 	    	</table>
     	</div>
     	<script type="text/javascript">
+    	
     		function updateSelection ()
     		{
     			var selectedValues =  ( document.getElementById('serverSideProcessResult').innerHTML ).trim() ; 
 				var selectedIds = selectedValues.substring(0, selectedValues.indexOf("$$")) ; 
 				var selectedDescs = selectedValues.substring( selectedValues.indexOf("$$")+2 ) ;
-				//alert (selectedIds) ; 
+				 
 				//alert (selectedDescs) ; 
-	   			 var openerObject = opener.<%=selectionTree.getFillObject()%> ; 
+				var message = {"selectedIds" : selectedIds , "selectedDescs":selectedDescs} ;
+				 //alert ("window.opener : " + window.opener) ; 
+				 window.opener.postMessage(message, "<%=origin%>");
+				 //alert ("Message: "+ message.selectedIds + " Sent To The Opener Window") ;
+				 window.close(); 
+	   			 /*
+				 var openerObject = opener.<%=selectionTree.getFillObject()%> ; 
 	   			 if (openerObject.disabled == true)
 	   			 { alert ('عفوا لا يمكن تعديل هذه القيمة') ; }
 	   			 else 
 	   			 {
 	   			 openerObject.value = selectedIds;
-	   			 var openerLable = opener.<%=selectionTree.getFillObject()+"_label"%> ; 
+	   			 var openerLable = window.opener.<%=selectionTree.getFillObject()+"_label"%> ; 
 	   			 openerObject.onchange() ; 
 	   			 openerLable.innerHTML = selectedDescs ;
 	   			 window.close() ;
 	   			 }
+	   			 */
     		}
     	</script> 
 		</p>

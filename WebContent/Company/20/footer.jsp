@@ -16,7 +16,7 @@ SecUsrDta loggedUser = Misc.getLoggedUserFromSession(session ) ;
          <a href = "http://www.smart-value.com" > <img src="assets/img/smart-value.bmp" /> </a>
                  Copyright © 1998,2017
    
-         <img src="images/HuloolLogo.png" "<%=loggedUser.getUserCompany().getAttributeValue("LOGO_LINK") %>"  />
+         <img src="images/HuloolLogo.png" width="10" "<%=loggedUser.getUserCompany().getAttributeValue("LOGO_LINK") %>"  />
  </div>                    
 </body>
 </html>

@@ -257,7 +257,7 @@
         catch (Exception e){//-----------If allready exist, do nothing 
        	 //throw new Exception ("Unable execute " + createUserStr + " to create a sec_usr_dta entry due to " + e.getMessage()) ;
         }
-	ModuleServicesContainer msc = Support.Misc.getModuleServiceContainer(selectedConnParms.name , lang , userName.toUpperCase());  
+	ModuleServicesContainer msc = Support.Misc.getModuleServiceContainer(selectedConnParms.name , lang );  
 	session.setAttribute(Support.Misc.MscSessionKey , msc); 
 
 	com.implex.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
