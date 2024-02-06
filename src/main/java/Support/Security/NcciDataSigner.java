@@ -81,7 +81,7 @@ public  NcciDataSigner(String  ksFilePath , String aliasName ,char[] password ) 
  {
    try{
    NcciDataSigner ncciSigner = new NcciDataSigner ("C:\\jdev10g\\jdk\\bin\\NCCI_KS.jks", "NCCI_SERVER", "test2000".toCharArray());
-   String data = "»”„ «··Â «·—Õ„‰ «·—ÕÌ„ ";
+   String data = "This is a test Text ";
    byte[] signaure =  ncciSigner.sign(data);
    ncciSigner.validateSignature(data, signaure);
    }

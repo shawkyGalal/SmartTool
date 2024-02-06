@@ -7,32 +7,38 @@
   	<javaxjson.version>1.1.4</javaxjson.version>
   </properties>
   <packaging>war</packaging>
-  	
   
-  <build>
+	
+   <build>
     <sourceDirectory>src</sourceDirectory>
     
      <plugins>
+<!--
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
           	<release>19</release>
-          	<encoding>windows-1252</encoding>
-          	<webResources>
-		      <resource>
-		        <!-- The directory where your JSP files are located -->
-		        <directory>/WebContent</directory>
-		        <!-- The destination path inside the WAR file -->
-		        <targetPath>WEB-INF/jsp</targetPath>
-		      </resource>
-    		</webResources>
+         	<encoding>windows-1252</encoding> 
         </configuration>
       </plugin>
+-->
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.3</version>
       </plugin>
+      
+      <plugin> 
+		<groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>3.6.1</version>
+		<configuration>
+		   <includes> 
+			   <include>src/main/webapp/WEB-INF/lib/*.jar</include>
+			</includes> 
+		</configuration> 
+	 </plugin>
+      
     </plugins>
     
   </build>
@@ -115,10 +121,23 @@
 	    </exclusions>
 	</dependency>
 
+	
+	<dependency>
+		<groupId>javax.faces</groupId>
+	    <artifactId>javax.faces-api</artifactId>
+	    <version>2.3</version>
+	    <scope>provided</scope>
+	</dependency>
 
-
-<!-- https://mvnrepository.com/artifact/org.richfaces/richfaces -->
-
-
+	<!-- https://mvnrepository.com/artifact/org.richfaces/richfaces  
+	<dependency>
+	    <groupId>org.richfaces</groupId>
+	    <artifactId>richfaces</artifactId>
+	    <version>4.5.1.Final</version>
+	</dependency>
+	-->
+	
+	
+	
   </dependencies>
-</project>
+ </project>

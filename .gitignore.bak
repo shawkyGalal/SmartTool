@@ -1,0 +1,4 @@
+
+*.class
+/target/
+target/m2e-wtp/web-resources/META-INF/maven/SmartTool/SmartTool/pom.properties
