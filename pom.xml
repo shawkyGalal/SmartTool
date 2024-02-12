@@ -1,143 +1,109 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>SmartTool</groupId>
-  <artifactId>SmartTool</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-    <properties>
-  	<javaxjson.version>1.1.4</javaxjson.version>
-  </properties>
-  <packaging>war</packaging>
-  
-	
-   <build>
-    <sourceDirectory>src</sourceDirectory>
-    
-     <plugins>
-<!--
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          	<release>19</release>
-         	<encoding>windows-1252</encoding> 
-        </configuration>
-      </plugin>
--->
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.3</version>
-      </plugin>
-      
-      <plugin> 
-		<groupId>org.apache.maven.plugins</groupId> 
-		<artifactId>maven-compiler-plugin</artifactId>
-		<version>3.6.1</version>
-		<configuration>
-		   <includes> 
-			   <include>src/main/webapp/WEB-INF/lib/*.jar</include>
-			</includes> 
-		</configuration> 
-	 </plugin>
-      
-    </plugins>
-    
-  </build>
-  
-  <dependencies>
-	  <dependency>
-	      <groupId>com.google.cloud</groupId>
-	      <artifactId>google-cloud-bigquery</artifactId>
-	      <version>1.22.0</version>
-	  </dependency>
-	  <dependency>
-		  <groupId>javax.servlet.jsp</groupId>
-		  <artifactId>jsp-api</artifactId>
-		  <version>2.1</version>
-		  <scope>provided</scope>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>SmartTool</groupId>
+	<artifactId>SmartTool</artifactId>
+	<version>1.0.0</version>
+	<properties>
+		<javaxjson.version>1.1.4</javaxjson.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<packaging>war</packaging>
+
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<includes>
+						<include>src/main/webapp/WEB-INF/lib/*.jar</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-bigquery</artifactId>
+			<version>1.22.0</version>
 		</dependency>
 		<dependency>
-		  	<groupId>net.sourceforge.jexcelapi</groupId>
-	  		<artifactId>jxl</artifactId>
-	  		<version>2.6.12</version>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		  <groupId>org.apache.httpcomponents</groupId>
-		  <artifactId>httpclient</artifactId>
-		  <version>4.5.14</version>
+			<groupId>net.sourceforge.jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.6.12</version>
+			<exclusions>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-	
-	
-		
-	
-
-	
-	<!--
-	<dependency>
-	  <groupId>xml-apis</groupId>
-	  <artifactId>xml-apis</artifactId>
-	  <version>1.4.01</version>
-	</dependency>
-	
-	
-	
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.14</version>
+		</dependency>
 
 
-	
-	
-	<dependency>
-	    <groupId>org.richfaces.core</groupId>
-	    <artifactId>richfaces-core-impl</artifactId>
-	    <version>4.3.5.Final</version>
-	</dependency>
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc10</artifactId>
+			<version>19.3.0.0</version>
+		</dependency>
 
-	<dependency>
-    <groupId>org.richfaces.ui</groupId>
-    <artifactId>richfaces-components-ui</artifactId>
-    <version>3.3.3.Final</version>
-	</dependency>
+		<dependency>
+			<groupId>org.apache.myfaces.tomahawk</groupId>
+			<artifactId>tomahawk</artifactId>
+			<version>1.1.14</version>
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xmlParserAPIs</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
--->
 
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>2.3</version>
+			<scope>provided</scope>
+		</dependency>
 
-	<dependency>
-	    <groupId>com.oracle.database.jdbc</groupId>
-	    <artifactId>ojdbc10</artifactId>
-	    <version>19.3.0.0</version>
-	</dependency>
-	
-	<dependency>
-	    <groupId>org.apache.myfaces.tomahawk</groupId>
-	    <artifactId>tomahawk</artifactId>
-	    <version>1.1.14</version>
-	    <exclusions>
-		    <exclusion>
-		    	<groupId>xml-apis</groupId>
-		    	<artifactId>xml-apis</artifactId>
-		    </exclusion>
-		    <exclusion>
-		    	<groupId>xml-apis</groupId>
-		    	<artifactId>xmlParserAPIs</artifactId>
-		    </exclusion>
-	    </exclusions>
-	</dependency>
+			 <dependency>
+		        <groupId>org.apache.logging.log4j</groupId>
+		        <artifactId>log4j-api</artifactId>
+		        <version>2.22.1</version>
+		    </dependency>
+		    <dependency>
+		        <groupId>org.apache.logging.log4j</groupId>
+		        <artifactId>log4j-core</artifactId>
+		        <version>2.22.1</version>
+		    </dependency>
 
-	
-	<dependency>
-		<groupId>javax.faces</groupId>
-	    <artifactId>javax.faces-api</artifactId>
-	    <version>2.3</version>
-	    <scope>provided</scope>
-	</dependency>
-
-	<!-- https://mvnrepository.com/artifact/org.richfaces/richfaces  
-	<dependency>
-	    <groupId>org.richfaces</groupId>
-	    <artifactId>richfaces</artifactId>
-	    <version>4.5.1.Final</version>
-	</dependency>
-	-->
-	
-	
-	
-  </dependencies>
- </project>
+	</dependencies>
+</project>
