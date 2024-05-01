@@ -98,18 +98,19 @@ public class ConnectionFactory
   public static void main(String[] args)
   {
     try{
-    	Class.forName("oracle.jdbc.driver.OracleDriver");
+    	//Class.forName("oracle.jdbc.driver.OracleDriver");
  	
-        Connection conx = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/SVDB", "icdb", "123");
-        displayConnDetails(conx);
+        Connection conx = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/FREEPDB1", "system", "Redsea11");
+        Connection conxx = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/FREEPDB1", "icdb", "123");
+        displayConnDetails(conxx);
     
     //Connection conn =  ConnectionFactory.createOciConnection("ORCL.SADAD.COM" , "biller" ,"biller" );
     //Connection conn =  ConnectionFactory.createConnection("localhost","orcl", "biller" , "biller");//.createOciConnection("ORCL.SADAD.COM" , "biller" ,"biller" );
     //Connection con1 =  ConnectionFactory.createMsSqlConnection("127.0.0.1","timeAtt", "sa" , "redsea11");
     //Connection con2 =  ConnectionFactory.createMsSqlConnection("10.10.0.196","timeAtt", "attread" , "123");
-    String url = "jdbc:oracle:thin:@localhost:1521/SVDB";//"jdbc:jtds:sqlserver://localhost:1433;databasename=scdb ";
+    String url = "jdbc:oracle:thin:@localhost:1521/FREEPDB1";//"jdbc:jtds:sqlserver://localhost:1433;databasename=scdb ";
     String driver = "oracle.jdbc.driver.OracleDriver";//"net.sourceforge.jtds.jdbc.Driver";
-    Connection con =  ConnectionFactory.createConnectionByUrl(url,driver,"icdb","123");
+    Connection con =  ConnectionFactory.createConnectionByUrl(url,driver,"pnu","123");
     //Connection connection =  ConnectionFactory.createODBCConnection("carrent","sa" , "");
     //Connection connection =  ConnectionFactory.createConnectionAsSysDBA("localhost","orcl","sys" , "redsea11");
     //displayConnDetails(con1);
