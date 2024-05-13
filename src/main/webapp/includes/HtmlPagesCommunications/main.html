@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Sender Page</title>
+</head>
+<body>
+  <label for="selected-unit-id">Selected Unit ID:</label>
+  <input type="text" id="selected-unit-id" value="" disabled>
+  <br>
+  <a href="#" id="open-selectionPage">Open Selection Page</a>
+
+  <script>
+    const selectedUnitInput = document.getElementById("selected-unit-id");
+    const openSelectionLink = document.getElementById("open-selectionPage");
+
+    openSelectionLink.addEventListener("click", () => {
+      // Assuming selectionPage.html is in the same directory
+      const selectionPageUrl = "selectionPage.html?parm1=value1"; // Replace with actual URL
+
+      // Open the receiver page in a new window reference (not a full window)
+      const selectionWindow = window.open(selectionPageUrl, "selectionWindow", "width=400,height=300");
+
+      // Function to handle messages received from the selection window
+      const handleReceiveMessage = (event) => {
+        if (event.origin !== window.location.origin) {
+          return; // Ignore messages from different origins (security)
+        }
+        if (event.data && typeof event.data === "string") {
+          selectedUnitInput.value = event.data; // Update selected unit ID
+		  selectionWindow.postMessage("CloseYourSelf", "*"); 
+        }
+      };
+
+      // Listen for messages from the receiver window
+      window.addEventListener("message", handleReceiveMessage);
+
+      // Function to send a message requesting unit selection to the receiver
+      const requestUnitSelection = () => {
+        if (selectionWindow) {
+          selectionWindow.postMessage("SelectUnit", "*"); // Send message to receiver
+        }
+      };
+
+      // Trigger unit selection request on opening the receiver page
+      requestUnitSelection();
+    });
+  </script>
+</body>
+</html>

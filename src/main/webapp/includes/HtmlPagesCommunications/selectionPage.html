@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Item Selection Page</title>
+</head>
+<body>
+  <select id="unit-options">
+    <option value="unit1">Unit 1</option>
+    <option value="unit2">Unit 2</option>
+    <option value="unit3">Unit 3</option>
+	<option value="unit4">Unit 4</option>
+  </select>
+  <br>
+  <button id="send-selection">Send Back Selection</button>
+
+  <script>
+    const itemSelect = document.getElementById("unit-options");
+    const sendSelectionButton = document.getElementById("send-selection");
+    callerWindow = null; 
+    sendSelectionButton.addEventListener("click", () => {
+      const selectedUnit = itemSelect.value;
+      if (selectedUnit) {
+    	if(callerWindow == null)
+    	{
+    		alert ('Caller Window is Not Recognized, Please try to open this window from a caller window '); 
+    		return ; 
+    	}
+        callerWindow.postMessage(selectedUnit, "*"); // Send selected unit to sender
+      }
+    });
+
+    // Optional: Listen for messages from the sender requesting unit selection
+    window.addEventListener("message", (event) => {
+      callerWindow = event.source;
+      if (event.origin !== window.location.origin) {
+        return; // Ignore messages from different origins (security)
+      }
+      if (event.data === "SelectUnit") {
+        // Focus the select element to indicate selection request
+        itemSelect.focus();
+      }
+      else if (event.data ==="CloseYourSelf")
+      {
+    	window.close(); 	 
+      }
+      else {alert('Handler for Event Data (' + event.data  + ') is not configured ' ); }
+    });
+  </script>
+</body>
+</html>
