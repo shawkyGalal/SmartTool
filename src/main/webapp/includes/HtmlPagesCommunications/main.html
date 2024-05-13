@@ -2,22 +2,25 @@
 <head>
 <title>Sender Page</title>
 </head>
-<body>
+<body onload="buildSelectionLink('selected-unit-id' , 'open-selectionPage' , 'selectionPage.html?parm1=value1' , '400' , '100' );">
   <label for="selected-unit-id">Selected Unit ID:</label>
   <input type="text" id="selected-unit-id" value="" disabled>
-  <br>
-  <a href="#" id="open-selectionPage">Open Selection Page</a>
+  <a href="#" id="open-selectionPage"><img alt="" title="Click To Select From Choices" src="select.png" width="30" height="30"></a>
 
   <script>
-    const selectedUnitInput = document.getElementById("selected-unit-id");
-    const openSelectionLink = document.getElementById("open-selectionPage");
+  
+    function buildSelectionLink(populateItemId , linkItemId , selectionPageUrl , windowWidth , windowHeight )
+    {
+    const selectedUnitInput = document.getElementById(populateItemId );
+    const openSelectionLink = document.getElementById(linkItemId);
+	message = {"operation" : "XXXXX" , "abc" :"123" }  ; 
 
     openSelectionLink.addEventListener("click", () => {
-      // Assuming selectionPage.html is in the same directory
-      const selectionPageUrl = "selectionPage.html?parm1=value1"; // Replace with actual URL
-
-      // Open the receiver page in a new window reference (not a full window)
-      const selectionWindow = window.open(selectionPageUrl, "selectionWindow", "width=400,height=300");
+      
+      const windowDimensions = getWindowDimensions();
+  	  const windowPosition = calculateWindowPosition(windowDimensions, windowWidth, windowHeight);
+      const windowFeatures = `width=${windowWidth},height=${windowHeight},top=${windowPosition.top},left=${windowPosition.left}`;
+      const selectionWindow = window.open(selectionPageUrl, "selectionWindow", windowFeatures);
 
       // Function to handle messages received from the selection window
       const handleReceiveMessage = (event) => {
@@ -26,7 +29,8 @@
         }
         if (event.data && typeof event.data === "string") {
           selectedUnitInput.value = event.data; // Update selected unit ID
-		  selectionWindow.postMessage("CloseYourSelf", "*"); 
+          message.operation= "CloseYourSelf" ; 
+		  selectionWindow.postMessage(message, "*"); 
         }
       };
 
@@ -36,13 +40,36 @@
       // Function to send a message requesting unit selection to the receiver
       const requestUnitSelection = () => {
         if (selectionWindow) {
-          selectionWindow.postMessage("SelectUnit", "*"); // Send message to receiver
+           message.operation="sendBackUserSelection" ;
+           selectionWindow.postMessage(message, "*"); // Send message to receiver
         }
+        else {alert('Selection Window Page is not configured'); }
       };
 
-      // Trigger unit selection request on opening the receiver page
-      requestUnitSelection();
+     	selectionWindow.addEventListener("load", () => {
+     	// Trigger unit selection request on opening the receiver page
+     	requestUnitSelection(); // Now send the message after the window loads
+    	});
+      
     });
+    }
+    
+    const getWindowDimensions = () => {
+    	  return {
+    	    width: screen.width,
+    	    height: screen.height
+    	  };
+    	};
+
+    	const calculateWindowPosition = (windowDimensions, selectionWindowWidth, selectionWindowHeight) => {
+    	  const top = Math.floor((windowDimensions.height - selectionWindowHeight) / 2);
+    	  const left = Math.floor((windowDimensions.width - selectionWindowWidth) / 2);
+    	  return {
+    	    top,
+    	    left
+    	  };
+    	};
+    	
   </script>
 </body>
 </html>

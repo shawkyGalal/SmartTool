@@ -17,14 +17,14 @@
     const sendSelectionButton = document.getElementById("send-selection");
     callerWindow = null; 
     sendSelectionButton.addEventListener("click", () => {
-      const selectedUnit = itemSelect.value;
-      if (selectedUnit) {
+      const selectedValue = itemSelect.value;
+      if (selectedValue) {
     	if(callerWindow == null)
     	{
-    		alert ('Caller Window is Not Recognized, Please try to open this window from a caller window '); 
+    		alert ('Error: Caller Window is Not Recognized, Please try to open this window from a caller window '); 
     		return ; 
     	}
-        callerWindow.postMessage(selectedUnit, "*"); // Send selected unit to sender
+        callerWindow.postMessage(selectedValue, "*"); // Send selected unit to sender
       }
     });
 
@@ -34,11 +34,11 @@
       if (event.origin !== window.location.origin) {
         return; // Ignore messages from different origins (security)
       }
-      if (event.data === "SelectUnit") {
+      if (event.data.operation === "sendBackUserSelection") {
         // Focus the select element to indicate selection request
         itemSelect.focus();
       }
-      else if (event.data ==="CloseYourSelf")
+      else if (event.data.operation ==="CloseYourSelf")
       {
     	window.close(); 	 
       }
