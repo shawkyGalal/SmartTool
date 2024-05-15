@@ -53,7 +53,16 @@
 						%>
 			            
 					</li>
-					
+					<% queryId = "34441" ; try { mainQueriesTree.getPathLinks(queryId) ; %>
+					<li>
+			        	<a href = "javascript:;" ><span class="icon"><i class="fa fa-sitemap"></i></span><span class="text" data-localize="الهيكل التنظيمي للمؤسسة">الهيكل التنظيمي للمؤسسة</span></a>
+			        	<% 
+						navBarList = mainQueriesTree.getNavBarSonsList(queryId , false) ; 
+						out.println (navBarList) ; 
+						%>
+			        </li>
+			        <% } catch (Exception e) {}%>
+			        
 					<li><a href= "javascript:;" > 
 							<span class="icon"><i class="ion-android-done-all"></i></span>
 							<span class="text" data-localize="مؤشرات الأداء">مؤشرات الأداء</span>
@@ -100,15 +109,7 @@
 						out.println (navBarList) ; 
 						%>
 			        </li>
-					<% queryId = "34441" ; try { mainQueriesTree.getPathLinks(queryId) ; %>
-					<li>
-			        	<a href = "javascript:;" ><span class="icon"><i class="fa fa-sitemap"></i></span><span class="text" data-localize="الهيكل التنظيمي للمؤسسة">الهيكل التنظيمي للمؤسسة</span></a>
-			        	<% 
-						navBarList = mainQueriesTree.getNavBarSonsList(queryId , false) ; 
-						out.println (navBarList) ; 
-						%>
-			        </li>
-			        <% } catch (Exception e) {}%>
+					
 			        
 			        <% queryId = "66553" ; try { mainQueriesTree.getPathLinks(queryId) ; %>
 			        <li>

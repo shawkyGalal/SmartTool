@@ -28,7 +28,7 @@
       }
     });
 
-    // Optional: Listen for messages from the sender requesting unit selection
+    // Listen for messages from the sender requesting User selection
     window.addEventListener("message", (event) => {
       callerWindow = event.source;
       if (event.origin !== window.location.origin) {
@@ -36,6 +36,9 @@
       }
       if (event.data.operation === "sendBackUserSelection") {
         // Focus the select element to indicate selection request
+        currentSelectedId = event.data.currentSelectedId ; 
+        itemSelect.value = currentSelectedId ; 
+        alert("Current Selected Item" + currentSelectedId ) ; 
         itemSelect.focus();
       }
       else if (event.data.operation ==="CloseYourSelf")

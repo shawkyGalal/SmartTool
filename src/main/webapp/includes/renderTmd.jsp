@@ -211,11 +211,34 @@ try{
 	    		            	 	  		 "  
 	    		            	 	<%=disbledHtmlAttrib %>
     		            	 	><%=columnValue%></textarea> 
-    		            	 <a target = "tree Selection"  id="<%=cloumnName%>_<%=divIdWithoutQuot%>_TreeLink"
+    		            	 <a  id="<%=cloumnName%>_<%=divIdWithoutQuot%>_TreeLink"
         	      					title = "Click To Selected Items from Tree" 
         	      					href = "javascript:window.open('selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_selectedIDs=<%=columnValue%>&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=tmd.getOwnerValue() %>/<%=tmd.getTableNameValue()%>/<%=tmd.getColumnNameValue()%>&_fillObject=<%=cloumnName%>_<%=divIdWithoutQuot%>' , 'Select From Tree' , 'width=400, height=600' ) " ><img width="25" height = "25"  src="images/treeIcon.jpg"> </a>
     		            	 	<div id="<%=cloumnName%>_<%=divIdWithoutQuot%>_label"><%=itemsDesc %></div>
     		            	 	<script type="text/javascript">
+    		            	 		window.addEventListener("message", function(event) {
+    						        // Check the origin of the message -- Ignore messages from other origins
+    						        if (event.origin !== window.location.origin) { return; }
+    						        // Check the source of the message -- Ignore messages from the same window
+    						        if (event.source === window) { return; }
+    						        // Handle the message
+    						        alert("Received message from the tree window:", event.data);
+    						        processTreeMessage<%=cloumnName%>(event.data); 
+    						        //if needed Send a response back to the new window
+    						        //event.source.postMessage("Please kill Your self", event.origin);
+    						        });
+
+    						        function processTreeMessage<%=cloumnName%>(message)
+    		            	 		{
+    						        	element = document.getElementById("<%=cloumnName%>_<%=divIdWithoutQuot%>") ; 
+    						        	elementTitleDiv = document.getElementById('<%=cloumnName%>_<%=divIdWithoutQuot%>_label')
+    						        	element.value = message.selectedIds;
+    						        	elementTitleDiv.innerHTML = message.selectedDescs;
+    						        	element.onchange() ;
+    			            	 		//var newhref = "javascript:window.open('selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=<%=cloumnName%>_<%=divIdWithoutQuot%>' , 'Select From Tree' , 'width=400, height=600' )" ;
+    		    		                //<%=cloumnName%>_<%=divIdWithoutQuot%>_TreeLink.href =  newhref ;
+    		            	 		}
+
     		            	 			function updaetHref_<%=cloumnName%>_<%=divIdWithoutQuot%>(m_object)
     		            	 			{
         		            	 			var newhref = "javascript:window.open('selectionTree.jsp?_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession %>&_fillObject=<%=cloumnName%>_<%=divIdWithoutQuot%>' , 'Select From Tree' , 'width=400, height=600' )" ;  

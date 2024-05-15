@@ -17,7 +17,7 @@
 <log4j:configuration>
 	<appender name="logfile" class="org.apache.log4j.FileAppender">
 		<param name="File"
-			value="G:\\My Drive\\SmartValue\\Sources\\app\\SmartTool\\WebContent\\logs\\log4j.log" />
+			value="G:\\My Drive\\SmartValue\\Sources\\app\\SmartTool\\src\\webapp\\logs\\log4j.log" />
 		<param name="Append" value="true" />
 		<param name="Encoding" value="UTF-8" />
 		<layout class="org.apache.log4j.PatternLayout">

@@ -13,10 +13,10 @@ SecUsrDta loggedUser = Misc.getLoggedUserFromSession(session ) ;
 </head>
 <body>
  <div class="footerfix">
-         <a href = "http://www.smart-value.com" > <img src="assets/img/smart-value.bmp" /> </a>
+         <a href = "http://www.smart-value.com" > <img src="assets/img/smart-value.bmp" width="20" /> </a>
                  Copyright © 1998,2017
    
-         <img src="images/HuloolLogo.png" width="10" "<%=loggedUser.getUserCompany().getAttributeValue("LOGO_LINK") %>"  />
+         <img src="images/HuloolLogo.png" width="20" "<%=loggedUser.getUserCompany().getAttributeValue("LOGO_LINK") %>"  />
  </div>                    
 </body>
 </html>

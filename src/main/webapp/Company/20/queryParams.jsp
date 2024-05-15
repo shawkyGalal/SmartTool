@@ -24,6 +24,7 @@
 <script src="<%=appURL%>/jQueryAssets/jquery-1.10.2.js"></script>
 <script src="<%=appURL%>/jQueryAssets/jquery-ui.js"></script>
 
+<script type="text/javascript" src="<%=appURL%>/includes/HtmlPagesCommunications/communications.js"></script>
 
 <%@ include file="../../includes/jquery_commons.js"%>
 
@@ -100,9 +101,12 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
       java.sql.Statement stmt = repCon.createStatement();
       String loggedUser = Misc.getConnectionUserName(con).toUpperCase() ;
       Support.SqlReader  sqr1 =null ;
-      sqr1 =  new Support.SqlReader(repCon, "lu_queries" , "QUERY_BODY",  "65379" , session , request, true );
+      sqr1 =  new Support.SqlReader(repCon, "lu_queries" , "QUERY_BODY",  "72541" , session , request, true );
       String queryStr = sqr1.getQueryStatments()[0] ;
+	  queryStr= Misc.repalceAll(queryStr, "$$queryId", queryId) ;
+      queryStr= Misc.repalceAll(queryStr, "$$loggedUser", loggedUser) ;
       /*
+	  String queryStr ; 
     		  queryStr = " Select * from "
           	  + " \n("
           	  + " \n -- User Specific  "
@@ -139,8 +143,7 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
               + " \n  ) "
     	      + " \n  order by sn " ;
       */
-    	      queryStr= Misc.repalceAll(queryStr, "$$queryId", queryId) ;
-    	      queryStr= Misc.repalceAll(queryStr, "$$loggedUser", loggedUser) ;
+    	      
       
       java.sql.ResultSet rs ;
       try{
@@ -292,7 +295,7 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 		           	}
 		      	} 
 				
-	         	else if (isMultiSelectTree || isSingleSelectTree)
+	        	else if (isMultiSelectTree || isSingleSelectTree)
 	         	{
 	         		String operationMode = null ; 
 		         	if (isSingleSelectTree) operationMode = Support.LookupTreeV10.SINGLE_SELECT_OPERATION_MODE ; 
@@ -313,15 +316,17 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 							           document.getElementById('updateOnlyButtonId').click(); ;
 							         "
 							size="10" title="">
-						
+						<!--
 						 <a target = "tree Selection"  id="var<%=i%>_TreeLink"
 		        	      		title = "Click To Selected Items from Tree" 
 		        	      					href = "javascript:window.open('<%=appURL%>/selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_boundVarName=<%=sqlBoundVar.elementAt(i).substring(2) %>&_selectedIDs=<%=varValue %>&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select_From_Tree' , 'width=400, height=600' ) " ><img width="25" height = "25"  src="<%=appURL%>/images/treeIcon.jpg"> </a> 
-						
+						     -->
+						<a href="#" id="var<%=i%>_TreeLink"><img width="25" height = "25"  src="<%=appURL%>/images/treeIcon.jpg"></a>
 						<div id="var<%=i%>_label"><%=itemsDesc %></div>
 					 
 		        	  	</div>
 	            	 	<script type="text/javascript">
+	            	 		buildSelectionLink('var<%=i%>' , 'var<%=i%>_TreeLink' , '<%=appURL%>/selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_boundVarName=<%=sqlBoundVar.elementAt(i).substring(2) %>&_selectedIDs=<%=varValue %>&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , '400' , '600' );
 					        // as an opener window listen only to message from the new tree window
 					        window.addEventListener("message", console.log) ;  
 					        window.addEventListener("message", function(event) {
@@ -341,8 +346,8 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 					        	var<%=i%>.value = message.selectedIds;
 					        	var<%=i%>.innerHTML = message.selectedDescs;
 					        	var<%=i%>.onchange() ;
-		            	 		var newhref = "javascript:window.open('selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select From Tree' , 'width=400, height=600' )" ;
-	    		                var<%=i%>_TreeLink.href =  newhref ;
+		            	 		//var newhref = "javascript:window.open('selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select From Tree' , 'width=400, height=600' )" ;
+	    		                //var<%=i%>_TreeLink.href =  newhref ;
 	            	 		}
 
 	            	 	</script>
