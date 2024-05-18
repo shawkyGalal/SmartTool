@@ -110,6 +110,7 @@ String rowIdValue =  request.getParameter("ROWID") ;
 String commentlListQueryId = "36166" ; 
 String auditQueryId = "69240" ;
 String udvQueryId = "70882" ; 
+String linksQueryId = "73295" ; 
 
 %>
 <h3 align="center">Data Editor تعديل بيانات</h3>
@@ -275,8 +276,10 @@ String udvQueryId = "70882" ;
     <li><a href="queryResultWithEditableRS.jsp?id=<%=auditQueryId %>&schema=<%=tableowner%>&schma_table=<%=tableNameonly%>&objectRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">المراجعة</a></li>
     <li><a href="queryResultWithEditableRS.jsp?id=<%=commentlListQueryId %>&table_owner_com=<%=tableowner%>&table_name_com=<%=tableNameonly%>&_SelectedOraRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">التعليقات</a></li>
     <li><a href="queryResultWithEditableRS.jsp?id=34650&table_owner=<%=tableowner%>&tableName=LU_QUERIES&table_name=<%=tableNameonly%>&_SelectedOraRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">إعتماد البيانات</a></li>
+    <li><a href="queryResultWithEditableRS.jsp?id=<%=linksQueryId %>&table_owner_com=<%=tableowner%>&table_name_com=<%=tableNameonly%>&_SelectedOraRowId=<%=rowidUrlEncoded%>&execludeJqScripts=Y">الروابط</a></li>
     <li><a href="/SmartTool/objectAttachmentsFrame.jsp?dirPath=DB_Attachs/<%=tableowner%>/<%=tableNameonly%>/<%=rowidUrlEncoded%>&_SelectedOraRowId=<%=rowidUrlEncoded%>" >الملحقات</a></li>
     <li><a href="queryResultWithEditableRS.jsp?id=<%=udvQueryId %>&schema=<%=tableowner%>&schma_table=<%=tableNameonly%>&objectRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">User Defined Variables</a></li>
+    
     
   </ul>
   

@@ -122,9 +122,9 @@
 			
 			        <% if (loggedUser.isSmartToolAdmin()) { %>
 					<li>
-						<a href="javascript:;" target = "System Maintenance">
+						<a href="javascript:;" > 
 							<span class="icon"><i class="fa fa-cogs"></i></span>
-							<span class="text" data-localize="إدارة النظام">إدارة  و تصميم النظام</span>
+							<span class="text" data-localize="إدارة النظام">إدارة و تصميم النظام</span>
 						</a>
 						<ul class="acc-menu">
 			               	<li>

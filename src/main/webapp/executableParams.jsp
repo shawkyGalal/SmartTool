@@ -1,7 +1,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@ page errorPage="errorPage.jsp"%>
 <%@ page import="java.util.*"%>
-<%@page import="Support.LookupTreeV10"%>
+<%@page import="Support.SelectionTree"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -14,6 +14,7 @@
 <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
 <script src="jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
 <% String appURL = Support.Misc.getAppURL(request) ;  %>
+<script type="text/javascript" src="<%=appURL%>/includes/HtmlPagesCommunications/communications.js"></script>
 </head>
 <body  bgcolor="#FFEEFF">
 
@@ -298,47 +299,68 @@ Support.ConnParms selectedConnParms = (Support.ConnParms)session.getAttribute("s
     			<textarea rows="4" cols="10" name="var<%=i%>" ><%=varValue %></textarea>
     			<% 
          	}
-     		else if (isMultiSelectTree || isSingleSelectTree)
+         	else if (isMultiSelectTree || isSingleSelectTree)
          	{
-     			String operationMode = null ; 
-	         	if (isSingleSelectTree) operationMode = Support.LookupTreeV10.SINGLE_SELECT_OPERATION_MODE ; 
+         		String origin = Support.Misc.getRequestOrigin(request) ;
+         		String operationMode = null ;
+	         	if (isSingleSelectTree) operationMode = Support.LookupTreeV10.SINGLE_SELECT_OPERATION_MODE ;
 	         	else if (isMultiSelectTree) operationMode = Support.LookupTreeV10.MULTI_SELECT_OPERATION_MODE ;
-				String treeIdInSession = "sqlBoundVar_"+sqlBoundVar.elementAt(i).substring(2) ; 
-				LookupTreeV10 tmdTree = (LookupTreeV10)session.getAttribute(treeIdInSession); 
-	         	String itemsDesc = null; 
-	         	try {itemsDesc = (isMultiSelectTree)? tmdTree.getDescForListOfIds(varValue.replaceAll("\n" , "")) : tmdTree.getDesc( tmdTree.getindex2(varValue)) ; } 
-	         	catch (Exception e) {e.printStackTrace(); } ; 
-	         	
-	         	int treeQuerySource = 2 ; // inform Tree to get query from tmd 
-	        	 %>
-	        	 <td width="150">
+				String treeIdInSession = "sqlBoundVar_"+sqlBoundVar.elementAt(i).substring(2) ;
+				SelectionTree tmdTree = (SelectionTree)session.getAttribute(treeIdInSession);
+	         	String itemsDesc = null;
+	         	try {itemsDesc = (isMultiSelectTree)? tmdTree.getDescForListOfIds(varValue.replaceAll("\n" , "")) : tmdTree.getDesc( tmdTree.getindex2(varValue)) ; }
+	         	catch (Exception e) {// e.printStackTrace(); 
+	         						} ; 
+	         	int treeQuerySource = 2 ; // inform Tree to get query from tmd
+	        	%>
+	        	<td width="150">
 					<div align="left"><input readonly type="text"  onBlur() ="alert('abc');"
 						name="var<%=i%>" id="var<%=i%>"  value='<%=varValue %>'
-						onchange=" 
-						           updaetHref_var<%=i%>( this ) ;  
-						           document.getElementById('updateOnlyButtonId').click(); ; 	 	  	
-						         "  
+						onchange="
+						           //updaetHref_var<%=i%>( this ) ;
+						           document.getElementById('updateOnlyButtonId').click(); ;
+						         "
 						size="10" title="">
-					
+					<!-- 
 					 <a target = "tree Selection"  id="var<%=i%>_TreeLink"
-	        	      		title = "Click To Selected Items from Tree" 
-	        	      					href = "javascript:window.open('<%=appURL%>/selectionTree.jsp?_operationMode=<%=operationMode%>&_boundVarName=<%=sqlBoundVar.elementAt(i).substring(2) %>&_selectedIDs=<%=varValue %>&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select_From_Tree' , 'width=400, height=600' ) " ><img width="25" height = "25"  src="images/treeIcon.jpg"> </a> 
-					
+	        	      		title = "Click To Selected Items from Tree"
+	        	      		href = "#" onclick = "window.open('<%=appURL%>/selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_boundVarName=<%=sqlBoundVar.elementAt(i).substring(2) %>&_selectedIDs=<%=varValue %>&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select_From_Tree' , 'width=400, height=600' ) " ><img width="25" height = "25"  src="images/treeIcon.jpg"> </a>
+	        	     -->
+					<a href="#" id="var<%=i%>_TreeLink"><img width="25" height = "25"  src="images/treeIcon.jpg"></a>
 					<div id="var<%=i%>_label"><%=itemsDesc %></div>
-				 
+
 	        	  	</div>
             	 	<script type="text/javascript">
-            	 			function updaetHref_var<%=i%>(m_object)
-            	 			{
-	            	 			var newhref = "javascript:window.open('selectionTree.jsp?_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select From Tree' , 'width=400, height=600' )" ;  
-    		            	    var<%=i%>_TreeLink.href =  newhref ; 
-            	 			}
-            	 			
-            	 	</script>
-            	 	
-	        	 
-	        	<%
-         	}
+            	 		buildSelectionLink('var<%=i%>' , 'var<%=i%>_TreeLink' , '<%=appURL%>/selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_boundVarName=<%=sqlBoundVar.elementAt(i).substring(2) %>&_selectedIDs=<%=varValue %>&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , '400' , '600' );
+
+            	 		// as an opener window listen only to message from the new tree window
+				        window.addEventListener("message", console.log) ;  
+				        window.addEventListener("message", function(event) {
+				        // Check the origin of the message -- Ignore messages from other origins
+				        if (event.origin !== "<%=origin%>") { return; }
+				        // Check the source of the message -- Ignore messages from the same window
+				        if (event.source === window) { return; }
+				        // Handle the message
+				        alert("Received message from the tree window:", event.data);
+				        processTreeMessage<%=i%>(event.data); 
+				        //if needed Send a response back to the new window
+				        //event.source.postMessage("Please kill Your self", event.origin);
+				        });
+
+				        function processTreeMessage<%=i%>(message)
+            	 		{
+				        	var<%=i%>.value = message.selectedIds;
+				        	var<%=i%>.innerHTML = message.selectedDescs;
+				        	var<%=i%>.onchange() ;
+	            	 		//var newhref = "javascript:window.open('selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=var<%=i%>' , 'Select From Tree' , 'width=400, height=600' )" ;
+    		                //var<%=i%>_TreeLink.href =  newhref ;
+            	 		}
+        	 			
+        	 	</script>
+        	 	
+        	 
+        	<%
+     	}
 
 			else 
          	{
