@@ -602,7 +602,7 @@ public int getindex2(String id) throws Exception
    int out = this.DataAsVectors[0].indexOf(id);
    if (out ==-1 )
    {
-     throw new Exception (" Node With Id = " + id + " Not Found inthe Tree Data");
+     throw new Exception (" Node With Id = '" + id + "' Not Found inthe Tree Data");
    }
    return out;
 }

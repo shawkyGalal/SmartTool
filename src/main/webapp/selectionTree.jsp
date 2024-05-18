@@ -107,7 +107,7 @@
 					String selectedID = st.nextToken().trim() ; 
 					try { selectionTree.setSelectedID(selectedID); } 
 					catch(Exception e)
-					{out.println("<br>Hint : Node With ID = " + selectedID + " Not Found in the Tree") ; }  
+					{out.println("<br>Hint : Node With ID = '" + selectedID + "' Not Found in the Tree") ; }  
 				}
 				
 			}
@@ -144,11 +144,11 @@
 			 		div.innerHTML = '' ; 
 			 		if ( m_value == 'Y')						
 			   		{
-			 			loadDetails('processTreeSelection.jsp?treeIdInSession=<%=selectionTree.getTreeIdInSession()%>&operation=Add&selectedNodeID='+m_name , 'serverSideProcessResult') ;  
+			 			loadDetails('processTreeSelection.jsp?treeIdInSession=<%=selectionTree.getTreeIdInSession()%>&operation=Add&selectedNodeID='+ encodeURIComponent(m_name) , 'serverSideProcessResult') ;  
 				   	}	
 			 		else 
 			 		{
-				 		loadDetails('processTreeSelection.jsp?treeIdInSession=<%=selectionTree.getTreeIdInSession()%>&operation=Remove&selectedNodeID='+m_name , 'serverSideProcessResult') ;  
+				 		loadDetails('processTreeSelection.jsp?treeIdInSession=<%=selectionTree.getTreeIdInSession()%>&operation=Remove&selectedNodeID='+ encodeURIComponent(m_name) , 'serverSideProcessResult') ;  
 			 			
 			 		}	
 					 

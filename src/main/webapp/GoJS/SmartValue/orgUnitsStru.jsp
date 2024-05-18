@@ -147,7 +147,7 @@
 		              					,function(e, obj) {	var contextmenu = obj.part;  // the Button is in the context menu Adornment
 		                                					var part = contextmenu.adornedPart;
                         	 								var orgUnitId = part.data.key ; 
-            	  											window.open("orgUnitsStru.jsp?<%=Support.Misc.removeParamFromQueryStr("org_unit_tree" , request)+"&org_unit_tree="%>" + orgUnitId , "Target1") ; 
+            	  											window.open("orgUnitsStru.jsp?<%=Support.Misc.removeParamFromQueryStr("org_unit_tree" , request)+"&org_unit_tree="%>" + encodeURIComponent(orgUnitId) , "Target1") ; 
             	  										  }
 		              				  )
                          , makeButton("تعديل بيانات الوحدة" 
@@ -172,7 +172,7 @@
                            else 
                            { // alert(nodeInfo(part.data));
 	                           var orgUnitId = part.data.key ; 
-	                           var urlToOrgUnitBSC = "orgUnitBSC.jsp?_operationMode=SINGLE_SELECT&_querySouce=3&treeIdInSession=66455_0&refreshAll.x=xx&org_unit_tree=" + orgUnitId  ;
+	                           var urlToOrgUnitBSC = "orgUnitBSC.jsp?_operationMode=SINGLE_SELECT&_querySouce=3&treeIdInSession=66455_0&refreshAll.x=xx&org_unit_tree=" + encodeURIComponent(orgUnitId)  ;
 	                           <% if (tree_max_level != null ) { %>
 	                            urlToOrgUnitBSC = urlToOrgUnitBSC + "&tree_max_level=<%=tree_max_level%>" ;
 	                           <%} %>
