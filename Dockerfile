@@ -18,7 +18,7 @@ WORKDIR /temp/SmartTool
 RUN git pull
 RUN mvn package -DskipTests 
 RUN cp -r /temp/SmartTool/target/*.war /usr/local/tomcat/webapps
-
+WORKDIR /usr/local/tomcat
 # ...
 
 # The rest of your Dockerfile
