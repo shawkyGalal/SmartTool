@@ -6,8 +6,8 @@
 	<properties>
 		<javaxjson.version>1.1.4</javaxjson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>21</maven.compiler.source>
-     	<maven.compiler.target>21</maven.compiler.target>
+		<maven.compiler.source>19</maven.compiler.source>
+     	<maven.compiler.target>19</maven.compiler.target>
      	<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
         <maven.compiler.failOnError>true</maven.compiler.failOnError>
 	</properties>
@@ -16,7 +16,7 @@
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
-		<sourceDirectory>src</sourceDirectory> 
+		<sourceDirectory>src/main/java</sourceDirectory> 
      	
 		<plugins>
 			
@@ -284,6 +284,7 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+					<verbose>true</verbose>
                     <showWarnings>${maven.compiler.showWarnings}</showWarnings>
                     <failOnError>${maven.compiler.failOnError}</failOnError>
                 </configuration>
@@ -552,6 +553,7 @@
 			    <version>1.9</version> <!-- Use the appropriate version -->
 			</dependency>
 			
+				
 
 	</dependencies>
 </project>
