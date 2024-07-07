@@ -286,12 +286,8 @@ public abstract class  PersistantObject implements Serializable
 		return this.getAttribute(pm_key).getAttributeSQLValue(pm_forModifiedValues);
 	}
 	
-	/**
-	 * @deprecated
-	 * @param pm_tableName
-	 * @param forModifiedValues
-	 * @return an SQL Insert Statement for this Object 
-	 */
+	
+	@Deprecated
 	public String constructInsertStatement(String pm_tableName , boolean forModifiedValues) {
 		String[] keys =  this.getColumns();
 		return this.constructInsertStatement(pm_tableName, forModifiedValues, keys) ; 
@@ -482,6 +478,7 @@ public abstract class  PersistantObject implements Serializable
 	 * @return an SQL Update Statement for this Object
 	 * @throws BaseException
 	 */
+	@Deprecated
 	public String constructUpdateStatment() throws Exception 
 	{
 		this.checkObjectKey();

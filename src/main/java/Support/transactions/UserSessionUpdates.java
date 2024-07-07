@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.hibernate.mapping.Array;
+//import org.hibernate.mapping.Array;
 
 public class UserSessionUpdates {
 

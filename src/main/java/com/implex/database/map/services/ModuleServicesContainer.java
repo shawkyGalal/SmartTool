@@ -192,7 +192,7 @@ public abstract class ModuleServicesContainer implements HttpSessionBindingListe
 
 	private void newOneAlreadyUsed(Class pm_class)
 	{
-		this.newItemAddedByTree.put(pm_class.getName(), new Boolean(false));
+		this.newItemAddedByTree.put(pm_class.getName(), Boolean.valueOf(false));
 	}
 
 	/**
@@ -203,7 +203,7 @@ public abstract class ModuleServicesContainer implements HttpSessionBindingListe
 	private boolean isNewOneAddedByTreeRequest(Class pm_class)
 	{
 		if ( !this.newItemAddedByTree.containsKey(pm_class.getName()) )
-			this.newItemAddedByTree.put(pm_class.getName() , new Boolean(false));
+			this.newItemAddedByTree.put(pm_class.getName() , Boolean.valueOf(false));
 		return this.newItemAddedByTree.get(pm_class.getName());
 	}
 
@@ -267,7 +267,7 @@ public abstract class ModuleServicesContainer implements HttpSessionBindingListe
 	public void addNewModuleServiceByTreeRequest(ModuleServices ms)
 	{
 		this.getModuleServiceList(ms.getClass().getName()).add(ms);	
-		newItemAddedByTree.put(ms.getClass().getName(), new Boolean(true));
+		newItemAddedByTree.put(ms.getClass().getName(), Boolean.valueOf(true) );
 	}
 
 	/**

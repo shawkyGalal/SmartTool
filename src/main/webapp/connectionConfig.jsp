@@ -19,7 +19,7 @@
     throw new Support.MyException("Invalid Admin login Trail " , null, 1,request.getRealPath(""));
    }
  //--------------Reading XML Configuration File -----------
-  Support.XMLConfigFileReader supportConfig =  Misc.getXMLConfigFileReader(false) ; 
+  Support.XMLConfigFileReader supportConfig =  Support.Misc.getXMLConfigFileReader(false) ; 
   java.util.Vector conParms  = supportConfig.connParms ;
   //--------------------------Updating The XML Config File If requiresd-------------
   if (request.getParameter("Apply") != null)

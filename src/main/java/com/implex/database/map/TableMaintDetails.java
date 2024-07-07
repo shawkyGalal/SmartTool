@@ -207,6 +207,7 @@ public abstract class  TableMaintDetails extends _TableMaintDetails {
 	 * @deprecated This method is developed by m.sakr and it is no longer needed
 	 * @return
 	 */
+	@Deprecated
 	public ArrayList<SelectItem> getFilteredQuerySelectItems() 
 	{
 		if(this.getSelectListQueryValue() != null)

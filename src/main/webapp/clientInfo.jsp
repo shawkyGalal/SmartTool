@@ -1,5 +1,5 @@
 <%@ page errorPage="errorPage.jsp" %>
-<%@page import="org.apache.cayenne.access.DataContext"%>
+
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
 

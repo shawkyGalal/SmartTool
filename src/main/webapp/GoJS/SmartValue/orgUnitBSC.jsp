@@ -182,7 +182,10 @@
 		      
 		     , makeButton("إضافة محور أستراتيجى" 
 			              		,function(e, obj) {
-			              				window.open("../../TableInsertForm.jsp?owner=GIHAZ&tableName=BSC_PROSPECTIVE", "Add New Stratigic Objective") ;            	  								
+				              			var nodeKey = obj.part.adornedPart.data.key ; 
+			                            var arr = nodeKey.split(":"); 
+			                            var orgUnitId = arr[0] ;
+			              				window.open("../../TableInsertForm.jsp?owner=GIHAZ&tableName=BSC_PROSPECTIVE&ORG_UNIT_ID="+orgUnitId, "Add New Stratigic Objective") ;            	  								
 				              			}
 			              		,function (obj) {return isNodeTableNameEqual(obj , "ORG_UNIT") ;} 
 			              	  )

@@ -6,15 +6,336 @@
 	<properties>
 		<javaxjson.version>1.1.4</javaxjson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>21</maven.compiler.source>
+     	<maven.compiler.target>21</maven.compiler.target>
+     	<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+        <maven.compiler.failOnError>true</maven.compiler.failOnError>
 	</properties>
 	<packaging>war</packaging>
 
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
-		<sourceDirectory>src</sourceDirectory>
-
+		<sourceDirectory>src</sourceDirectory> 
+     	
 		<plugins>
+			
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-install-plugin</artifactId>
+			    <version>2.5.2</version>
+			    <executions>
+			        <execution>
+			            <id>install-jar1</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/side-sas.jar</file>
+			                <groupId>com.smartvalue.side</groupId>
+			                <artifactId>sas</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar2</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/side-swaf.jar</file>
+			                <groupId>com.smartvalue.side</groupId>
+			                <artifactId>swaf</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar3</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/bc4jhtml.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>bc4jhtml</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar4</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/clrt.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>clrt</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar5</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/jas.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>jas</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar6</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/jboss-seam-ui-2.1.0.SP1.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>jboss-seam-ui-2.1.0.SP1</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar7</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/jtds-1.2.2.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>jtds-1.2.2</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar8</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/mailapi.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>mailapi</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar9</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/ojsp.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>ojsp</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar10</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/ojsputil.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>ojsputil</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar11</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/org.jboss.seam-jboss-seam-2.1.0.SP1.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>org.jboss.seam-jboss-seam-2.1.0.SP1</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar12</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/richfaces-impl-jsf2-3.3.3.Final.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>richfaces-impl-jsf2-3.3.3.Final</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar13</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/richfaces-api-3.3.3.Final.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>richfaces-api-3.3.3.Final</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>install-jar14</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/richfaces-ui-3.3.3.Final.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>richfaces-ui-3.3.3.Final</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        
+			        <execution>
+			            <id>install-jar15</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/sftp.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>sftp</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar17</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/xmlparserv2.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>xmlparserv2</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			            </configuration>
+			        </execution>
+			        <execution>
+			            <id>install-jar18</id>
+			            <phase>initialize</phase>
+			            <goals>
+			                <goal>install-file</goal>
+			            </goals>
+			            <configuration>
+			                <file>src/main/webapp/WEB-INF/lib/jtds-1.2.2.jar</file>
+			                <groupId>com.smartvalue</groupId>
+			                <artifactId>jtds-1.2.2</artifactId>
+			                <version>1.0</version>
+			                <packaging>jar</packaging>
+			             </configuration>
+			        </execution>
+			        
+			        
+			        
+			        
+			        
+			        
+			        
+			        <!-- Add more executions as needed for each JAR -->
+			    </executions>
+			</plugin>
+			
+			
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <showWarnings>${maven.compiler.showWarnings}</showWarnings>
+                    <failOnError>${maven.compiler.failOnError}</failOnError>
+                </configuration>
+            </plugin>
+
+            <!-- WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp/WEB-INF/lib</directory>
+                            <targetPath>WEB-INF/lib</targetPath>
+                            <includes>
+                                <include>*.jar</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+
+            <!-- Resources Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/lib</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/webapp/WEB-INF/lib</directory>
+                                    <includes>
+                                        <include>*.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+			
+			<!--
+			
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.3</version>
@@ -24,18 +345,128 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.6.1</version>
+				
 				<configuration>
+					<source>11</source>
+            		<target>11</target>
+        
 					<includes>
 						<include>src/main/webapp/WEB-INF/lib/*.jar</include>
 					</includes>
+					
 				</configuration>
+				
+				
 			</plugin>
-
+	-->
 		</plugins>
 
 	</build>
 
 	<dependencies>
+		<dependency>
+	        <groupId>com.smartvalue.side</groupId>
+	        <artifactId>sas</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue.side</groupId>
+	        <artifactId>swaf</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>bc4jhtml</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>clrt</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>jas</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>mailapi</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>ojsp</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>ojsputil</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>org.jboss.seam-jboss-seam-2.1.0.SP1</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>jboss-seam-ui-2.1.0.SP1</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    
+	    
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>richfaces-impl-jsf2-3.3.3.Final</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>richfaces-api-3.3.3.Final</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>richfaces-ui-3.3.3.Final</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>sftp</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>xmlparserv2</artifactId>
+	        <version>1.0</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.smartvalue</groupId>
+	        <artifactId>jtds-1.2.2</artifactId>
+	        <version>1.0</version>
+	    </dependency>	    
+	    
+
+	    
+	    
+	    
+	    <dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.8.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>
+	    </dependency>
+ 
 		<dependency>
 			<groupId>com.google.cloud</groupId>
 			<artifactId>google-cloud-bigquery</artifactId>
@@ -92,7 +523,7 @@
 			<groupId>javax.faces</groupId>
 			<artifactId>javax.faces-api</artifactId>
 			<version>2.3</version>
-			<scope>provided</scope>
+			<!--<scope>provided</scope>-->
 		</dependency>
 
 			 <dependency>
@@ -105,6 +536,22 @@
 		        <artifactId>log4j-core</artifactId>
 		        <version>2.22.1</version>
 		    </dependency>
+		    
+		    
+			<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+			<dependency>
+			    <groupId>javax.servlet</groupId>
+			    <artifactId>javax.servlet-api</artifactId>
+			    <version>3.1.0</version>
+			    <scope>provided</scope>
+			</dependency>
+	
+			<dependency>
+			    <groupId>com.google.auto.value</groupId>
+			    <artifactId>auto-value</artifactId>
+			    <version>1.9</version> <!-- Use the appropriate version -->
+			</dependency>
+			
 
 	</dependencies>
 </project>
