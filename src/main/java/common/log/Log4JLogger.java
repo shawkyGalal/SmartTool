@@ -19,7 +19,8 @@
 
 package common.log;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A logger which uses the log4j library from jakarta.  Each instance
@@ -131,12 +132,15 @@ public class Log4JLogger extends common.Logger
     log4jLogger.warn(message, t);
   }
 
+
+
   /**
    * Accessor to the logger implementation
    */
   protected common.Logger getLoggerImpl(Class cl)
   {
-    Logger l = Logger.getLogger(cl);
+    Logger l = LogManager.getLogger(cl);
     return new Log4JLogger(l);
   }
+  
 }
