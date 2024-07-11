@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+<!-- Application description -->
+<application-definition>
+ <id>SmartTool</id>
+</application-definition>
+
+<!--  Logging -->
+<event-logging>
+
+ <enabled>true</enabled>
+  
+ <handler>
+  <class>   com.sideinternational.sas.event.logging.handler.event.EventConsoleHandler  </class>
+  <name>SIDE_CONSOLE</name>
+  <parameters>
+   <enabled>TRUE</enabled>
+   <level>DEBUG</level>
+   <formatter-class>
+    com.sideinternational.sas.event.logging.handler.event.EventFormatter
+   </formatter-class>
+   <filter-class>
+    com.sideinternational.sas.event.logging.handler.event.EventFilter
+   </filter-class>
+  </parameters>
+ </handler>
+
+ <handler>
+  <class>
+   com.sideinternational.sas.event.logging.handler.event.EventFileHandler
+  </class>
+  <name>SIDE_FILE</name>
+  <parameters>
+   <enabled>TRUE</enabled>
+   <level>DEBUG</level>
+   <formatter-class>
+    com.sideinternational.sas.event.logging.handler.event.EventFormatter
+   </formatter-class>
+   <filter-class>
+    com.sideinternational.sas.event.logging.handler.event.EventFilter
+   </filter-class>
+   <file-parameters>
+    <prefix>Event_</prefix>
+    <suffix>.log</suffix>
+    <directory>logfiles/</directory>
+   </file-parameters>
+  </parameters>
+ </handler>
+ <handler>
+  <class>
+   com.sideinternational.sas.event.logging.handler.exception.ExceptionFileHandler
+  </class>
+  <name>SIDE_EXC_FILE</name>
+  <parameters>
+   <enabled>TRUE</enabled>
+   <level>INFO</level>
+   <formatter-class>
+   com.sideinternational.sas.event.logging.handler.exception.ExceptionFormatter
+   </formatter-class>
+   <filter-class>
+    com.sideinternational.sas.event.logging.handler.exception.ExceptionFilter
+   </filter-class>
+   <file-parameters>
+    <prefix>Exception_</prefix>
+    <suffix>.log</suffix>
+    <directory>logfiles/</directory>
+   </file-parameters>
+  </parameters>
+ </handler>
+
+ <handler>
+  <class>com.sideinternational.sas.event.audit.handler.AuditDBHandler </class>
+  <name>SIDE_DB_LOG</name>
+  <parameters>
+   <enabled>FALSE</enabled>
+   <level>INFO</level>
+   <formatter-class> com.sideinternational.sas.event.audit.handler.DummyFormatter   </formatter-class>
+   <filter-class> com.sideinternational.sas.event.audit.handler.AuditFilter </filter-class>
+  </parameters>
+ </handler>
+</event-logging>
+
+<event-definition>
+
+ <attribute-finder-class>
+  com.sideinternational.web.swaf.event.EventAttributeFinderImpl
+ </attribute-finder-class>
+ <resource>
+  <event-type-bundles>
+   	<bundle-base-name> com.sideinternational.sas.event.resource.SASEventTypeResources   </bundle-base-name>
+   	<bundle-base-name> com.sideinternational.web.swaf.event.SWAFEventTypeResources </bundle-base-name>
+   	<bundle-base-name>Support.event.resource.SMRTEventTypeResources</bundle-base-name>
+  </event-type-bundles>
+  <event-text-bundles>
+   <bundle-base-name> com.sideinternational.sas.event.resource.SASEventResources </bundle-base-name>
+   <bundle-base-name> com.sideinternational.web.swaf.event.SWAFEventResources   </bundle-base-name>
+   <bundle-base-name> Support.event.resource.SMRTEventResources </bundle-base-name>
+  </event-text-bundles>
+  <default-locale-name>en</default-locale-name>
+  <client-locale-finder-class>   com.sideinternational.web.swaf.ClientLocaleFinderImpl  </client-locale-finder-class>
+ </resource>
+
+ <validator>
+  <locales>
+   <locale-name>en</locale-name>
+   <locale-name>fr</locale-name>
+  </locales>
+  <packages>
+   <package-name>
+    com.sideinternational.web.swaf.event.security
+   </package-name>
+   <package-name>com.sideinternational.web.swaf.event.system </package-name>
+   <package-name>com.sideinternational.sas.event.resource.configuration</package-name>
+   <package-name> com.sideinternational.sas.event.resource.debug  </package-name>
+   <package-name>com.sideinternational.sas.event.resource.security </package-name>
+   <package-name>com.sideinternational.sas.event.resource.system </package-name>
+   <!-- <package-name>Support.event.resource.system</package-name>  -->
+   
+  </packages>
+ </validator>
+
+</event-definition>
+
+<!--  Options -->
+<application-options>
+ <updatable-user-display-name>YES</updatable-user-display-name>
+ <updatable-user-zone>NO</updatable-user-zone>
+ <max-login-failed>3</max-login-failed>
+ <resource-access-class>
+  com.sideinternational.web.swaf.util.ResourceAccessImpl
+ </resource-access-class>
+</application-options>
+
+<!-- User authentication parameters -->
+<user-authentication>
+ <ldap-parameters></ldap-parameters>
+</user-authentication>
+
+<!--  License 
+<license>
+ <file-parameters>
+  <file-path>
+   /SWAF/license.sxml
+  </file-path>
+ </file-parameters>
+</license>
+-->
+<!-- Concrete implementations used by the SAS library -->
+<services-implementation>
+ <user-class></user-class>
+ <usergroup-class></usergroup-class>
+ <profile-class>com.sideinternational.web.swaf.SWAFProfile</profile-class>
+ <authentication-class>com.sideinternational.sas.service.impl.scdb.AuthenticationServiceImpl</authentication-class>
+ <!--  To be implemented By Shawky Foda -->
+ <authorization-class>com.sideinternational.sas.service.impl.sidedb.AuthorizationServiceImpl</authorization-class>
+ <application-class></application-class>
+ <module-factory-class>com.sideinternational.web.swaf.modules.CustomModuleFactory</module-factory-class>
+ <module-class>com.sideinternational.web.swaf.SWAFModule</module-class>
+ <!--   <license-class></license-class> -->
+ <zone-class></zone-class>
+ <module-access-class>com.sideinternational.web.swaf.modules.CustomModuleAccess</module-access-class>
+ <report-datasource-class></report-datasource-class>
+ <operatorService-impl-class></operatorService-impl-class>
+ <databaseService-impl-Class>com.implex.database.DirectJdbcServiceImpl </databaseService-impl-Class>
+
+ 
+</services-implementation>
+
+</configuration>
