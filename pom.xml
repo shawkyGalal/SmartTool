@@ -332,6 +332,25 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>copy-resources01</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes/Support/event/resource</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/java/Support/event/resource</directory>
+                                    <includes>
+                                        <include>*.properties</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    
                 </executions>
             </plugin>
 			
@@ -558,6 +577,12 @@
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>3.1.0.GA</version>
+		    <exclusions>
+		    	<exclusion>
+		    		<groupId>xml-apis</groupId>
+		    		<artifactId>xml-apis</artifactId>
+		    	</exclusion>
+		    </exclusions>
 		</dependency>
 			
 
