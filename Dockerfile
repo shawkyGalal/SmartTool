@@ -1,8 +1,6 @@
 # Use an official Tomcat runtime as a parent image
 FROM tomcat:9.0
 
-
-
 # Install git
 RUN apt-get update && apt-get install -y git
 RUN apt-get install -y maven
@@ -13,23 +11,23 @@ RUN cp -r /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
 
 # override default tomcat configuration  
 RUN cp -r /usr/local/tomcat/conf/tomcat-users.xml  /usr/local/tomcat/conf/tomcat-users-original.xml
-COPY tomcat-users.xml  /usr/local/tomcat/conf/
-COPY context.xml  /usr/local/tomcat/webapps/manager/META-INF
-COPY context.xml  /usr/local/tomcat/webapps/docs/META-INF
-COPY context.xml  /usr/local/tomcat/webapps/examples/META-INF
-COPY context.xml  /usr/local/tomcat/webapps/host-manager/META-INF
 
-WORKDIR /temp
-# Clone your GitHub repository
-RUN pwd
-RUN git clone https://github.com/shawkyGalal/SmartTool.git 
- 
+COPY tomcat/config/tomcat-users.xml /usr/local/tomcat/conf/
+COPY tomcat/config/context.xml  	/usr/local/tomcat/webapps/manager/META-INF
+COPY tomcat/config/context.xml  	/usr/local/tomcat/webapps/docs/META-INF
+COPY tomcat/config/context.xml  	/usr/local/tomcat/webapps/examples/META-INF
+COPY tomcat/config/context.xml  	/usr/local/tomcat/webapps/host-manager/META-INF
+
+
+
+COPY src/main/webapp/WEB-INF/lib/*.jar /usr/local/tomcat/lib/
+
+RUN mkdir -p /temp/SmartTool
+
+COPY . /temp/SmartTool
+# Build ( Package )  application with maven 
 
 WORKDIR /temp/SmartTool
-RUN cp -r src/main/webapp/WEB-INF/lib/*.jar /usr/local/tomcat/lib/
- 
-# Build ( Package )  application with maven 
-RUN git pull
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/side-sas.jar   -DgroupId=com.smartvalue.side  -DartifactId=sas -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/side-swaf.jar   -DgroupId=com.smartvalue.side  -DartifactId=swaf -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/bc4jhtml.jar   -DgroupId=com.smartvalue  -DartifactId=bc4jhtml -Dversion=1.0  -Dpackaging=jar
@@ -47,11 +45,11 @@ RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/sftp.jar   -Dgr
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/xmlparserv2.jar   -DgroupId=com.smartvalue  -DartifactId=xmlparserv2 -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/jtds-1.2.2.jar   -DgroupId=com.smartvalue  -DartifactId=jtds-1.2.2 -Dversion=1.0  -Dpackaging=jar 
 
-RUN mvn install -DskipTests -X 
+RUN mvn install -DskipTests  
 RUN mvn package -DskipTests 
 
-RUN cp  
-ENV SMARTVALUE_CONFIG_HOME=
+ 
+ENV SMARTVALUE_CONFIG_HOME=/temp/SmartTool
 
 RUN cp -r /temp/SmartTool/target/*.war /usr/local/tomcat/webapps
 
