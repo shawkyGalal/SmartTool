@@ -1,0 +1,17 @@
+# Use the base image
+FROM container-registry.oracle.com/database/free:latest 
+# FROM gvenzl/oracle-free
+
+USER root
+
+# Install necessary tools
+RUN microdnf install -y git
+
+USER oracle
+
+WORKDIR /opt/oracle/
+# Clone your GitHub repository
+RUN git clone https://github.com/shawkyGalal/SmartToolDB.git
+
+	
+

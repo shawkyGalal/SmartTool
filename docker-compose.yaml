@@ -1,0 +1,31 @@
+
+services:
+
+  db:
+    container_name: SmartToolDB
+    build: ./SmartToolDB
+    ports:
+      - "1521:1521"
+      - "8443:8443"
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD", "cmd", "pwd"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+      
+  app:
+    container_name: SmartToolApp
+    build: .
+    ports:
+      - "8181:8080"
+    depends_on:
+      - db
+    environment:
+      # Replace with your database connection details
+      XYZ: 123
+      # Other environment variables as needed
+
+  
+      

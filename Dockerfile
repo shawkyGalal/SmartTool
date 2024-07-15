@@ -1,7 +1,7 @@
 # Use an official Tomcat runtime as a parent image
 FROM tomcat:9.0
 
-# Install git
+# Install maven
 RUN apt-get update && apt-get install -y git
 RUN apt-get install -y maven
 
@@ -20,7 +20,7 @@ COPY tomcat/config/context.xml  	/usr/local/tomcat/webapps/host-manager/META-INF
 
 
 
-COPY src/main/webapp/WEB-INF/lib/*.jar /usr/local/tomcat/lib/
+# COPY src/main/webapp/WEB-INF/lib/*.jar /usr/local/tomcat/lib/
 
 RUN mkdir -p /temp/SmartTool
 
@@ -49,7 +49,7 @@ RUN mvn install -DskipTests
 RUN mvn package -DskipTests 
 
  
-ENV SMARTVALUE_CONFIG_HOME=/temp/SmartTool
+ENV SMARTVALUE_CONFIG_HOME=/temp/SmartTool/SMARTVALUE_CONFIG_HOME
 
 RUN cp -r /temp/SmartTool/target/*.war /usr/local/tomcat/webapps
 
