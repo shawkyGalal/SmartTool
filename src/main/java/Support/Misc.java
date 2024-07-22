@@ -360,12 +360,16 @@ public String getSystemParameterValue(int parmId ) throws Exception
   
   public static String getAppURL(HttpServletRequest request)
   {
+	  return "/SmartTool" ; 
+	  /*
 	  String v_result ; 
 	  String servletPath = request.getServletPath() ; 
 	  StringBuffer requestURL = request.getRequestURL() ; 
 	  int index = requestURL.indexOf(servletPath) ; 
 	  v_result = (index >0 )? requestURL.substring(0,index) : requestURL.toString() ;
-	  return v_result ; 
+	  return v_result ;
+	  */ 
+	  
   }
    
   public static XMLConfigFileReader xMLConfigFileReader ; 

@@ -9,7 +9,6 @@
 		
 		<userName>ICDB</userName>
 		<password>123</password>
-		--> 
 		<MAX_POOL_SIZE>1</MAX_POOL_SIZE>
 		<MIN_POOL_SIZE>1</MIN_POOL_SIZE>
 		<SQLBINDVAR>
@@ -19,54 +18,15 @@
 		<Active>Y</Active>
 	</Connection>
 	
-	<Connection>
-		<TYPE>JDBC</TYPE>
-		<Name>PNU_PROD_VM</Name>
-		<URL>jdbc:oracle:thin:@192.168.56.108:1521:svdb</URL>  
-		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
-		<userName>PNU</userName>
-		<password>123</password>
-		<MAX_POOL_SIZE>2</MAX_POOL_SIZE>
-		<MIN_POOL_SIZE>2</MIN_POOL_SIZE>
-		<SQLBINDVAR>
-			<BINDVARNAME>appURL</BINDVARNAME>
-			<BINDVARVALUE>http://192.168.56.108:8080/SmartTool</BINDVARVALUE>
-		</SQLBINDVAR>
-		<Active>N</Active>
-	</Connection>
+
 	
-	<Connection>
-		<TYPE>JDBC</TYPE>
-		<Name>EPM_DEMO</Name>
-		<URL>jdbc:oracle:thin:@localhost:1521:svdbDemo</URL>
-		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
-		<userName>icdb</userName>
-		<password>demo123</password>
-		<MAX_POOL_SIZE>2</MAX_POOL_SIZE>
-		<MIN_POOL_SIZE>2</MIN_POOL_SIZE>
-		<SQLBINDVAR>
-			<BINDVARNAME>appURL</BINDVARNAME>
-			<BINDVARVALUE>http://localhost:8080/SmartTool</BINDVARVALUE>
-		</SQLBINDVAR>
-		<Active>N</Active>
-	</Connection>
+
 	
 
 	
 	
 
-	<Connection>
-		<TYPE>JDBC</TYPE>
-		<DBTYPE>MSSQL</DBTYPE>
-		<URL>jdbc:jtds:sqlserver://192.168.1.4:60791;databasename=smart</URL>
-		<DRIVER>net.sourceforge.jtds.jdbc.Driver</DRIVER>
-		<Name>Save Children-Production</Name>
-		<SQLBINDVAR>
-			<BINDVARNAME>RepSchemaName</BINDVARNAME>
-			<BINDVARVALUE>sidedb.dbo</BINDVARVALUE>
-		</SQLBINDVAR>
-		<Active>N</Active>
-	</Connection>
+	
 
 	<REPOSATORYCONN>
 		<TYPE>JDBC</TYPE>
@@ -80,18 +40,5 @@
 		<MIN_POOL_SIZE>2</MIN_POOL_SIZE>
 		<WAIT_TIMEOUT>1</WAIT_TIMEOUT>
 	</REPOSATORYCONN>
-<!--
-	<REPOSATORYCONN>
-		<TYPE>JDBC</TYPE>
-		<Name>Local Host (VM)</Name>
-		<URL>jdbc:oracle:thin:@192.168.56.108:1521:svdb</URL> 
-		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
-		<Active>Y</Active>
-		<userName>ICDB</userName>
-		<password>redsea11</password>
-		<MAX_POOL_SIZE>2</MAX_POOL_SIZE>
-		<MIN_POOL_SIZE>2</MIN_POOL_SIZE>
-		<WAIT_TIMEOUT>1</WAIT_TIMEOUT>
-	</REPOSATORYCONN>
--->	
+
 </Configuration>

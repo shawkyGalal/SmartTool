@@ -9,7 +9,6 @@
 		
 		<userName>ICDB</userName>
 		<password>123</password>
-		--> 
 		<MAX_POOL_SIZE>1</MAX_POOL_SIZE>
 		<MIN_POOL_SIZE>1</MIN_POOL_SIZE>
 		<SQLBINDVAR>
