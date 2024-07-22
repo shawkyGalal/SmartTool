@@ -204,10 +204,10 @@ request.setCharacterEncoding("UTF-8");%>
 
     <!-- Load site level scripts -->
 
-<script type="text/javascript" src="assets/js/jquery-1.10.2.min.js"></script> 							<!-- Load jQuery -->
-<script type="text/javascript" src="assets/js/jqueryui-1.9.2.min.js"></script> 							<!-- Load jQueryUI -->
+<script type="text/javascript" src="../20/assets/js/jquery-1.10.2.min.js"></script> 							<!-- Load jQuery -->
+<script type="text/javascript" src="../20/assets/js/jqueryui-1.9.2.min.js"></script> 							<!-- Load jQueryUI -->
 
-<script type="text/javascript" src="assets/js/bootstrap.min.js"></script> 								<!-- Load Bootstrap -->
+<script type="text/javascript" src="../20/assets/js/bootstrap.min.js"></script> 								<!-- Load Bootstrap -->
 
 <!-- End loading site level scripts -->
     <!-- Load page level scripts-->

@@ -49,7 +49,7 @@ RUN mvn install -DskipTests
 RUN mvn package -DskipTests 
 
  
-ENV SMARTVALUE_CONFIG_HOME=/temp/SmartTool/SMARTVALUE_CONFIG_HOME
+# ENV SMARTVALUE_CONFIG_HOME=/temp/SmartTool/SMARTVALUE_CONFIG_HOME
 
 RUN cp -r /temp/SmartTool/target/*.war /usr/local/tomcat/webapps
 
