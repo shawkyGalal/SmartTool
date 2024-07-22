@@ -23,8 +23,7 @@ services:
     depends_on:
       - db
     environment:
-      # Replace with your database connection details
-      XYZ: 123
+      SMARTVALUE_CONFIG_HOME: /temp/SmartTool/SMARTVALUE_CONFIG_HOME_LOCAL
       # Other environment variables as needed
 
   

@@ -48,8 +48,5 @@ RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/jtds-1.2.2.jar 
 RUN mvn install -DskipTests  
 RUN mvn package -DskipTests 
 
- 
-# ENV SMARTVALUE_CONFIG_HOME=/temp/SmartTool/SMARTVALUE_CONFIG_HOME
-
 RUN cp -r /temp/SmartTool/target/*.war /usr/local/tomcat/webapps
 
