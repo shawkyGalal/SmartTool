@@ -1,5 +1,5 @@
 <%@page import="Support.SelectionTree"%>
-<%@page import="com.implex.database.map.SecUsrDta"%>
+<%@page import="com.smartValue.database.map.SecUsrDta"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.net.URLEncoder"%>
 <%@ page errorPage="errorPage.jsp"%>

@@ -1,9 +1,9 @@
 package com.smartValue.epm.map.services;
 
+import com.smartValue.database.DbServices;
+import com.smartValue.database.DbTable;
+import com.smartValue.database.map.services.ModuleServices;
 import com.smartValue.epm.map.BscObjectiveKpi;
-import com.implex.database.DbTable;
-import com.implex.database.DbServices;
-import com.implex.database.map.services.ModuleServices;
 
 public class BscObjectiveKpiServices extends ModuleServices{
 

@@ -19,7 +19,7 @@
 <body  bgcolor="#FFEEFF">
 
 <%
-  com.implex.database.map.SecUsrDta loggedUserObj =  Misc.getLoggedUserFromSession(session) ; 
+com.smartValue.database.map.SecUsrDta loggedUserObj =  Misc.getLoggedUserFromSession(session) ; 
   boolean isSmartToolAdmin =loggedUserObj.isSmartToolAdmin() ;
   request.setCharacterEncoding("UTF-8");
   java.sql.Connection  con = (java.sql.Connection)session.getAttribute("con");
@@ -77,7 +77,7 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 	  	int length = sqlr.getQueryStatments().length ;
 	  	for (int i = 0 ; i< length ; i++)
 	  	{
-			sqlr.executeExecutable(i ,con);
+	sqlr.executeExecutable(i ,con);
 	  	}
 		out.print("Executed Successfully.... تم التنفيذ بنجاح ");
 		return ; 
@@ -85,7 +85,7 @@ if (request.getParameter("Submit") != null || request.getParameter("updateOnly")
 	catch (Exception e)
 	{ 
 		request.setAttribute("exception" , e );
-		%>	<jsp:include page="errorPageHandling.jsp"></jsp:include><%
+%>	<jsp:include page="errorPageHandling.jsp"></jsp:include><%
 	}
   }
 

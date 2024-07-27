@@ -5,7 +5,7 @@ import java.util.Vector;
 
 import oracle.sql.ROWID;
 
-import com.implex.database.map.SecUsrDta;
+import com.smartValue.database.map.SecUsrDta;
 import com.smartValue.tableControllers.ItableTriggerController;
 
 import Support.Misc;

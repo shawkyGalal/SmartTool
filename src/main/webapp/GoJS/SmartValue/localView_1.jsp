@@ -1,11 +1,11 @@
 <%@ page errorPage="/errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
-<%@page import="Support.LookupTreeV10 ,Support.TreeNode , com.implex.database.map.TableMaintDetails"%>
+<%@page import="Support.LookupTreeV10 ,Support.TreeNode ,com.smartValue.database.map.TableMaintDetails"%>
 
 
 <%@page import="java.util.StringTokenizer"%>
-<%@page import="com.implex.database.map.TableMaintMaster"%><html>
+<%@page import="com.smartValue.database.map.TableMaintMaster"%><html>
 	<% 	 java.sql.Connection  con = (java.sql.Connection)session.getAttribute("con");
 		  if (con == null || con.isClosed() )
 		 {response.sendRedirect("loginScreen.jsp?comeFrom=selectionTree.jsp"+request.getQueryString());}

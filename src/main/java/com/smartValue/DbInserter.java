@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 
-import com.implex.database.map.SecUsrDta;
+import com.smartValue.database.map.SecUsrDta;
+
 import Support.Misc;
 import Support.UserUnCommitedTransactions;
 
@@ -22,7 +23,7 @@ public static void insert(HttpSession session , HttpServletRequest request , Htt
 	  String tableName = request.getParameter("tableName");
 	  String owner = request.getParameter("owner");
 	  String qs = "select t.* , t.rowid  from Support.table_maint_details t where upper(table_name) = upper('"+tableName+"') and upper(owner) = upper('"+owner+"') and column_included = 'Y' order by tab_index ";
-	  com.implex.database.map.TableMaintMaster tmm = Misc.getTableMaintMaster(session , owner , tableName);  
+	  com.smartValue.database.map.TableMaintMaster tmm = Misc.getTableMaintMaster(session , owner , tableName);  
 
 	  SecUsrDta  loggedUser = (SecUsrDta)session.getAttribute("loggedUser") ;
 	  int counter = 0;
@@ -139,7 +140,7 @@ public static void insert(HttpSession session , HttpServletRequest request , Htt
 				 || loggedUser.getUsrNameValue().equalsIgnoreCase("GUEST") )
 			  { UserUnCommitedTransactions.commitConnection(con , session); }
 			  
-			  com.implex.database.map.SecUsrDta loggedUser1 =  (com.implex.database.map.SecUsrDta) session.getAttribute("loggedUser");
+			  com.smartValue.database.map.SecUsrDta loggedUser1 =  (com.smartValue.database.map.SecUsrDta) session.getAttribute("loggedUser");
 			  boolean afterInsertViewContainsQuestionMark = afterInsertView.indexOf("?")>0 ; 
 			  boolean isRedirectToGetClientyFile = afterInsertView.indexOf("getClientFile.jsp")>=0 ;
 			  String redirecttTo = afterInsertView +((afterInsertViewContainsQuestionMark)? "&":"?") +"objectRowId="+rowIdString + "&_SelectedOraRowId="+rowIdString 
@@ -150,7 +151,7 @@ public static void insert(HttpSession session , HttpServletRequest request , Htt
 		  
 		  else if (tableName.equalsIgnoreCase("CONTRACT") && owner.equalsIgnoreCase("CARRENT"))
 		  {
-			  com.implex.database.map.SecUsrDta loggedUser1 =  (com.implex.database.map.SecUsrDta) session.getAttribute("loggedUser"); 
+			  com.smartValue.database.map.SecUsrDta loggedUser1 =  (com.smartValue.database.map.SecUsrDta) session.getAttribute("loggedUser"); 
 			  response.sendRedirect("Company/"+loggedUser1.getUsrCmpIdValue()+"/tableEditorContract.jsp?ROWID="+rowIdString );
 		  }
 		  else if (tableName.equalsIgnoreCase("CUSTOMER") && owner.equalsIgnoreCase("CARRENT"))

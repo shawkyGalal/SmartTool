@@ -163,7 +163,7 @@
  <module-access-class>com.sideinternational.web.swaf.modules.CustomModuleAccess</module-access-class>
  <report-datasource-class></report-datasource-class>
  <operatorService-impl-class></operatorService-impl-class>
- <databaseService-impl-Class>com.implex.database.DirectJdbcServiceImpl </databaseService-impl-Class>
+ <databaseService-impl-Class>com.smartValue.database.DirectJdbcServiceImpl </databaseService-impl-Class>
 
  
 </services-implementation>

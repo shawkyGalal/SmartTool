@@ -35,7 +35,10 @@ cd SmartTool
 Startup.bat 
 ~~~
 from Your browser you should be able to Navigate to : 
+
+~~~
 http://localhost:8080/SmartTool/index.jsp
+~~~
 
 
 

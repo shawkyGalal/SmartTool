@@ -2,7 +2,7 @@ package Support;
 import Support.*;
 import java.sql.*;
 
-import com.implex.database.map.SecUsrDta;
+import com.smartValue.database.map.SecUsrDta;
 
 public class QueryTreeSecurity extends TreeSecurityManager
 {

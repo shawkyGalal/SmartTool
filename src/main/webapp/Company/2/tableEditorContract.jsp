@@ -3,7 +3,7 @@
 <%@ page import="java.util.* , Support.Misc"%>
 <%@page  contentType="text/html;charset=UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");%>
-<%@page import="com.implex.database.map.*"%>
+<%@page import="com.smartValue.database.map.*"%>
 
 <%@page import="java.net.URLEncoder"%>
 
@@ -66,154 +66,154 @@
 	<script type="text/javascript" src="<%=appUrl%>/includes/AJAX_new.js"></script>
 	<p align="center">
 	<%
-  		String rowIdValue =  request.getParameter("ROWID");
-		boolean useRowIdValue = rowIdValue != null ;	
-		
-  		boolean printable = request.getParameter("printable") != null &&  request.getParameter("printable").equalsIgnoreCase("true");
-  		String _rqs = request.getQueryString() ;  
-		if ( _rqs!= null)
-			{
-			_rqs =  Misc.repalceAll(_rqs , "Delete=Y&" , "") ;
-			_rqs =  Misc.repalceAll(_rqs , "Commit=Y&" , "") ;
-			_rqs =  Misc.repalceAll(_rqs , "RollBack=Y&" , "") ;
-			} 
+	String rowIdValue =  request.getParameter("ROWID");
+			boolean useRowIdValue = rowIdValue != null ;	
+			
+	  		boolean printable = request.getParameter("printable") != null &&  request.getParameter("printable").equalsIgnoreCase("true");
+	  		String _rqs = request.getQueryString() ;  
+			if ( _rqs!= null)
+		{
+		_rqs =  Misc.repalceAll(_rqs , "Delete=Y&" , "") ;
+		_rqs =  Misc.repalceAll(_rqs , "Commit=Y&" , "") ;
+		_rqs =  Misc.repalceAll(_rqs , "RollBack=Y&" , "") ;
+		} 
 
 
-	  java.sql.Connection  con , repCon  =null;
-	  con = (java.sql.Connection)session.getAttribute("con");
-	  repCon = (java.sql.Connection)session.getAttribute("repCon");
-	  //String loggedUser = Misc.getConnectionUserName(con) ;  
-	  java.sql.Statement stmt = con.createStatement();  
-	  String uniqueColumnName = "rowId";
-      String tableowner = "CARRENT" ;
-	  String tableNameonly = "CONTRACT" ;
-	  
-	  String uniqueWhereClauseVarValue = "" ; 
-	  String uniqueWhereClauseVarName = "uniqueWhereClause" ; 
-	  
-	  	  
-	  if ( useRowIdValue ) 
+		  java.sql.Connection  con , repCon  =null;
+		  con = (java.sql.Connection)session.getAttribute("con");
+		  repCon = (java.sql.Connection)session.getAttribute("repCon");
+		  //String loggedUser = Misc.getConnectionUserName(con) ;  
+		  java.sql.Statement stmt = con.createStatement();  
+		  String uniqueColumnName = "rowId";
+	      String tableowner = "CARRENT" ;
+		  String tableNameonly = "CONTRACT" ;
+		  
+		  String uniqueWhereClauseVarValue = "" ; 
+		  String uniqueWhereClauseVarName = "uniqueWhereClause" ; 
+		  
+		  	  
+		  if ( useRowIdValue ) 
+		  {
+			  String uniqueColumnValue = "'" + request.getParameter("ROWID") +"'";
+			  uniqueWhereClauseVarValue = "t."+uniqueColumnName+" = " + uniqueColumnValue ; 
+		  }
+		  else 
+		  {
+			  uniqueWhereClauseVarValue = request.getParameter(uniqueWhereClauseVarName) ;  
+		  }
+	 
+		  //-----------if Delete Pressed------------------------------
+		   TableMaintMaster contractTmm = Support.Misc.getTableMaintMaster(session , tableowner , tableNameonly) ;
+		  
+		  if (request.getParameter("Delete") != null )
 	  {
-		  String uniqueColumnValue = "'" + request.getParameter("ROWID") +"'";
-		  uniqueWhereClauseVarValue = "t."+uniqueColumnName+" = " + uniqueColumnValue ; 
-	  }
-	  else 
-	  {
-		  uniqueWhereClauseVarValue = request.getParameter(uniqueWhereClauseVarName) ;  
-	  }
- 
-	  //-----------if Delete Pressed------------------------------
-	   TableMaintMaster contractTmm = Support.Misc.getTableMaintMaster(session , tableowner , tableNameonly) ;
-	  
-	  if (request.getParameter("Delete") != null )
-  {
-	    con.setAutoCommit(false);
-	    String loggedUser = Misc.getConnectionUserName(con) ;  
-	    //java.sql.Connection  repCon = (java.sql.Connection)session.getAttribute("repCon");
-		boolean userCanDelete = false ;
-		Statement repStmt = null;
-		ResultSet rs = null ; 
-		try 
-		{
-			userCanDelete = contractTmm.isUserCanDelete(loggedUser , repCon);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace() ; 
-			out.println("System Error : Unable to Check User Ability to Delete Due to : "+e.getMessage()+"") ;
-			if (rs != null ) rs.close();
-			if (repStmt != null ) repStmt.close() ; 
-		}
-		if (! userCanDelete )
-		{
-			out.print( "<font color='FF0000' > You Are Not Authorized. <a href ='../editAndExecute.jsp?id=25048&user_name="+loggedUser+"' target = 'User Roles' >Why?</a> </font>" ) ; 
-		}
-		else 
-		{
-			//----Before Delete Operation ---------
-		    com.smartValue.tableControllers.ItableTriggerController tableTriggers = null;
-		   	Savepoint sp1 = con.setSavepoint(); 
-			try{ 	tableTriggers = contractTmm.getTableTriggers();} catch (Exception e){}
+		    con.setAutoCommit(false);
+		    String loggedUser = Misc.getConnectionUserName(con) ;  
+		    //java.sql.Connection  repCon = (java.sql.Connection)session.getAttribute("repCon");
+			boolean userCanDelete = false ;
+			Statement repStmt = null;
+			ResultSet rs = null ; 
 			try 
 			{
+		userCanDelete = contractTmm.isUserCanDelete(loggedUser , repCon);
+			}
+			catch (Exception e)
+			{
+		e.printStackTrace() ; 
+		out.println("System Error : Unable to Check User Ability to Delete Due to : "+e.getMessage()+"") ;
+		if (rs != null ) rs.close();
+		if (repStmt != null ) repStmt.close() ; 
+			}
+			if (! userCanDelete )
+			{
+		out.print( "<font color='FF0000' > You Are Not Authorized. <a href ='../editAndExecute.jsp?id=25048&user_name="+loggedUser+"' target = 'User Roles' >Why?</a> </font>" ) ; 
+			}
+			else 
+			{
+		//----Before Delete Operation ---------
+			    com.smartValue.tableControllers.ItableTriggerController tableTriggers = null;
+			   	Savepoint sp1 = con.setSavepoint(); 
+		try{ 	tableTriggers = contractTmm.getTableTriggers();} catch (Exception e){}
+		try 
+		{
+		  	if (tableTriggers != null) 
+			  		{
+				tableTriggers.setRepCon(repCon);
+			  			tableTriggers.beforeDelete(con , rowIdValue ) ;
+			  		}
+			String deleteStmt = "delete from " + tableowner +"." + tableNameonly + " t where "+uniqueWhereClauseVarValue ;
+			com.smartValue.event.logging.Console.log(deleteStmt , this.getClass()) ; 
+		    //con.setAutoCommit(false);
+		    //--Execute Delete Operation----- 
+		    int x = stmt.executeUpdate(deleteStmt);
+		
+			// ----- After Delete trigger ------
+		  	if (tableTriggers != null) 
+			  		{
+			  			tableTriggers.afterDelete(con , rowIdValue ) ;
+			  		}
+		 		    out.print(x + " Record(s) Deleted Successfully");
+		}
+		catch (Exception e ) {
+			con.rollback(sp1) ;
+			throw e; 
+		}
+			    return ;
+			}
+	  }
+		/*
+		  if (request.getParameter("Delete") != null )
+		  {
+		  	
+		    Statement delStmt = con.createStatement();
+		    String deleteStmt = "delete from " + tableowner +"."+ tableNameonly + " where "+uniqueColumnName+" = " + uniqueColumnValue ;
+		    con.setAutoCommit(false);
+		    Savepoint sp1 = con.setSavepoint();
+		   	//stmt = con.createStatement();
+		    
+		    try 
+		    {
+		    	TableMaintMaster contractTmm = Support.Misc.getTableMaintMaster(session , tableowner , "CONTRACT") ;
+		  	    com.smartValue.tableControllers.ItableTriggerController tableTriggers = null;
+		try{ 	tableTriggers = contractTmm.getTableTriggers();} catch (Exception e){}
 			  	if (tableTriggers != null) 
 		  		{
-					tableTriggers.setRepCon(repCon);
+			tableTriggers.setRepCon(repCon);
 		  			tableTriggers.beforeDelete(con , rowIdValue ) ;
 		  		}
-				String deleteStmt = "delete from " + tableowner +"." + tableNameonly + " t where "+uniqueWhereClauseVarValue ;
-				com.implex.event.logging.Console.log(deleteStmt , this.getClass()) ; 
-			    //con.setAutoCommit(false);
-			    //--Execute Delete Operation----- 
-			    int x = stmt.executeUpdate(deleteStmt);
-	
-				// ----- After Delete trigger ------
+
+			    int x = delStmt.executeUpdate(deleteStmt);
 			  	if (tableTriggers != null) 
 		  		{
 		  			tableTriggers.afterDelete(con , rowIdValue ) ;
 		  		}
-	 		    out.print(x + " Record(s) Deleted Successfully");
-			}
-			catch (Exception e ) {
-				con.rollback(sp1) ;
-				throw e; 
-			}
-		    return ;
-		}
-  }
-	/*
-	  if (request.getParameter("Delete") != null )
-	  {
-	  	
-	    Statement delStmt = con.createStatement();
-	    String deleteStmt = "delete from " + tableowner +"."+ tableNameonly + " where "+uniqueColumnName+" = " + uniqueColumnValue ;
-	    con.setAutoCommit(false);
-	    Savepoint sp1 = con.setSavepoint();
-	   	//stmt = con.createStatement();
-	    
-	    try 
-	    {
-	    	TableMaintMaster contractTmm = Support.Misc.getTableMaintMaster(session , tableowner , "CONTRACT") ;
-	  	    com.smartValue.tableControllers.ItableTriggerController tableTriggers = null;
-			try{ 	tableTriggers = contractTmm.getTableTriggers();} catch (Exception e){}
-		  	if (tableTriggers != null) 
-	  		{
-				tableTriggers.setRepCon(repCon);
-	  			tableTriggers.beforeDelete(con , rowIdValue ) ;
-	  		}
 
-		    int x = delStmt.executeUpdate(deleteStmt);
-		  	if (tableTriggers != null) 
-	  		{
-	  			tableTriggers.afterDelete(con , rowIdValue ) ;
-	  		}
-
-		    out.print(x + "Record(s)  Deleted Successfully");
-		    return ;
-	    }
-	    catch (Exception e ) {con.rollback(sp1); throw e; }
-	    finally { delStmt.close();}
-	  }
-  */
-  	//-------------------------------------------
-	  
-	  Vector pramNames = new Vector() ;
-  	  Vector pramValues = new Vector() ;
-  		pramNames.add("$$"+uniqueWhereClauseVarName) ;
-  		pramValues.add(uniqueWhereClauseVarValue) ;
-  		if (useRowIdValue) 
-  		{ 
-  			pramNames.add("$$"+uniqueColumnName);   
-  		 	pramValues.add(rowIdValue) ; 
-  		}   
-	  String ContMaintQueryId = "32723" ;
-	  Support.SqlReader sqlReader = new Support.SqlReader(repCon,"LU_QUERIES" , "QUERY_BODY", ContMaintQueryId , pramNames , pramValues , false);
-	  String queryStatment = sqlReader.getQueryStatments()[0] ;
-	  SecUsrDta loggedUser = (SecUsrDta) session.getAttribute("loggedUser") ;
-	  String loggedUserName = loggedUser.getUsrNameValue() ; 
-	  if ( loggedUser.isSmartToolAdmin())
-	  {
-	   %><a href = "<%=appUrl%>/editAndExecute.jsp?id=<%=ContMaintQueryId%>&<%=uniqueWhereClauseVarName%>=<%=URLEncoder.encode(uniqueWhereClauseVarValue) %>" >Maint</a> <%
+			    out.print(x + "Record(s)  Deleted Successfully");
+			    return ;
+		    }
+		    catch (Exception e ) {con.rollback(sp1); throw e; }
+		    finally { delStmt.close();}
+		  }
+	  */
+	  	//-------------------------------------------
+		  
+		  Vector pramNames = new Vector() ;
+	  	  Vector pramValues = new Vector() ;
+	  		pramNames.add("$$"+uniqueWhereClauseVarName) ;
+	  		pramValues.add(uniqueWhereClauseVarValue) ;
+	  		if (useRowIdValue) 
+	  		{ 
+	  			pramNames.add("$$"+uniqueColumnName);   
+	  		 	pramValues.add(rowIdValue) ; 
+	  		}   
+		  String ContMaintQueryId = "32723" ;
+		  Support.SqlReader sqlReader = new Support.SqlReader(repCon,"LU_QUERIES" , "QUERY_BODY", ContMaintQueryId , pramNames , pramValues , false);
+		  String queryStatment = sqlReader.getQueryStatments()[0] ;
+		  SecUsrDta loggedUser = (SecUsrDta) session.getAttribute("loggedUser") ;
+		  String loggedUserName = loggedUser.getUsrNameValue() ; 
+		  if ( loggedUser.isSmartToolAdmin())
+		  {
+	%><a href = "<%=appUrl%>/editAndExecute.jsp?id=<%=ContMaintQueryId%>&<%=uniqueWhereClauseVarName%>=<%=URLEncoder.encode(uniqueWhereClauseVarValue) %>" >Maint</a> <%
 	  }
 
   	java.sql.ResultSet rs= null;

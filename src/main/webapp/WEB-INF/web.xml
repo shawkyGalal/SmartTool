@@ -128,7 +128,7 @@
 	</listener>
 	
 	<listener>
-		<listener-class>com.implex.listeners.ApplicationContextListener</listener-class>
+		<listener-class>com.smartValue.listeners.ApplicationContextListener</listener-class>
 	</listener>
 	<!-- 
 	<listener>

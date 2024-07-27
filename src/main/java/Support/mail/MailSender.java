@@ -20,15 +20,15 @@ import Support.ConnParms;
 import Support.Misc;
 import Support.XMLConfigFileReader;
 
-import com.implex.database.ApplicationContext;
-import com.implex.database.DataSet;
-import com.implex.database.Pool;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.SysParams;
-import com.implex.database.map.services.ModuleServicesContainer;
-import com.implex.listeners.ApplicationContextListener;
 import com.sideinternational.sas.event.logging.Console;
 import com.sideinternational.web.swaf.SWAF;
+import com.smartValue.database.ApplicationContext;
+import com.smartValue.database.DataSet;
+import com.smartValue.database.Pool;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.SysParams;
+import com.smartValue.database.map.services.ModuleServicesContainer;
+import com.smartValue.listeners.ApplicationContextListener;
 
 //import Support.SysConfigParams;
 
@@ -93,7 +93,7 @@ public class MailSender
 		Map<String, Pool> allPools = ApplicationContextListener.initializeConnections();	
 		ApplicationContext.setPools(allPools);
 		ModuleServicesContainer msc = Support.Misc.getModuleServiceContainer(autoLoginEnvName , 1 );  
-		com.implex.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
+		com.smartValue.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
 		SecUsrDta autoLoggedUser = secUsrDtaServices.getUserByUserName(con.getMetaData().getUserName().toUpperCase());
 		this.sysParamsDs = ( autoLoggedUser.getUserCompany().getSysParams()) ;
 		this.setParams () ; 

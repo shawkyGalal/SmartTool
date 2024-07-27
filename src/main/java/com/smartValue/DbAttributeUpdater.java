@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 
-import com.implex.database.DBKey;
-import com.implex.database.DbServices;
-import com.implex.database.DbTable;
-import com.implex.database.DirectJdbcServiceImpl;
-import com.implex.database.PersistantObject;
-import com.implex.database.map.TableMaintDetails;
-import com.implex.database.map.TableMaintMaster;
-import com.implex.database.map.TableNotificationRule;
-import com.implex.database.map.services.ModuleServicesContainer;
+import com.smartValue.database.DBKey;
+import com.smartValue.database.DbServices;
+import com.smartValue.database.DbTable;
+import com.smartValue.database.DirectJdbcServiceImpl;
+import com.smartValue.database.PersistantObject;
+import com.smartValue.database.map.TableMaintDetails;
+import com.smartValue.database.map.TableMaintMaster;
+import com.smartValue.database.map.TableNotificationRule;
+import com.smartValue.database.map.services.ModuleServicesContainer;
 import com.smartValue.tableControllers.ItableTriggerController;
 
 import Support.Misc;

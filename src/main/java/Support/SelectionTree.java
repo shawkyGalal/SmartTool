@@ -5,8 +5,8 @@ import java.sql.Connection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.implex.database.map.TableMaintDetails;
-import com.implex.database.map.TableMaintMaster;
+import com.smartValue.database.map.TableMaintDetails;
+import com.smartValue.database.map.TableMaintMaster;
 
 public class SelectionTree extends LookupTreeV10 {
 

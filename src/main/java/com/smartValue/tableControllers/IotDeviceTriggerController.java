@@ -2,7 +2,7 @@ package com.smartValue.tableControllers;
 
 import java.sql.Connection;
 
-import com.implex.database.map.SecUsrDta;
+import com.smartValue.database.map.SecUsrDta;
 
 public class IotDeviceTriggerController extends ItableTriggerController {
 

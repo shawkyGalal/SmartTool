@@ -12,17 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.SysParams;
-import com.implex.database.map.TableMaintMaster ;
-import com.implex.database.map.services.*;
-import com.implex.database.ApplicationContext ;
-import com.implex.database.DBKey;
-import com.implex.database.DataSet;
-import com.implex.database.DbServices;
-import com.implex.database.DbTable;
-import com.implex.database.MessagesCommnuicatorService;
-import com.implex.database.PersistantObject;
+import com.smartValue.database.ApplicationContext;
+import com.smartValue.database.DBKey;
+import com.smartValue.database.DataSet;
+import com.smartValue.database.DbServices;
+import com.smartValue.database.DbTable;
+import com.smartValue.database.MessagesCommnuicatorService;
+import com.smartValue.database.PersistantObject;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.SysParams;
+import com.smartValue.database.map.TableMaintMaster;
+import com.smartValue.database.map.services.*;
 
 
 
@@ -310,7 +310,7 @@ public String getSystemParameterValue(int parmId ) throws Exception
   public static TableMaintMaster getTableMaintMaster( javax.servlet.http.HttpSession m_session , String owner , String tableName  ) throws Exception
   {
 	  ModuleServicesContainer msc = getModuleServiceContainerFromUserSession ( m_session) ;
-	  com.implex.database.map.services.TableMaintMasterServices tmms = msc.getTableMaintServices();
+	  com.smartValue.database.map.services.TableMaintMasterServices tmms = msc.getTableMaintServices();
 
 		//tmms.setTableOwner(owner.toUpperCase());
 		//tmms.setTableName(tableName.toUpperCase());
@@ -490,7 +490,7 @@ public String getSystemParameterValue(int parmId ) throws Exception
 	  queriesTree.setTreeData("LU_QUERIES",false); 
 	  if (request.getParameter("nodeToBeToggled") == null)
 	  {
-	     com.implex.database.map.SecUsrDta loggedUser1 = (com.implex.database.map.SecUsrDta) session.getAttribute("loggedUser") ;
+	     com.smartValue.database.map.SecUsrDta loggedUser1 = (com.smartValue.database.map.SecUsrDta) session.getAttribute("loggedUser") ;
 	  	try { // By default open Carrent system nodes 
 	  		String[] treeOpenNodes = loggedUser1.getUsrUd1Value().split(",");
 	  		for (String nodeId : treeOpenNodes )

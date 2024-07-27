@@ -1,10 +1,10 @@
 <%@ page errorPage="errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
-<%@page import="Support.LookupTreeV10 , com.implex.database.map.TableMaintDetails"%>
+<%@page import="Support.LookupTreeV10 ,com.smartValue.database.map.TableMaintDetails"%>
 
 <%@page import="java.util.StringTokenizer"%>
-<%@page import="com.implex.database.map.TableMaintMaster"%><html>
+<%@page import="com.smartValue.database.map.TableMaintMaster"%><html>
 <head>
 		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 	</head>

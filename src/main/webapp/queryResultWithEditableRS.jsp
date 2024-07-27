@@ -1,9 +1,9 @@
 <%@page import="Support.*, java.util.*, java.io.* , java.sql.* , java.text.SimpleDateFormat , javax.faces.model.SelectItem "%>
 <%@page import="Support.event.resource.system.*"%>
-<%@page import="com.implex.database.map.services.*"%>
-<%@page import="com.implex.database.map.*"%>
+<%@page import="com.smartValue.database.map.services.*"%>
+<%@page import="com.smartValue.database.map.*"%>
 <%@page import="com.sideinternational.sas.configuration.Configuration"%>
-<%@page import="com.implex.database.PersistantObject"%>
+<%@page import="com.smartValue.database.PersistantObject"%>
 <%@page import="com.smartValue.support.map.LuQueryDetails"%>
 <%@page errorPage="errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	

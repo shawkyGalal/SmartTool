@@ -1,6 +1,6 @@
 <%@ page errorPage="../../errorPage.jsp" %>
 <%@page  language="java" contentType="text/html;charset=UTF-8"%>
-<%@page import="com.implex.database.map.services.* , com.implex.database.map.SecUsrDta, Support.Misc" %>
+<%@page import="com.smartValue.database.map.services.*,com.smartValue.database.map.SecUsrDta, Support.Misc" %>
 <%@page  contentType="text/html;charset=UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");%>
 <% String appURL = Support.Misc.getAppURL(request) ;  %>

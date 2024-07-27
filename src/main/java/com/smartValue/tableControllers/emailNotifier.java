@@ -14,13 +14,13 @@ import java.util.Vector;
 import Support.Misc;
 import Support.SqlReader;
 
-import com.implex.database.ApplicationContext;
-import com.implex.database.DirectJdbcServiceImpl;
-import com.implex.database.PersistantObject;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.TableMaintMaster;
-import com.implex.database.map.TableNotificationRule;
 import com.smartValue.UnCommittedDbTransaction;
+import com.smartValue.database.ApplicationContext;
+import com.smartValue.database.DirectJdbcServiceImpl;
+import com.smartValue.database.PersistantObject;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.TableMaintMaster;
+import com.smartValue.database.map.TableNotificationRule;
 import com.smartValue.support.map.QueryNotifier;
 
 public class emailNotifier extends com.smartValue.tableControllers.ItableTriggerController

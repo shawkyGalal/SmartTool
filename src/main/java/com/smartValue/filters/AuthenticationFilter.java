@@ -15,12 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.implex.database.map.MasCompanyData;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.services.ModuleServicesContainer;
 import com.sideinternational.sas.BaseException;
 import com.sideinternational.sas.license.entity.Certificate;
 import com.sideinternational.sas.util.Time;
+import com.smartValue.database.map.MasCompanyData;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.services.ModuleServicesContainer;
 
 import Support.Misc;
 import Support.SysConfigParams;
@@ -217,7 +217,7 @@ public class AuthenticationFilter implements Filter {
 		    ModuleServicesContainer msc = Support.Misc.getModuleServiceContainer(anonymEnv , 1 );  
 			session.setAttribute(Support.Misc.MscSessionKey , msc); 
 	
-			com.implex.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
+			com.smartValue.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
 			SecUsrDta loggedUser = secUsrDtaServices.getUserByUserName(anonymUserName.toUpperCase());
 			if ( loggedUser == null ) { throw new Exception ("User " + anonymUserName.toUpperCase() + "Does Not Exist"); }
 			session.setAttribute("loggedUser" , loggedUser) ;

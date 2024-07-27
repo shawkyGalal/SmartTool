@@ -1,25 +1,29 @@
 <%@ page errorPage="errorPage.jsp" %>
 <%@page  language="java" contentType="text/html;charset=UTF-8"%>
-<%@page import="com.implex.database.map.services.* , com.implex.database.map.SecUsrDta, Support.Misc" %>
-<%request.setCharacterEncoding("UTF-8");%>
+<%@page import="com.smartValue.database.map.services.*,com.smartValue.database.map.SecUsrDta,Support.Misc" %>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 
 
 
 <%@page import="Support.UserUnCommitedTransactions"%><html>
 <head>
-	<% String appURL = Support.Misc.getAppURL(request) ;  %>
+	<%
+	String appURL = Support.Misc.getAppURL(request) ;
+	%>
 	<title>لامدا للمشروعات العقارية- Smart Value Integrated Solutions</title>
 </head>
 <BODY TEXT="blue" LINK="red" bgcolor="#FFEEFF">
-<% 
-	Cookie cookie = new Cookie (Misc.LoginScreenPageNameCookiVarName ,"loginScreen_lambda.jsp");
+<%
+Cookie cookie = new Cookie (Misc.LoginScreenPageNameCookiVarName ,"loginScreen_lambda.jsp");
 	response.addCookie(cookie);
 
 	String defaultEnv = "PNU_PROD" ; 
 	String reportTopOpen = "24991" ; 
      Support.XMLConfigFileReader supportConfig =  Misc.getXMLConfigFileReader(false) ; 
      java.util.Vector conParms  = supportConfig.connParms ;
-    %><br><div align="center"> 
+%><br><div align="center"> 
   <p><font size="4">سمارت فاليو لتطوير الانظمة</font>
   	<br><font size="6">   لامدا للمشروعات العقارية    <p>     نظام إدارة و متابعة المشاريع  </p>  </font> 
   </p>
@@ -29,7 +33,7 @@
   		<td><div align="center"><big>
   		<img src="Carrent/demo/images/Logo.jpg" style="height: 96px; width: 136px"></big><font size="2"><big>&nbsp;</big></font></div> </td>
 		<td style="width: 78px"></td>
-		<td><div align="center"><font size="2"><a href="http://www.smart-value.com"><big><img src="<%=appURL %>/images/smart-value.bmp" alt="Click to visit Smart Value Web Site" width="174" height="80" border="0"></big></a></font></div></td>
+		<td><div align="center"><font size="2"><a href="http://www.smart-value.com"><big><img src="<%=appURL%>/images/smart-value.bmp" alt="Click to visit Smart Value Web Site" width="174" height="80" border="0"></big></a></font></div></td>
 	</tr>
 	</table>
 </div>
@@ -43,7 +47,9 @@
 	</big></tr><big>
 	</big><tr><big>
 		</big><td width="93"><big>اسم المستخدم</big></td><big>
-		</big><%Cookie[] userNameFromCookie = request.getCookies();%>
+		</big><%
+		Cookie[] userNameFromCookie = request.getCookies();
+		%>
 		<td width="353"><input type=text name=userName title=" إسم المستخدم الخاص بك "></td>
 	</tr>
 	<tr>
@@ -54,21 +60,21 @@
 		
       <td> الشركة</td>
 		<td><select name="DBase" size="1" disabled="disabled">
-			<% 
+			<%
 			int defaultEnvIndex = 0 ;
-			for (int i = 0 ; i< conParms.size() ; i++ ) 
-              {
-                 Support.ConnParms thisConParms = (Support.ConnParms)conParms.elementAt(i);
-                 if (thisConParms.active.equals("Y"))
-                  { 
-                	 boolean isDefaultEnv = defaultEnv != null && thisConParms.name.equalsIgnoreCase(defaultEnv);
-                	 if (  isDefaultEnv ) defaultEnvIndex = i; 
-                    %>
-						<Option value="<%=i%>" <%=(isDefaultEnv)? "selected=\"selected\"" :"" %> ><%=thisConParms.name%></Option>
+				for (int i = 0 ; i< conParms.size() ; i++ ) 
+			              {
+			                 Support.ConnParms thisConParms = (Support.ConnParms)conParms.elementAt(i);
+			                 if (thisConParms.active.equals("Y"))
+			                  { 
+			                	 boolean isDefaultEnv = defaultEnv != null && thisConParms.name.equalsIgnoreCase(defaultEnv);
+			                	 if (  isDefaultEnv ) defaultEnvIndex = i;
+			%>
+						<Option value="<%=i%>" <%=(isDefaultEnv)? "selected=\"selected\"" :""%> ><%=thisConParms.name%></Option>
 					<%
-                  } 
-              }
-          %>
+					} 
+					              }
+					%>
 		</select>
 		<input type="hidden" name="DBase" value="<%=defaultEnvIndex%>" ></input>
 		</td>
@@ -89,7 +95,8 @@
 <div align="center"><a href="javascript:showDBConLayer(false)">
 </a></div>
 </form>
-<% //String comeFrom = request.getParameter("comeFrom")
+<%
+//String comeFrom = request.getParameter("comeFrom")
   request.setCharacterEncoding("UTF-8");
   java.sql.Connection  con = null;
   java.sql.Connection  repCon = null;
@@ -261,12 +268,10 @@
 	ModuleServicesContainer msc = Support.Misc.getModuleServiceContainer(selectedConnParms.name , lang , userName.toUpperCase());  
 	session.setAttribute(Support.Misc.MscSessionKey , msc); 
 
-	com.implex.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
+	com.smartValue.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
 	SecUsrDta loggedUser = secUsrDtaServices.getUserByUserName(userName.toUpperCase());
-	session.setAttribute("loggedUser" , loggedUser) ; 
-
-  
-  %>
+	session.setAttribute("loggedUser" , loggedUser) ;
+%>
   
 
 <%@ include file="/initialzeTrees.htm"%>

@@ -3,20 +3,24 @@
 	import="java.util.*, java.io.* , java.sql.* , java.text.SimpleDateFormat , javax.faces.model.SelectItem"%>
 <%@ page import="java.util.* , Support.Misc"%>
 <%@page  contentType="text/html;charset=UTF-8"%>
-<%request.setCharacterEncoding("UTF-8");%>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 
 <%@page import="java.text.DateFormat"%>
-<%@page import="com.implex.database.map.services.*"%>
-<%@page import="com.implex.database.map.*"%>
+<%@page import="com.smartValue.database.map.services.*"%>
+<%@page import="com.smartValue.database.map.*"%>
 <%@page import="com.sideinternational.sas.configuration.Configuration"%>
-<%@page import="com.implex.database.PersistantObject"%>
+<%@page import="com.smartValue.database.PersistantObject"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="oracle.jsp.parse.Include"%>
 <%@page import="Support.UserUnCommitedTransactions"%>
 <%@page import="com.smartValue.UnCommittedDbTransaction"%><html>
 
 <head>
-	<%String appUrl = Support.Misc.getAppURL(request) ;%>
+	<%
+	String appUrl = Support.Misc.getAppURL(request) ;
+	%>
 	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="<%=appUrl%>/includes/HijriCalender/lib/jquery.calendars.picker.css">
 	<script type="text/javascript" src="<%=appUrl%>/jQueryAssets/jquery-1.8.3.min.js"></script>
@@ -94,137 +98,135 @@
 <script type="text/javascript" src="<%=appUrl%>/includes/AJAX_new.js"></script>
 <jsp:include page="/includes/serverMessagesList.jsp"></jsp:include>
 <div id="sysMessage" title="System Message" dir="ltr"></div>
-<%  
+<%
 SecUsrDta  loggedUserObj = Support.Misc.getLoggedUserFromSession(session);
 boolean smartToolAdmin = loggedUserObj.isSmartToolAdmin();
 if (loggedUserObj.isUsrLangArabic())
 {
-	%><link rel="stylesheet" href="<%=appUrl%>/includes/smartTool_ar.css"> <%
-}
-String owner = request.getParameter("owner");
-String tableName = request.getParameter("tableName");
-int dotIndex =  tableName.indexOf(".");
-String tableowner = tableName.substring(0, dotIndex ).trim() ;
-String tableNameonly = tableName.substring(dotIndex +1 ) ;
-String rowIdValue =  request.getParameter("ROWID") ; 
-String commentlListQueryId = "36166" ; 
-String auditQueryId = "69240" ;
-String udvQueryId = "70882" ; 
-String linksQueryId = "73295" ; 
-
-%>
+%><link rel="stylesheet" href="<%=appUrl%>/includes/smartTool_ar.css"> <%
+ }
+ String owner = request.getParameter("owner");
+ String tableName = request.getParameter("tableName");
+ int dotIndex =  tableName.indexOf(".");
+ String tableowner = tableName.substring(0, dotIndex ).trim() ;
+ String tableNameonly = tableName.substring(dotIndex +1 ) ;
+ String rowIdValue =  request.getParameter("ROWID") ; 
+ String commentlListQueryId = "36166" ; 
+ String auditQueryId = "69240" ;
+ String udvQueryId = "70882" ; 
+ String linksQueryId = "73295" ;
+ %>
 <h3 align="center">Data Editor تعديل بيانات</h3>
  
 <%
-  boolean printable = request.getParameter("printable") != null ; 
-  String updateButtonSuffix = "_XXXX";
-  java.sql.Connection  con =null;
-  boolean execAgainstRep = (request.getParameter("execAgainstRep") != null && request.getParameter("execAgainstRep").toString().equals("Y") );
-  java.sql.Connection repCon = (java.sql.Connection)session.getAttribute("repCon");
-  if (execAgainstRep)
-  {
-  con = repCon ; //(java.sql.Connection)session.getAttribute("repCon");
-  }
-  else
-  {con = (java.sql.Connection)session.getAttribute("con");}
-  if (con == null)
-  {response.sendRedirect("loginScreen.jsp?comeFrom=tableEditor.jsp");}
-  java.sql.Statement stmt = con.createStatement();  
-  if (dotIndex==-1) {throw new Exception ("Table Name in Your query does not include owner name..it should be in the form of 'OWNER.TABLE_NAME'. please specify");}
-  TableMaintMaster tmm = Support.Misc.getTableMaintMaster(session , tableowner , tableNameonly) ;
+ boolean printable = request.getParameter("printable") != null ; 
+   String updateButtonSuffix = "_XXXX";
+   java.sql.Connection  con =null;
+   boolean execAgainstRep = (request.getParameter("execAgainstRep") != null && request.getParameter("execAgainstRep").toString().equals("Y") );
+   java.sql.Connection repCon = (java.sql.Connection)session.getAttribute("repCon");
+   if (execAgainstRep)
+   {
+   con = repCon ; //(java.sql.Connection)session.getAttribute("repCon");
+   }
+   else
+   {con = (java.sql.Connection)session.getAttribute("con");}
+   if (con == null)
+   {response.sendRedirect("loginScreen.jsp?comeFrom=tableEditor.jsp");}
+   java.sql.Statement stmt = con.createStatement();  
+   if (dotIndex==-1) {throw new Exception ("Table Name in Your query does not include owner name..it should be in the form of 'OWNER.TABLE_NAME'. please specify");}
+   TableMaintMaster tmm = Support.Misc.getTableMaintMaster(session , tableowner , tableNameonly) ;
 
-  String uniqueColumnName = "rowId";
-  String uniqueWhereClauseVarValue = "" ; 
-  String uniqueWhereClauseVarName = "uniqueWhereClause" ; 
-  
-  if( con.getMetaData().getDatabaseProductName().equals("Microsoft SQL Server") )
-  {
-	  out.print(con.getMetaData().getDatabaseProductName());
-	  uniqueColumnName = "ID";
-  }
-  boolean useRowIdValue = rowIdValue != null ;
+   String uniqueColumnName = "rowId";
+   String uniqueWhereClauseVarValue = "" ; 
+   String uniqueWhereClauseVarName = "uniqueWhereClause" ; 
+   
+   if( con.getMetaData().getDatabaseProductName().equals("Microsoft SQL Server") )
+   {
+ 	  out.print(con.getMetaData().getDatabaseProductName());
+ 	  uniqueColumnName = "ID";
+   }
+   boolean useRowIdValue = rowIdValue != null ;
 
+   
+   if ( useRowIdValue ) 
+   {
+ 	  String uniqueColumnValue = "'" + rowIdValue +"'";
+ 	  uniqueWhereClauseVarValue = "t."+uniqueColumnName+" = " + uniqueColumnValue ; 
+   }
+   else 
+   {
+ 	  uniqueWhereClauseVarValue = request.getParameter(uniqueWhereClauseVarName) ;  
+   }
   
-  if ( useRowIdValue ) 
-  {
-	  String uniqueColumnValue = "'" + rowIdValue +"'";
-	  uniqueWhereClauseVarValue = "t."+uniqueColumnName+" = " + uniqueColumnValue ; 
-  }
-  else 
-  {
-	  uniqueWhereClauseVarValue = request.getParameter(uniqueWhereClauseVarName) ;  
-  }
- 
-  //-------------------------------------------
-  
-  String queryStatment = "select t.* , t.rowid  "
-  		  + " , Support.Misc.get_object_unique_where_clause('"+tableowner+"' , '"+tableNameonly+"' , '"+rowIdValue+"'  ) UWC" // Unique Where Clause
-		  +" from " + tableName  + " t " + "\n" + " Where " +uniqueWhereClauseVarValue ; 
-  java.sql.ResultSet rs= null;
-  try{
-  rs =  stmt.executeQuery(queryStatment);
-  }
-  catch (Exception  e) {throw new Exception("Unable to execute : \n" + queryStatment + "\n Due to : \n" + e.getMessage());}
-  boolean objectExist =  rs.next();
-  boolean objectForOtherCompany = false ; 
-  String objectUniqueWhereClaue = "Unable to Get" ; 
-  if (objectExist )  
-  {		// Check if the Object Belong to the loggedUser Company or not 
-	  try {
-	  			String objectCompany = rs.getString("COMPANY_ID") ;
-	  			String loggedUserCompany = loggedUserObj.getUsrCmpIdValue().toString() ; 
-	  			objectForOtherCompany = !objectCompany.equalsIgnoreCase(loggedUserCompany);
-	  			
-  		  }
-  		catch ( Exception e ){}
-  
-	  if (smartToolAdmin) {  
-	  objectUniqueWhereClaue = rs.getString("UWC") ; 
-	  out.print("UiqueWhereClause : " + objectUniqueWhereClaue  ) ;
-	  }
-  }
-  if ( !objectExist || ( objectForOtherCompany && !loggedUserObj.getUsrNameValue().equalsIgnoreCase("JCCS")) ) 
-  {
-	  
-	  %>
+   //-------------------------------------------
+   
+   String queryStatment = "select t.* , t.rowid  "
+   		  + " , Support.Misc.get_object_unique_where_clause('"+tableowner+"' , '"+tableNameonly+"' , '"+rowIdValue+"'  ) UWC" // Unique Where Clause
+ 		  +" from " + tableName  + " t " + "\n" + " Where " +uniqueWhereClauseVarValue ; 
+   java.sql.ResultSet rs= null;
+   try{
+   rs =  stmt.executeQuery(queryStatment);
+   }
+   catch (Exception  e) {throw new Exception("Unable to execute : \n" + queryStatment + "\n Due to : \n" + e.getMessage());}
+   boolean objectExist =  rs.next();
+   boolean objectForOtherCompany = false ; 
+   String objectUniqueWhereClaue = "Unable to Get" ; 
+   if (objectExist )  
+   {		// Check if the Object Belong to the loggedUser Company or not 
+ 	  try {
+ 	  			String objectCompany = rs.getString("COMPANY_ID") ;
+ 	  			String loggedUserCompany = loggedUserObj.getUsrCmpIdValue().toString() ; 
+ 	  			objectForOtherCompany = !objectCompany.equalsIgnoreCase(loggedUserCompany);
+ 	  			
+   		  }
+   		catch ( Exception e ){}
+   
+ 	  if (smartToolAdmin) {  
+ 	  objectUniqueWhereClaue = rs.getString("UWC") ; 
+ 	  out.print("UiqueWhereClause : " + objectUniqueWhereClaue  ) ;
+ 	  }
+   }
+   if ( !objectExist || ( objectForOtherCompany && !loggedUserObj.getUsrNameValue().equalsIgnoreCase("JCCS")) ) 
+   {
+ %>
 	  <p align="center"> 
 	  	<font color="Red" size="4"> عفواً هذا العنصر (<%=tmm.getObjectName_Value()%>)   غير موجود - قد يكون قد تم حذفه او ليس لك صلاحية لعرضه او تعديله 
 	  		<br>Object Belongs to Other Company 
 	  	</font>
-	  	<!--  <br> <%=queryStatment%>  -->
+	  	<!--  <br>queryStatmentment%>  -->
 	  </p>
 	  <%
 	  return ; 
-  }
-  if (objectForOtherCompany)
-  { %>
+	    }
+	    if (objectForOtherCompany)
+	    {
+	  %>
 	  	<font color="blue" size="4">  Warnning : This Object Belongs to Other Company 	</font>
 	<%
-  }
-  ResultSetMetaData rsmd = rs.getMetaData();
-  int columnCount = rsmd.getColumnCount();
-  String tableObjectName = (loggedUserObj.isUsrLangEnglish())? "Data Type : "+ tmm.getObjectNameValue() :"النوع: "+ tmm.getObjectName_Value() ; 
-  
-  
-  if ( smartToolAdmin ) 
-  {
-	%><p align="center"><strong><%=tableObjectName %> ( Table Name is</strong> <%=tableName%>) </p> <% 
-  } 
-  else 
-  {
-	  %>  <p align="center"><strong><%=tableObjectName%> </p> <%  
-  }
-  String requestQueryString = request.getQueryString() ; 
-  String requestQueryStringWithoutCommit = requestQueryString ;
-
-%>
-<form name="form1" method="post" action="tableEditor.jsp?<%= requestQueryStringWithoutCommit%>">
+	}
+	  ResultSetMetaData rsmd = rs.getMetaData();
+	  int columnCount = rsmd.getColumnCount();
+	  String tableObjectName = (loggedUserObj.isUsrLangEnglish())? "Data Type : "+ tmm.getObjectNameValue() :"النوع: "+ tmm.getObjectName_Value() ; 
+	  
+	  
+	  if ( smartToolAdmin ) 
+	  {
+	%><p align="center"><strong><%=tableObjectName%> ( Table Name is</strong> <%=tableName%>) </p> <%
+ } 
+   else 
+   {
+ %>  <p align="center"><strong><%=tableObjectName%> </p> <%
+ }
+   String requestQueryString = request.getQueryString() ; 
+   String requestQueryStringWithoutCommit = requestQueryString ;
+ %>
+<form name="form1" method="post" action="tableEditor.jsp?<%=requestQueryStringWithoutCommit%>">
 	<input type="hidden" name="execAgainstRep" value='<%=((execAgainstRep)? "Y" : "N" )%>'>
 	<table width="493"  border="1" align="center" dir="<%=loggedUserObj.getDisplayDirection()%>">
 		<tr>
 			<td colspan="3">
 			<div align="center">
-			 <a href = "?tableName=<%=tableName%>&ROWID=<%=URLEncoder.encode(rowIdValue)%>&<%=uniqueWhereClauseVarName%>=<%=URLEncoder.encode(uniqueWhereClauseVarValue) %>"  >
+			 <a href = "?tableName=<%=tableName%>&ROWID=<%=URLEncoder.encode(rowIdValue)%>&<%=uniqueWhereClauseVarName%>=<%=URLEncoder.encode(uniqueWhereClauseVarValue)%>"  >
 				<img name="refreshAll" src="<%=appUrl%>/images/toolbar_icon_reload_active.gif" title="Reload Data تحديث ">
 			 </a>
 			 
@@ -241,23 +243,28 @@ String linksQueryId = "73295" ;
 			</a>
 			
 			  
-			<% if (smartToolAdmin) { %>
-			 <input type="submit" name="toggleDesign" value="<%=(request.getParameter("toggleDesign")!= null && request.getParameter("toggleDesign").equals ("Show Design") )? "Hid Design": "Show Design" %>" >
-		    <%} %>
+			<%
+						  			if (smartToolAdmin) {
+						  			%>
+			 <input type="submit" name="toggleDesign" value="<%=(request.getParameter("toggleDesign")!= null && request.getParameter("toggleDesign").equals ("Show Design") )? "Hid Design": "Show Design"%>" >
+		    <%
+		    }
+		    %>
 	       
 	         </div>
 			</td>
 		</tr>
 </table>
 </form>
-    <% String rowidUrlEncoded =  URLEncoder.encode(rowIdValue); 	
-       String beforeEditorPage = (String) tmm.getAttributeValue("BEFORE_EDITOR_PAGE") ; // "renderQueryResult.jsp?id=33880&queryIndex=1&printable=true"
+    <%
+    String rowidUrlEncoded =  URLEncoder.encode(rowIdValue); 	
+           String beforeEditorPage = (String) tmm.getAttributeValue("BEFORE_EDITOR_PAGE") ; // "renderQueryResult.jsp?id=33880&queryIndex=1&printable=true"
     %>
 	<%
-		if (beforeEditorPage != null)
-		{ 
-			try {
-			%>	
+	if (beforeEditorPage != null)
+			{ 
+		try {
+	%>	
 			<div id="<%=tableowner%>.<%=tableName%>.ParentPage" align="right">
 				<jsp:include page="<%=beforeEditorPage%>" > 
 					<jsp:param name="objectRowId" value="<%=rowidUrlEncoded%>"  />
@@ -267,50 +274,50 @@ String linksQueryId = "73295" ;
 			</div>
 			<%
 			}
-			catch ( Exception e) {out.print("Unable to Include Page " + beforeEditorPage + " due to " + e.getMessage()) ; }
-		}
-	%>
+				catch ( Exception e) {out.print("Unable to Include Page " + beforeEditorPage + " due to " + e.getMessage()) ; }
+					}
+			%>
 <div id="objectEditorTabs" >
   <ul>
     <li><a href="#MasterData">البيانات الاساسية</a></li>
-    <li><a href="queryResultWithEditableRS.jsp?id=<%=auditQueryId %>&schema=<%=tableowner%>&schma_table=<%=tableNameonly%>&objectRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">المراجعة</a></li>
-    <li><a href="queryResultWithEditableRS.jsp?id=<%=commentlListQueryId %>&table_owner_com=<%=tableowner%>&table_name_com=<%=tableNameonly%>&_SelectedOraRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">التعليقات</a></li>
+    <li><a href="queryResultWithEditableRS.jsp?id=<%=auditQueryId%>&schema=<%=tableowner%>&schma_table=<%=tableNameonly%>&objectRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">المراجعة</a></li>
+    <li><a href="queryResultWithEditableRS.jsp?id=<%=commentlListQueryId%>&table_owner_com=<%=tableowner%>&table_name_com=<%=tableNameonly%>&_SelectedOraRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">التعليقات</a></li>
     <li><a href="queryResultWithEditableRS.jsp?id=34650&table_owner=<%=tableowner%>&tableName=LU_QUERIES&table_name=<%=tableNameonly%>&_SelectedOraRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">إعتماد البيانات</a></li>
-    <li><a href="queryResultWithEditableRS.jsp?id=<%=linksQueryId %>&table_owner_com=<%=tableowner%>&table_name_com=<%=tableNameonly%>&_SelectedOraRowId=<%=rowidUrlEncoded%>&execludeJqScripts=Y">الروابط</a></li>
+    <li><a href="queryResultWithEditableRS.jsp?id=<%=linksQueryId%>&table_owner_com=<%=tableowner%>&table_name_com=<%=tableNameonly%>&_SelectedOraRowId=<%=rowidUrlEncoded%>&execludeJqScripts=Y">الروابط</a></li>
     <li><a href="/SmartTool/objectAttachmentsFrame.jsp?dirPath=DB_Attachs/<%=tableowner%>/<%=tableNameonly%>/<%=rowidUrlEncoded%>&_SelectedOraRowId=<%=rowidUrlEncoded%>" >الملحقات</a></li>
-    <li><a href="queryResultWithEditableRS.jsp?id=<%=udvQueryId %>&schema=<%=tableowner%>&schma_table=<%=tableNameonly%>&objectRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">User Defined Variables</a></li>
+    <li><a href="queryResultWithEditableRS.jsp?id=<%=udvQueryId%>&schema=<%=tableowner%>&schma_table=<%=tableNameonly%>&objectRowId=<%=rowidUrlEncoded%>&printable=True&execludeJqScripts=Y">User Defined Variables</a></li>
     
     
   </ul>
   
  <div id = "MasterData">  
 
-<table width="100%" border="0" align="Center" dir="<%=loggedUserObj.getDisplayDirection()%>"  <%= (tableNameonly.equalsIgnoreCase("TABLE_MAINT_DETAILS"))? "bgcolor=\"#CC3311\"" : "" %>  >
+<table width="100%" border="0" align="Center" dir="<%=loggedUserObj.getDisplayDirection()%>"  <%=(tableNameonly.equalsIgnoreCase("TABLE_MAINT_DETAILS"))? "bgcolor=\"#CC3311\"" : ""%>  >
 		<%
-	    boolean synchWithDb = request.getParameter("synchWithDb") != null ; 
-	    boolean genAuditColumns = request.getParameter("genAuditColumns") != null ;
-	    if (genAuditColumns) 
-	    {  
-	        tmm.createAuditColumns(); 
-	    	com.implex.database.BatchExecuteResult result = tmm.getCreateAuditColumnsExecResult();
-	    	out.println(result.getExceptions());
-	    } 
-	    if (synchWithDb) tmm.synchronizeWithDb();
-	    tmm.save();	    // this method internally checks  if the object is new it should be saved ..
-	    tmm.getTableMaintDetailss().restore();
-        ArrayList<PersistantObject> tmds = tmm.getTableMaintDetailss().getPersistantObjectList();
-        int count =0 ;
-    	request.setAttribute("rs" , rs);
-        for (PersistantObject po : tmds)
-          {  count++;
-        	 TableMaintDetails tmd = (TableMaintDetails) po ;
-         	 request.setAttribute("tmd" , tmd);
+		boolean synchWithDb = request.getParameter("synchWithDb") != null ; 
+			    boolean genAuditColumns = request.getParameter("genAuditColumns") != null ;
+			    if (genAuditColumns) 
+			    {  
+			        tmm.createAuditColumns(); 
+			    	com.smartValue.database.BatchExecuteResult result = tmm.getCreateAuditColumnsExecResult();
+			    	out.println(result.getExceptions());
+			    } 
+			    if (synchWithDb) tmm.synchronizeWithDb();
+			    tmm.save();	    // this method internally checks  if the object is new it should be saved ..
+			    tmm.getTableMaintDetailss().restore();
+		        ArrayList<PersistantObject> tmds = tmm.getTableMaintDetailss().getPersistantObjectList();
+		        int count =0 ;
+		    	request.setAttribute("rs" , rs);
+		        for (PersistantObject po : tmds)
+		          {  count++;
+		        	 TableMaintDetails tmd = (TableMaintDetails) po ;
+		         	 request.setAttribute("tmd" , tmd);
 			 String divID = "'sysMsgDivIdFor_"+tmd.getColumnNameValue()+"'" ; 
 
-          	 if (tmd.getIncludedInEdit().getBooleanValue())
-          	 { String columnNameValue = tmd.getColumnNameValue() ; 
-          	 	String jsTableRowid = columnNameValue+"_RowID" ; 
-         	  %><tr id = '<%=jsTableRowid%>' >
+		          	 if (tmd.getIncludedInEdit().getBooleanValue())
+		          	 { String columnNameValue = tmd.getColumnNameValue() ; 
+		          	 	String jsTableRowid = columnNameValue+"_RowID" ;
+		%><tr id = '<%=jsTableRowid%>' >
         		  	<td width="119">&nbsp;</td>
        			  	<td width="191" title="<%=tmd.getCommentsValue()%>">
         				  <input 	type="hidden" name="<%=tmd.getColumnNameValue()+"columnType"%>" 	value="<%=tmd.getHtmlTypeValue()%>">

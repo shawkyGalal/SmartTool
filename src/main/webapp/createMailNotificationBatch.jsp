@@ -6,7 +6,7 @@
 	<%@page import="Support.TextFileLineEditor"%>
 	<%@page import="Support.XMLConfigFileReader"%>
 	<%@page import="Support.SysConfigParams"%>
-	<%@page import="com.implex.database.map.SysParams"%>
+	<%@page import="com.smartValue.database.map.SysParams"%>
 	
 	<%@page import="com.sideinternational.sas.configuration.Configuration"%>
 	
@@ -14,7 +14,7 @@
 	
 	<%@page import="java.io.File"%>
 	<%@page import="com.sideinternational.mail.MailSender"%>
-	<%@page import="com.implex.database.map.SecUsrDta"%><html>
+	<%@page import="com.smartValue.database.map.SecUsrDta"%><html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Insert title here</title>
@@ -43,68 +43,68 @@
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	</form>
-	<% 
+	<%
 	if (request.getParameter("Submit") != null)
-	{
-		SecUsrDta loggedUser = (SecUsrDta) session.getAttribute("loggedUser") ; 
-		String companyId = loggedUser.getUsrCmpIdValue(); 
-	String queryId = request.getParameter("id");
-	String querySeq = request.getParameter("seq");
-	String configSubDir = com.sideinternational.web.swaf.SWAF.getConfigurationSubDirectory() ; 
-	
-	//File inputFile = new File (session.getServletContext().getRealPath("Batches/If_Data_Found_Send_Mail/Mailesender_templ.bat"));
-	String configFolder = Configuration.getConfigurationHome() +"/"+ configSubDir ; 
-	File inputFile = new File ( configFolder+"/Batches/If_Data_Found_Send_Mail/Mailesender_templ.bat");
-	//File outFile = new File (session.getServletContext().getRealPath("Batches/If_Data_Found_Send_Mail/"+companyId+"/Mailesender_"+queryId+"_"+querySeq+".bat"));
-	File outFile = new File (configFolder + "/Batches/If_Data_Found_Send_Mail/"+companyId+"/Mailesender_"+queryId+"_"+querySeq+".bat");
-	
-	TextFileLineEditor tfle = new TextFileLineEditor(inputFile , outFile );
-	String[] oldValues = {"<QUERY_ID>" , "<QUERY_SEQUANCE>" , "<DB CONFIGURATION FILE CONNECTION NAME>", "<USERNAME>" , "<PASSWORD>" , "<OUT_LOG_FILE>"};
-	
-	XMLConfigFileReader aa = new XMLConfigFileReader( false);
-	//Misc abc = new Misc(repCon);
-	com.implex.database.DataSet sysParamsDs = ((SecUsrDta) session.getAttribute("loggedUser")).getUserCompany().getSysParams(); 
-	String autologinDB = ((SysParams)sysParamsDs.getFirstFilteredPO("E_NAME" , "AutoLogin_Environment_Name" )).getValValue(); //  SysConfigParams.getAutoLogin_Environment_Name();// abc.getSystemParameterValue(8);
-	String autoLoginUserName = ((SysParams)sysParamsDs.getFirstFilteredPO("E_NAME" , "AutoLogin_Username" )).getValValue(); //  SysConfigParams.getAutoLogin_Username();// abc.getSystemParameterValue(9);
-	String autoLoginPassword = ((SysParams)sysParamsDs.getFirstFilteredPO("E_NAME" , "AutoLogin_Password" )).getValValue(); //  SysConfigParams.getAutoLogin_Password();// abc.getSystemParameterValue(10);
-	
-	
-	String[] newValues = {queryId , querySeq , autologinDB , autoLoginUserName , autoLoginPassword , queryId + "_" + querySeq + ".log"};
-	tfle.replace(oldValues , newValues , 0 , 2000);
-	// Send Email to System Admin Requesting to create a scheduled task
-	String message = "";
-	try{
-	    String smtpServerIP = Support.SysConfigParams.getSMTP_SERVER();
-	    String supportAdminMailSender = Support.SysConfigParams.getSupport_User_Email();
-	    String supporEmailReciver = Support.SysConfigParams.getAdmin_Notify_Mail_Address_Receiver();
-	
-	    String remoteAddr = java.net.InetAddress.getByName(request.getRemoteAddr().toString()).getHostName(); 
-	
-	  // if (! remoteAddr.equals("10.16.18.181") ) //-------execlude loging from my labtop when connected to local network 
-	  { 
-	  /* Using a seperate thread to send an email notification ..
-	    Thanks to Java threading this is greatly enhances the user satisfaction
-	  */
-	   String userRequirments = request.getParameter("userReq");
-	   message = "User Has the Following Requirments <br>" + userRequirments ;
-	   message +="<br> Batch file for the selected report is : " + outFile.getAbsolutePath()  ;
-	   String subject = "Request For a New Scherdualed Task";
-	   String[] to = {supporEmailReciver};
-	    Support.mail.EmailMessage em = new Support.mail.EmailMessage();
-	    em.setFrom(supportAdminMailSender);
-	    em.setTo(to);
-	    em.setSubject(subject);
-	    em.setBody(message);
-	   
-	    Support.mail.MailSender ms = new Support.mail.MailSender(smtpServerIP , "sfoda" , "redsea11");
-	    Support.mail.MailSenderThread mst = new Support.mail.MailSenderThread(em ,ms);
-	    mst.start();
-	    }
-	}
-	catch (Exception e){out.print("Smart Tool Failed to Send an Email to System Admin ... Please contact Your System Admin.");}
-	
-	out.println("Message : " + message + "Send to System Admin");
-	}
+		{
+			SecUsrDta loggedUser = (SecUsrDta) session.getAttribute("loggedUser") ; 
+			String companyId = loggedUser.getUsrCmpIdValue(); 
+		String queryId = request.getParameter("id");
+		String querySeq = request.getParameter("seq");
+		String configSubDir = com.sideinternational.web.swaf.SWAF.getConfigurationSubDirectory() ; 
+		
+		//File inputFile = new File (session.getServletContext().getRealPath("Batches/If_Data_Found_Send_Mail/Mailesender_templ.bat"));
+		String configFolder = Configuration.getConfigurationHome() +"/"+ configSubDir ; 
+		File inputFile = new File ( configFolder+"/Batches/If_Data_Found_Send_Mail/Mailesender_templ.bat");
+		//File outFile = new File (session.getServletContext().getRealPath("Batches/If_Data_Found_Send_Mail/"+companyId+"/Mailesender_"+queryId+"_"+querySeq+".bat"));
+		File outFile = new File (configFolder + "/Batches/If_Data_Found_Send_Mail/"+companyId+"/Mailesender_"+queryId+"_"+querySeq+".bat");
+		
+		TextFileLineEditor tfle = new TextFileLineEditor(inputFile , outFile );
+		String[] oldValues = {"<QUERY_ID>" , "<QUERY_SEQUANCE>" , "<DB CONFIGURATION FILE CONNECTION NAME>", "<USERNAME>" , "<PASSWORD>" , "<OUT_LOG_FILE>"};
+		
+		XMLConfigFileReader aa = new XMLConfigFileReader( false);
+		//Misc abc = new Misc(repCon);
+		com.smartValue.database.DataSet sysParamsDs = ((SecUsrDta) session.getAttribute("loggedUser")).getUserCompany().getSysParams(); 
+		String autologinDB = ((SysParams)sysParamsDs.getFirstFilteredPO("E_NAME" , "AutoLogin_Environment_Name" )).getValValue(); //  SysConfigParams.getAutoLogin_Environment_Name();// abc.getSystemParameterValue(8);
+		String autoLoginUserName = ((SysParams)sysParamsDs.getFirstFilteredPO("E_NAME" , "AutoLogin_Username" )).getValValue(); //  SysConfigParams.getAutoLogin_Username();// abc.getSystemParameterValue(9);
+		String autoLoginPassword = ((SysParams)sysParamsDs.getFirstFilteredPO("E_NAME" , "AutoLogin_Password" )).getValValue(); //  SysConfigParams.getAutoLogin_Password();// abc.getSystemParameterValue(10);
+		
+		
+		String[] newValues = {queryId , querySeq , autologinDB , autoLoginUserName , autoLoginPassword , queryId + "_" + querySeq + ".log"};
+		tfle.replace(oldValues , newValues , 0 , 2000);
+		// Send Email to System Admin Requesting to create a scheduled task
+		String message = "";
+		try{
+		    String smtpServerIP = Support.SysConfigParams.getSMTP_SERVER();
+		    String supportAdminMailSender = Support.SysConfigParams.getSupport_User_Email();
+		    String supporEmailReciver = Support.SysConfigParams.getAdmin_Notify_Mail_Address_Receiver();
+		
+		    String remoteAddr = java.net.InetAddress.getByName(request.getRemoteAddr().toString()).getHostName(); 
+		
+		  // if (! remoteAddr.equals("10.16.18.181") ) //-------execlude loging from my labtop when connected to local network 
+		  { 
+		  /* Using a seperate thread to send an email notification ..
+		    Thanks to Java threading this is greatly enhances the user satisfaction
+		  */
+		   String userRequirments = request.getParameter("userReq");
+		   message = "User Has the Following Requirments <br>" + userRequirments ;
+		   message +="<br> Batch file for the selected report is : " + outFile.getAbsolutePath()  ;
+		   String subject = "Request For a New Scherdualed Task";
+		   String[] to = {supporEmailReciver};
+		    Support.mail.EmailMessage em = new Support.mail.EmailMessage();
+		    em.setFrom(supportAdminMailSender);
+		    em.setTo(to);
+		    em.setSubject(subject);
+		    em.setBody(message);
+		   
+		    Support.mail.MailSender ms = new Support.mail.MailSender(smtpServerIP , "sfoda" , "redsea11");
+		    Support.mail.MailSenderThread mst = new Support.mail.MailSenderThread(em ,ms);
+		    mst.start();
+		    }
+		}
+		catch (Exception e){out.print("Smart Tool Failed to Send an Email to System Admin ... Please contact Your System Admin.");}
+		
+		out.println("Message : " + message + "Send to System Admin");
+		}
 	%>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>

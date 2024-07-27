@@ -5,10 +5,10 @@
 <%request.setCharacterEncoding("utf-8");%>
 
 <%@page import="java.text.DateFormat"%>
-<%@page import="com.implex.database.map.services.*"%>
-<%@page import="com.implex.database.map.*"%>
+<%@page import="com.smartValue.database.map.services.*"%>
+<%@page import="com.smartValue.database.map.*"%>
 <%@page import="com.sideinternational.sas.configuration.Configuration"%>
-<%@page import="com.implex.database.PersistantObject"%>
+<%@page import="com.smartValue.database.PersistantObject"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="Support.LookupTreeV10"%>
 

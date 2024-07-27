@@ -1,13 +1,17 @@
-﻿<%@ page errorPage="../../errorPage.jsp" %>
+<%@ page errorPage="../../errorPage.jsp" %>
 <%@page  language="java" contentType="text/html;charset=UTF-8"%>
-<%@page import="com.implex.database.map.services.* , com.implex.database.map.SecUsrDta, Support.Misc" %>
-<%request.setCharacterEncoding("UTF-8");%>
+<%@page import="com.smartValue.database.map.services.*,com.smartValue.database.map.SecUsrDta,Support.Misc" %>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 
 
 <html>
 <head>
 <link rel="shortcut icon" href="/SmartTool/Company/3/images/logo.png">
-<% String appURL = Support.Misc.getAppURL(request) ;  %>
+<%
+String appURL = Support.Misc.getAppURL(request) ;
+%>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 <script type="text/javascript" src="<%=appURL%>/includes/AJAX_new.js"></script>
 <script src="<%=appURL%>/jQueryAssets/jquery-1.10.2.js"></script>
@@ -31,8 +35,8 @@
     		frameborder="0"
     		style="position:relative; top: 0.2cm; left: 0.2cm;" > </iframe>
 </td><td>
-<% 
-	Cookie loginPageCookie  = Misc.getCookiByName(request , Misc.LoginScreenPageNameCookiVarName) ; 
+<%
+Cookie loginPageCookie  = Misc.getCookiByName(request , Misc.LoginScreenPageNameCookiVarName) ; 
 	if (loginPageCookie == null )
 	{ 
 		loginPageCookie = new Cookie (Misc.LoginScreenPageNameCookiVarName ,null );
@@ -46,7 +50,7 @@
 	String reportTopOpen = "27941" ; 
      Support.XMLConfigFileReader supportConfig =  Misc.getXMLConfigFileReader(false ) ;  
      java.util.Vector conParms  = supportConfig.connParms ;
-   %>
+%>
    <p align="center">
    Google Chrome is the recommended Browser for this system ...<a href= "https://www.google.com/chrome/browser/desktop/" > DownLoad Google Chrome</a>
    </p>
@@ -75,7 +79,9 @@
 	</big></tr><big>
 	</big><tr><big>
 		</big><td width="93"><big>اسم المستخدم</big></td><big>
-		</big><%Cookie[] userNameFromCookie = request.getCookies();%>
+		</big><%
+		Cookie[] userNameFromCookie = request.getCookies();
+		%>
 		<td width="353"><input type=text name=userName title=" إسم المستخدم الخاص بك "></td>
 	</tr>
 	<tr>
@@ -86,21 +92,21 @@
 		
       <td> الشركة</td>
 		<td><select name="DBase" size="1" disabled="disabled">
-			<% 
+			<%
 			int defaultEnvIndex = 0 ;
-			for (int i = 0 ; i< conParms.size() ; i++ ) 
-              {
-                 Support.ConnParms thisConParms = (Support.ConnParms)conParms.elementAt(i);
-                 if (thisConParms.active.equals("Y"))
-                  { 
-                	 boolean isDefaultEnv = defaultEnv != null && thisConParms.name.equalsIgnoreCase(defaultEnv);
-                	 if (  isDefaultEnv ) defaultEnvIndex = i; 
-                    %>
-						<Option value="<%=i%>" <%=(isDefaultEnv)? "selected=\"selected\"" :"" %> ><%=thisConParms.name%></Option>
+				for (int i = 0 ; i< conParms.size() ; i++ ) 
+			              {
+			                 Support.ConnParms thisConParms = (Support.ConnParms)conParms.elementAt(i);
+			                 if (thisConParms.active.equals("Y"))
+			                  { 
+			                	 boolean isDefaultEnv = defaultEnv != null && thisConParms.name.equalsIgnoreCase(defaultEnv);
+			                	 if (  isDefaultEnv ) defaultEnvIndex = i;
+			%>
+						<Option value="<%=i%>" <%=(isDefaultEnv)? "selected=\"selected\"" :""%> ><%=thisConParms.name%></Option>
 					<%
-                  } 
-              }
-          %>
+					} 
+					              }
+					%>
 		</select>
 		<input type="hidden" name="DBase" value="<%=defaultEnvIndex%>" ></input>
 		</td>
@@ -123,7 +129,8 @@
 </form>
 </td></tr>
 </table>
-<% //String comeFrom = request.getParameter("comeFrom")
+<%
+//String comeFrom = request.getParameter("comeFrom")
   request.setCharacterEncoding("UTF-8");
   java.sql.Connection  con = null;
   java.sql.Connection  repCon = null;
@@ -295,13 +302,11 @@
 	ModuleServicesContainer msc = Support.Misc.getModuleServiceContainer(selectedConnParms.name , lang , userName.toUpperCase());  
 	session.setAttribute(Support.Misc.MscSessionKey , msc); 
 
-	com.implex.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
+	com.smartValue.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
 	SecUsrDta loggedUser = secUsrDtaServices.getUserByUserName(userName.toUpperCase());
 	if ( loggedUser == null ) { throw new Exception ("User " + userName.toUpperCase() + "Does Not Exist"); }
-	session.setAttribute("loggedUser" , loggedUser) ; 
-
-  
-  %>
+	session.setAttribute("loggedUser" , loggedUser) ;
+%>
   
 
 <%@ include file="/initialzeTrees.htm"%>

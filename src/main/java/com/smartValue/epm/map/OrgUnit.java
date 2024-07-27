@@ -1,9 +1,9 @@
 package com.smartValue.epm.map;
 
 
-import com.implex.database.DataSet;
+import com.smartValue.database.DataSet;
 
-public class OrgUnit extends com.implex.database.map.OrgUnit {
+public class OrgUnit extends com.smartValue.database.map.OrgUnit {
 	
 		private DataSet bscObjectivesDs ; 
 		public DataSet getBscObjectives()

@@ -1,11 +1,11 @@
-<%@page import="com.implex.database.map.SecUsrDta"%>
+<%@page import="com.smartValue.database.map.SecUsrDta"%>
 <%@ page errorPage="errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
-<%@page import="Support.SelectionTree , com.implex.database.map.TableMaintDetails"%>
+<%@page import="Support.SelectionTree,com.smartValue.database.map.TableMaintDetails"%>
 
 <%@page import="java.util.StringTokenizer"%>
-<%@page import="com.implex.database.map.TableMaintMaster"%><html>
+<%@page import="com.smartValue.database.map.TableMaintMaster"%><html>
 <head>
 		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 	</head>

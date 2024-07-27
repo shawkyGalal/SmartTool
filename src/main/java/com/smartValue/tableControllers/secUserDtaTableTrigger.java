@@ -2,10 +2,10 @@ package com.smartValue.tableControllers;
 
 import java.sql.Connection;
 
-import com.implex.database.map.SecUserGroups;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.TableMaintMaster;
-import com.implex.database.map.services.ModuleServicesContainer;
+import com.smartValue.database.map.SecUserGroups;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.TableMaintMaster;
+import com.smartValue.database.map.services.ModuleServicesContainer;
 
 import Support.Misc;
 

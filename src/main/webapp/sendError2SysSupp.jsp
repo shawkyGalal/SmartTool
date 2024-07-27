@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"
 	errorPage="errorPage.jsp"%>
-<%@page import="com.implex.database.map.SecUsrDta" %>
-<%@page import="com.implex.database.map.SysParams"%>
+<%@page import="com.smartValue.database.map.SecUsrDta" %>
+<%@page import="com.smartValue.database.map.SysParams"%>
 <html>
 <head>
 <title>Sending Error Report To System Support</title>
@@ -10,7 +10,7 @@
 
 <body BACKGROUND="Nccibgd2.gif" TEXT="blue" LINK="red">
 <%
-      request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
       String errorDetails = request.getParameter("errorDetails");
       String userComment = request.getParameter("userComment");
       String DBUserID = request.getParameter("DBUserID");
@@ -35,7 +35,7 @@
             
         //Support.Misc msc = new Support.Misc(repCon);
     	SecUsrDta loggedUser  = (SecUsrDta) session.getAttribute("loggedUser" ) ; 
-        com.implex.database.DataSet sysParams = loggedUser.getUserCompany().getSysParams() ;
+        com.smartValue.database.DataSet sysParams = loggedUser.getUserCompany().getSysParams() ;
          mailFrom = ((SysParams) sysParams.getFirstFilteredPO("E_NAME" , "Support User Email")).getValValue(); // Support.SysConfigParams.getSupport_User_Email();
          mailReceiver = ((SysParams) sysParams.getFirstFilteredPO("E_NAME" , "Admin_Notify_Mail_Address_Receiver")).getValValue(); //Support.SysConfigParams.getAdmin_Notify_Mail_Address_Receiver();
 
@@ -52,7 +52,7 @@
       Support.mail.EmailMessage em = new Support.mail.EmailMessage(mailFrom,mailRecepiants,ccRecepiants,"Error In The Support System", mailBody);
       
       mailSender.sendMail(em);
-    %>
+%>
 <div align="center">
 <p>A Mail Sent to The System Support For This Error.</p>
 <p>Please Keep Following Up</p>

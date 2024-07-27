@@ -1,11 +1,11 @@
-<%@page import="com.implex.database.map.SecUsrDta"%>
+<%@page import="com.smartValue.database.map.SecUsrDta"%>
 <%@page import="Support.Misc"%>
-<%@page import="com.implex.database.map.services.SecUserDataService"%>
-<%@page import="com.implex.database.map.services.ModuleServicesContainer"%>
+<%@page import="com.smartValue.database.map.services.SecUserDataService"%>
+<%@page import="com.smartValue.database.map.services.ModuleServicesContainer"%>
 
 <%@page errorPage="errorPage.jsp" %>
 <%@page import="java.sql.Statement"%>
-<%@page import="Support.mail.MailSender , com.implex.database.map.SysParams"%>
+<%@page import="Support.mail.MailSender,com.smartValue.database.map.SysParams"%>
 <%@page import="java.security.SecureRandom"%>
 <%@page import="java.util.Random"%>
 <%@page  language="java" contentType="text/html;charset=UTF-8"%>
@@ -42,28 +42,28 @@ if ( ! sbmitted) {
 	<br><br><br><input type="submit" name="submit">
 </form>
 <% } %>
-<% if (sbmitted) 
+<%
+if (sbmitted) 
 {
 	//1- Get User Object Info.  
 	ModuleServicesContainer msc = Support.Misc.getModuleServiceContainer(selectedConnParamsName , 1 );  
 	SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
 	SecUsrDta userToBeReset = secUsrDtaServices.getUserByUserNameAndEmail(userID.trim().toUpperCase() , userEmailAddress.trim().toUpperCase() );
-				
+		
 	String randomPassword = userToBeReset.alterUserPassword(); 
-	com.implex.database.DataSet sysParams = userToBeReset.getUserCompany().getSysParams() ; 
+	com.smartValue.database.DataSet sysParams = userToBeReset.getUserCompany().getSysParams() ; 
 	String appUrl = ((SysParams) sysParams.getFirstFilteredPO("E_NAME" , "AppURL")).getValValue();
     appUrl = appUrl +"/SmartTool/Company/"+userToBeReset.getUsrCmpIdValue()+"/loginScreen.jsp" ; 
 	String message = "<div align='right' dir='rtl'> تم تغيير كلمة المرور لحسابك فى نظام قياس الاداء  "
-						+"<br> اسم المستخدم : " +userToBeReset.getUsrNameValue() 
-						+"<br> البريد الالكتروني :" +userToBeReset.getUsrEmailValue() 
-						+"<br> كلمة المرور الجديدة  : " + randomPassword ;
+				+"<br> اسم المستخدم : " +userToBeReset.getUsrNameValue() 
+				+"<br> البريد الالكتروني :" +userToBeReset.getUsrEmailValue() 
+				+"<br> كلمة المرور الجديدة  : " + randomPassword ;
     message += "<br><br><a href = "+appUrl+">إضغط هنا للدخول للنظام </a> </div>" ;
 
     String subject = "EPM System Password Reset Request result - كلمة مرور جديدة لنظام قياس الاداء " ;
 
-	userToBeReset.sendResetPasswordEmail(subject , message) ; 
-
-	%> تم إرسال ايميل الى بريد المستخدم المسجل بالنظام يتحوى على كلمة المرور الجديدة <br>An Email Message sent To User Email Address with the new password instructions
+	userToBeReset.sendResetPasswordEmail(subject , message) ;
+%> تم إرسال ايميل الى بريد المستخدم المسجل بالنظام يتحوى على كلمة المرور الجديدة <br>An Email Message sent To User Email Address with the new password instructions
 	<br>
 	<div align="center">
 		<a href = "Company/<%=userToBeReset.getUsrCmpIdValue()%>/loginScreen.jsp"  > Login to System  الدخول للنظام </a>

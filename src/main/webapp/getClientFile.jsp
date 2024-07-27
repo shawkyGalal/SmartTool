@@ -1,8 +1,8 @@
-<%@page import="com.implex.database.map.SecUsrDta"%>
+<%@page import="com.smartValue.database.map.SecUsrDta"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
 
-<%@page import="com.implex.database.PersistantObject"%>
+<%@page import="com.smartValue.database.PersistantObject"%>
 <%@page import="java.net.URLEncoder"%><html>
 
 <%@page import="Support.SqlReader , java.util.* "%><html>

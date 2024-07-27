@@ -1,5 +1,5 @@
 <%@ page errorPage="errorPage.jsp"%>
-<%@ page import="java.util.*, Support.Misc , com.implex.database.map.SecUsrDta"%>
+<%@ page import="java.util.*, Support.Misc ,com.smartValue.database.map.SecUsrDta"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

@@ -3,8 +3,8 @@ package com.smartValue.tableControllers;
 import java.sql.Connection;
 import java.util.Vector;
 
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.TableMaintMaster;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.TableMaintMaster;
 
 import Support.Misc;
 import Support.SqlReader;

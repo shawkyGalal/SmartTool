@@ -4,7 +4,7 @@
 <%@page  contentType="text/html;charset=UTF-8"%>
 <%request.setCharacterEncoding("utf-8");%>
 
-<%@page import="com.implex.database.map.*"%>
+<%@page import="com.smartValue.database.map.*"%>
 
 
 <% 	  

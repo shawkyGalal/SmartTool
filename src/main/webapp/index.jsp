@@ -1,17 +1,20 @@
 <%@ page errorPage="errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
-<%request.setCharacterEncoding("UTF-8");%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	%>
 <%@page import = "Support.Misc" %> 
-<%@page import="com.implex.database.map.SecUsrDta"%>
+<%@page import="com.smartValue.database.map.SecUsrDta"%>
 <html>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 <head>
-<%SecUsrDta loggedUser = (SecUsrDta) session.getAttribute("loggedUser") ; %>
+<%
+SecUsrDta loggedUser = (SecUsrDta) session.getAttribute("loggedUser") ;
+%>
 <link rel="shortcut icon" href="/SmartTool/Company/<%=(loggedUser !=null) ? loggedUser.getUsrCmpIdValue(): 20%>/images/logo.png">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<% 
-
+<%
 String reportTopOpen = request.getParameter("reportTopOpen"); 
 reportTopOpen = (reportTopOpen == null) ? "30005" :reportTopOpen ;
 
@@ -22,8 +25,7 @@ if ( loggedUser == null )
 	response.sendRedirect(loginScreenPage + "?comeFrom=index.jsp?reportTopOpen="+ reportTopOpen);
 }
 String userGroup = loggedUser.getUsrGrpIdValue(); 
-com.implex.database.map.MasCompanyData userCompany = loggedUser.getUserCompany(); 
-  
+com.smartValue.database.map.MasCompanyData userCompany = loggedUser.getUserCompany();
 %>
 
 <title><%=(userCompany!=null)? userCompany.getCmpDescValue(): "Unknown Company" %> - Smart Value</title>

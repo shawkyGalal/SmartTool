@@ -34,7 +34,7 @@ if (request.getParameter("Submit") != null)
     out.println(" تم الارسال بنجاح ....."  + gatwayResponse);
 
     //---Audit the operation -----
-    com.implex.database.map.SecUsrDta loggedUser = (com.implex.database.map.SecUsrDta)session.getAttribute("loggedUser" ) ;
+    com.smartValue.database.map.SecUsrDta loggedUser = (com.smartValue.database.map.SecUsrDta)session.getAttribute("loggedUser" ) ;
     String insStr = "Insert Into support.sms_sender_aduit ( sms_message , sent_date , sent_by , gateway_response , sent_by_company , sent_to) values (" 
     		+ "'" + msg + "'," 
     		+ "sysdate , "

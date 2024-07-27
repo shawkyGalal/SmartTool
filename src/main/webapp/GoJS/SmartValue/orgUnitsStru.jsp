@@ -1,11 +1,11 @@
-<%@page import="com.implex.database.map.SecUsrDta"%>
+<%@page import="com.smartValue.database.map.SecUsrDta"%>
 <%@ page errorPage="/errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
-<%@page import="Support.LookupTreeV10 ,Support.TreeNode , com.implex.database.map.TableMaintDetails"%>
+<%@page import="Support.LookupTreeV10,Support.TreeNode,com.smartValue.database.map.TableMaintDetails"%>
 <% String appURL = Support.Misc.getAppURL(request) ;  %>
 <%@page import="java.util.StringTokenizer"%>
-<%@page import="com.implex.database.map.TableMaintMaster"%><html>
+<%@page import="com.smartValue.database.map.TableMaintMaster"%><html>
 	<% 	    SecUsrDta loggedUser = Support.Misc.getLoggedUserFromSession(session);
 			java.sql.Connection  con = (java.sql.Connection)session.getAttribute("con");
 		    final int QUERY_FROM_TMD = 1;  

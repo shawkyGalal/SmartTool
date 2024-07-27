@@ -1,10 +1,10 @@
 package com.smartValue.epm.map.auto;
 
-import com.implex.database.PersistantObject; 
-import com.implex.database.DataSet;
-import com.implex.database.Attribute;
-import com.implex.database.DbTable;
-import com.implex.database.ApplicationContext;
+import com.smartValue.database.ApplicationContext;
+import com.smartValue.database.Attribute;
+import com.smartValue.database.DataSet;
+import com.smartValue.database.DbTable;
+import com.smartValue.database.PersistantObject;
 
 public abstract class _KpiMonthlyValues extends PersistantObject {
 /* Dynamically Generated Mapping Class 

@@ -8,14 +8,14 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="Support.SqlReader"%>
-<%@page import="com.implex.database.map.SecUsrDta"%>
+<%@page import="com.smartValue.database.map.SecUsrDta"%>
 <%@ page errorPage="/errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
-<%@page import="Support.LookupTreeV10 ,Support.TreeNode , com.implex.database.map.TableMaintDetails"%>
+<%@page import="Support.LookupTreeV10,Support.TreeNode,com.smartValue.database.map.TableMaintDetails"%>
 <% String appURL = Support.Misc.getAppURL(request) ;  %>
 <%@page import="java.util.StringTokenizer"%>
-<%@page import="com.implex.database.map.TableMaintMaster"%>
+<%@page import="com.smartValue.database.map.TableMaintMaster"%>
 <script type="text/javascript" src="<%=appURL%>/includes/AJAX_new.js"></script>
 <div id="sysMessage"></div>
 

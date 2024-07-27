@@ -1,11 +1,11 @@
 <%@page import="Support.Misc"%>
 <%@ page language="java" contentType="text/html; charset=windows-1256"
     pageEncoding="windows-1256"
-    import = "com.implex.database.mapGeneration.*" 
+    import = "com.smartValue.database.mapGeneration.*" 
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@page import="com.implex.database.ApplicationContext"%><html>
+<%@page import="com.smartValue.database.ApplicationContext"%><html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1256">
 <title>Insert title here</title>
@@ -21,7 +21,7 @@
 <br><input  type="submit" name = "submit" >
 </form>
 <%
-	if (request.getParameter("submit")!= null )
+if (request.getParameter("submit")!= null )
 	{
 		String mapTableName = request.getParameter("MAP_TABLE_NAME");
 		String mapTableOwner = request.getParameter("MAP_TABLE_OWNER");
@@ -30,7 +30,7 @@
 		packageName = (packageName==null)? "com.smartValue.support.map" : packageName; 
 		boolean GenServiceClass = request.getParameter("GenServiceClass").equalsIgnoreCase("Y") ; 
 		MapGenerator mg = new MapGenerator(null);
-		mg.getMapCalculatedVariables().add(new MapCalculatedVariable("abc", com.implex.database.PersistantObject.class)) ;
+		mg.getMapCalculatedVariables().add(new MapCalculatedVariable("abc", com.smartValue.database.PersistantObject.class)) ;
 		mg.setGenerateValidationClass(false);
 		mg.setGenerateServiceClass(GenServiceClass);
 		mg.setGenerateXhtmlMaintForm(false);
@@ -52,7 +52,6 @@
 		Misc.getModuleServiceContainerFromUserSession(session).getMessageCommnunicatorService().clear();
 		//sm.clear();
 	}
-	
 %>
 </body>
 </html>

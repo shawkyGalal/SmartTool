@@ -1,15 +1,15 @@
 package com.masterWorks.httpClient.map;
 
 import com.masterWorks.httpClient.map.auto._HttpRequest;
-import com.implex.database.PersistantObject;
-import com.implex.database.Attribute;
-import com.implex.database.AttributeChangeValidator;
-import com.implex.database.DataSet;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.security.PersistentObjectSecurityControl;
-import com.implex.database.trigger.TriggerHandler;
-import com.implex.database.audit.AuditInDbTriggerHandler;
-import com.implex.database.DbForignKeyArray;
+import com.smartValue.database.Attribute;
+import com.smartValue.database.AttributeChangeValidator;
+import com.smartValue.database.DataSet;
+import com.smartValue.database.DbForignKeyArray;
+import com.smartValue.database.PersistantObject;
+import com.smartValue.database.audit.AuditInDbTriggerHandler;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.security.PersistentObjectSecurityControl;
+import com.smartValue.database.trigger.TriggerHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;

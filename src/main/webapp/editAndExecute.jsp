@@ -1,6 +1,6 @@
 <%@ page errorPage="errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>
-<%@page import="com.implex.database.map.SecUsrDta"%>
+<%@page import="com.smartValue.database.map.SecUsrDta"%>
 <%request.setCharacterEncoding("UTF-8");%>
 <html>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">

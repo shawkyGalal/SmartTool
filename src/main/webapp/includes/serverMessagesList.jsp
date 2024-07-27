@@ -2,7 +2,7 @@
 <%@page import="java.util.Stack"%>
 <%@ page errorPage="errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>
-<%@page import="com.implex.database.map.SecUsrDta"%>
+<%@page import="com.smartValue.database.map.SecUsrDta"%>
 <%request.setCharacterEncoding("UTF-8");%>
 <html>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
@@ -15,7 +15,8 @@
 
 </head>
 <body>
-<% 	com.implex.database.MessagesCommnuicatorService mServices = loggedUser.getModuleServiceContainer().getMessageCommnunicatorService() ; 
+<%
+com.smartValue.database.MessagesCommnuicatorService mServices = loggedUser.getModuleServiceContainer().getMessageCommnunicatorService() ; 
 	// For Testing 
  		//mServices.sendMessageToUser("Message 0 ");
 	 	//mServices.sendMessageToUser("Message 1 ");
@@ -32,8 +33,7 @@
 		
 		sysMessagesToUser.remove(i); 
 	}
-	String queryString = request.getQueryString() ; 
-	
+	String queryString = request.getQueryString() ;
 %>
 <div id = "serverMessages" >
 	<% if ( sysMessagesToUser.size() > 1 ) 

@@ -1,5 +1,5 @@
 <%@page import="com.sideinternational.sas.license.entity.Application"%>
-<%@page import="com.implex.database.map.SecUsrDta" %>
+<%@page import="com.smartValue.database.map.SecUsrDta" %>
 <%@ page errorPage="errorPage.jsp"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>

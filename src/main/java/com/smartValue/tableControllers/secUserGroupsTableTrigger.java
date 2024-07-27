@@ -3,12 +3,12 @@ package com.smartValue.tableControllers;
 import java.sql.Connection;
 import java.sql.Statement;
 
-import com.implex.database.DataSet;
-import com.implex.database.PersistantObject;
-import com.implex.database.map.SecUserGroups;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.TableMaintMaster;
-import com.implex.database.map.services.ModuleServicesContainer;
+import com.smartValue.database.DataSet;
+import com.smartValue.database.PersistantObject;
+import com.smartValue.database.map.SecUserGroups;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.TableMaintMaster;
+import com.smartValue.database.map.services.ModuleServicesContainer;
 
 import Support.Misc;
 

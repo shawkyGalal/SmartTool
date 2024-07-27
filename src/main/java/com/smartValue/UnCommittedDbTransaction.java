@@ -2,8 +2,8 @@ package com.smartValue;
 
 import java.util.Date;
 
-import com.implex.database.map.TableMaintDetails;
-import com.implex.database.map.TableMaintMaster;
+import com.smartValue.database.map.TableMaintDetails;
+import com.smartValue.database.map.TableMaintMaster;
 
 public class UnCommittedDbTransaction {
 private TableMaintMaster tableMaintMaster ; 

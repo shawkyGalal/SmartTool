@@ -1,14 +1,15 @@
 package com.smartValue.support.map;
 
-import com.smartValue.support.map.auto._QueryNotifListParams; 
-import com.implex.database.PersistantObject;
-import com.implex.database.Attribute;
-import com.implex.database.AttributeChangeValidator;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.security.PersistentObjectSecurityControl;
-import com.implex.database.trigger.TriggerHandler;
-import com.implex.database.audit.AuditInDbTriggerHandler;
-import com.implex.database.DbForignKeyArray;
+import com.smartValue.database.Attribute;
+import com.smartValue.database.AttributeChangeValidator;
+import com.smartValue.database.DbForignKeyArray;
+import com.smartValue.database.PersistantObject;
+import com.smartValue.database.audit.AuditInDbTriggerHandler;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.security.PersistentObjectSecurityControl;
+import com.smartValue.database.trigger.TriggerHandler;
+import com.smartValue.support.map.auto._QueryNotifListParams;
+
 import java.util.HashMap;
 
 public class QueryNotifListParams extends _QueryNotifListParams {
@@ -54,8 +55,8 @@ public class QueryNotifListParams extends _QueryNotifListParams {
 		//Write your own initialization code here this will help you greatly improve performance especially
 		// apply our standard rule < Minimise code inside any getXyz() method - simply return object -  > 
 	 } 
-	  private com.implex.database.PersistantObject  abc ;  
-	  public com.implex.database.PersistantObject getAbc() 
+	  private com.smartValue.database.PersistantObject  abc ;  
+	  public com.smartValue.database.PersistantObject getAbc() 
 	  { 
 		 if ( this.abc== null)
 		 {
@@ -63,9 +64,9 @@ public class QueryNotifListParams extends _QueryNotifListParams {
 		 }
 		 return abc ; 
 	  } 
-	  private com.implex.database.PersistantObject calcAbc() 
+	  private com.smartValue.database.PersistantObject calcAbc() 
 	  { 
-		  com.implex.database.PersistantObject result = null ; 
+		  com.smartValue.database.PersistantObject result = null ; 
 		  //Write Down Your Code here to calculate the value of abc... 
 		  return result ;  
 	  } 

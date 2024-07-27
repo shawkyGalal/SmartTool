@@ -1,11 +1,11 @@
-<%@page import="com.implex.database.DbServices"%>
-<%@page import="java.sql.* , Support.transactions.UserSessionUpdates"%>
+<%@page import="com.smartValue.database.DbServices"%>
+<%@page import="java.sql.*,Support.transactions.UserSessionUpdates"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.smartValue.tableControllers.ItableTriggerController" %>
-<%@page import="com.implex.database.map.TableMaintMaster , Support.Misc" %>
-<%@page import="com.implex.database.PersistantObject"%>
-<%@page import="com.implex.database.DBKey"%>
-<%@page import="com.implex.database.DbTable"%>
+<%@page import="com.smartValue.database.map.TableMaintMaster,Support.Misc" %>
+<%@page import="com.smartValue.database.PersistantObject"%>
+<%@page import="com.smartValue.database.DBKey"%>
+<%@page import="com.smartValue.database.DbTable"%>
 
 
 <%@page  contentType="text/html;charset=UTF-8"%>	
@@ -13,13 +13,13 @@
 <%@page import="java.net.URLDecoder"%>
 
 <%@page import="java.net.URLEncoder"%>
-<%@page import="com.implex.database.ApplicationContext"%>
+<%@page import="com.smartValue.database.ApplicationContext"%>
 <%@page import="com.smartValue.UnCommittedDbTransaction"%>
-<%@page import="com.implex.database.map.TableMaintDetails"%>
-<%@page import="com.implex.database.map.TableNotificationRule"%>
+<%@page import="com.smartValue.database.map.TableMaintDetails"%>
+<%@page import="com.smartValue.database.map.TableNotificationRule"%>
 <%@page import="Support.UserUnCommitedTransactions"%>
 <%@page import="Support.SqlReader"%>
-<%@page import="com.implex.database.DirectJdbcServiceImpl"%><HTML lang="ar">
+<%@page import="com.smartValue.database.DirectJdbcServiceImpl"%><HTML lang="ar">
 <BODY>
 
 	<%

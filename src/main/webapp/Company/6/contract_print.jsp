@@ -1,6 +1,6 @@
 <%@ page errorPage="../errorPage.jsp" import="java.util.*, java.io.* , java.sql.* , java.text.SimpleDateFormat , javax.faces.model.SelectItem"%>
 <%@ page import="java.util.* , Support.Misc"%>
-<%@page import="com.implex.database.map.*"%>
+<%@page import="com.smartValue.database.map.*"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page contentType="text/html;charset=windows-1256"%>
 <%request.setCharacterEncoding("windows-1256");%>

@@ -2,13 +2,17 @@
 <%@page import="com.smartValue.DbInserter"%>
 <%@page errorPage="errorPage.jsp" 	import="Support.*, java.util.*, java.io.* , java.sql.* "%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
-<%@page import="com.implex.database.map.SecUsrDta , com.implex.database.map.TableMaintDetails"%>
-<%request.setCharacterEncoding("UTF-8");%>
+<%@page import="com.smartValue.database.map.SecUsrDta,com.smartValue.database.map.TableMaintDetails"%>
+<%
+request.setCharacterEncoding("UTF-8");
+%>
 
 
 <%@page import="java.net.URLEncoder"%><html>
 <head>
-	<%String appUrl = Support.Misc.getAppURL(request) ; %>
+	<%
+	String appUrl = Support.Misc.getAppURL(request) ;
+	%>
 	<link rel="stylesheet" type="text/css" href="<%=appUrl%>/includes/HijriCalender/lib/jquery.calendars.picker.css">
 	<script type="text/javascript" src="<%=appUrl%>/jQueryAssets/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="<%=appUrl%>/includes/HijriCalender/lib/jquery.calendars.js"></script>
@@ -43,8 +47,6 @@
 		<a href="#" onclick="alert('is Your inputs valid? '+jQuery('#formID').validationEngine('validate'))">Check Validity of Your Inputs تأكد من جاهزية بياناتك	</a>
 	</p>
 <%
-
-
 boolean AutoLog  = ( request.getParameter("AutoLog") != null ) ; //----To Enable automatically read page contents 
 //-------------The follwoing Connection Used to get The Queries Where it may reside in a defrent DB
 java.sql.Connection  repCon = (java.sql.Connection)session.getAttribute("repCon");
@@ -79,11 +81,11 @@ if (con == null || con.isClosed())
   String tableName = request.getParameter("tableName");
   String owner = request.getParameter("owner");
   String qs = "select t.* , t.rowid  from Support.table_maint_details t where upper(table_name) = upper('"+tableName+"') and upper(owner) = upper('"+owner+"') and column_included = 'Y' order by tab_index ";
-  com.implex.database.map.TableMaintMaster tmm = Misc.getTableMaintMaster(session , owner , tableName);  
+  com.smartValue.database.map.TableMaintMaster tmm = Misc.getTableMaintMaster(session , owner , tableName);  
   String formValidationScript = "" ;
   String formValidationScriptAnding = "" ;
   String tableObjectName = (loggedUser.isUsrLangEnglish())? "Add New : "+ tmm.getObjectNameValue() :"إضافة "+ tmm.getObjectName_Value() + " جديد بالنظام " ;
-  %>
+%>
 <p align="center"><strong><font size="5"><%=tableObjectName%></font></strong> </p>
 </p>
 	<% if (!con.getAutoCommit()) { %>

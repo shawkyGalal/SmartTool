@@ -5,11 +5,6 @@ package Support;
  * 
 */
 
-import com.implex.database.map.SecRole;
-import com.implex.database.map.SecUserGroups;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.SysParams;
-
 import java.util.*;
 import java.util.Map.Entry;
 import java.sql.*;
@@ -19,6 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
+
+import com.smartValue.database.map.SecRole;
+import com.smartValue.database.map.SecUserGroups;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.SysParams;
 public class LookupTreeV10 extends oracle.jdeveloper.html.WebBeanImpl 
 {
 public static final int DEFAULT_TREE = 0;

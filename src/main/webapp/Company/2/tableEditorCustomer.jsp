@@ -3,7 +3,7 @@
 <%@ page import="java.util.* , Support.Misc"%>
 <%@page  contentType="text/html;charset=UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");%>
-<%@page import="com.implex.database.map.*"%>
+<%@page import="com.smartValue.database.map.*"%>
 
 <%@page import="java.net.URLEncoder"%>
 

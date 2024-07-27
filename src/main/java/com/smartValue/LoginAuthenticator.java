@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 
-import com.implex.database.ApplicationContext;
-import com.implex.database.map.MasCompanyData;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.SysParams;
-import com.implex.database.map.services.ModuleServicesContainer;
+import com.smartValue.database.ApplicationContext;
+import com.smartValue.database.map.MasCompanyData;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.SysParams;
+import com.smartValue.database.map.services.ModuleServicesContainer;
 
 import Support.ConnParms;
 import Support.Misc;
@@ -33,7 +33,7 @@ public class LoginAuthenticator {
 	    Support.ConnParms selectedConnParms = (Support.ConnParms)conParms.elementAt(DBase) ;
 		int lang = 1 ;
 	    ModuleServicesContainer msc = ApplicationContext.generateModuleServicesContainer(selectedConnParms.name , lang );  
-	    com.implex.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
+	    com.smartValue.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
 		SecUsrDta loggedUser = ( isAnEmail)? secUsrDtaServices.getUserByEmail(userName): secUsrDtaServices.getUserByUserName(userName.toUpperCase());
 		MasCompanyData userCompany =  loggedUser.getUserCompany() ; 
 		String expectedRequestURI = "/SmartTool/Company/"+userCompany.getCmpIdValue()+"/loginScreen.jsp" ;
@@ -167,7 +167,7 @@ public class LoginAuthenticator {
 		  /* Using a seperate thred to send an email notification ..
 	        Thanks to Java threading this is greatly enhances the user satisfaction
 	      */
-	      com.implex.database.DataSet sysParams = m_loggedUser.getUserCompany().getSysParams() ; 
+	      com.smartValue.database.DataSet sysParams = m_loggedUser.getUserCompany().getSysParams() ; 
 	      String appURL = Support.Misc.getAppURL(request) ;
 	      String message = m_loggedUser.getUsrNameValue().toUpperCase() + " Have logged now to "+selectedConnParms.name+" using Support Tool Running on :\n"+appURL+"\n  from machine  "  +remoteAddr  + " From Mac Address: " + remoteMac;
 	      

@@ -1,14 +1,14 @@
 <%@page import="java.sql.* , Support.transactions.UserSessionUpdates"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.smartValue.tableControllers.ItableTriggerController" %>
-<%@page import="com.implex.database.map.TableMaintMaster , Support.Misc" %>
-<%@page import="com.implex.database.PersistantObject"%>
-<%@page import="com.implex.database.DBKey"%>
+<%@page import="com.smartValue.database.map.TableMaintMaster, Support.Misc" %>
+<%@page import="com.smartValue.database.PersistantObject"%>
+<%@page import="com.smartValue.database.DBKey"%>
 <%@page  contentType="text/html;charset=UTF-8"%>	
 <%request.setCharacterEncoding("UTF-8");%>
 <%@page import="java.net.URLDecoder"%>
 <%@page import="java.net.URLEncoder"%>
-<%@page import="com.implex.database.ApplicationContext"%>
+<%@page import="com.smartValue.database.ApplicationContext"%>
 <%@page import="java.util.HashMap"%><HTML lang="ar">
 <BODY>
 	<%

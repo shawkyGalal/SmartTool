@@ -1,16 +1,16 @@
 package com.smartValue.epm.map;
 
-import com.implex.database.ApplicationContext;
-import com.implex.database.DataSet;
-import com.implex.database.PersistantObject;
-import com.implex.database.Attribute;
-import com.implex.database.AttributeChangeValidator;
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.security.PersistentObjectSecurityControl;
-import com.implex.database.map.services.ModuleServicesContainer;
-import com.implex.database.trigger.TriggerHandler;
-import com.implex.database.audit.AuditInDbTriggerHandler;
-import com.implex.database.DbForignKeyArray;
+import com.smartValue.database.ApplicationContext;
+import com.smartValue.database.Attribute;
+import com.smartValue.database.AttributeChangeValidator;
+import com.smartValue.database.DataSet;
+import com.smartValue.database.DbForignKeyArray;
+import com.smartValue.database.PersistantObject;
+import com.smartValue.database.audit.AuditInDbTriggerHandler;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.security.PersistentObjectSecurityControl;
+import com.smartValue.database.map.services.ModuleServicesContainer;
+import com.smartValue.database.trigger.TriggerHandler;
 import com.smartValue.epm.map.auto._BscObjective;
 
 import java.util.HashMap;
@@ -58,8 +58,8 @@ public class BscObjective extends _BscObjective {
 		//Write your own initialization code here this will help you greatly improve performance especially
 		// apply our standard rule < Minimise code inside any getXyz() method - simply return object -  > 
 	 } 
-	  private com.implex.database.PersistantObject  abc ;  
-	  public com.implex.database.PersistantObject getAbc() 
+	  private com.smartValue.database.PersistantObject  abc ;  
+	  public com.smartValue.database.PersistantObject getAbc() 
 	  { 
 		 if ( this.abc== null)
 		 {
@@ -67,9 +67,9 @@ public class BscObjective extends _BscObjective {
 		 }
 		 return abc ; 
 	  } 
-	  private com.implex.database.PersistantObject calcAbc() 
+	  private com.smartValue.database.PersistantObject calcAbc() 
 	  { 
-		  com.implex.database.PersistantObject result = null ; 
+		  com.smartValue.database.PersistantObject result = null ; 
 		  //Write Down Your Code here to calculate the value of abc... 
 		  return result ;  
 	  } 

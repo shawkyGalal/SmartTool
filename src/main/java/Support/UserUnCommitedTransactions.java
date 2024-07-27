@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
-import com.implex.database.map.SecUsrDta;
-import com.implex.database.map.TableMaintDetails;
-import com.implex.database.map.TableMaintMaster;
 import com.smartValue.UnCommittedDbTransaction;
+import com.smartValue.database.map.SecUsrDta;
+import com.smartValue.database.map.TableMaintDetails;
+import com.smartValue.database.map.TableMaintMaster;
 import com.smartValue.tableControllers.ItableTriggerController;
 
 public class UserUnCommitedTransactions {
