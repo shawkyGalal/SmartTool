@@ -15,11 +15,9 @@ package com.smartValue.event.logging;
 
 //package com.sideinternational.sas.event.logging;
 
-import com.implex.database.ApplicationContext;
-import com.implex.database.DbServiceFactory;
-import com.sideinternational.sas.util.Time;
-import com.smartValue.database.ApplicationContext;
+
 import com.smartValue.database.DbServiceFactory;
+import com.sideinternational.sas.util.Time;
 import com.smartValue.database.DbServices;
 import com.smartValue.database.map.services.SysParamsServices;
 
