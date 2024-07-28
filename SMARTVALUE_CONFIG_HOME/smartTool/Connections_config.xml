@@ -4,7 +4,7 @@
 	<Connection>
 		<TYPE>JDBC</TYPE>
 		<Name>PNU_PROD</Name>
-		<URL>jdbc:oracle:thin:@SmartToolDB:1521/FREEPDB1</URL>  
+		<URL>jdbc:oracle:thin:@localhost:1521/FREEPDB1</URL>  
 		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
 		
 		<userName>ICDB</userName>
@@ -70,7 +70,7 @@
 	<REPOSATORYCONN>
 		<TYPE>JDBC</TYPE>
 		<Name>Local Host Reposatory(Docker)</Name>
-		<URL>jdbc:oracle:thin:@SmartToolDB:1521/FREEPDB1</URL> 
+		<URL>jdbc:oracle:thin:@localhost:1521/FREEPDB1</URL> 
 		<DRIVER>oracle.jdbc.driver.OracleDriver</DRIVER>
 		<Active>Y</Active>
 		<userName>ICDB</userName>

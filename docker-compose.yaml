@@ -23,7 +23,7 @@ services:
     depends_on:
       - db
     environment:
-      SMARTVALUE_CONFIG_HOME: /temp/SmartTool/SMARTVALUE_CONFIG_HOME_LOCAL
+      SMARTVALUE_CONFIG_HOME: /temp/SmartTool/SMARTVALUE_CONFIG_HOME
       # Other environment variables as needed
 
   
