@@ -4,7 +4,7 @@ FROM tomcat:9.0
 # Install maven
 RUN apt-get update && apt-get install -y git
 RUN apt-get install -y maven
-RUN apt-get install vim
+RUN apt-get install -y vim
 
 # Set the working directory
 # move the manager app to the webapp folder 
