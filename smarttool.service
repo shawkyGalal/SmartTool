@@ -1,0 +1,12 @@
+[Unit]
+Description=Docker Compose for myapp
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/docker-compose -f /temp/SmartTool/docker-compose.yml up -d
+ExecStop=/usr/bin/docker-compose -f /temp/SmartTool/docker-compose.yml down
+
+[Install]
+WantedBy=multi-user.target

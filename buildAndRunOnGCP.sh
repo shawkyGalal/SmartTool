@@ -1,8 +1,8 @@
 # Process arguments
 PROJECT="moj-prod-apigee"
 VM_NAME="smarttool"
-MACHINE_TYPE="e2-small"
 ZONE="us-central1-c"
+STORAGE_SIZE=100
 
 
 while [[ $# -gt 0 ]]; do
@@ -28,28 +28,63 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       shift # past value
       ;;
+    --STORAGE_SIZE)
+      STORAGE_SIZE="$2"
+      shift # past argument
+      shift # past value
+      ;;
   esac
 done
 
 check_gcloud
 
-gcloud auth login --no-browser  
+gcloud auth login 
 
-gcloud compute instances create ${VM_NAME} \
---project=$PROJECT \
---zone=$ZONE \
---machine-type=$MACHINE_TYPE \
---network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default \
---maintenance-policy=MIGRATE \
---provisioning-model=STANDARD \
---service-account=598074804327-compute@developer.gserviceaccount.com \
---scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/trace.append --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=smarttool,image=projects/debian-cloud/global/images/debian-11-bullseye-v20240709,mode=rw,size=64,type=projects/moj-prod-apigee/zones/us-central1-f/diskTypes/pd-balanced \
---no-shielded-secure-boot \
---shielded-vtpm \
---shielded-integrity-monitoring \
---labels=goog-ec-src=vm_add-gcloud \
---reservation-affinity=any
+#===== To Allow SSH Access to the VM from Local Machine =========
+# 1- Generate ssh key pair 
+if [ ! -f ~/.ssh/id_rsa ]; then
+  echo "Generating SSH key pair..."
+  ssh-keygen -t rsa -b 4096 -f id_rsa -N ""
+fi 
 
+# 2- Read public key content
+PUBLIC_KEY=$(cat ~/.ssh/id_rsa.pub)
+
+# Create setup script including the public key value that will be passed as a startup script upon creating the VM  
+cat << EOF > setup_ssh.sh
+#!/bin/bash
+# Ensure SSH directory exists
+mkdir -p ~/.ssh
+# Set directory permissions
+chmod 700 ~/.ssh
+# Add public key to authorized_keys
+echo "$PUBLIC_KEY" >> ~/.ssh/authorized_keys
+# Set file permissions
+chmod 600 ~/.ssh/authorized_keys
+EOF
+#===== End to Allow SSH Access to the VM from Local Machine =========
+
+gcloud compute instances create smarttool \
+    --project=$PROJECT \
+    --zone=$ZONE \
+    --machine-type=e2-medium \
+    --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default \
+    --maintenance-policy=MIGRATE \
+    --provisioning-model=STANDARD \
+    --service-account=598074804327-compute@developer.gserviceaccount.com \
+    --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/trace.append \
+    --create-disk=auto-delete=yes,boot=yes,device-name=smarttool,image=projects/debian-cloud/global/images/debian-12-bookworm-v20240709,mode=rw,size=100,type=projects/moj-prod-apigee/zones/us-central1-f/diskTypes/pd-balanced \
+    --no-shielded-secure-boot \
+    --shielded-vtpm \
+    --shielded-integrity-monitoring \
+    --labels=goog-ec-src=vm_add-gcloud \
+    --reservation-affinity=any \
+    --metadata-from-file startup-script=setup_ssh.sh
+    
+
+
+
+start_vm "$VM_NAME"
 install_git "$VM_NAME"
 install_docker "$VM_NAME" 
 clone_repo "$VM_NAME"
@@ -65,34 +100,46 @@ check_gcloud() {
 }
 
 
-install_git() {
-  local vm_name="$1"
+start_vm() {
+  local VM_NAME="$1"
 
   # Use gcloud compute ssh to execute commands on the VM (secure)
-  	gcloud compute ssh "$vm_name" << EOF
-    	apt-get update && apt-get install -y git
+  	gcloud compute instances start $VM_NAME --zone $ZONE 
+ if [ $? -eq 0 ]; then
+    echo "vm started Successfully "
+  else
+    echo "Error: Failed to start  VM '$VM_NAME'."
+    exit 1
+  fi
+} 
+install_git() {
+  local VM_NAME="$1"
+
+  # Use gcloud compute ssh to execute commands on the VM (secure)
+  	gcloud compute ssh "$VM_NAME" --zone $ZONE  << EOF
+    	sudo apt-get update && apt-get install -y git
 	EOF
  if [ $? -eq 0 ]; then
     echo "git install Completed successfully on "
   else
-    echo "Error: Failed to install git on VM '$name'."
+    echo "Error: Failed to install git on VM '$VM_NAME'."
     exit 1
   fi
 }
 
 
 install_docker() {
-  local vm_name="$1"
+  local VM_NAME="$1"
 
   # Use gcloud compute ssh to execute commands on the VM (secure)
-  gcloud compute ssh "$vm_name" << EOF
-    curl -fsSL https://get.docker.com -o get-docker.sh
+  gcloud compute ssh "$VM_NAME" --zone $ZONE << EOF
+    sudo curl -fsSL https://get.docker.com -o get-docker.sh
     sudo sh get-docker.sh
     sudo systemctl start docker
     sudo systemctl enable docker
 EOF
  if [ $? -eq 0 ]; then
-    echo "Docker installed on VM '$name'."
+    echo "Docker installed on VM '$VM_NAME'."
   else
     echo "Error: Failed to install Docker on VM '$name'."
     exit 1
@@ -101,12 +148,14 @@ EOF
 
 
 clone_repo() {
-  local vm_name="$1"
+  local VM_NAME="$1"
 
   # Use gcloud compute ssh to execute commands on the VM (secure)
-  	gcloud compute ssh "$vm_name" << EOF
+  	gcloud compute ssh "$VM_NAME" --zone $ZONE << EOF
+  		sudo mkdir /temp
+  		sudo chmod 777 -R /temp
   		cd /temp
-    	git clone https://github.com/shawkyGalal/SmartTool.git
+    	sudo git clone https://github.com/shawkyGalal/SmartTool.git
 	EOF
  if [ $? -eq 0 ]; then
     echo "smarttool repo cloned Completed successfully on "
@@ -122,7 +171,7 @@ run_composer() {
   # Use gcloud compute ssh to execute commands on the VM (secure)
   	gcloud compute ssh "$vm_name" << EOF
   		cd /temp/SmartTool
-		Startup.bat 
+		sudo docker compose up 
 	EOF
  if [ $? -eq 0 ]; then
     echo "docker compose Completed successfully on "
@@ -132,6 +181,27 @@ run_composer() {
   fi
 }
 
+
+run_smarttool_as_service ()
+{
+	local vm_name="$1"
+
+  # Use gcloud compute ssh to execute commands on the VM (secure)
+  	gcloud compute ssh "$vm_name" << EOF
+  		sudo cp ./smarttool.service   /etc/systemd/system/smarttool.service
+  		sudo systemctl start docker-compose
+		sudo systemctl enable docker-compose
+		 
+	EOF
+ if [ $? -eq 0 ]; then
+    echo "docker compose Completed successfully on "
+  else
+    echo "Error: Failed to run docker compose on VM '$name'."
+    exit 1
+  fi
+  
+}
+ 
 
 # Function to get VM IP address
 get_vm_ip() {
