@@ -58,13 +58,13 @@ gcloud compute instances create $VM_NAME \
     --provisioning-model=STANDARD \
     --service-account=598074804327-compute@developer.gserviceaccount.com \
     --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/trace.append \
-    --create-disk=auto-delete=yes,boot=yes,device-name={$VM_NAME}_storage,image=projects/debian-cloud/global/images/debian-12-bookworm-v20240709,mode=rw,size=100,type=projects/moj-prod-apigee/zones/us-central1-f/diskTypes/pd-balanced \
+    --create-disk=auto-delete=yes,boot=yes,device-name=$VM_NAME,image=projects/debian-cloud/global/images/debian-12-bookworm-v20240709,mode=rw,size=100,type=projects/moj-prod-apigee/zones/us-central1-f/diskTypes/pd-balanced \
     --no-shielded-secure-boot \
     --shielded-vtpm \
     --shielded-integrity-monitoring \
     --labels=goog-ec-src=vm_add-gcloud \
     --reservation-affinity=any \
-    --metadata-from-file startup-script=setup_ssh.sh
+   # --metadata-from-file startup-script=setup_ssh.sh
 }    
 
 start_vm() {
@@ -83,10 +83,25 @@ start_vm() {
 
 install_git() {
   local VM_NAME="$1"
-
   # Use gcloud compute ssh to execute commands on the VM (secure)
   	gcloud compute ssh "$VM_NAME" --zone $ZONE  << EOF
-    	sudo apt-get update && apt-get install -y git
+        sudo su 
+    	apt-get update && apt-get install -y git
+        curl -fsSL https://get.docker.com -o get-docker.sh
+        sh get-docker.sh
+        systemctl start docker
+        systemctl enable docker
+	#-----Clone Repo----
+        sudo mkdir /temp
+  	sudo chmod 777 -R /temp
+  	cd /temp
+    	sudo git clone https://github.com/shawkyGalal/SmartTool.git
+        # ----Run smarttool as a service
+	gcloud compute ssh "$vm_name" << EOF
+  	sudo cp /temp/SmartTool/smarttool.service   /etc/systemd/system/smarttool.service
+  	sudo systemctl start smarttool
+	sudo systemctl enable smarttool
+  
 	EOF
  if [ $? -eq 0 ]; then
     echo "git install Completed successfully on "
@@ -97,42 +112,6 @@ install_git() {
 }
 
 
-install_docker() {
-  local VM_NAME="$1"
-
-  # Use gcloud compute ssh to execute commands on the VM (secure)
-  gcloud compute ssh "$VM_NAME" --zone $ZONE << EOF
-    sudo curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh
-    sudo systemctl start docker
-    sudo systemctl enable docker
-EOF
- if [ $? -eq 0 ]; then
-    echo "Docker installed on VM '$VM_NAME'."
-  else
-    echo "Error: Failed to install Docker on VM '$name'."
-    exit 1
-  fi
-}
-
-
-clone_repo() {
-  local VM_NAME="$1"
-
-  # Use gcloud compute ssh to execute commands on the VM (secure)
-  	gcloud compute ssh "$VM_NAME" --zone $ZONE << EOF
-  		sudo mkdir /temp
-  		sudo chmod 777 -R /temp
-  		cd /temp
-    	sudo git clone https://github.com/shawkyGalal/SmartTool.git
-	EOF
- if [ $? -eq 0 ]; then
-    echo "smarttool repo cloned Completed successfully on "
-  else
-    echo "Error: Failed to clone smarttool repo to VM  '$name'."
-    exit 1
-  fi
-}
 
 run_composer() {
   local vm_name="$1"
