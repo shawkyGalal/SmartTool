@@ -189,8 +189,8 @@ run_smarttool_as_service ()
   # Use gcloud compute ssh to execute commands on the VM (secure)
   	gcloud compute ssh "$vm_name" << EOF
   		sudo cp ./smarttool.service   /etc/systemd/system/smarttool.service
-  		sudo systemctl start docker-compose
-		sudo systemctl enable docker-compose
+  		sudo systemctl start smarttool
+		sudo systemctl enable smarttool
 		 
 	EOF
  if [ $? -eq 0 ]; then

@@ -1,12 +1,12 @@
 [Unit]
-Description=Docker Compose for myapp
+Description=Docker Compose for SmartTool
 After=docker.service
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/docker-compose -f /temp/SmartTool/docker-compose.yml up -d
-ExecStop=/usr/bin/docker-compose -f /temp/SmartTool/docker-compose.yml down
+ExecStart=/usr/bin/docker compose -f /temp/SmartTool/docker-compose.yaml up -d
+ExecStop=/usr/bin/docker compose -f /temp/SmartTool/docker-compose.yaml down
 
 [Install]
 WantedBy=multi-user.target
