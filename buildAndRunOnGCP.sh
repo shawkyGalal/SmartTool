@@ -36,35 +36,20 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-check_gcloud
+build_vm "$VM_NAME" 
+start_vm "$VM_NAME"
+install_git "$VM_NAME"
+install_docker "$VM_NAME" 
+clone_repo "$VM_NAME"
+# run_composer "$VM_NAME" 
+run_smarttool_as_service "$VM_NAME" 
 
-gcloud auth login 
 
-#===== To Allow SSH Access to the VM from Local Machine =========
-# 1- Generate ssh key pair 
-if [ ! -f ~/.ssh/id_rsa ]; then
-  echo "Generating SSH key pair..."
-  ssh-keygen -t rsa -b 4096 -f id_rsa -N ""
-fi 
 
-# 2- Read public key content
-PUBLIC_KEY=$(cat ~/.ssh/id_rsa.pub)
-
-# Create setup script including the public key value that will be passed as a startup script upon creating the VM  
-cat << EOF > setup_ssh.sh
-#!/bin/bash
-# Ensure SSH directory exists
-mkdir -p ~/.ssh
-# Set directory permissions
-chmod 700 ~/.ssh
-# Add public key to authorized_keys
-echo "$PUBLIC_KEY" >> ~/.ssh/authorized_keys
-# Set file permissions
-chmod 600 ~/.ssh/authorized_keys
-EOF
-#===== End to Allow SSH Access to the VM from Local Machine =========
-
-gcloud compute instances create smarttool \
+build_vm()
+{
+local VM_NAME="$1"
+gcloud compute instances create $VM_NAME \
     --project=$PROJECT \
     --zone=$ZONE \
     --machine-type=e2-medium \
@@ -73,32 +58,14 @@ gcloud compute instances create smarttool \
     --provisioning-model=STANDARD \
     --service-account=598074804327-compute@developer.gserviceaccount.com \
     --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/trace.append \
-    --create-disk=auto-delete=yes,boot=yes,device-name=smarttool,image=projects/debian-cloud/global/images/debian-12-bookworm-v20240709,mode=rw,size=100,type=projects/moj-prod-apigee/zones/us-central1-f/diskTypes/pd-balanced \
+    --create-disk=auto-delete=yes,boot=yes,device-name={$VM_NAME}_storage,image=projects/debian-cloud/global/images/debian-12-bookworm-v20240709,mode=rw,size=100,type=projects/moj-prod-apigee/zones/us-central1-f/diskTypes/pd-balanced \
     --no-shielded-secure-boot \
     --shielded-vtpm \
     --shielded-integrity-monitoring \
     --labels=goog-ec-src=vm_add-gcloud \
     --reservation-affinity=any \
     --metadata-from-file startup-script=setup_ssh.sh
-    
-
-
-
-start_vm "$VM_NAME"
-install_git "$VM_NAME"
-install_docker "$VM_NAME" 
-clone_repo "$VM_NAME"
-run_composer "$VM_NAME" 
-
-
-# Function to check if gcloud is installed
-check_gcloud() {
-  if ! command -v gcloud &> /dev/null; then
-    echo "Error: gcloud is not installed. Please install gcloud and try again."
-    exit 1
-  fi
-}
-
+}    
 
 start_vm() {
   local VM_NAME="$1"
@@ -112,6 +79,8 @@ start_vm() {
     exit 1
   fi
 } 
+
+
 install_git() {
   local VM_NAME="$1"
 
@@ -218,5 +187,63 @@ local ip\_address\=</span>(gcloud compute instances describe "$name" \
   fi
 }
 
+
+allocate_static_ip()
+{ 
+#=== Allocate a static External IP ===========
+	NETWORK_TIER="STANDARD"
+	ACCESS_CONFIG_NAME="external-nat"
+	
+	EXTERNAL_IP=$(gcloud compute addresses create smarttool-external-ip \
+	  --network-tier ${NETWORK_TIER} \
+	  --format='value(address)')
+	
+	
+	# Associate the IP with the VM instance
+	gcloud compute instances add-access-config ${VM_NAME} \
+	  --access-config-name ${ACCESS_CONFIG_NAME} \
+	  --address ${EXTERNAL_IP} \
+	  --zone ${ZONE}
+ 
+}
+
+
+
+# Function to check if gcloud is installed
+check_gcloud() {
+  if ! command -v gcloud &> /dev/null; then
+    echo "Error: gcloud is not installed. Please install gcloud and try again."
+    exit 1
+  fi
+}
+ 
+ 
+generate_ssh-keypair()
+{
+#===== IN case running the script outside GCP cloud shell , To Allow SSH Access to the VM from Local Machine =========
+
+# 1- Generate ssh key pair 
+if [ ! -f ~/.ssh/id_rsa ]; then
+  echo "Generating SSH key pair..."
+  ssh-keygen -t rsa -b 4096 -f id_rsa -N ""
+fi 
+
+# 2- Read public key content
+PUBLIC_KEY=$(cat ~/.ssh/id_rsa.pub)
+
+# Create setup script including the public key value that will be passed as a startup script upon creating the VM  
+cat << EOF > setup_ssh.sh
+#!/bin/bash
+# Ensure SSH directory exists
+mkdir -p ~/.ssh
+# Set directory permissions
+chmod 700 ~/.ssh
+# Add public key to authorized_keys
+echo "$PUBLIC_KEY" >> ~/.ssh/authorized_keys
+# Set file permissions
+chmod 600 ~/.ssh/authorized_keys
+EOF
+#===== End to Allow SSH Access to the VM from Local Machine =========
+}
 
 
