@@ -13,11 +13,6 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       shift # past value
       ;;
-    --MACHINE_TYPE)
-      MACHINE_TYPE="$2"
-      shift # past argument
-      shift # past value
-      ;;
     --ZONE)
       ZONE="$2"
       shift # past argument
@@ -38,11 +33,7 @@ done
 
 build_vm "$VM_NAME" 
 start_vm "$VM_NAME"
-install_git "$VM_NAME"
-install_docker "$VM_NAME" 
-clone_repo "$VM_NAME"
-# run_composer "$VM_NAME" 
-run_smarttool_as_service "$VM_NAME" 
+install_smarttool "$VM_NAME"
 
 
 
@@ -69,44 +60,48 @@ gcloud compute instances create $VM_NAME \
 
 start_vm() {
   local VM_NAME="$1"
-
   # Use gcloud compute ssh to execute commands on the VM (secure)
   	gcloud compute instances start $VM_NAME --zone $ZONE 
- if [ $? -eq 0 ]; then
-    echo "vm started Successfully "
-  else
-    echo "Error: Failed to start  VM '$VM_NAME'."
-    exit 1
-  fi
+	if [ $? -eq 0 ]; then
+	   echo "vm started Successfully "
+	else
+	   echo "Error: Failed to start  VM '$VM_NAME'."
+	   exit 1
+	fi
 } 
 
 
-install_git() {
+install_smarttool() {
   local VM_NAME="$1"
   # Use gcloud compute ssh to execute commands on the VM (secure)
   	gcloud compute ssh "$VM_NAME" --zone $ZONE  << EOF
+  	#--- Install git----- 
         sudo su 
     	apt-get update && apt-get install -y git
         curl -fsSL https://get.docker.com -o get-docker.sh
+    
+    #-----Install Docker----
         sh get-docker.sh
         systemctl start docker
         systemctl enable docker
+	
 	#-----Clone Repo----
         sudo mkdir /temp
-  	sudo chmod 777 -R /temp
-  	cd /temp
+  		sudo chmod 777 -R /temp
+  		cd /temp
     	sudo git clone https://github.com/shawkyGalal/SmartTool.git
-        # ----Run smarttool as a service
-	gcloud compute ssh "$vm_name" << EOF
-  	sudo cp /temp/SmartTool/smarttool.service   /etc/systemd/system/smarttool.service
-  	sudo systemctl start smarttool
-	sudo systemctl enable smarttool
+    
+    # ----Run smarttool as a service ---- 
+		gcloud compute ssh "$vm_name" << EOF
+	  	sudo cp /temp/SmartTool/smarttool.service   /etc/systemd/system/smarttool.service
+	  	sudo systemctl start smarttool
+		sudo systemctl enable smarttool
   
 	EOF
- if [ $? -eq 0 ]; then
-    echo "git install Completed successfully on "
+  if [ $? -eq 0 ]; then
+    echo "smarttool install Completed successfully on "
   else
-    echo "Error: Failed to install git on VM '$VM_NAME'."
+    echo "Error: Failed to install smarttool on VM '$VM_NAME'."
     exit 1
   fi
 }
