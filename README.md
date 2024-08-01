@@ -42,6 +42,9 @@ http://localhost:8080/SmartTool/index.jsp
 
 ## Run The SmartTool application on a Google Cloud Compute engine instance 
 Consider this Application deployment on GCP will incure charges for your GCP billing account 
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/shawkyGalal/SmartTool&cloudshell_git_branch=main&cloudshell_workspace=.&cloudshell_tutorial=exposing-to-internet/docs/cloudshell-tutorial.md)
+
 1- Log in to your Google Cloud Console  
 ~~~
 
