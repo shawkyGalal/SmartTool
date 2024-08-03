@@ -48,11 +48,13 @@ Password 	: admin123
 ## Run The SmartTool application on a Google Cloud Compute engine instance 
 Consider this Application deployment on GCP will incure charges for your GCP billing account 
 
+
 ## (QuickStart) Setup using CloudShell
 
 Use the following GCP CloudShell tutorial, and follow the instructions.
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/shawkyGalal/apigee-samples&cloudshell_git_branch=main&cloudshell_workspace=.&cloudshell_tutorial=exposing-to-internet/docs/cloudshell-tutorial.md)
+
 
 1- Log in to your Google Cloud Console  
 ~~~
