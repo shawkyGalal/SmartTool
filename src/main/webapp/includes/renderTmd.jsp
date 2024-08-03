@@ -230,9 +230,10 @@ try{
 
     						        function processTreeMessage<%=cloumnName%>(message)
     		            	 		{
-    						        	element = document.getElementById("<%=cloumnName%>_<%=divIdWithoutQuot%>") ; 
-    						        	elementTitleDiv = document.getElementById('<%=cloumnName%>_<%=divIdWithoutQuot%>_label')
+    						        	element = document.getElementById(message.elementToUpdate) ; 
+    						        	elementTitleDiv = document.getElementById(message.elementToUpdate+'_label')
     						        	element.value = message.selectedIds;
+    						        	
     						        	elementTitleDiv.innerHTML = message.selectedDescs;
     						        	element.onchange() ;
     			            	 		//var newhref = "javascript:window.open('selectionTree.jsp?refreshAll=xx&_operationMode=<%=operationMode%>&_selectedIDs=" + m_object.value + "&_querySouce=<%=treeQuerySource%>&treeIdInSession=<%=treeIdInSession%>&_fillObject=<%=cloumnName%>_<%=divIdWithoutQuot%>' , 'Select From Tree' , 'width=400, height=600' )" ;

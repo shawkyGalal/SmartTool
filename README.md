@@ -40,14 +40,25 @@ from Your browser you should be able to Navigate to :
 http://localhost:8080/SmartTool/index.jsp
 ~~~
 
+You Could login with the default admin user credentials : 
+User name 	: admin 
+Password 	: admin123
+
+
 ## Run The SmartTool application on a Google Cloud Compute engine instance 
 Consider this Application deployment on GCP will incure charges for your GCP billing account 
+
+## (QuickStart) Setup using CloudShell
+
+Use the following GCP CloudShell tutorial, and follow the instructions.
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/shawkyGalal/apigee-samples&cloudshell_git_branch=main&cloudshell_workspace=.&cloudshell_tutorial=exposing-to-internet/docs/cloudshell-tutorial.md)
+
 1- Log in to your Google Cloud Console  
 ~~~
 
 https://console.cloud.google.com/
 ~~~
-
 
 2- Open a cloud shell session 
 
@@ -121,14 +132,22 @@ You should get a list of 2 containers :  SmartTooDB , SmartToolApp as the below 
 CONTAINER ID   IMAGE           COMMAND                  CREATED              STATUS                          PORTS                                                                                                                                           NAMES
 
 cc835ec90722   smarttool-app   "catalina.sh run"        About a minute ago   Up About a minute               0.0.0.0:8080->8080/tcp, :::8080->8080/tcp                                                                                                       SmartToolApp
-smarttool-app
+
+
 0834c7f08963   smarttool-db    "/bin/bash -c $ORACL…"   About a minute ago   Up About a minute (unhealthy)   0.0.0.0:1521->1521/tcp, :::1521->1521/tcp, 0.0.0.0:8443->8443/tcp, :::8443->8443/tcp, 0.0.0.0:27017->27017/tcp, :::27017->27017/tcp, 1522/tcp   SmartToolDB
 
 7- Access the smarttool application from your browser : 
 
 ~~~
-http://<VM-External-IP>:8080/SmartTool/Company/40/loginScreen.jsp
+http://<VM-External-IP>:8080/SmartTool/index.jsp
 ~~~
+
+You Could login with the default admin user credentials : 
+User name 	: admin 
+Password 	: admin123
+
+## Delete VM 
+Simply login to your GCP and delete the vm to stop billing your account. 
 
 
 

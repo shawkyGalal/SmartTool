@@ -177,7 +177,10 @@
 				var selectedDescs = selectedValues.substring( selectedValues.indexOf("$$")+2 ) ;
 				 
 				//alert (selectedDescs) ; 
-				var message = {"selectedIds" : selectedIds , "selectedDescs":selectedDescs} ;
+				var message = {	"elementToUpdate" : "<%=selectionTree.getFillObject()%>" , 
+								"selectedIds" : selectedIds , 
+								"selectedDescs":selectedDescs , 
+							  } ;
 				 //alert ("window.opener : " + window.opener) ; 
 				 window.opener.postMessage(message, "<%=origin%>");
 				 //alert ("Message: "+ message.selectedIds + " Sent To The Opener Window") ;

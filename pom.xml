@@ -123,20 +123,7 @@
 			                <packaging>jar</packaging>
 			            </configuration>
 			        </execution>
-			        <execution>
-			            <id>install-jar8</id>
-			            <phase>initialize</phase>
-			            <goals>
-			                <goal>install-file</goal>
-			            </goals>
-			            <configuration>
-			                <file>src/main/webapp/WEB-INF/lib/mailapi.jar</file>
-			                <groupId>com.smartvalue</groupId>
-			                <artifactId>mailapi</artifactId>
-			                <version>1.0</version>
-			                <packaging>jar</packaging>
-			            </configuration>
-			        </execution>
+			        
 			        <execution>
 			            <id>install-jar9</id>
 			            <phase>initialize</phase>
@@ -410,12 +397,8 @@
 	        <artifactId>jas</artifactId>
 	        <version>1.0</version>
 	    </dependency>
+	   
 	    
-	    <dependency>
-	        <groupId>com.smartvalue</groupId>
-	        <artifactId>mailapi</artifactId>
-	        <version>1.0</version>
-	    </dependency>
 	    <dependency>
 	        <groupId>com.smartvalue</groupId>
 	        <artifactId>ojsp</artifactId>
@@ -474,7 +457,11 @@
 
 	    
 	    
-	    
+	    <dependency>
+	        <groupId>javax.mail</groupId>
+	        <artifactId>mail</artifactId>
+	        <version>1.4</version>
+	    </dependency>
 	    <dependency>
 			<groupId>xerces</groupId>
 			<artifactId>xercesImpl</artifactId>

@@ -566,7 +566,7 @@ if (rowIdFound && !printable)
         //--loging the execution into reposatory DB
             Statement repstmt = repCon.createStatement();
             java.text.SimpleDateFormat dateFormatter = new java.text.SimpleDateFormat ("dd-MM-yyyy HH:mm:ss");// HH indicates Hours in 24 Format while hh indicates Hours in 12 format
-            String insert = "insert into exec_stat (queryid, sequance ,  executed_by, db_url, starttime, endtime) values ";
+            String insert = "insert into support.exec_stat (queryid, sequance ,  executed_by, db_url, starttime, endtime) values ";
                     insert +=   "( "+id+","+queryIndex+ ", '"+ Misc.getConnectionUserName(con) +"', '"+con.getMetaData().getURL()+"', to_date('"+dateFormatter.format(startTime)+"','dd-mm-yyyy hh24:mi:ss') , to_date('"+dateFormatter.format(endTime)+"','dd-mm-yyyy hh24:mi:ss')  )";
             repstmt.execute(insert);
             repCon.commit();

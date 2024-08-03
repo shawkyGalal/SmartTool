@@ -11,7 +11,7 @@
 <%
 SecUsrDta loggedUser = (SecUsrDta) session.getAttribute("loggedUser") ;
 %>
-<link rel="shortcut icon" href="/SmartTool/Company/<%=(loggedUser !=null) ? loggedUser.getUsrCmpIdValue(): 20%>/images/logo.png">
+<link rel="shortcut icon" href="/SmartTool/Company/<%=(loggedUser !=null) ? loggedUser.getUsrCmpIdValue(): 40 %>/images/logo.png">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <%

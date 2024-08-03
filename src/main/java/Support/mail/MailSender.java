@@ -287,7 +287,7 @@ public static void main(String[] arg)
     try{
     String[] to = {"shawky.foda@smart-value.com"};
     String from =  "shawky.foda@gmail.com";
-    MailSender ms = new MailSender("PNU_PROD" , "JCCS" , "abc123");
+    MailSender ms = new MailSender("PNU_PROD" , "JCCS" , "123");
     //String[] attFileNames = {"D:\\MyWork\\JavaWork\\SideWork\\Tutorial\\SideReportingCMD\\Command Line Reporting Tool- Architect .vsd"};
     ms.useGmailAccount = true ;
     EmailMessage em = new EmailMessage();
