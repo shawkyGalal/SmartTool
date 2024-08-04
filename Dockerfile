@@ -34,7 +34,6 @@ RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/side-swaf.jar  
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/bc4jhtml.jar   -DgroupId=com.smartvalue  -DartifactId=bc4jhtml -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/clrt.jar   -DgroupId=com.smartvalue  -DartifactId=clrt -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/jas.jar   -DgroupId=com.smartvalue  -DartifactId=jas -Dversion=1.0  -Dpackaging=jar
-RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/mailapi.jar   -DgroupId=com.smartvalue  -DartifactId=mailapi -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/ojsp.jar   -DgroupId=com.smartvalue  -DartifactId=ojsp -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/ojsputil.jar   -DgroupId=com.smartvalue  -DartifactId=ojsputil -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/org.jboss.seam-jboss-seam-2.1.0.SP1.jar   -DgroupId=com.smartvalue  -DartifactId=org.jboss.seam-jboss-seam-2.1.0.SP1 -Dversion=1.0  -Dpackaging=jar
@@ -46,7 +45,7 @@ RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/sftp.jar   -Dgr
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/xmlparserv2.jar   -DgroupId=com.smartvalue  -DartifactId=xmlparserv2 -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/jtds-1.2.2.jar   -DgroupId=com.smartvalue  -DartifactId=jtds-1.2.2 -Dversion=1.0  -Dpackaging=jar 
 
-RUN mvn install -DskipTests  
+# RUN mvn install -DskipTests  
 RUN mvn package -DskipTests 
 
 RUN cp -r /temp/SmartTool/target/*.war /usr/local/tomcat/webapps

@@ -140,7 +140,7 @@ public class AuthenticationFilter implements Filter {
        	else if( directToLoginScreen )
         {
         	Cookie cookie = Misc.getCookiByName ( request , Misc.LoginScreenPageNameCookiVarName) ; 
-        	String loginScreenPage = (cookie!= null) ? cookie.getValue() : "Company/45/loginScreen.jsp" ; // session.getAttribute("loginScreenPage") ;
+        	String loginScreenPage = (cookie!= null) ? cookie.getValue() : "Company/40/loginScreen.jsp" ; // session.getAttribute("loginScreenPage") ;
         	
         	Cookie comeFromCookie = Misc.getCookiByName ( request ,"comeFrom") ;
         	if (comeFromCookie == null )    { comeFromCookie	=	new Cookie ("comeFrom" ,null); }

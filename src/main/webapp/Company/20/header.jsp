@@ -58,7 +58,7 @@ function performAction(action)
 			<li class="dropdown dropdown-lg">
 				<a href="#" target = "New Window" title = "<%=loggedUser.getUserCompany().getCmpDescValue() %>"  
 					style="padding-top: 0px;padding-bottom: 0px;padding-right: 0px;padding-left: 10px;margin-left: 0px;margin-top: 0px;margin-bottom: 0px;height: 60px;left: 0px;" >
-					<img class="img-dark" src="<%=loggedUser.getUserCompany().getAttributeValue("LOGO_LINK") %>" alt="Tectonic" width="60"  height= "60">
+					<img class="img-dark" src="<%=loggedUser.getUserCompany().getAttributeValue("LOGO_LINK") %>" alt="Tectonic" width="140"  height= "60">
 				</a>
 			</li>
 			<li class="dropdown dropdown-lg" >

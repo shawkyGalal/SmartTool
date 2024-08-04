@@ -98,9 +98,9 @@ request.setCharacterEncoding("UTF-8");%>
 		<div class="col-md-4 col-md-offset-4">
 
             <div class="text-center titlehomecom">
-                <h3> نظام مراقبة و متابعة الأداء الإستراتيجى للمؤسسات </h3>
+                <h3 style="color:blue"  > نظام مراقبة و متابعة الأداء الإستراتيجى للمؤسسات </h3>
                 <a href="#" ><img src="images/MOJ_LOGO.png" width="350" height="100"></a>
-                <span dir="ltr">Enterprise Performance Management System (EPM)</span>
+                <span dir="ltr" style="color:blue" >Enterprise Performance Management System (EPM)</span>
             </div>
 			<div class="panel panel-default alt with-footer">
 				<div class="panel-heading"><h2>تسجيل دخول</h2></div>
