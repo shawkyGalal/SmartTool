@@ -71,6 +71,8 @@ PROJECT=moj-prod-apigee
 ZONE=us-central1-a
 VM_NAME=smarttool
 
+gcloud config set project $PROJECT
+
 gcloud compute instances create $VM_NAME \
     --project=$PROJECT \
     --zone=$ZONE \
@@ -89,11 +91,17 @@ gcloud compute instances create $VM_NAME \
    # --metadata-from-file startup-script=setup_ssh.sh
 ~~~
 
+### Start the new VM
+~~~
+gcloud compute instances start  --zone  $ZONE  $VM_NAME
+~~~
+
 4- SSH to the new VM
 
 ~~~
-gcloud compute ssh  --zone  $ZONE <VM instance name>
+gcloud compute ssh  --zone  $ZONE  $VM_NAME
 ~~~
+Accept all the defaults 
 
 5- Run the following build script 
 
@@ -101,16 +109,18 @@ gcloud compute ssh  --zone  $ZONE <VM instance name>
 	#--- Install git----- 
 	sudo su 
 	apt-get update && apt-get install -y git
+	# -- To verify git installation --
+	git --version 
     
-    #-----Install Docker----
+    	#-----Install Docker----
 	curl -fsSL https://get.docker.com -o get-docker.sh
 	sh get-docker.sh
 	systemctl start docker
 	systemctl enable docker
-	# -- To verify --
+	# -- To verify docker installation --
 	docker --version 
 	
-	#-----Clone Repo----
+	#-----Clone Smarttool Repo----
 	mkdir /temp
 	chmod 777 -R /temp
 	cd /temp
@@ -120,8 +130,8 @@ gcloud compute ssh  --zone  $ZONE <VM instance name>
     cp /temp/SmartTool/smarttool.service   /etc/systemd/system/smarttool.service
     systemctl start smarttool
     systemctl enable smarttool
-		
 ~~~
+Note : the last comand ( systemctl start smarttool ) may take up to 15 minutes to complete 
 
 Verify step: 
 
@@ -143,6 +153,7 @@ cc835ec90722   smarttool-app   "catalina.sh run"        About a minute ago   Up 
 ~~~
 http://<VM-External-IP>:8080/SmartTool/index.jsp
 ~~~
+Where <VM-External-IP> is the external public IP assigned to the VM , you could get it from GCP 
 
 You Could login with the default admin user credentials : 
 User name 	: admin 
