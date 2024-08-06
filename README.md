@@ -67,9 +67,9 @@ https://console.cloud.google.com/
 3 - Create new VM instance using the following gcloud command ( Update as per your prefrences  
 
 ~~~
-PROJECT=moj-prod-apigee
-ZONE=us-central1-a
-VM_NAME=smarttool
+PROJECT=moj-prod-apigee		# replace with your own value
+ZONE=us-central1-a		# replace with your own value
+VM_NAME=smarttool		# replace with your own value
 
 gcloud config set project $PROJECT
 
@@ -108,29 +108,28 @@ Accept all the defaults
 
 ~~~
 	#--- Install git----- 
-	sudo su 
-	apt-get update && apt-get install -y git
+	sudo apt-get update && apt-get install -y git
 	# -- To verify git installation --
 	git --version 
     
     	#-----Install Docker----
-	curl -fsSL https://get.docker.com -o get-docker.sh
-	sh get-docker.sh
-	systemctl start docker
-	systemctl enable docker
+	sudo curl -fsSL https://get.docker.com -o get-docker.sh
+	sudo sh get-docker.sh
+	sudo systemctl start docker
+	sudo systemctl enable docker
 	# -- To verify docker installation --
 	docker --version 
 	
 	#-----Clone Smarttool Repo----
-	mkdir /temp
-	chmod 777 -R /temp
+	sudo mkdir /temp
+	sudo chmod 777 -R /temp
 	cd /temp
-	git clone https://github.com/shawkyGalal/SmartTool.git
+	sudo git clone https://github.com/shawkyGalal/SmartTool.git
     
     # ----Run smarttool as a service docker composer ---- 
-    cp /temp/SmartTool/smarttool.service   /etc/systemd/system/smarttool.service
-    systemctl start smarttool
-    systemctl enable smarttool
+    sudo cp /temp/SmartTool/smarttool.service   /etc/systemd/system/smarttool.service
+    sudo systemctl start smarttool
+    sudo systemctl enable smarttool
 ~~~
 Note : the last comand ( systemctl start smarttool ) may take up to 15 minutes to complete 
 
