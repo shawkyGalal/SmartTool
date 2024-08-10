@@ -72,7 +72,7 @@
 		</init-param>
 	</filter>
 	
-
+<!--  Using java Annotation @WebFilter(urlPatterns ="/ResourceManager/*") inside the filter class instead of declaration in web descriptor file web.xml 
 	<filter>
 		<filter-name>AuthenticationFilter</filter-name>
 		<filter-class>com.smartValue.filters.AuthenticationFilter</filter-class>
@@ -83,7 +83,7 @@
     	<url-pattern>/*</url-pattern>
     	<dispatcher>REQUEST</dispatcher>
   	</filter-mapping>
-	
+	 -->
 	<filter-mapping>
 		<filter-name>extensionsFilter</filter-name>
 		<url-pattern>/faces/myFacesExtensionResource/*</url-pattern>

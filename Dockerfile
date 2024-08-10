@@ -19,10 +19,15 @@ COPY tomcat/config/context.xml  	/usr/local/tomcat/webapps/docs/META-INF
 COPY tomcat/config/context.xml  	/usr/local/tomcat/webapps/examples/META-INF
 COPY tomcat/config/context.xml  	/usr/local/tomcat/webapps/host-manager/META-INF
 
+RUN mkdir -p /temp
+WORKDIR /temp
+RUN git clone https://github.com/shawkyGalal/Apigee-ResourceManager.git 
+WORKDIR /temp/Apigee-ResourceManager
+RUN git pull 
+RUN mvn clean install -DskipTests
 
 
 # COPY src/main/webapp/WEB-INF/lib/*.jar /usr/local/tomcat/lib/
-
 RUN mkdir -p /temp/SmartTool
 
 COPY . /temp/SmartTool

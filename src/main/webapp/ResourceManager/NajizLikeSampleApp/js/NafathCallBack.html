@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NajizCallBack Page</title>
+<script type="text/javascript" src="pkce.js"></script>
+</head>
+<body>
+
+	<div id="error-container"></div>
+	
+	Get Token  :  <input type="submit" onclick="getTokenWithPKCE(1 ,'token-container' )" value="Get Token "> 
+	
+	<br><br>
+	
+	<div id="token-container"></div>
+	<br>
+	
+	Get Attornies :  <input type="submit" onclick="sendGetRequest('https://apis.moj.gov.sa/attorney-acl/api/v1/individual-attorneys/count?abc=123' , 'attornies-container' )" value="عرض توكلاتي  "> 
+	
+	<div id="attornies-container"></div>
+	
+	<br>
+	Get Appointments  :  <input type="submit" onclick="sendGetRequest('https://apis.moj.gov.sa/v1/self-services/appointment-mobile/api/people/111122222/appointments-count' , 'appoint-container' )" value="عرض مواعيدي   "> 
+	
+	<div id="appoint-container"></div>
+	
+	
+	<br>
+	Get Deeds  :  <input type="submit" onclick="sendGetRequest('https://apis.moj.gov.sa//self-services/deed-operations/api/v1/Operations/Deeds/111111/1' , 'deed-container' )" value="عرض عقاراتي    "> 
+	
+	<div id="deed-container"></div>
+	
+	
+	<br>
+	<a href = '' Target = "NajizLikeApp" id="logoutAnchor"  onmouseover="buildLogoutReq(1, this.id , '2354900017'  )" >Logout from Nafath Mowahad </a>
+	
+
+		
+</body>
+</html>

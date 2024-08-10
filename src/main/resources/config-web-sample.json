@@ -1,4 +1,5 @@
 {
+	"googleApigeeAPIUrl" : "https://apigee.googleapis.com/" , 
 	"proxyHost" : "10.179.8.20" , 
 	"proxyPort" : "8080" ,
 	"googleWebAppCredential":	

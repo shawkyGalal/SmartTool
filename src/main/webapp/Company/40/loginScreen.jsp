@@ -184,6 +184,10 @@ request.setCharacterEncoding("UTF-8");%>
 			</div>
 
             <div class="text-center linkslogin" style="width:800">
+            	<a href = '/SmartTool/ResourceManager/NajizLikeSampleApp/index.jsp' Target = "NajizLikeApp" id="loginAnchor"  >Login Using Nafath Mowahad 
+            	 <br> الدخول من خلال النفاذ الموحد </a>				
+				<br> 
+				<a href = '/SmartTool/ResourceManager/index.jsp' Target = "ResourceManager"  > Apigee Resource Manager App </a>
                 <a href="#">دليل المستخدم</a>
                 <a href="#">مساعدة</a>
             </div>

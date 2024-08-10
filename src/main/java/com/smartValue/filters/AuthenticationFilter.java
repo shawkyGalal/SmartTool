@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,7 @@ import Support.Misc;
 import Support.SysConfigParams;
 import Support.XMLConfigFileReader;
  
-// @WebFilter("/AuthenticationFilter")
+@WebFilter("/*")
 public class AuthenticationFilter implements Filter {
  
     private ServletContext context;
@@ -131,7 +132,10 @@ public class AuthenticationFilter implements Filter {
         }
         
         boolean certExpiryPage = uri.endsWith("certExpiry.jsp");
-        directToCetExpiryPage = (certExpired || usersExceeds || orgUnitsExceeds) && ! certExpiryPage && ! isAloginPage && !notJsp ; 
+        directToCetExpiryPage = (certExpired || usersExceeds || orgUnitsExceeds) && ! certExpiryPage && ! isAloginPage && !notJsp ;
+        
+        boolean isResourceManagerApp = uri.contains("/SmartTool/ResourceManager") ;
+        directToLoginScreen = directToLoginScreen && !isResourceManagerApp ; 
        	if (directToCetExpiryPage )
         {
         	res.sendRedirect(Misc.getAppURL((HttpServletRequest) request)+"/"+"certExpiry.jsp");	
