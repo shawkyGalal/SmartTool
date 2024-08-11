@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.smartvalue.apigee.configuration.AppConfig;
 import com.smartvalue.apigee.configuration.infra.ManagementServer;
-import com.smartvalue.google.iam.auto.GoogleAccessToken;
 
 public class AppContext {
  public static final String APP_CONFIG_VAR_NAME = "appConfig" ; 

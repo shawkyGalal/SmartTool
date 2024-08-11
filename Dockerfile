@@ -49,8 +49,10 @@ RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/richfaces-ui-3.
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/sftp.jar   -DgroupId=com.smartvalue  -DartifactId=sftp -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/xmlparserv2.jar   -DgroupId=com.smartvalue  -DartifactId=xmlparserv2 -Dversion=1.0  -Dpackaging=jar
 RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/jtds-1.2.2.jar   -DgroupId=com.smartvalue  -DartifactId=jtds-1.2.2 -Dversion=1.0  -Dpackaging=jar 
+RUN  mvn install:install-file -Dfile=src/main/webapp/WEB-INF/lib/apigee-edge-maven-plugin-2.4.0.jar   -DgroupId=com.smartvalue  -DartifactId=apigee-edge-maven-plugin-2.4.0 -Dversion=1.0  -Dpackaging=jar 
 
-# RUN mvn install -DskipTests  
+
+RUN mvn install -DskipTests  
 RUN mvn package -DskipTests 
 
 RUN cp -r /temp/SmartTool/target/*.war /usr/local/tomcat/webapps
