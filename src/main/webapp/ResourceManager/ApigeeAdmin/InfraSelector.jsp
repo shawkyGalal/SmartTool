@@ -148,6 +148,7 @@
 		ManagementServer ms = null ; 
 		Region region0 = infra.getRegions().get(0) ; 
 		ms = infra.getManagementServer(region0.getName()); // ManagementServer(infra) ;
+		ms.setOnPremise(true); 
 		AppContext.setApigeeManagementServer(session, ms) ; 
 		session.setAttribute("infra", infra) ;
 		String accessTokenSource = infra.getAccessTokenSource() ; 

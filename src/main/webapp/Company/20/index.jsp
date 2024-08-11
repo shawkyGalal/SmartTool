@@ -40,7 +40,7 @@ String displayDirection =  loggedUser.getDisplayDirection() ;
                 	<jsp:include page="navBarNew.jsp"></jsp:include>
              	<!-- ================================================ -->
                 <div class="static-content-wrapper">
-                	<div id = "contentDiv" > 
+                	<div id = "contentDiv" style="height: 100%; " > 
             	<!-- ================================================ -->
  						<jsp:include page="mainScreen.jsp"></jsp:include>  
              	<!-- ================================================ -->

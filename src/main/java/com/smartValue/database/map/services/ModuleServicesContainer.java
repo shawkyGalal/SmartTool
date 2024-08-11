@@ -46,7 +46,7 @@ import com.smartValue.database.map.TableMaintMaster;
 import com.smartValue.database.map.UsrDefVar;
 import com.smartValue.database.mapGeneration.MapGenerator;
 import com.smartValue.jsf.components.DynamicPanelFactory;
-import com.smartValue.listeners.ApplicationContextListener;
+import com.smartValue.web.listners.SmartToolContextListener;
 
 
 public abstract class ModuleServicesContainer implements HttpSessionBindingListener , Serializable
@@ -764,7 +764,7 @@ public abstract class ModuleServicesContainer implements HttpSessionBindingListe
 	public  Connection getReposatoryConnection() throws Exception
 	{
 		Connection result = null ; 
-		XMLConfigFileReader xmlConnectionsData = ApplicationContextListener.getXmlConnectionsData();
+		XMLConfigFileReader xmlConnectionsData = SmartToolContextListener.getXmlConnectionsData();
 		 
 		String repConnName = xmlConnectionsData.reposatoryConn.name ; 
 		result = this.getSessionConnections().get(repConnName);
@@ -783,7 +783,7 @@ public abstract class ModuleServicesContainer implements HttpSessionBindingListe
 		result = this.getSessionConnections().get(xx);
 		if (result == null)
 		{
-			URL url = ApplicationContextListener.getConnectionsFile();
+			URL url = SmartToolContextListener.getConnectionsFile();
 			XMLConfigFileReader connectionsData = new XMLConfigFileReader(url , false );
 			Vector<Support.ConnParms> conParms = connectionsData.connParms;
 			

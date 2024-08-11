@@ -32,7 +32,7 @@ import com.smartValue.database.map.services.ModuleServices;
 import com.smartValue.database.map.services.ModuleServicesContainer;
 import com.smartValue.database.map.services.SystemMenusServices;
 import com.smartValue.database.map.services.TableMaintMasterServices;
-import com.smartValue.listeners.ApplicationContextListener;
+import com.smartValue.web.listners.SmartToolContextListener;
 
 public class MapGenerator extends ModuleServices{
 	
@@ -444,7 +444,7 @@ public class MapGenerator extends ModuleServices{
 		ModuleServicesContainer msc ;
 		Configuration.initializeForWeb(this.getAppEnvironment(), "en-config.xml");
 		String configurationHome = Configuration.getConfigurationHome() ;
-		ApplicationContext.setPools(ApplicationContextListener.initializeConnections(new URL ("File:\\"+ configurationHome+File.separator +this.getAppEnvironment()+ File.separator + "Connections_config.xml")));
+		ApplicationContext.setPools(SmartToolContextListener.initializeConnections(new URL ("File:\\"+ configurationHome+File.separator +this.getAppEnvironment()+ File.separator + "Connections_config.xml")));
 		msc = new AbcModuleServiceContainer(this.getAppEnvironment() , 1);
 		msc.getDbServices().setLogRequestToConsole(false);
 		SecUsrDta loggedUser = msc.getSecUserDataService().getUserByUserName("admin"); 
@@ -536,7 +536,7 @@ public class MapGenerator extends ModuleServices{
 		TableMaintMaster result; 
 		Configuration.initializeForWeb(this.getAppEnvironment(), "en-config.xml");
 		String configurationHome = Configuration.getConfigurationHome() ;
-		ApplicationContext.setPools(ApplicationContextListener.initializeConnections(new URL ("File:\\"+ configurationHome+File.separator +this.getAppEnvironment()+ File.separator + "Connections_config.xml")));
+		ApplicationContext.setPools(SmartToolContextListener.initializeConnections(new URL ("File:\\"+ configurationHome+File.separator +this.getAppEnvironment()+ File.separator + "Connections_config.xml")));
 		msc = new AbcModuleServiceContainer(this.connName , 1);
 
 		SecUsrDta loggedUser = new SecUsrDta();

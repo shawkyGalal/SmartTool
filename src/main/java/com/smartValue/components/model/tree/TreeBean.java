@@ -35,8 +35,8 @@ import com.smartValue.database.map.UsrDefVar;
 import com.smartValue.database.map.services.ModuleServices;
 import com.smartValue.database.map.services.ModuleServicesContainer;
 import com.smartValue.database.map.services.SysFrmServices;
-import com.smartValue.listeners.ApplicationContextListener;
 import com.smartValue.sysMnuTypes.SysMnuSelectionProcessor;
+import com.smartValue.web.listners.SmartToolContextListener;
 
 
 public class TreeBean {
@@ -399,7 +399,7 @@ public class TreeBean {
 	public static void main(String[] args) throws Exception
 	{
 		Configuration.initializeForWeb("ERPINS", "en-config.xml");
-		ApplicationContext.setPools(ApplicationContextListener.initializeConnections(new URL ("File:\\D:\\ERPINS\\Sources\\IMPLEX_CONFIG_HOME\\ERPINS\\" +File.separator + "Connections_config.xml")));
+		ApplicationContext.setPools(SmartToolContextListener.initializeConnections(new URL ("File:\\D:\\ERPINS\\Sources\\IMPLEX_CONFIG_HOME\\ERPINS\\" +File.separator + "Connections_config.xml")));
 		
 		DirectJdbcServiceImpl dbs = new DirectJdbcServiceImpl();
 		dbs.initialize("HRMS" , 1);

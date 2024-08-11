@@ -1,4 +1,4 @@
-package com.smartValue.listeners;
+package com.smartValue.web.listners;
 
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;

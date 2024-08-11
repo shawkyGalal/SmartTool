@@ -102,7 +102,8 @@ Support.ConnParms selectedConnParms = (Support.ConnParms)session.getAttribute("s
 		try{compLogoLink = (String)loggedUser.getUserCompany().getAttribute("LOGO_LINK").getValue() ;}
 		catch (Exception e) {}
 	%>
-	<%= compLogoLink%>
+	<img class="img-dark" src="<%= compLogoLink%>" alt="Tectonic" width="140" height="60">
+	
 	
 <!--  <jsp:include page="googleSuggest.html"></jsp:include>  --> 
 <% boolean carrentSystem = loggedUser.getUserCompany().getAttributeValue("SYSTEM_ID").toString().equalsIgnoreCase("2")  ;   

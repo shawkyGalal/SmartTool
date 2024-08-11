@@ -17,7 +17,7 @@ import com.smartValue.database.ApplicationContext;
 import com.smartValue.database.Attribute;
 import com.smartValue.database.DataSet;
 import com.smartValue.database.DirectJdbcServiceImpl;
-import com.smartValue.listeners.ApplicationContextListener;
+import com.smartValue.web.listners.SmartToolContextListener;
 
 public class TreeBeanGeneric {
 
@@ -173,7 +173,7 @@ public class TreeBeanGeneric {
 	public static void main(String[] args) throws Exception
 	{
 		Configuration.initializeForWeb("ERPINS", "en-config.xml");
-		ApplicationContext.setPools(ApplicationContextListener.initializeConnections(new URL ("File:\\D:\\ERPINS\\Sources\\IMPLEX_CONFIG_HOME\\ERPINS\\" +File.separator + "Connections_config.xml")));
+		ApplicationContext.setPools(SmartToolContextListener.initializeConnections(new URL ("File:\\D:\\ERPINS\\Sources\\IMPLEX_CONFIG_HOME\\ERPINS\\" +File.separator + "Connections_config.xml")));
 		
 		DirectJdbcServiceImpl dbs = new DirectJdbcServiceImpl();
 		dbs.initialize("HRMS" , 1);

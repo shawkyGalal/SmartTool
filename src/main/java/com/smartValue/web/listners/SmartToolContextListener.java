@@ -1,4 +1,4 @@
-package com.smartValue.listeners;
+package com.smartValue.web.listners;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Vector;
 
 import javax.servlet.ServletContextEvent;
+import javax.servlet.annotation.WebListener;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,22 +23,23 @@ import com.smartValue.database.ApplicationContext;
 import com.smartValue.database.PersistantObject;
 import com.smartValue.database.Pool;
 
-
-public class ApplicationContextListener extends com.sideinternational.web.swaf.ApplicationContextListener{
+@WebListener
+public class SmartToolContextListener extends com.sideinternational.web.swaf.ApplicationContextListener{
 	protected static final Logger logger = LogManager.getLogger();
 
 
 	public void contextInitialized(ServletContextEvent pm_event)
 	{
+		System.out.println(" SmartTool Web application is starting...[" + this.getClass() +"]" );
 		ApplicationEnvironment.addInformation("SmartValue Core Library :", PersistantObject.class.getPackage());
 		super.contextInitialized(pm_event);
-		Map<String, Pool> allPools = ApplicationContextListener.initializeConnections();	
+		Map<String, Pool> allPools = SmartToolContextListener.initializeConnections();	
 		ApplicationContext.setPools(allPools);
 	}
 	
 	public static void main(String[] abc) throws MalformedURLException
 	{
-		Map<String, Pool> allPools = ApplicationContextListener.initializeConnections(ApplicationContextListener.getConnectionsFile());
+		Map<String, Pool> allPools = SmartToolContextListener.initializeConnections(SmartToolContextListener.getConnectionsFile());
 	}
 
 	public void contextDestroyed(ServletContextEvent pm_event)
@@ -63,7 +65,7 @@ public class ApplicationContextListener extends com.sideinternational.web.swaf.A
 		if (connectionsFile == null)
 		{
 		  String path = "config" + "/" + SWAF.getConfigurationSubDirectory()+"/Connections_config.xml" ; 
-		  connectionsFile = ApplicationContextListener.class.getClassLoader().getResource(path);
+		  connectionsFile = SmartToolContextListener.class.getClassLoader().getResource(path);
 		}
 		return connectionsFile ; 
 	}
@@ -93,7 +95,7 @@ public class ApplicationContextListener extends com.sideinternational.web.swaf.A
 		
 		try
 		{
-			Console.log("Connection Configuration File : " + url.getPath() , ApplicationContextListener.class);
+			Console.log("Connection Configuration File : " + url.getPath() , SmartToolContextListener.class);
 			logger.info("Connection Configuration File : " + url.getPath());
 			XMLConfigFileReader connectionsData = new XMLConfigFileReader(url , false );
 			Vector<Support.ConnParms> conParms = connectionsData.connParms;
@@ -111,7 +113,7 @@ public class ApplicationContextListener extends com.sideinternational.web.swaf.A
 							{
 								pool.push( thisConParms.generateConnection());
 							}
-							if (thisConParms.getMaxPoolSize() > 0 ) Console.log("A new Pool (Size = "+thisConParms.getMaxPoolSize()+")  <" + thisConParms.name +"> of Connections Have been Created Successfuly ", ApplicationContextListener.class);
+							if (thisConParms.getMaxPoolSize() > 0 ) Console.log("A new Pool (Size = "+thisConParms.getMaxPoolSize()+")  <" + thisConParms.name +"> of Connections Have been Created Successfuly ", SmartToolContextListener.class);
 						}	
 					}
 					catch (Exception e)
@@ -134,7 +136,7 @@ public class ApplicationContextListener extends com.sideinternational.web.swaf.A
 	{
 		Map<String, Pool> allPools =null;
 		try{
-			allPools =  ApplicationContextListener.initializeConnections(getConnectionsFile());
+			allPools =  SmartToolContextListener.initializeConnections(getConnectionsFile());
 		}
 		catch (Exception e){e.printStackTrace();}
 		return allPools;

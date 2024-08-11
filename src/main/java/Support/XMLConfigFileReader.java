@@ -12,7 +12,7 @@ import com.sideinternational.sas.configuration.Configuration;
 import com.sideinternational.sas.configuration.ReadEnvironment;
 import com.sideinternational.sas.event.logging.Console;
 import com.sideinternational.web.swaf.SWAF;
-import com.smartValue.listeners.ApplicationContextListener;
+import com.smartValue.web.listners.SmartToolContextListener;
 
 import connectionPoolManager.SmartValueConnectionCashImpl;
 
@@ -117,7 +117,7 @@ public ConnParms getConnParmsByName(String m_name)
 	  return    Configuration.getConfigurationHome() + File.separator + configSubDir ; 
 	}
 	private static URL getConnectionsFile() throws MalformedURLException {
-		return ApplicationContextListener.getConnectionsFile(); 
+		return SmartToolContextListener.getConnectionsFile(); 
 		//return  new URL ("file://" +((isWindowsOS())?"/":"") +getConfigurationHome() +File.separator + "Connections_config.xml") ; 
 	}
 

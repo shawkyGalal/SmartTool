@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebFilter(urlPatterns ="/ResourceManager/*")
-public class AuthenticationFilter implements Filter 
+public class GooleAuthenticationFilter implements Filter 
 {
 	private static String INDEX_PATH = "/ResourceManager/index.jsp" ; 
 	
