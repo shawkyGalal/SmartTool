@@ -20,11 +20,11 @@ import com.smartValue.database.map.SecUsrDta;
 import com.smartValue.database.map.SysParams;
 import com.smartValue.database.map.TableNotificationRule;
 import com.smartValue.database.map.services.ModuleServicesContainer;
-import com.smartValue.listeners.ApplicationContextListener;
 import com.smartValue.support.map.LuExecutables;
 import com.smartValue.support.map.LuQueries;
 import com.smartValue.support.map.QueryNotifListParams;
 import com.smartValue.support.map.QueryNotifier;
+import com.smartValue.web.listners.SmartToolContextListener;
 import com.smartValue.support.map.LuQueryDetails ;
 
 import Support.mail.MailSender;
@@ -1686,7 +1686,7 @@ try{
    con = cp.generateConnection(autoLoginUsername, autoLoginPassword , "NORMAL");
    
 	try{SWAF.initialize();}catch (Exception e) {e.printStackTrace();} 
-	Map<String, Pool> allPools = ApplicationContextListener.initializeConnections();	
+	Map<String, Pool> allPools = SmartToolContextListener.initializeConnections();	
 	ApplicationContext.setPools(allPools);
 	ModuleServicesContainer msc = Support.Misc.getModuleServiceContainer(autoLoginEnvName , 1);  
 	com.smartValue.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();

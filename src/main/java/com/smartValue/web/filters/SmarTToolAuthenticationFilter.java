@@ -1,4 +1,4 @@
-package com.smartValue.filters;
+package com.smartValue.web.filters;
  
 import java.io.IOException;
 import java.sql.Connection;
@@ -28,7 +28,7 @@ import Support.SysConfigParams;
 import Support.XMLConfigFileReader;
  
 @WebFilter("/*")
-public class AuthenticationFilter implements Filter {
+public class SmarTToolAuthenticationFilter implements Filter {
  
     private ServletContext context;
     Date lastDayCertChecked = null ;

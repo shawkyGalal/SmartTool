@@ -1,4 +1,4 @@
-package com.smartValue.listeners;
+package com.smartValue.web.listners;
 
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;

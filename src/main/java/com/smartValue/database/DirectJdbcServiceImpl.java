@@ -36,7 +36,7 @@ import com.smartValue.database.map.services.SysMsgServices;
 import com.smartValue.database.notifications.AttributeChangeNotifier;
 import com.smartValue.database.trigger.TriggerHandler;
 import com.smartValue.event.logging.Console;
-import com.smartValue.listeners.ApplicationContextListener;
+import com.smartValue.web.listners.SmartToolContextListener;
 
 
 
@@ -815,7 +815,7 @@ public class DirectJdbcServiceImpl extends DbServices implements Serializable{
 	{
 
 		Configuration.initializeForWeb("ERPINS", "en-config.xml");
-		ApplicationContext.setPools(ApplicationContextListener.initializeConnections(new URL ("File:\\D:\\ERPINS\\Sources\\IMPLEX_CONFIG_HOME\\ERPINS\\" +File.separator + "Connections_config.xml")));
+		ApplicationContext.setPools(SmartToolContextListener.initializeConnections(new URL ("File:\\D:\\ERPINS\\Sources\\IMPLEX_CONFIG_HOME\\ERPINS\\" +File.separator + "Connections_config.xml")));
 		
 		DirectJdbcServiceImpl dbs = new DirectJdbcServiceImpl();
 		dbs.initialize("ERPINS" , 1);

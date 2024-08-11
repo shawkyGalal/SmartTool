@@ -20,7 +20,7 @@
 	ManagementServer ms = AppContext.getApigeeManagementServer(session); 
 	String authCode = request.getParameter("code") ;
 	String contextPath = request.getContextPath(); 
-	String redirectUri = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath+"/loginWithGoogle/authCodeHandler.jsp" ; 
+	String redirectUri = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath+"/ResourceManager/loginWithGoogle/authCodeHandler.jsp" ; 
 	ms.webLogin(authCode, redirectUri) ; 
 	GoogleAccessToken googleAccessToken = ms.getGoogelAccessToken() ;
 	

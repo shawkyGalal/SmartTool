@@ -1,4 +1,4 @@
-package com.smartValue.web;
+package com.smartValue.web.listners;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.smartValue.web.AppContext;
 import com.smartvalue.apigee.configuration.AppConfig;
 import com.smartvalue.moj.clients.environments.JsonParser;
 
@@ -21,8 +22,8 @@ public class ApplicationContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce)
 	{
 		
-		System.out.println("Resource Manager Web application is starting...");
-		logger.info("==========Resource Manager Web application is starting...======");
+		System.out.println(" Resource Manager Web application is starting...[" + this.getClass() +"]" );
+		logger.info("==========Resource Manager Web application is starting...======["+ this.getClass() +"]" );
 		ServletContext sc = sce.getServletContext(); 
 		java.io.InputStream inputStream = sc.getResourceAsStream("/WEB-INF/classes/config-web.json");
 		JsonParser apigeeConfigParser = new JsonParser( ) ; 
