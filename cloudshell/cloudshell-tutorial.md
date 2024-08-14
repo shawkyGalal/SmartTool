@@ -12,23 +12,15 @@ A General Purpose Java Web based application with an Oracle Database customizabl
 # How To Run 
 
 
-You Could login with the default admin user creSmartTooldentials : 
-User name 	: admin 
-Password 	: admin123
-
-
 ## Run The SmartTool application on a Google Cloud Compute engine instance 
 Consider this Application deployment on GCP will incure charges for your GCP billing account 
-
 
 ## (QuickStart) Setup using CloudShell
 
 Use the following GCP CloudShell tutorial, and follow the instructions.
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/shawkyGalal/apigee-samples&cloudshell_git_branch=main&cloudshell_workspace=.&cloudshell_tutorial=cloudshell/cloudshell-tutorial.md)
 
-
-1 - Create new VM instance using the following gcloud command ( Update as per your prefrences  
+1 - Create new VM instance using the following gcloud command ( Update as per your prefrences ) 
 
 ~~~
 PROJECT=moj-prod-apigee		# replace with your own value
@@ -36,7 +28,17 @@ ZONE=us-central1-a		# replace with your own value
 VM_NAME=smarttool		# replace with your own value
 
 gcloud config set project $PROJECT
+~~~
 
+Authenticate your session 
+
+~~~
+gcloud auth login
+~~~
+
+Create The VM 
+
+~~~
 gcloud compute instances create $VM_NAME \
     --project=$PROJECT \
     --zone=$ZONE \
@@ -47,12 +49,12 @@ gcloud compute instances create $VM_NAME \
     --service-account=598074804327-compute@developer.gserviceaccount.com \
     --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/trace.append \
     --create-disk=auto-delete=yes,boot=yes,device-name=$VM_NAME,image=projects/debian-cloud/global/images/debian-12-bookworm-v20240709,mode=rw,size=100,type=projects/moj-prod-apigee/zones/us-central1-f/diskTypes/pd-balanced \
-    --tags=http-server \
+    --tags=https-server \
     --no-shielded-secure-boot \
     --shielded-vtpm \
     --shielded-integrity-monitoring \
     --labels=goog-ec-src=vm_add-gcloud \
-    --reservation-affinity=any \
+    --reservation-affinity=any 
    # --metadata-from-file startup-script=setup_ssh.sh
 ~~~
 
@@ -61,21 +63,30 @@ gcloud compute instances create $VM_NAME \
 gcloud compute instances start  --zone  $ZONE  $VM_NAME
 ~~~
 
-### Copy the repo to the new VM
+### SSH to the new VM & Clone Repo (again) - it is found that copying repo to the vm is very slow 
 
 ~~~
-scp -r . root@$VM_NAME:/temp
+gcloud compute ssh  --zone  $ZONE  $VM_NAME  
 ~~~
 
-### SSH to the new VM
+Accept all the defaults  
+
+
+### Install git----- 
+~~~
+	sudo apt-get update && apt-get install -y git
+	# -- To verify git installation --
+	git --version 
 
 ~~~
-gcloud compute ssh  --zone  $ZONE  $VM_NAME
+
+### Clone Smarttool Repo----
 ~~~
-
-Accept all the defaults 
-
-5- Run the following build script 
+	sudo mkdir /temp
+	sudo chmod 777 -R /temp
+	cd /temp
+	sudo git clone https://github.com/shawkyGalal/SmartTool.git
+~~~
 
 
 ### Install Docker----
