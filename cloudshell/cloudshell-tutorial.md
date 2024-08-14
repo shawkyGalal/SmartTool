@@ -20,7 +20,7 @@ Consider this Application deployment on GCP will incure charges for your GCP bil
 Use the following GCP CloudShell tutorial, and follow the instructions.
 
 
-1 - Create new VM instance using the following gcloud command ( Update as per your prefrences ) 
+### - Create new VM instance using the following gcloud command ( Update as per your prefrences ) 
 
 ~~~
 PROJECT=moj-prod-apigee		# replace with your own value
@@ -30,13 +30,13 @@ VM_NAME=smarttool		# replace with your own value
 gcloud config set project $PROJECT
 ~~~
 
-Authenticate your session 
+###  Authenticate your session 
 
 ~~~
 gcloud auth login
 ~~~
 
-Create The VM 
+###  Create The VM 
 
 ~~~
 gcloud compute instances create $VM_NAME \
@@ -59,6 +59,7 @@ gcloud compute instances create $VM_NAME \
 ~~~
 
 ### Start the new VM
+
 ~~~
 gcloud compute instances start  --zone  $ZONE  $VM_NAME
 ~~~
@@ -73,6 +74,7 @@ Accept all the defaults
 
 
 ### Install git----- 
+
 ~~~
 	sudo apt-get update && apt-get install -y git
 	# -- To verify git installation --
@@ -81,6 +83,7 @@ Accept all the defaults
 ~~~
 
 ### Clone Smarttool Repo----
+
 ~~~
 	sudo mkdir /temp
 	sudo chmod 777 -R /temp
@@ -90,6 +93,7 @@ Accept all the defaults
 
 
 ### Install Docker----
+
 ~~~
 	sudo curl -fsSL https://get.docker.com -o get-docker.sh
 	sudo sh get-docker.sh
