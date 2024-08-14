@@ -10,37 +10,9 @@ A General Purpose Java Web based application with an Oracle Database customizabl
 
 
 # How To Run 
-## Run The SmartTool application on a local Docker Image 
 
-### Prerequisite 
 
-1- Install git on your machine
- 
-Install from -> [https://git-scm.com/book/en/v2/Getting-Started-Installing-Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
-2- Install Docker on your machine 
-
-Install from -> [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
-
-### Steps 
-1- Clone application repository 
-
-~~~
-git clone https://github.com/shawkyGalal/SmartTool.git
-~~~
-2- From Your Command line execute the following 
-
-~~~
-cd SmartTool
-Startup.bat 
-~~~
-from Your browser you should be able to Navigate to : 
-
-~~~
-http://localhost:8080/SmartTool/index.jsp
-~~~
-
-You Could login with the default admin user credentials : 
+You Could login with the default admin user creSmartTooldentials : 
 User name 	: admin 
 Password 	: admin123
 
@@ -53,18 +25,10 @@ Consider this Application deployment on GCP will incure charges for your GCP bil
 
 Use the following GCP CloudShell tutorial, and follow the instructions.
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/shawkyGalal/SmartTool&cloudshell_git_branch=main&cloudshell_workspace=.&cloudshell_tutorial=cloudshell/cloudshell-tutorial.md)
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://ssh.cloud.google.com/cloudshell/open?cloudshell_git_repo=https://github.com/shawkyGalal/apigee-samples&cloudshell_git_branch=main&cloudshell_workspace=.&cloudshell_tutorial=cloudshell/cloudshell-tutorial.md)
 
 
-1- Log in to your Google Cloud Console  
-~~~
-
-https://console.cloud.google.com/
-~~~
-
-2- Open a cloud shell session 
-
-3 - Create new VM instance using the following gcloud command ( Update as per your prefrences  
+1 - Create new VM instance using the following gcloud command ( Update as per your prefrences  
 
 ~~~
 PROJECT=moj-prod-apigee		# replace with your own value
@@ -97,40 +61,42 @@ gcloud compute instances create $VM_NAME \
 gcloud compute instances start  --zone  $ZONE  $VM_NAME
 ~~~
 
-4- SSH to the new VM
+### Copy the repo to the new VM
+
+~~~
+scp -r . root@$VM_NAME:/temp
+~~~
+
+### SSH to the new VM
 
 ~~~
 gcloud compute ssh  --zone  $ZONE  $VM_NAME
 ~~~
+
 Accept all the defaults 
 
 5- Run the following build script 
 
+
+### Install Docker----
 ~~~
-	#--- Install git----- 
-	sudo apt-get update && apt-get install -y git
-	# -- To verify git installation --
-	git --version 
-    
-    	#-----Install Docker----
 	sudo curl -fsSL https://get.docker.com -o get-docker.sh
 	sudo sh get-docker.sh
 	sudo systemctl start docker
 	sudo systemctl enable docker
 	# -- To verify docker installation --
 	docker --version 
-	
-	#-----Clone Smarttool Repo----
-	sudo mkdir /temp
-	sudo chmod 777 -R /temp
-	cd /temp
-	sudo git clone https://github.com/shawkyGalal/SmartTool.git
-    
-    # ----Run smarttool as a service docker composer ---- 
+~~~
+
+
+### Run smarttool as a service docker composer ---- 
+
+~~~
     sudo cp /temp/SmartTool/smarttool.service   /etc/systemd/system/smarttool.service
     sudo systemctl start smarttool
     sudo systemctl enable smarttool
 ~~~
+
 Note : the last comand ( systemctl start smarttool ) may take up to 15 minutes to complete 
 
 Verify step: 
