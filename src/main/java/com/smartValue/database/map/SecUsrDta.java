@@ -1048,6 +1048,16 @@ public class SecUsrDta extends _SecUsrDta implements Operator ,MultiPagesDisplay
 		
 		static final int ENGLISH = 0 ; 
 		static final int ARABIC = 1 ;
+
+		public static final String National_ID = "National_ID";
+		public java.lang.String getNationalIDValue(){
+			return (java.lang.String) this.getAttribute ( National_ID).getValue()  ;
+		}
+		
+		public void setNationalIDValue(String m_nationalId){
+			this.getAttribute ( National_ID).setValue(m_nationalId)  ;
+		}
+		
 		public String getDisplayDirection()
 		{
 			return (this.isUsrLangEnglish())? "ltr" : "rtl" ; 

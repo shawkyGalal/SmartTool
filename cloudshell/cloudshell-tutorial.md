@@ -9,18 +9,16 @@ A General Purpose Java Web based application with an Oracle Database customizabl
 
 
 
-# How To Run 
 
-
-## Run The SmartTool application on a Google Cloud Compute engine instance 
-Consider this Application deployment on GCP will incure charges for your GCP billing account 
+# Run The SmartTool application on a Google Cloud Compute engine instance 
+Consider this Application deployment on GCP will charge GCP billing account 
 
 ## (QuickStart) Setup using CloudShell
 
 Use the following GCP CloudShell tutorial, and follow the instructions.
 
 
-### - Create new VM instance using the following gcloud command ( Update as per your prefrences ) 
+## Setting Your Environment Parameters 
 
 ~~~
 PROJECT=moj-prod-apigee		# replace with your own value
@@ -30,13 +28,13 @@ VM_NAME=smarttool		# replace with your own value
 gcloud config set project $PROJECT
 ~~~
 
-###  Authenticate your session 
+##  Authenticate your session 
 
 ~~~
 gcloud auth login
 ~~~
 
-###  Create The VM 
+##  Create The VM  instance using the following gcloud command ( Update as per your prefrences ) 
 
 ~~~
 gcloud compute instances create $VM_NAME \
@@ -58,13 +56,13 @@ gcloud compute instances create $VM_NAME \
    # --metadata-from-file startup-script=setup_ssh.sh
 ~~~
 
-### Start the new VM
+## Start the new VM
 
 ~~~
 gcloud compute instances start  --zone  $ZONE  $VM_NAME
 ~~~
 
-### SSH to the new VM & Clone Repo (again) - it is found that copying repo to the vm is very slow 
+## SSH to the new VM & Clone Repo (again) - it is found that copying repo to the vm is very slow 
 
 ~~~
 gcloud compute ssh  --zone  $ZONE  $VM_NAME  
@@ -73,7 +71,7 @@ gcloud compute ssh  --zone  $ZONE  $VM_NAME
 Accept all the defaults  
 
 
-### Install git----- 
+## Install git----- 
 
 ~~~
 	sudo apt-get update && apt-get install -y git
@@ -82,7 +80,7 @@ Accept all the defaults
 
 ~~~
 
-### Clone Smarttool Repo----
+## Clone Smarttool Repo----
 
 ~~~
 	sudo mkdir /temp
@@ -92,7 +90,7 @@ Accept all the defaults
 ~~~
 
 
-### Install Docker----
+## Install Docker----
 
 ~~~
 	sudo curl -fsSL https://get.docker.com -o get-docker.sh
@@ -104,7 +102,7 @@ Accept all the defaults
 ~~~
 
 
-### Run smarttool as a service docker composer ---- 
+## Run smarttool as a service docker composer ---- 
 
 ~~~
     sudo cp /temp/SmartTool/smarttool.service   /etc/systemd/system/smarttool.service
@@ -114,7 +112,7 @@ Accept all the defaults
 
 Note : the last comand ( systemctl start smarttool ) may take up to 15 minutes to complete 
 
-Verify step: 
+## Verify Docker Installation 
 
 ~~~
 sudo docker container ls 
@@ -129,7 +127,7 @@ cc835ec90722   smarttool-app   "catalina.sh run"        About a minute ago   Up 
 
 0834c7f08963   smarttool-db    "/bin/bash -c $ORACL…"   About a minute ago   Up About a minute (unhealthy)   0.0.0.0:1521->1521/tcp, :::1521->1521/tcp, 0.0.0.0:8443->8443/tcp, :::8443->8443/tcp, 0.0.0.0:27017->27017/tcp, :::27017->27017/tcp, 1522/tcp   SmartToolDB
 
-7- Access the smarttool application from your browser : 
+## Access the smarttool application from your browser : 
 
 ~~~
 http://<VM-External-IP>:8080/SmartTool/index.jsp

@@ -60,11 +60,11 @@ public class SecUserDataService extends ModuleServices{
 		return getUserByUiqueKey(SecUsrDta.USR_NAME , userName) ; 
 	}
 	
-	public SecUsrDta getUserByNationalId (String m_NationalId ) throws Exception
+	public SecUsrDta getUserByNationalID (String NationalId ) throws Exception
 	{
-		return getUserByUiqueKey(SecUsrDta.NATIONAL_ID, m_NationalId) ; 
+		return getUserByUiqueKey(SecUsrDta.National_ID , NationalId) ;
 	}
-	
+	 
 	public SecUsrDta getUserByEmail (String m_userEmail ) throws Exception
 	{
 		return getUserByUiqueKey(SecUsrDta.USR_EMAIL , m_userEmail) ; 
