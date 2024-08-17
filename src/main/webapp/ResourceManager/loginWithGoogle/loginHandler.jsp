@@ -1,3 +1,4 @@
+<%@page import="com.smartValue.SmartToolLoginAuthenticator"%>
 <%@page import="com.smartValue.web.AppContext"%>
 <%@page import = "com.smartvalue.apigee.configuration.infra.ManagementServer"%>
 <%@page import = "com.google.api.client.googleapis.auth.oauth2.GoogleIdToken" %>
@@ -18,7 +19,7 @@
 </head>
 <body>
 <%
-	AppConfig ac = AppContext.getAppConfig(application); 
+AppConfig ac = AppContext.getAppConfig(application); 
 	GoogleWebAppCredential googleWebAppCredential = ac.getGoogleWebAppCredential();
 	String client_id= googleWebAppCredential.getClient_id();  
 	String issuer = "https://accounts.google.com" ; 	
@@ -36,7 +37,12 @@
 	{
 		out.print( googleIdToken.getPayload().getEmail()) ; 
 		session.setAttribute( AppContext.GOOGLE_ID_TOKEN_VAR_NAME, googleIdToken); 
-		response.sendRedirect("userInfo.jsp"); 
+		
+		// Simulate Login To SmartTool 
+		SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator ( googleIdToken , request , response) ; 
+		smartToolLoginAuthenticator.authenticate(session, request, response, out, application); 
+		
+		//response.sendRedirect("userInfo.jsp"); 
 	}
 %>
 

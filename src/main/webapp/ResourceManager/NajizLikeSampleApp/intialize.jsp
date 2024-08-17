@@ -1,3 +1,4 @@
+<%@page import="com.smartValue.web.AppContext"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@page import ="java.util.*"%>
 <%@page import ="java.io.InputStream"%>
@@ -15,7 +16,7 @@
 <body>
 <%
 
-Environment mojEnv = (Environment) session.getAttribute("mojEnv");
+Environment mojEnv = (Environment) AppContext.getMojEnv(session);
 if (mojEnv == null)
 {
 	ServletContext serveletContext = request.getServletContext();
@@ -24,7 +25,7 @@ if (mojEnv == null)
 	mojEnv  =mojEnvs.getEnvByName("prod") ;
 	mojEnv.initialize() ; 
 	mojEnv.setAccessTokenMandatory(true); 
-	session.setAttribute("mojEnv" , mojEnv );
+	AppContext.setMojEnv(session , mojEnv ) ; 
 }
 		
 %>

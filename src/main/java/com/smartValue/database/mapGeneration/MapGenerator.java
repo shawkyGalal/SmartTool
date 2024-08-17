@@ -45,7 +45,7 @@ public class MapGenerator extends ModuleServices{
 	private String 	xhtmlFolder = "HR" ;
 	
 	private String 	sourceOutPath = "D:\\SmartValue\\Sources\\App\\Implex-core\\src\\";
-	private String 	packageName = "com.implex.database.map";
+	private String 	packageName = "com.smartValue.database.map";
 	private String 	xHtmlPath = "D:\\SmartValue\\Sources\\App\\SmartTool\\WebContent\\"+xhtmlFolder;
 	
 	private boolean generateChilren = false;
@@ -112,17 +112,17 @@ public class MapGenerator extends ModuleServices{
 		mapClass += "\n\nimport "+this.getPackageName()+".auto._"+mainClassName+"; " ;
 		if (this.isGenerateSecurityHandlerClass())
 			mapClass += "\n\nimport "+this.getPackageName()+".security."+mainClassName+"SecurityControlHandlerImpl; " ;
-		mapClass += "\nimport com.implex.database.PersistantObject;";
-		mapClass += "\nimport com.implex.database.Attribute;";
-		mapClass += "\nimport com.implex.database.AttributeChangeValidator;";
+		mapClass += "\nimport com.smartValue.database.PersistantObject;";
+		mapClass += "\nimport com.smartValue.database.Attribute;";
+		mapClass += "\nimport com.smartValue.database.AttributeChangeValidator;";
 		if(this.isGenerateValidationClass())
 			mapClass += "\nimport "+this.getPackageName()+".validators."+mainClassName+"ChangeValidator;";
-		mapClass += "\nimport com.implex.database.map.SecUsrDta;";
-		mapClass += "\nimport com.implex.database.map.security.PersistentObjectSecurityControl;";
-		mapClass += "\nimport com.implex.database.trigger.TriggerHandler;";
-		mapClass += "\nimport com.implex.database.audit.AuditInDbTriggerHandler;";
+		mapClass += "\nimport com.smartValue.database.map.SecUsrDta;";
+		mapClass += "\nimport com.smartValue.database.map.security.PersistentObjectSecurityControl;";
+		mapClass += "\nimport com.smartValue.database.trigger.TriggerHandler;";
+		mapClass += "\nimport com.smartValue.database.audit.AuditInDbTriggerHandler;";
 		
-		mapClass += "\nimport com.implex.database.DbForignKeyArray;";
+		mapClass += "\nimport com.smartValue.database.DbForignKeyArray;";
 		mapClass += "\nimport java.util.HashMap;";
 
 		
@@ -229,11 +229,11 @@ public class MapGenerator extends ModuleServices{
 		mapClass +="\n}" ;
 		
 		String autoClass = "package "+this.getPackageName()+".auto;";
-		autoClass += "\n\nimport com.implex.database.PersistantObject; " ;
-		autoClass += "\nimport com.implex.database.DataSet;" ;
-		autoClass += "\nimport com.implex.database.Attribute;";
-		autoClass += "\nimport com.implex.database.DbTable;";
-		autoClass += "\nimport com.implex.database.ApplicationContext;";
+		autoClass += "\n\nimport com.smartValue.database.PersistantObject; " ;
+		autoClass += "\nimport com.smartValue.database.DataSet;" ;
+		autoClass += "\nimport com.smartValue.database.Attribute;";
+		autoClass += "\nimport com.smartValue.database.DbTable;";
+		autoClass += "\nimport com.smartValue.database.ApplicationContext;";
 		autoClass += "\n\npublic abstract class _" + mainClassName + " extends PersistantObject {" ;
 		autoClass += "\n/* Dynamically Generated Mapping Class " ;
 		autoClass += "\n * By : Shawky Foda. Please Never Update This Class.. Only regenerate... " ;
@@ -377,10 +377,10 @@ public class MapGenerator extends ModuleServices{
 
 	private void generateTheSecurityHandlerClass() {
 		String secHandlerClass = "package "+getPackageName()+".security;" +
-				"\nimport com.implex.database.PersistantObject;" +
-				"\nimport com.implex.database.map.security.PersistentObjectSecurityControl;" +
+				"\nimport com.smartValue.database.PersistantObject;" +
+				"\nimport com.smartValue.database.map.security.PersistentObjectSecurityControl;" +
 				"\nimport com.sideinternational.sas.BaseException;" +
-				"\nimport com.implex.database.Attribute;" +
+				"\nimport com.smartValue.database.Attribute;" +
 				"\npublic class "+mainClassName+"SecurityControlHandlerImpl implements PersistentObjectSecurityControl" +
 				"\n{" +
 				"\n	@Override" +
@@ -476,9 +476,9 @@ public class MapGenerator extends ModuleServices{
 	private void generateTheServiceClass() {
 		String serviceClass = "package "+getPackageName()+".services;" +
 				"\n\nimport "+this.getPackageName()+"."+this.mainClassName+";" +
-				"\nimport com.implex.database.DbTable;" +
-				"\nimport com.implex.database.DbServices;" +
-				"\nimport com.implex.database.map.services.ModuleServices;" +
+				"\nimport com.smartValue.database.DbTable;" +
+				"\nimport com.smartValue.database.DbServices;" +
+				"\nimport com.smartValue.database.map.services.ModuleServices;" +
 				"\n\npublic class "+mainClassName+"Services extends ModuleServices{" +
 				
 				"\n\n\t public "+mainClassName+"Services (DbServices pmDbServices) { " +
@@ -733,11 +733,11 @@ public class MapGenerator extends ModuleServices{
 		String validtorClassName = this.getChangeValidatorClassName();
 		String autoValidtorClassName = "_" +validtorClassName;
 		StringBuffer autoValidationClass = new StringBuffer("package "+this.getPackageName()+".validators.auto;");
-		autoValidationClass.append( "\n\nimport com.implex.database.AttributeChangeValidator; " );
-		autoValidationClass.append( "\nimport com.implex.database.PersistantObject;");
-		autoValidationClass.append( "\nimport com.implex.database.map.SecUsrDta;");
+		autoValidationClass.append( "\n\nimport com.smartValue.database.AttributeChangeValidator; " );
+		autoValidationClass.append( "\nimport com.smartValue.database.PersistantObject;");
+		autoValidationClass.append( "\nimport com.smartValue.database.map.SecUsrDta;");
 		
-		autoValidationClass.append("\nimport com.implex.database.ValidationResult;"); 
+		autoValidationClass.append("\nimport com.smartValue.database.ValidationResult;"); 
 		autoValidationClass.append("\nimport "+this.getPackageName()+"."+this.mainClassName+";"); 
 		
 		autoValidationClass.append("\n\npublic abstract class " + autoValidtorClassName + " extends AttributeChangeValidator {") ;
@@ -782,10 +782,10 @@ public class MapGenerator extends ModuleServices{
 		StringBuffer validationClassTxt = new StringBuffer("package "+this.getPackageName()+".validators;");
 		
 
-		validationClassTxt.append( "\nimport com.implex.database.PersistantObject;");
-		validationClassTxt.append( "\nimport com.implex.database.map.SecUsrDta;");
+		validationClassTxt.append( "\nimport com.smartValue.database.PersistantObject;");
+		validationClassTxt.append( "\nimport com.smartValue.database.map.SecUsrDta;");
 		
-		validationClassTxt.append("\nimport com.implex.database.ValidationResult;"); 
+		validationClassTxt.append("\nimport com.smartValue.database.ValidationResult;"); 
 		validationClassTxt.append("\nimport "+this.getPackageName()+".validators.auto."+autoValidtorClassName+";"); 
 		
 		validationClassTxt.append("\n\npublic class "+validtorClassName+" extends "+autoValidtorClassName ) ;
@@ -901,14 +901,17 @@ public class MapGenerator extends ModuleServices{
 		mg.setAddAsTreeNode(false);
 		mg.setTreeNodeParent("HR");// the parent tree Node node XHTML page
 		mg.setAddToFavorite(false);
-		
 		mg.setXhtmlFolder("test");
-		mg.setSourceOutPath("D:\\SmartValue\\Sources\\App\\SmartTool\\src\\");
-		mg.setTableOwner("APIGEE") ;
-		mg.setPackageName("com.masterworks.httpclient.map");
-		mg.setXHtmlPath("D:\\SmartValue\\Sources\\App\\SmartTool\\WebContent\\"+mg.xhtmlFolder);
+		mg.setXHtmlPath("C:\\gitRepos\\SmartTool\\WebContent\\"+mg.xhtmlFolder);
+		
+		mg.setSourceOutPath("C:\\gitRepos\\SmartTool\\Src\\main\\java\\");
+		mg.setTableOwner("ICDB") ;
+		mg.setPackageName("com.smartValue.database.map");
+		mg.setTableName("SEC_USR_DTA");
+		
+		
 		//mg.setDbService(ApplicationContext.getClientModuleServicesContainer(mg.connName, 1).getDbServices());
-		mg.setTableName("HTTP_REQUEST");
+		
 	
 		mg.execute();
 	}
@@ -1166,7 +1169,7 @@ public class MapGenerator extends ModuleServices{
 
 	public void setTableOwner(String tableOwner) {
 		this.tableOwner = tableOwner;
-		this.setPackageName("com.implex."+this.getTableOwner().toLowerCase()+".map");
+		this.setPackageName("com.smartValue."+this.getTableOwner().toLowerCase()+".map");
 		this.setXhtmlFolder(this.getTableOwner().toLowerCase());
 	}
 

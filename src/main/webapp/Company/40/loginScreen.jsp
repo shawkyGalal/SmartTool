@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<%@page import="com.smartValue.LoginAuthenticator"%>
+<%@page import="com.smartValue.SmartToolLoginAuthenticator"%>
 <%@ page errorPage="../../errorPage.jsp" %>
 <%@page  language="java" contentType="text/html;charset=UTF-8"%>
 <%@page import="com.smartValue.database.map.services.*,com.smartValue.database.map.SecUsrDta,Support.Misc" %>
 <%
-request.setCharacterEncoding("UTF-8");%>
-<% String appURL = Support.Misc.getAppURL(request) ;  %>
+request.setCharacterEncoding("UTF-8");
+%>
+<%
+String appURL = Support.Misc.getAppURL(request) ;
+%>
 
 
 <%@page import="com.smartValue.database.map.SysParams"%>
@@ -37,59 +40,60 @@ request.setCharacterEncoding("UTF-8");%>
     
   </head>
   <body class="coming-soon rtl">
-   <% 
-	Cookie loginPageCookie  = Misc.getCookiByName(request , Misc.LoginScreenPageNameCookiVarName) ; 
-	if (loginPageCookie == null )
-	{ 
-		loginPageCookie = new Cookie (Misc.LoginScreenPageNameCookiVarName ,null );
-	}
-	 loginPageCookie.setValue("Company/40/loginScreen.jsp") ;
-	 loginPageCookie.setMaxAge(24*60*60);
-	 loginPageCookie.setPath("/");
-	 response.addCookie(loginPageCookie);
+   <%
+   Cookie loginPageCookie  = Misc.getCookiByName(request , Misc.LoginScreenPageNameCookiVarName) ; 
+      	if (loginPageCookie == null )
+      	{ 
+      		loginPageCookie = new Cookie (Misc.LoginScreenPageNameCookiVarName ,null );
+      	}
+      	 loginPageCookie.setValue("Company/40/loginScreen.jsp") ;
+      	 loginPageCookie.setMaxAge(24*60*60);
+      	 loginPageCookie.setPath("/");
+      	 response.addCookie(loginPageCookie);
 
-	String defaultEnv =  "PNU_PROD" ; //"GIHAZ_GP_PRIOD" ;; 
-	String reportTopOpen = "37428" ; 
-     Support.XMLConfigFileReader supportConfig =  Misc.getXMLConfigFileReader(false) ; 
-     java.util.Vector conParms  = supportConfig.connParms ;
-    //String comeFrom = request.getParameter("comeFrom")
-  request.setCharacterEncoding("UTF-8");
-  java.sql.Connection  con = null;
-  java.sql.Connection  repCon = null;
-  Object conObj=  session.getAttribute("con"); 
-  Object repConObj=  session.getAttribute("repCon"); 
-  con = (java.sql.Connection)conObj;
-//-----------Closing and Removing the main Connection---------
-  if (conObj != null )
-     { 
-      try
-      {
-    	session.removeAttribute("con");
-        session.removeAttribute("repCon");
-        session.invalidate();
-        try { Support.UserUnCommitedTransactions.rollBackConnection(con , session ) ;} catch(Exception e ){}
-        con.close();
-      }
-      catch (Exception e ){}
-     }
-//-----------Closing and Removing the Reposatory Connection---------
-  if (repConObj != null )
-     { 
-      try
-      {
-    	repCon = (java.sql.Connection)repConObj;
-        try {repCon.rollback();} catch (Exception e ) {};
-        repCon.close();
-        
-      }
-      catch (Exception e ){e.printStackTrace(); }
-     }
-     
-   if (request.getParameter("login")!= null)
-  {
-	LoginAuthenticator.authenticate(session, request, response, out, application) ; 
-	return ; 
-  }
+      	String defaultEnv =  "PNU_PROD" ; //"GIHAZ_GP_PRIOD" ;; 
+      	String reportTopOpen = "37428" ; 
+           Support.XMLConfigFileReader supportConfig =  Misc.getXMLConfigFileReader(false) ; 
+           java.util.Vector conParms  = supportConfig.connParms ;
+          //String comeFrom = request.getParameter("comeFrom")
+        request.setCharacterEncoding("UTF-8");
+        java.sql.Connection  con = null;
+        java.sql.Connection  repCon = null;
+        Object conObj=  session.getAttribute("con"); 
+        Object repConObj=  session.getAttribute("repCon"); 
+        con = (java.sql.Connection)conObj;
+      //-----------Closing and Removing the main Connection---------
+        if (conObj != null )
+           { 
+            try
+            {
+          	session.removeAttribute("con");
+              session.removeAttribute("repCon");
+              session.invalidate();
+              try { Support.UserUnCommitedTransactions.rollBackConnection(con , session ) ;} catch(Exception e ){}
+              con.close();
+            }
+            catch (Exception e ){}
+           }
+      //-----------Closing and Removing the Reposatory Connection---------
+        if (repConObj != null )
+           { 
+            try
+            {
+          	repCon = (java.sql.Connection)repConObj;
+              try {repCon.rollback();} catch (Exception e ) {};
+              repCon.close();
+              
+            }
+            catch (Exception e ){e.printStackTrace(); }
+           }
+           
+         if (request.getParameter("login")!= null)
+        {
+        	 SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator(request) ; 
+        	 smartToolLoginAuthenticator.authenticate(session, request, response, out, application) ; 
+      		return ; 
+        }
    %> 
     
 <div class="container" id="login-form">

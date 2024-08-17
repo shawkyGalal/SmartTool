@@ -1,8 +1,10 @@
 package com.smartValue.database.map.auto;
 
+import com.smartValue.database.PersistantObject; 
+import com.smartValue.database.DataSet;
 import com.smartValue.database.Attribute;
 import com.smartValue.database.DbTable;
-import com.smartValue.database.PersistantObject;
+import com.smartValue.database.ApplicationContext;
 
 public abstract class _SecUsrDta extends PersistantObject {
 /* Dynamically Generated Mapping Class 
@@ -568,8 +570,8 @@ public abstract class _SecUsrDta extends PersistantObject {
 
 	public static final String USR_LANG ="USR_LANG" ;
 
-	public void setUsrLangValue(java.math.BigDecimal   pm_usrAudit){
-		this.getAttribute(USR_LANG ).setValue( pm_usrAudit );
+	public void setUsrLangValue(java.math.BigDecimal   pm_usrLang){
+		this.getAttribute(USR_LANG ).setValue( pm_usrLang );
 	}
  
 	public java.math.BigDecimal getUsrLangValue(){
@@ -579,20 +581,39 @@ public abstract class _SecUsrDta extends PersistantObject {
 	public Attribute getUsrLang(){
 		return this.getAttribute ( USR_LANG)  ;
 	}
-	
-	int userLangIntValue = -1 ; 
-	public int getUserLangIntValue()
-	{  
-		if (userLangIntValue == -1 )
-		{
-			userLangIntValue = 0 ;
-			Attribute usrLang = getUsrLang() ;  
-			if ( usrLang != null)
-				userLangIntValue =  ((java.math.BigDecimal)usrLang.getValue()).intValue() ;
-		}
-		return userLangIntValue ; 
+
+	public static final String NATIONAL_ID ="NATIONAL_ID" ;
+
+	public void setNationalIdValue(java.lang.String   pm_nationalId){
+		this.getAttribute(NATIONAL_ID ).setValue( pm_nationalId );
+	}
+ 
+	public java.lang.String getNationalIdValue(){
+		return (java.lang.String) this.getAttribute ( NATIONAL_ID).getValue()  ;
+	}
+ 
+	public Attribute getNationalId(){
+		return this.getAttribute ( NATIONAL_ID)  ;
+	}
+
+	public static final String APP_PASSWORD ="APP_PASSWORD" ;
+
+	public void setAppPasswordValue(java.lang.String   pm_appPassword){
+		this.getAttribute(APP_PASSWORD ).setValue( pm_appPassword );
+	}
+ 
+	public java.lang.String getAppPasswordValue(){
+		return (java.lang.String) this.getAttribute ( APP_PASSWORD).getValue()  ;
+	}
+ 
+	public Attribute getAppPassword(){
+		return this.getAttribute ( APP_PASSWORD)  ;
 	}
 
 	// ********Start of Child DataSets getter methods******** 
+	public DataSet getDatasetSecUserGroupsFk1()
+	{
+		 return this.geChildDsByForignKeyName("SEC_USER_GROUPS_FK1");
+	}
 	// *******End of Child DataSets getter methods******** 
 }

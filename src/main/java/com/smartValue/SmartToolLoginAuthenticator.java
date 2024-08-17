@@ -10,34 +10,114 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.smartValue.database.ApplicationContext;
 import com.smartValue.database.map.MasCompanyData;
 import com.smartValue.database.map.SecUsrDta;
 import com.smartValue.database.map.SysParams;
 import com.smartValue.database.map.services.ModuleServicesContainer;
+import com.smartValue.web.AppContext;
+import com.smartvalue.moj.clients.environments.Environment;
 
 import Support.ConnParms;
 import Support.Misc;
 
-public class LoginAuthenticator {
-	public static void authenticate(HttpSession session , HttpServletRequest request , HttpServletResponse response, JspWriter out , ServletContext application  ) throws Exception
+public class SmartToolLoginAuthenticator {
+	
+	private String userEmail ;
+	private String userName ; 
+	private String nationalId ; 
+	private String password ; 
+	private int DBase ;   
+	private String requestURI  ; 
+	private String connectAs ; 
+	private String driverType ; 
+	
+	boolean googleAuth = false ; 
+	boolean ksaSsoAuth = false ;
+    
+	public  SmartToolLoginAuthenticator(HttpServletRequest request ) 
 	{
+		userName = request.getParameter("userName");
+		password = request.getParameter("password");
+
+		DBase = Integer.parseInt(request.getParameter("DBase").toString());
+		requestURI = request.getRequestURI() ; 
+	    connectAs = request.getParameter("connectAs"); 
+	    driverType = request.getParameter("driverType"); 
+	}
+	/**
+	 * 
+	 * @param env
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	public SmartToolLoginAuthenticator(Environment env , HttpServletRequest request  , HttpServletResponse response) throws IOException 
+	{
+		ksaSsoAuth = true ;
+		requestURI = request.getRequestURI() ;
+		DBase = Integer.parseInt(request.getParameter("DBase").toString());
+		connectAs = request.getParameter("connectAs"); 
+	    driverType = request.getParameter("driverType");
+		
+ 
+	    if (env == null)
+	    {
+	    	response.sendRedirect("/ResourceManager/loginWithGoogle/authorize.jsp"); 
+	    }
+		nationalId = env.getAccessToken().getUserid();
+	}
+	
+ 
+	/**
+	 * 	This Constructor should be used after successfull login Using Google
+	 * @param googleIdToken
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+
+	public SmartToolLoginAuthenticator(GoogleIdToken googleIdToken , HttpServletRequest request  , HttpServletResponse response) throws IOException 
+	{
+		googleAuth = true ;
+		requestURI = request.getRequestURI() ;
+		DBase = 0 ; //Integer.parseInt(request.getParameter("DBase").toString());
+		connectAs = "NORMAL" ;  //request.getParameter("connectAs"); 
+	    driverType = "JDBC" ; // request.getParameter("driverType");
+		
+	     
+	    if (googleIdToken == null)
+	    {
+	    	response.sendRedirect("/ResourceManager/loginWithGoogle/authorize.jsp"); 
+	    }
+		userEmail = googleIdToken.getPayload().getEmail();
+		userName = userEmail ; 
+	}
+	
+	
+	public void authenticate(HttpSession session , HttpServletRequest request , HttpServletResponse response, JspWriter out , ServletContext application  ) throws Exception
+	{
+		
+		boolean isAnEmail = userName.indexOf("@")!= -1 ; 
+	    
 		Support.XMLConfigFileReader supportConfig =  Misc.getXMLConfigFileReader(false) ; 
 	    Vector<ConnParms> conParms  = supportConfig.connParms ;
 		java.sql.Connection  con = null;
 		java.sql.Connection  repCon = null;
-		String userName = request.getParameter("userName");
-	    boolean isAnEmail = userName.indexOf("@")!= -1 ; 
-
-	    int DBase = Integer.parseInt(request.getParameter("DBase").toString());
+		
+		
 	    Support.ConnParms selectedConnParms = (Support.ConnParms)conParms.elementAt(DBase) ;
 		int lang = 1 ;
 	    ModuleServicesContainer msc = ApplicationContext.generateModuleServicesContainer(selectedConnParms.name , lang );  
 	    com.smartValue.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
-		SecUsrDta loggedUser = ( isAnEmail)? secUsrDtaServices.getUserByEmail(userName): secUsrDtaServices.getUserByUserName(userName.toUpperCase());
+		SecUsrDta loggedUser  ;
+		if (this.ksaSsoAuth)
+		{loggedUser = secUsrDtaServices.getUserByNationalId(nationalId) ;}  
+		else { loggedUser = ( isAnEmail)? secUsrDtaServices.getUserByEmail(userName): secUsrDtaServices.getUserByUserName(userName.toUpperCase());}
 		MasCompanyData userCompany =  loggedUser.getUserCompany() ; 
 		String expectedRequestURI = "/SmartTool/Company/"+userCompany.getCmpIdValue()+"/loginScreen.jsp" ;
-		if ( ! expectedRequestURI.equalsIgnoreCase(request.getRequestURI()))
+		if ( !this.googleAuth && !this.ksaSsoAuth && ! expectedRequestURI.equalsIgnoreCase(requestURI))
 		{
 			String appURL = "appURL Not Defined" ; 
 			try{appURL = userCompany.getSysParams().getFirstFilteredPO("E_NAME", "AppURL").getAttributeValue("VAL").toString() ;}
@@ -45,10 +125,8 @@ public class LoginAuthenticator {
 			throw new Exception("You Are Not Allowed to Login from this page, Please Contact System Administrator or use the following ling to login :<BR>  <a href = '"+appURL+expectedRequestURI+"'>صفحة الدخول - Login Page </a>" ) ;  
 		}
 
-	    String password = request.getParameter("password");
-	    String connectAs = request.getParameter("connectAs");
 	    boolean useOci=false;
-	    useOci = (request.getParameter("driverType")!= null && request.getParameter("driverType").toString().equals("useOci"))? true:false;
+	    useOci = (driverType!= null &&  driverType.toString().equals("useOci"))? true:false;
 	      try
 	      {
 	        if (useOci)
@@ -58,7 +136,12 @@ public class LoginAuthenticator {
 	        else 
 	        {
 	    	  java.util.Locale.setDefault(java.util.Locale.ENGLISH);
-	          con = selectedConnParms.generateConnection(loggedUser.getUsrNameValue() , password , connectAs ) ;  //--Generic for both JDBC or ODBC 
+	    	  if (googleAuth || ksaSsoAuth )  password = (String) loggedUser.getAppPassword().getValue() ; 
+	    	  if ( loggedUser.getAppPassword().getValue().equals(password))
+	    	  {
+	    		  con = selectedConnParms.generateConnection(loggedUser.getUsrNameValue() , password , connectAs ) ;  //--Generic for both JDBC or ODBC
+	    	  }
+	    	  else {throw new Exception("Invalid App Password : Provided Password does not match with registered password ") ; }
 	        }
 	        // Replace the persistent Layer connection with the logged user connection
 	        msc.getDbServices().setConnection(con) ; 
@@ -116,7 +199,7 @@ public class LoginAuthenticator {
  
  
 	    try {
-	    	  String createUserStr = "insert into icdb.sec_usr_dta (usr_name , usr_password ) values ('"+userName.toUpperCase()+"' , '"+password+"' )" ; 
+	    	  String createUserStr = "insert into icdb.sec_usr_dta (usr_name , usr_password , app_password ) values ('"+userName.toUpperCase()+"' , '"+password+"' , '"+password+"' )" ; 
 	   	      repCon.createStatement().execute(createUserStr); 
 	        }
 	        catch (Exception e){//-----------If allready exist, do nothing 

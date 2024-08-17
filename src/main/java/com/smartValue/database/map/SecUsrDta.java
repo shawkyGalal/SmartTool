@@ -1109,5 +1109,20 @@ public class SecUsrDta extends _SecUsrDta implements Operator ,MultiPagesDisplay
 			Support.mail.MailSender ms = new Support.mail.MailSender(sysParams);
 			ms.sendMail(em);
 		}
+		
+		
+		int userLangIntValue = -1 ; 
+		public int getUserLangIntValue()
+		{  
+			if (userLangIntValue == -1 )
+			{
+				userLangIntValue = 0 ;
+				Attribute usrLang = getUsrLang() ;  
+				if ( usrLang != null)
+					userLangIntValue =  ((java.math.BigDecimal)usrLang.getValue()).intValue() ;
+			}
+			return userLangIntValue ; 
+		}
+
 	
 }

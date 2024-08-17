@@ -1,3 +1,4 @@
+<%@page import="com.smartValue.SmartToolLoginAuthenticator"%>
 <%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.smartvalue.google.iam.auto.GoogleAccessToken"%>
 <%@page import ="com.smartvalue.apigee.configuration.infra.ManagementServer"%>
@@ -26,9 +27,11 @@
 	
 	GoogleIdToken googleIdToken =  googleAccessToken.getGoogleIdToken() ; 
 	AppContext.setGoogleIdToken(session , googleIdToken ) ; 
-
-	response.sendRedirect("../ApigeeAdmin/index.jsp"); 
 	
+	//
+	SmartToolLoginAuthenticator.authenticateByGoogle(session, request, response, out, application) ; 
+
+	response.sendRedirect("../ApigeeAdmin/index.jsp");
 %>
 </body>
 </html>
