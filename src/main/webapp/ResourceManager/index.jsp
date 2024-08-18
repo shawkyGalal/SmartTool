@@ -32,46 +32,13 @@
 		<%
 	}
 	else
-	{
-		out.print("You Need To Login To Your Google Account To Access the following Systems") ; 
-		String contextPath = request.getContextPath(); 
-		AppConfig ac = AppContext.getAppConfig(application); // (AppConfig) application.getAttribute(AppContext.APP_CONFIG_VAR_NAME) ;
-		GoogleWebAppCredential googleWebAppCredential = ac.getGoogleWebAppCredential(); 
-		String data_login_uri = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath+"/ResourceManager/loginWithGoogle/loginHandler.jsp" ; 
-		String client_id= googleWebAppCredential.getClient_id() ;    
-		 
-		%>
-		<!--  Google Sign in  Using  Google button --> 
-		<div id="g_id_onload"
-		     data-client_id="<%=client_id %>"
-		     data-context="signin"
-		     data-ux_mode="popup"
-		     data-login_uri="<%=data_login_uri%>"
-		     data-auto_prompt="false">
-		</div>
-		
-		<div class="g_id_signin"
-		     data-type="standard"
-		     data-shape="rectangular"
-		     data-theme="filled_blue"
-		     data-text="signin_with"
-		     data-size="large"
-		     data-logo_alignment="left">
-		</div>
-		
-		<!--  Google Sign in  Using  Enable OneTap --> 
-		
-		<div id="g_id_onload"
-		     data-client_id="<%=client_id %>"
-		     data-context="use"
-		     data-login_uri="<%=data_login_uri%>"
-		     data-nonce=""
-		     data-itp_support="true">
-		</div>
+	{ %> 
+		<jsp:include page="/includes/googleLoginButton.jsp"></jsp:include>	
 	<%} %>
 	<h1><a href = "ApigeeAdmin/index.jsp" target = "Najiz"> Apigee Administration </a></h1>
 	<h1><a href = "ApigeeX/index.jsp" target = "Apigee X"> Apigee X </a></h1>
 	<h1><a href = "SDK_Generator/InputParams.jsp" target = "SDK Generator"> SDK Generator </a></h1>
+	<h1><a href = "/SmartTool/Company/20/index.jsp" target = "SmartTool"> SmartTool </a></h1>
 	
 </body>
 </html>

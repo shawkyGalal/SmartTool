@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Oauth2 Authorization Code Handler </title>
 </head>
 <body>
 <%
@@ -28,10 +28,11 @@
 	GoogleIdToken googleIdToken =  googleAccessToken.getGoogleIdToken() ; 
 	AppContext.setGoogleIdToken(session , googleIdToken ) ; 
 	
-	//
-	SmartToolLoginAuthenticator.authenticateByGoogle(session, request, response, out, application) ; 
+	// Optional -- If You need to Login to Smart Tool. in Other words SmartTool Could Use Google Access Token to manage End User Google Cloud Account  
+	SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator(googleIdToken , request , response) ; 
+	smartToolLoginAuthenticator.authenticate(session, request, response, out, application) ; 
 
-	response.sendRedirect("../ApigeeAdmin/index.jsp");
+	//response.sendRedirect("../index.jsp");
 %>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <%@page import="com.smartValue.SmartToolLoginAuthenticator"%>
 <%@ page errorPage="../../errorPage.jsp" %>
 <%@page  language="java" contentType="text/html;charset=UTF-8"%>
@@ -23,13 +24,13 @@ String appURL = Support.Misc.getAppURL(request) ;
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="description" content="">
-    <meta name="author" content="KaijuThemes">
+    <meta name="author" content="ShawkyFoda">
 	<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>  -->
     <!-- <link type="text/css" href="assets/plugins/iCheck/skins/minimal/blue.css" rel="stylesheet"> -->
     <link type="text/css" href="../20/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link type="text/css" href="../20/assets/fonts/ionicons/css/ionicons.min.css" rel="stylesheet">                <!-- Ion Icons -->
     <link type="text/css" href="../20/assets/css/styles.css" rel="stylesheet">
-
+	<script src="https://accounts.google.com/gsi/client" async></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. Placeholdr.js enables the placeholder attribute -->
     <!--[if lt IE 9]>
     <link type="text/css" href="assets/css/ie8.css" rel="stylesheet">
@@ -92,7 +93,7 @@ String appURL = Support.Misc.getAppURL(request) ;
         {
         	 SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator(request) ; 
         	 smartToolLoginAuthenticator.authenticate(session, request, response, out, application) ; 
-      		return ; 
+      		//return ; 
         }
    %> 
     
@@ -189,7 +190,8 @@ String appURL = Support.Misc.getAppURL(request) ;
 
             <div class="text-center linkslogin" style="width:800">
             	<a href = '/SmartTool/ResourceManager/NajizLikeSampleApp/index.jsp' Target = "NajizLikeApp" id="loginAnchor"  >Login Using Nafath Mowahad 
-            	 <br> الدخول من خلال النفاذ الموحد </a>				
+            	 <br> الدخول من خلال النفاذ الموحد </a>	
+            	 <jsp:include page="/includes/googleLoginButton.jsp"></jsp:include>			
 				<br> 
 				<a href = '/SmartTool/ResourceManager/index.jsp' Target = "ResourceManager"  > Apigee Resource Manager App </a>
                 <a href="#">دليل المستخدم</a>

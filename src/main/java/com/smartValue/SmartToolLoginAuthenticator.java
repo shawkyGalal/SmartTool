@@ -57,9 +57,9 @@ public class SmartToolLoginAuthenticator {
 	{
 		ksaSsoAuth = true ;
 		requestURI = request.getRequestURI() ;
-		DBase = Integer.parseInt(request.getParameter("DBase").toString());
-		connectAs = request.getParameter("connectAs"); 
-	    driverType = request.getParameter("driverType");
+		DBase = 0 ; //Integer.parseInt(request.getParameter("DBase").toString());
+		connectAs = "NORMAL" ;  // request.getParameter("connectAs"); 
+	    driverType = "JDBC" ; // request.getParameter("driverType");
 		
  
 	    if (env == null)
@@ -98,23 +98,31 @@ public class SmartToolLoginAuthenticator {
 	
 	public void authenticate(HttpSession session , HttpServletRequest request , HttpServletResponse response, JspWriter out , ServletContext application  ) throws Exception
 	{
-		
-		boolean isAnEmail = userName.indexOf("@")!= -1 ; 
+
+		boolean isAnEmail = (this.ksaSsoAuth)? false : userName.indexOf("@")!= -1 ; 
 	    
 		Support.XMLConfigFileReader supportConfig =  Misc.getXMLConfigFileReader(false) ; 
 	    Vector<ConnParms> conParms  = supportConfig.connParms ;
-		java.sql.Connection  con = null;
+		java.sql.Connection  userCon = null;
 		java.sql.Connection  repCon = null;
 		
 		
 	    Support.ConnParms selectedConnParms = (Support.ConnParms)conParms.elementAt(DBase) ;
 		int lang = 1 ;
 	    ModuleServicesContainer msc = ApplicationContext.generateModuleServicesContainer(selectedConnParms.name , lang );  
+	    repCon = msc.getReposatoryConnection() ;
 	    com.smartValue.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
+ 
 		SecUsrDta loggedUser  ;
 		if (this.ksaSsoAuth)
-		{loggedUser = secUsrDtaServices.getUserByNationalId(nationalId) ;}  
-		else { loggedUser = ( isAnEmail)? secUsrDtaServices.getUserByEmail(userName): secUsrDtaServices.getUserByUserName(userName.toUpperCase());}
+		{
+			loggedUser = secUsrDtaServices.getUserByNationalID(nationalId) ;
+		}  
+		else 
+		{ 
+			loggedUser = ( isAnEmail)? secUsrDtaServices.getUserByEmail(userName)
+									 : secUsrDtaServices.getUserByUserName(userName.toUpperCase());
+		}
 		MasCompanyData userCompany =  loggedUser.getUserCompany() ; 
 		String expectedRequestURI = "/SmartTool/Company/"+userCompany.getCmpIdValue()+"/loginScreen.jsp" ;
 		if ( !this.googleAuth && !this.ksaSsoAuth && ! expectedRequestURI.equalsIgnoreCase(requestURI))
@@ -131,7 +139,7 @@ public class SmartToolLoginAuthenticator {
 	      {
 	        if (useOci)
 	        {
-	        con = selectedConnParms.generateOciConnection(loggedUser.getUsrNameValue() , password ) ;  
+	        userCon = selectedConnParms.generateOciConnection(loggedUser.getUsrNameValue() , password ) ;  
 	        }
 	        else 
 	        {
@@ -139,29 +147,22 @@ public class SmartToolLoginAuthenticator {
 	    	  if (googleAuth || ksaSsoAuth )  password = (String) loggedUser.getAppPassword().getValue() ; 
 	    	  if ( loggedUser.getAppPassword().getValue().equals(password))
 	    	  {
-	    		  con = selectedConnParms.generateConnection(loggedUser.getUsrNameValue() , password , connectAs ) ;  //--Generic for both JDBC or ODBC
+	    		  userCon = selectedConnParms.generateConnection(loggedUser.getUsrNameValue() , password , connectAs ) ;  //--Generic for both JDBC or ODBC
 	    	  }
 	    	  else {throw new Exception("Invalid App Password : Provided Password does not match with registered password ") ; }
 	        }
 	        // Replace the persistent Layer connection with the logged user connection
-	        msc.getDbServices().setConnection(con) ; 
-	        con.setAutoCommit(false);
+	        msc.getDbServices().setConnection(userCon) ; 
+	        userCon.setAutoCommit(false);
 	        
-	        session.setAttribute("con",con);
+	        session.setAttribute("con",userCon);
 	        session.setAttribute(Misc.selectedConnParmsSessionKey,selectedConnParms);
 	      }
 	      catch (Exception e) {throw new Exception("</center>Unable to Connect to " + selectedConnParms.serviceName +"@"+selectedConnParms.server+ " <br> Due To :" + e.getMessage()+ " <br> From : " + request.getRemoteHost());}
 	      //--The following Connection Used to access the LU_Queries Reposatory table 
 	      
-	      try{
-	      repCon = supportConfig.reposatoryConn.generateConnection();
+	      
 	      session.setAttribute("repCon",repCon);
-	      }
-	      catch (Exception e) 
-	      {
-	    	con.close(); 
-	       throw new Exception("Unable to Create a Connection to the Query Reposatory Due To : " + e.getMessage()+ "  from " + request.getRemoteHost());
-	      }
 	 
 	      //-----Logging the login action
 	      try{
@@ -181,7 +182,7 @@ public class SmartToolLoginAuthenticator {
 	      //-----------------Creating a Node For the User if Does not Exist
 	      try
 	      { 
-	    	 String loggedUserName = Misc.getConnectionUserName(con).toUpperCase();  // Upper Case used to MS SQL Server
+	    	 String loggedUserName = Misc.getConnectionUserName(userCon).toUpperCase();  // Upper Case used to MS SQL Server
 	         // Create a Private Node for the User 
 	         repCon.createStatement().execute("insert into support.lu_Queries (code , e_dsc , a_dsc , parent_id ) values ('"+loggedUserName+"' , '"+loggedUserName+"' , '"+loggedUserName+"' , 0)");
 	         repCon.createStatement().execute("insert into support.lu_executables (code , e_dsc , a_dsc , parent_id ) values ('"+loggedUserName+"' , '"+loggedUserName+"' , '"+loggedUserName+"' , 0)");      
@@ -272,11 +273,11 @@ public class SmartToolLoginAuthenticator {
 		
 	}
 	
-	private static void redirect( HttpServletRequest request , HttpServletResponse response ) throws IOException
+	private void redirect( HttpServletRequest request , HttpServletResponse response ) throws IOException
 	{
 		Cookie comeFromCokie = Misc.getCookiByName ( request , "comeFrom") ; 
 		String comeFrom = (comeFromCokie!= null) ? comeFromCokie.getValue() : null ;
-
+		boolean simpleAuth = !(this.ksaSsoAuth || this.googleAuth ) ; 
 		if (comeFromCokie != null && comeFrom != null && ! comeFrom.contains("mainScreen.jsp") )
 	      {
 	    	  comeFromCokie.setMaxAge(0);
@@ -285,8 +286,17 @@ public class SmartToolLoginAuthenticator {
 	    	  response.sendRedirect(comeFrom); 
 	      }
 	      else 
-	      {	 String appURL = Support.Misc.getAppURL(request) ;
-	    	 response.sendRedirect(appURL + "/Company/20/index.jsp");
+	      {	  
+	    	  String appURL = Support.Misc.getAppURL(request) ;
+	    	  if ( simpleAuth )
+	      	{
+	    	  
+	    	  response.sendRedirect(appURL + "/Company/20/index.jsp");
+	      	}
+	      	else 
+		    {
+		      response.sendRedirect(appURL +"/ResourceManager/index.jsp") ; 
+		    }
 	      }
 	}
 }

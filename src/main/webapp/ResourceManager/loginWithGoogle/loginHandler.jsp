@@ -42,7 +42,7 @@ AppConfig ac = AppContext.getAppConfig(application);
 		SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator ( googleIdToken , request , response) ; 
 		smartToolLoginAuthenticator.authenticate(session, request, response, out, application); 
 		
-		//response.sendRedirect("userInfo.jsp"); 
+		//response.sendRedirect("/SmartTool/ResourceManager/index.jsp"); 
 	}
 %>
 
