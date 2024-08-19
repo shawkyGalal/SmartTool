@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://accounts.google.com/gsi/client" async></script>
+
 
 <meta charset="ISO-8859-1">
 <title>MOJ Automation Services </title>

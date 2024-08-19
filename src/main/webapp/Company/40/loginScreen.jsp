@@ -30,7 +30,6 @@ String appURL = Support.Misc.getAppURL(request) ;
     <link type="text/css" href="../20/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link type="text/css" href="../20/assets/fonts/ionicons/css/ionicons.min.css" rel="stylesheet">                <!-- Ion Icons -->
     <link type="text/css" href="../20/assets/css/styles.css" rel="stylesheet">
-	<script src="https://accounts.google.com/gsi/client" async></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries. Placeholdr.js enables the placeholder attribute -->
     <!--[if lt IE 9]>
     <link type="text/css" href="assets/css/ie8.css" rel="stylesheet">

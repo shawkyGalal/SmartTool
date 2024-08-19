@@ -18,7 +18,8 @@
 </head>
 <body>
 <%
-	ManagementServer ms = AppContext.getApigeeManagementServer(session); 
+	ManagementServer ms = AppContext.getApigeeManagementServer(session);
+	ms.setOnPremise(false) ;
 	String authCode = request.getParameter("code") ;
 	String contextPath = request.getContextPath(); 
 	String redirectUri = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath+"/ResourceManager/loginWithGoogle/authCodeHandler.jsp" ; 
@@ -29,10 +30,16 @@
 	AppContext.setGoogleIdToken(session , googleIdToken ) ; 
 	
 	// Optional -- If You need to Login to Smart Tool. in Other words SmartTool Could Use Google Access Token to manage End User Google Cloud Account  
+	try{
 	SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator(googleIdToken , request , response) ; 
-	smartToolLoginAuthenticator.authenticate(session, request, response, out, application) ; 
+	smartToolLoginAuthenticator.authenticate(session, request, response, out, application) ;
+	}
+	catch(Exception e ){
+		out.println("Failure to Authenticate SmartTool Due To : " + e.getMessage()) ;
+		response.sendRedirect("../index.jsp");
+	}
 
-	//response.sendRedirect("../index.jsp");
+	//
 %>
 </body>
 </html>

@@ -17,11 +17,16 @@
 	
 	mojEnv.setAccessToken(authorizationCode);
 	
+	try{
 	// Simulate Login To SmartTool 
 	SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator ( mojEnv , request , response) ; 
-	smartToolLoginAuthenticator.authenticate(session, request, response, out, application); 
-	
-	//response.sendRedirect("dashboard.jsp") ; 
+	smartToolLoginAuthenticator.authenticate(session, request, response, out, application);
+	}
+	catch(Exception e ){
+		out.println("Failure to Authenticate SmartTool Due To : " + e.getMessage()) ; 
+		response.sendRedirect("dashboard.jsp") ;
+	}
+
 %>
 </body>
 </html>

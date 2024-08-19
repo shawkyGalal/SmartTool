@@ -26,7 +26,7 @@ AppConfig ac = AppContext.getAppConfig(application);
 	GoogleIdToken googleIdToken = IdTokenVerifier.buildFromRequest((javax.servlet.http.HttpServletRequest)request ) ;
 	
 	googleIdToken = IdTokenVerifier.verifyBasicsOnly(googleIdToken, client_id, issuer); 
-	boolean verifyGoogleSignature = true ; 
+	boolean verifyGoogleSignature = false ; 
 	
 	if (googleIdToken != null && verifyGoogleSignature ) 
 	{ 
@@ -38,11 +38,16 @@ AppConfig ac = AppContext.getAppConfig(application);
 		out.print( googleIdToken.getPayload().getEmail()) ; 
 		session.setAttribute( AppContext.GOOGLE_ID_TOKEN_VAR_NAME, googleIdToken); 
 		
-		// Simulate Login To SmartTool 
+		// Simulate Login To SmartTool
+		try{
 		SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator ( googleIdToken , request , response) ; 
 		smartToolLoginAuthenticator.authenticate(session, request, response, out, application); 
+		}
+		catch(Exception e ){
+			out.println("Failure to Authenticate SmartTool Due To : " + e.getMessage()) ;
+			response.sendRedirect("/SmartTool/ResourceManager/index.jsp"); 
+		}
 		
-		//response.sendRedirect("/SmartTool/ResourceManager/index.jsp"); 
 	}
 %>
 
