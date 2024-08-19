@@ -1,4 +1,4 @@
-<%@page import="com.smartValue.SmartToolLoginAuthenticator"%>
+<%@page import="com.smartValue.authenticators.GoogleAuthenticator"%>
 <%@page import="com.smartValue.web.AppContext"%>
 <%@page import = "com.smartvalue.apigee.configuration.infra.ManagementServer"%>
 <%@page import = "com.google.api.client.googleapis.auth.oauth2.GoogleIdToken" %>
@@ -40,8 +40,8 @@ AppConfig ac = AppContext.getAppConfig(application);
 		
 		// Simulate Login To SmartTool
 		try{
-		SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator ( googleIdToken , request , response) ; 
-		smartToolLoginAuthenticator.authenticate(session, request, response, out, application); 
+			GoogleAuthenticator googleAuthenticator = new GoogleAuthenticator ( googleIdToken , request , response) ; 
+			googleAuthenticator.authenticate(session, request, response, out, application); 
 		}
 		catch(Exception e ){
 			out.println("Failure to Authenticate SmartTool Due To : " + e.getMessage()) ;

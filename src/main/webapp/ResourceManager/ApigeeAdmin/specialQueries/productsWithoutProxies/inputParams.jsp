@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<h2>Select Apigee Infrastructure to Display proxies Using a given Target Server </h2> 
+<h2>Select Apigee Infrastructure to Display products Without Proxies (Guranted access to all proxies ) </h2> 
 <br> 
 
     

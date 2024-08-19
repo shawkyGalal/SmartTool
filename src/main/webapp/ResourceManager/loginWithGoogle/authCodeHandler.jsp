@@ -1,4 +1,4 @@
-<%@page import="com.smartValue.SmartToolLoginAuthenticator"%>
+<%@page import="com.smartValue.authenticators.GoogleAuthenticator"%>
 <%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.smartvalue.google.iam.auto.GoogleAccessToken"%>
 <%@page import ="com.smartvalue.apigee.configuration.infra.ManagementServer"%>
@@ -18,7 +18,7 @@
 </head>
 <body>
 <%
-	ManagementServer ms = AppContext.getApigeeManagementServer(session);
+ManagementServer ms = AppContext.getApigeeManagementServer(session);
 	ms.setOnPremise(false) ;
 	String authCode = request.getParameter("code") ;
 	String contextPath = request.getContextPath(); 
@@ -31,8 +31,8 @@
 	
 	// Optional -- If You need to Login to Smart Tool. in Other words SmartTool Could Use Google Access Token to manage End User Google Cloud Account  
 	try{
-	SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator(googleIdToken , request , response) ; 
-	smartToolLoginAuthenticator.authenticate(session, request, response, out, application) ;
+	GoogleAuthenticator googleAuthenticator = new GoogleAuthenticator(googleIdToken , request , response) ; 
+	googleAuthenticator.authenticate(session, request, response, out, application) ;
 	}
 	catch(Exception e ){
 		out.println("Failure to Authenticate SmartTool Due To : " + e.getMessage()) ;

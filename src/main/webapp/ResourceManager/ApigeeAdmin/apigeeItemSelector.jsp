@@ -72,7 +72,7 @@
 		        const selectedOrg = orgSelect.value ; 
 		        const selectedEnv = envSelect.value ; 
 		        const selectedResourceType = resourceTypeSelect.value ;
-				var url = "<%=proto%>://<%=hostIp%>:<%=port%>/SmartTool/ResourceManager/ApigeeAdmin/rest/v1/organizations/"+selectedOrg+"/e/"+ selectedEnv +"/" + selectedResourceType ;  
+				var url = "<%=proto%>://<%=hostIp%>:<%=port%>/SmartTool/ResourceManager/ApigeeAdmin/rest/v1/organizations/"+selectedOrg+"/environments/"+ selectedEnv +"/" + selectedResourceType ;  
 				populateSelectItem(url , "resourceSelect") ; 
 			}
 		<%}%>

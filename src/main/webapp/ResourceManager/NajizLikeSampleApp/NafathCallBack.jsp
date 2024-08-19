@@ -2,7 +2,7 @@
  <%@page import ="com.smartvalue.moj.clients.environments.*"%>
  <%@page import ="com.smartvalue.moj.clients.environments.Environment"%>
  <%@page import ="com.smartvalue.apigee.rest.schema.ApigeeAccessToken"%>
- <%@page import="com.smartValue.SmartToolLoginAuthenticator"%>
+ <%@page import="com.smartValue.authenticators.KsaSSOAuthenticator"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,21 +12,19 @@
 
 <%@include file="intialize.jsp" %>
 <%
-	String authorizationCode = request.getParameter("code") ;
-	%>Received Authorization Code : <%=authorizationCode%><% 
-	
-	mojEnv.setAccessToken(authorizationCode);
+String authorizationCode = request.getParameter("code") ;
+%>Received Authorization Code : <%=authorizationCode%><%
+mojEnv.setAccessToken(authorizationCode);
 	
 	try{
 	// Simulate Login To SmartTool 
-	SmartToolLoginAuthenticator smartToolLoginAuthenticator = new SmartToolLoginAuthenticator ( mojEnv , request , response) ; 
-	smartToolLoginAuthenticator.authenticate(session, request, response, out, application);
+	KsaSSOAuthenticator KsaSsoLoginAuthenticator = new KsaSSOAuthenticator ( mojEnv , request , response) ; 
+	KsaSsoLoginAuthenticator.authenticate(session, request, response, out, application);
 	}
 	catch(Exception e ){
 		out.println("Failure to Authenticate SmartTool Due To : " + e.getMessage()) ; 
 		response.sendRedirect("dashboard.jsp") ;
 	}
-
 %>
 </body>
 </html>
