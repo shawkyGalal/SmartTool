@@ -3,3 +3,4 @@
 /target/
 target/*
 *.log
+Certificates/smart-value.online/pfx_password.txt
