@@ -1,6 +1,8 @@
 package com.smartValue.authenticators;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Vector;
 
 import javax.servlet.ServletContext;
@@ -11,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 
 import com.smartValue.database.ApplicationContext;
-import com.smartValue.database.map.MasCompanyData;
 import com.smartValue.database.map.SecUsrDta;
 import com.smartValue.database.map.services.ModuleServicesContainer;
 import com.smartvalue.moj.clients.environments.Environment;
@@ -19,7 +20,7 @@ import com.smartvalue.moj.clients.environments.Environment;
 import Support.ConnParms;
 import Support.Misc;
 
-public class KsaSSOAuthenticator extends Authenticator{
+public class KsaSSOAuthenticator extends Authenticator implements IUserNotFoundHandler {
 	
 	private String userName ; 
 	private String nationalId ; 
@@ -61,10 +62,14 @@ public class KsaSSOAuthenticator extends Authenticator{
 	    repCon = msc.getReposatoryConnection() ;
 	    com.smartValue.database.map.services.SecUserDataService secUsrDtaServices = msc.getSecUserDataService();
  
-		SecUsrDta loggedUser  ;
-		
+		SecUsrDta loggedUser = null ;
+		try {
 		loggedUser = secUsrDtaServices.getUserByNationalID(nationalId) ;
-		
+		}
+		catch(Exception e) {
+			this.handleUserNotFound(nationalId, repCon);
+		}
+		/*
 		MasCompanyData userCompany =  loggedUser.getUserCompany() ; 
 		String expectedRequestURI = "/SmartTool/Company/"+userCompany.getCmpIdValue()+"/loginScreen.jsp" ;
 		if ( ! expectedRequestURI.equalsIgnoreCase(requestURI))
@@ -74,7 +79,7 @@ public class KsaSSOAuthenticator extends Authenticator{
 			catch (Exception e ){}
 			throw new Exception("You Are Not Allowed to Login from this page, Please Contact System Administrator or use the following ling to login :<BR>  <a href = '"+appURL+expectedRequestURI+"'>صفحة الدخول - Login Page </a>" ) ;  
 		}
-
+		*/
 	    boolean useOci=false;
 	    useOci = (driverType!= null &&  driverType.toString().equals("useOci"))? true:false;
 	      try
@@ -161,5 +166,17 @@ public class KsaSSOAuthenticator extends Authenticator{
 	    	  String appURL = Support.Misc.getAppURL(request) ;
 		      response.sendRedirect(appURL +"/ResourceManager/index.jsp") ; 
 	      }
+	}
+
+
+	@Override
+	public void handleUserNotFound(String m_userUniqueId, Connection m_repCon) throws SQLException {
+		// TODO Auto-generated method stub
+				//-- 1- Create a New User With the provided email and a landing (temp) company
+				//-- 2- Send an email to 
+				//-- 3- then forward response to new page informing user that your account under verification   
+				m_repCon.createStatement().execute("call icdb.security.create_user (  user_name , m_tablespace , m_temp_tablespace , m_default_role )");
+
+		
 	}
 }

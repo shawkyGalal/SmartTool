@@ -349,12 +349,6 @@ if (loggedUserObj.isUsrLangArabic())
 <p align="center">&nbsp;
 </p>
 
-<% if (tableName.equalsIgnoreCase("CARRENT.CAR") )
-{ 
-	
- %>  <%@ include file="Company/Car_info.htm"%> <% 
-} 
-%>
 <p align="center">&nbsp;</p>
 <p align="center">&nbsp;</p>
 <p align="center">&nbsp;</p>

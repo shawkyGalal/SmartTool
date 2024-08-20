@@ -18,7 +18,7 @@ import com.smartValue.database.map.services.ModuleServicesContainer;
 import Support.ConnParms;
 import Support.Misc;
 
-public class BasicAuthenticator extends Authenticator{
+public class BasicAuthenticator extends Authenticator {
 	
 	private String userName ; 
 	private String password ; 
@@ -41,8 +41,6 @@ public class BasicAuthenticator extends Authenticator{
 	public void authenticate(HttpSession session , HttpServletRequest request , HttpServletResponse response, JspWriter out , ServletContext application  ) throws Exception
 	{
 
-		boolean isAnEmail = userName.indexOf("@")!= -1 ; 
-	    
 		Support.XMLConfigFileReader supportConfig =  Misc.getXMLConfigFileReader(false) ; 
 	    Vector<ConnParms> conParms  = supportConfig.connParms ;
 		java.sql.Connection  userCon = null;
@@ -57,8 +55,7 @@ public class BasicAuthenticator extends Authenticator{
  
 		SecUsrDta loggedUser  ;
 		 
-		loggedUser = ( isAnEmail)? secUsrDtaServices.getUserByEmail(userName)
-									 : secUsrDtaServices.getUserByUserName(userName.toUpperCase());
+		loggedUser = secUsrDtaServices.getUserByEmail(userName);
 		
 		MasCompanyData userCompany =  loggedUser.getUserCompany() ; 
 		String expectedRequestURI = "/SmartTool/Company/"+userCompany.getCmpIdValue()+"/loginScreen.jsp" ;
