@@ -55,7 +55,7 @@ public class BasicAuthenticator extends Authenticator {
  
 		SecUsrDta loggedUser  ;
 		 
-		loggedUser = secUsrDtaServices.getUserByEmail(userName);
+		loggedUser = secUsrDtaServices.getUserByUserName(userName);
 		
 		MasCompanyData userCompany =  loggedUser.getUserCompany() ; 
 		String expectedRequestURI = "/SmartTool/Company/"+userCompany.getCmpIdValue()+"/loginScreen.jsp" ;
