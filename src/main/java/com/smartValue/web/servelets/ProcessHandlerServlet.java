@@ -18,7 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-@WebServlet("/process/{identifier}")
+@WebServlet("/process/*")
 public class ProcessHandlerServlet extends HttpServlet {
 
     /**
@@ -28,18 +28,22 @@ public class ProcessHandlerServlet extends HttpServlet {
 	private static final ConcurrentHashMap<String, ProcessData> processes = new ConcurrentHashMap<>();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    String identifier = extractIdentifier(request);
+
+		String identifier = extractIdentifier(request);
 	    ProcessData processData = processes.get(identifier);
+	    PrintWriter out = response.getWriter();
 	    if (processData != null) {
 	        // Handle output request
 	        response.setContentType("text/plain");
-	        PrintWriter out = response.getWriter();
+	        
 	        for (String line : processData.getOutputLines()) {
 	            out.println(line);
 	            out.flush();
 	        }
 	    } else {
-	        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+	    	response.setContentType("application/json");
+	        out.print("{'status': 'Process Not Found' }") ; 
+	    	//response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 	    }
 	}
 
@@ -59,8 +63,8 @@ public class ProcessHandlerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse  response) throws ServletException, IOException 
     {
     		        String  identifier = extractIdentifier(request);
-    		        ProcessData processData = processes.get(identifier);
-    		        if (processData != null) {
+    		        ProcessData processData = (identifier != null)? processes.get(identifier) : null;
+    		        if (identifier != null && processData != null) {
     		            String action = extractAction(request);
     		            if ("pause".equals(action)) {
     		                // Handle pause request
@@ -116,7 +120,8 @@ public class ProcessHandlerServlet extends HttpServlet {
     
     private String extractIdentifier(HttpServletRequest request) {
         String pathInfo = request.getPathInfo();
-        Pattern pattern = Pattern.compile("/process/([^/]+)");
+        if (pathInfo == null)  return null ; 
+        Pattern pattern = Pattern.compile("/([^/]+)");
         Matcher matcher = pattern.matcher(pathInfo);
 
         if (matcher.matches()) {
