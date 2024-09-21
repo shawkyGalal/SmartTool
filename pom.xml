@@ -458,7 +458,7 @@
 		  <groupId>com.smartValue.apigee</groupId>
 		  <artifactId>ResourceManager</artifactId>
 		  <version>2.0.0</version>
-		</dependency>
+	    </dependency>
 		
 		<dependency>
 		    <groupId>commons-beanutils</groupId>
@@ -586,6 +586,10 @@
 		    	<exclusion>
 		    		<groupId>xml-apis</groupId>
 		    		<artifactId>xml-apis</artifactId>
+		    	</exclusion>
+		    	<exclusion>
+		    		<groupId>org.slf4j</groupId>
+		    		<artifactId>slf4j-api</artifactId>
 		    	</exclusion>
 		    </exclusions>
 		</dependency>

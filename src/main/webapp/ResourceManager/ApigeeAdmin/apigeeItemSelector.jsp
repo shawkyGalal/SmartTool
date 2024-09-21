@@ -26,6 +26,9 @@
 	boolean orgIsNeeded = neededlist.contains("org"); 
 	boolean envIsNeeded = neededlist.contains("env");
 	boolean resourceTypeIsNeeded = neededlist.contains("resourceType");
+	boolean orgResourceTypeIsNeeded = neededlist.contains("orgResourceType");
+	String[] extraNeededFormParams = (request.getParameter("extraNeededFormParams") != null) ? request.getParameter("extraNeededFormParams").trim().split("\\s*,\\s*") :new String[] {};
+	
 	int port = request.getLocalPort() ; 
 	String hostIp = request.getServerName() ; //"10.169.3.142"; 
 	String proto = "https" ;  
@@ -34,14 +37,29 @@
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			populateOrgs(); 
-			<% if ( envIsNeeded ) { %>
+			<% if ( envIsNeeded ) 
+			{ 
+				%>
 	 			const orgSelect = document.getElementById("orgSelect");
 		    	orgSelect.addEventListener("change", function() 
 		    	{
 				    populateEnvs() ;
 				    
 				} )
-		 	<% } %>
+		 		<% 
+		 	}
+			else 
+			{
+				%>
+	 			const orgSelectedResourceType = document.getElementById("orgSelectedResourceType");
+	 			orgSelectedResourceType.addEventListener("change", function() 
+		    	{
+	 				populateOrgResources() ;
+				} )
+		 		<% 
+			}
+			
+			%>
 		})
 		function populateOrgs() {
 			 var url = "<%=proto%>://<%=hostIp%>:<%=port%>/SmartTool/ResourceManager/ApigeeAdmin/rest/v1/organizations" ;  
@@ -51,6 +69,9 @@
 			 <% } %>
 			 <% if ( resourceTypeIsNeeded ) { %>
 			 populateResources() ; 
+			 <% } %>
+			 <% if ( orgResourceTypeIsNeeded ) { %>
+			 populateOrgResources() ; 
 			 <% } %>
 		}
 		
@@ -76,6 +97,15 @@
 				populateSelectItem(url , "resourceSelect") ; 
 			}
 		<%}%>
+		
+		<% if (orgResourceTypeIsNeeded) {%>
+		function populateOrgResources() {
+	        const selectedOrg = orgSelect.value ; 
+	        const selectedOrgResourceType = orgSelectedResourceType.value ;
+			var url = "<%=proto%>://<%=hostIp%>:<%=port%>/SmartTool/ResourceManager/ApigeeAdmin/rest/v1/organizations/" + selectedOrg + "/" + selectedOrgResourceType ;  
+			populateSelectItem(url , "orgResourceSelect") ; 
+		}
+	<%}%>
 				
 		function populateSelectItem(url , selectItemId) {
 		  var itemSelect = document.getElementById( selectItemId );
@@ -134,23 +164,45 @@
      	<% } %>
 	    
 	    <% if ( resourceTypeIsNeeded) { %>
-	     <label for="resourceTypeSelect">Select Resource Type:</label>
+	     <label for="resourceTypeSelect">Select Env Resource Type:</label>
 	    	<select id="resourceTypeSelect" name = "resourceTypeSelect" >
 		        <option>keyvaluemaps</option>
 		        <option>virtualhosts</option>
 		        <option>targetservers</option>
+		        
 	    	</select>
 	    <br><br>
-	    <% } %>
-	    
-	    <% if ( resourceTypeIsNeeded) { %>
 	     <label for="resourceSelect">Select Resource </label>
 	    	<select id="resourceSelect" name = "resourceSelect" >
 	    </select>
 	    <br><br>
 	    <% } %>
 	    
+	    <% if ( orgResourceTypeIsNeeded) 
+	    { 
+	    %>
+	     <label for="orgResourceTypeSelect">Select Org Resource Type:</label>
+	    	<select id="orgSelectedResourceType" name = "orgSelectedResourceType" >
+		        <option>apis</option>
+		        <option>sharedflows/</option>
+		        
+	    	</select>
+	    <br><br>
 	    
+	    <label for="orgResourceSelect">Select Org Resource </label>
+	    	<select id="orgResourceSelect" name = "OrgResourceSelect" >
+	    </select>
+	    <br><br>
+	    <% 
+	    } %>
+	    
+	    <% for (String paramName : extraNeededFormParams )
+	    {
+			%> <%=paramName%> : <input type="text" id="<%=paramName%>" name="<%=paramName%>" > <%	    	
+	    }
+	    
+	    %>
+	    <br><br>
 	    <input type="hidden" id="targetPage" name="targetPage" value="<%= request.getParameter("targetPage")%>">
 	    
 	    <button type="submit" name= "submit" id = "submit">Submit</button>
