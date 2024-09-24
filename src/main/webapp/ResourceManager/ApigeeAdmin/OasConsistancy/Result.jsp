@@ -1,5 +1,3 @@
-
-
 <%@page import="com.smartvalue.apigee.proxyBundle.ProxyBundleParser"%>
 <%@page import="io.swagger.v3.oas.models.Operation"%>
 <%@page import="com.smartvalue.apigee.rest.schema.proxyEndPoint.auto.Flow"%>
@@ -19,19 +17,19 @@
 <%@page import ="java.io.InputStream"%>
 <%@page import ="com.smartvalue.apigee.resourceManager.*"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html;charset=UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<title>Flows and OAS operations Consistency Check </title>
 </head>
 <body>
 <%
 String org = request.getParameter("orgSelect") ;
 %>
-<h1> List Of Flows For Selected Proxy Reviosn in Org : <%=org%> and Consistency with the result of calling the GetOAS flow   </h1>
+
 <%@include file="../intialize.jsp" %>
 
 		<br>Apigee Infrastructure (<%=ms.getInfraName()%>) 
@@ -39,39 +37,44 @@ String org = request.getParameter("orgSelect") ;
 		String selectedOrg = request.getParameter("orgSelect") ; 
 			String selectedProxy = request.getParameter("OrgResourceSelect") ;
 			String proxyRevision = request.getParameter("proxyRevision") ;
-			ProxyRevision pr =    ms.getOrgByName(selectedOrg).getProxy(selectedProxy).getRevision("147") ;
+			ProxyRevision pr =    ms.getOrgByName(selectedOrg).getProxy(selectedProxy).getRevision(proxyRevision) ;
 			String serverUrl ; 
 			serverUrl = (selectedOrg.equalsIgnoreCase("stg"))? "https://api-test.moj.gov.local/" : "https://api.moj.gov.local/" ; 
 			HashMap<OasOperation , Flow> oasOperations = pr.checkOpenApiConsistancy(serverUrl , false) ;
-			HashMap<Flow , OasOperation >  apigeeFlows = pr.checkFlowsConsistancy(serverUrl , false) ;
+			boolean execludeKnownFlows = false ; 
+			boolean fixOasOperationID = false ; 
+			HashMap<Flow , OasOperation >  apigeeFlows = pr.checkFlowsConsistancy(serverUrl , fixOasOperationID , execludeKnownFlows) ;
 		%>
 		<br> 
 		Selected Proxy : <%=selectedProxy%>
 		<br>
 		Selected Revision : <%=proxyRevision%>
 		<br> <br> 
-		<h2> List Of OAS Operations and Matched Flow   
-			<table>
+		<h2> List Of OAS Operations and Matched Flows  </h2> 
+			<table border="1">
 			<tr>
-			<td>operId</td> <td>operPath</td>  <td>OperVerb</td> 
+			<td>Counter</td> <td>operId</td> <td>operDesc</td> <td>operPath</td>  <td>OperVerb</td> 
 			<td>flowName</td> <td>flowPath</td><td>flowVerb</td>   
 			</tr>
 		<%
+		int counter = 0 ; 
 		for (Map.Entry<OasOperation,Flow>  entry  : oasOperations.entrySet() )
 			{
+				counter++; 
 				OasOperation oper = entry.getKey();
 				Flow flow = entry.getValue() ; 
-				String flowNotFoundMessage = "Flow Not Found" ; 
+				String flowNotFoundMessage = "<p style='color: red;'>Matched Flow Not Found</p> " ; 
 				String flowName = (flow!= null)? flow.getName() : flowNotFoundMessage ;
-				String flowPath = (flow!= null)? flow.extractPathSuffixFromCondition() : flowNotFoundMessage; 
+				String flowPath = (flow!= null)? flow.getCompletePath(): flowNotFoundMessage;  
 				String flowVerb = (flow!= null)? flow.extractVerbFromCondition() : flowNotFoundMessage; 
 				
 				String operId = oper.getOperation().getOperationId(); 
 				String operPath = oper.getPath();
 				String operVerb = oper.getVerb() ; 
+				String operDesc = oper.getOperation().getDescription() ; 
 		%>
 					<tr>
-					<td><%=operId%></td> <td><%=operPath%></td>  <td><%=operVerb%></td> 
+					<td><%=counter%></td> <td><%=operId%></td> <td><%=operDesc%></td> <td><%=operPath%></td>  <td><%=operVerb%></td> 
 					<td><%=flowName%></td> <td><%=flowPath%></td> <td><%=flowVerb%></td>
 					</tr>
 				
@@ -82,31 +85,33 @@ String org = request.getParameter("orgSelect") ;
 		</table> 
 		
 		
-		<h2> List Of Apigee Flow and Matched OAS Operation    
-			<table>
+		<h2> List Of Apigee Flow and Matched OAS Operation  </h2>  
+			<table border="1">
 			<tr>
-			<td>flowName</td> <td>flowPath</td> <td>flowVerb</td>
+			<td>counter</td> <td>flowName</td> <td>flowPath</td> <td>flowVerb</td>
 			<td>operId</td> <td>operPath</td> <td>operVerb</td>     
 			
 			</tr>
 		<%
+		counter = 0 ;
 		for (Map.Entry<Flow, OasOperation>  entry  : apigeeFlows.entrySet() )
 			{
+				counter++; 
 				Flow flow = entry.getKey(); 	
 				OasOperation oper = entry.getValue();
 				 
 				
 				String flowName = flow.getName() ;
-				String flowPath = flow.extractPathSuffixFromCondition() ; 
+				String flowPath = flow.getCompletePath() ; 
 				String flowVerb = flow.extractVerbFromCondition() ; 
 				
-				String operationNotFoundMessage = "Operation Not Found" ;
+				String operationNotFoundMessage = "<p style='color: red;'>Matched Operation Not Found</p> " ;
 				String operId = (oper != null)? oper.getOperation().getOperationId(): operationNotFoundMessage; 
 				String operPath = (oper != null)? oper.getPath(): operationNotFoundMessage;
 				String operVerb = (oper != null)? oper.getVerb() : operationNotFoundMessage ; 
 		%>
 					<tr>
-					<td><%=flowName%></td> <td><%=flowPath%></td> <td><%=flowVerb%></td>
+					<td><%=counter%></td><td><%=flowName%></td> <td><%=flowPath%></td> <td><%=flowVerb%></td>
 					<td><%=operId%></td> <td><%=operPath%></td>  <td><%=operVerb%></td> 
 					
 					</tr>
