@@ -56,7 +56,7 @@
 	}
 	</script>
 
-	<button onclick="requestCode();  ">Authorize with Google</button>
+	<button onclick="requestCode();">Grant SmartTool Access to Your Google Account</button>
 	
 	
 </body>

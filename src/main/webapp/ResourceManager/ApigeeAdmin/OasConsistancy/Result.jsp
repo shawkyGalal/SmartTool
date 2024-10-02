@@ -1,5 +1,5 @@
 <%@page import="io.swagger.v3.oas.models.OpenAPI"%>
-<%@page import="io.swagger.v3.parser.core.models.SwaggerParseResult"%>
+<%@page import="com.smartvalue.swagger.v3.parser.util.SwaggerParseResult"%>
 <%@page import="com.smartvalue.apigee.proxyBundle.ProxyBundleParser"%>
 <%@page import="io.swagger.v3.oas.models.Operation"%>
 <%@page import="com.smartvalue.apigee.rest.schema.proxyEndPoint.auto.Flow"%>
@@ -58,7 +58,9 @@ String org = request.getParameter("orgSelect") ;
 		<h2> 1-1 List Of OAS Operations and Matched Flows  </h2> 
 			<table border="1">
 			<tr>
-			<td></td><td colspan="4"><p style="text-align: center; font-weight: bold;"> OAS Operation Info </p> </td><td colspan="4"> <p style="text-align: center; font-weight: bold;"> Apigee Flow Info </p> </td>
+				<td></td>
+				<td colspan="4"><p style="text-align: center; font-weight: bold;"> Service Documentation (OAS Operation Info) </p> </td>
+				<td colspan="4"> <p style="text-align: center; font-weight: bold;"> Service (Proxy Flow) Info  </p> </td>
 			</tr>
 			
 			<tr>
@@ -74,6 +76,7 @@ String org = request.getParameter("orgSelect") ;
 				OasOperation oper = entry.getKey();
 				Flow flow = entry.getValue() ; 
 				String flowNotFoundMessage = "<p style='color: red;'>Matched Flow Not Found</p> " ; 
+				
 				String flowName = (flow!= null)? flow.getName() : flowNotFoundMessage ;
 				String flowPath = (flow!= null)? flow.getCompletePath(): flowNotFoundMessage;  
 				String flowVerb = (flow!= null)? flow.extractVerbFromCondition() : flowNotFoundMessage;
@@ -99,7 +102,12 @@ String org = request.getParameter("orgSelect") ;
 		<h2> 1-2  List Of Apigee Flow and Matched OAS Operation  </h2>  
 			<table border="1">
 			<tr>
-				<td>counter</td> <td>flowName</td> <td>flowPath</td> <td>flowVerb</td>
+				<td></td>
+				<td colspan="4"> <p style="text-align: center; font-weight: bold;"> Service (Proxy Flow) Info  </p> </td>
+				<td colspan="3"><p style="text-align: center; font-weight: bold;"> Service Documentation (OAS Operation Info) </p> </td>
+			</tr>
+			<tr>
+				<td>counter</td> <td>ProxyEndPoint Name</td> <td>flowName</td> <td>flowPath</td> <td>flowVerb</td>
 				<td>operId</td> <td>operPath</td> <td>operVerb</td>     
 			</tr>
 		<%
@@ -114,14 +122,15 @@ String org = request.getParameter("orgSelect") ;
 				String flowName = flow.getName() ;
 				String flowPath = flow.getCompletePath() ; 
 				String flowVerb = flow.extractVerbFromCondition() ; 
+				String proxyEndpoint = flow.getParentProxyEndPoint().getName() ;
 				
-				String operationNotFoundMessage = "<p style='color: red;'>Matched Operation Not Found</p> " ;
+				String operationNotFoundMessage = "<p style='color: red;'>Matched Documentation Not Found</p> " ;
 				String operId = (oper != null)? oper.getOperation().getOperationId(): operationNotFoundMessage; 
 				String operPath = (oper != null)? oper.getPath(): operationNotFoundMessage;
 				String operVerb = (oper != null)? oper.getVerb() : operationNotFoundMessage ; 
 		%>
 				<tr>
-					<td><%=counter%></td><td><%=flowName%></td> <td><%=flowPath%></td> <td><%=flowVerb%></td>
+					<td><%=counter%><td><%=proxyEndpoint%></td><td><%=flowName%></td> <td><%=flowPath%></td> <td><%=flowVerb%></td>
 					<td><%=operId%></td> <td><%=operPath%></td>  <td><%=operVerb%></td> 
 				</tr>
 		<%
@@ -135,8 +144,8 @@ String org = request.getParameter("orgSelect") ;
 			String exortFolder = "C:\\temp\\Stage\\proxies\\moj-internal-clients\\" ; 
 		%> 
 		
-		=======================================Check Proxy At Rest =======================
-			Assuming the Proxy vesrion is already exported to <%=exortFolder%>  
+		==================================================Check Proxy At Rest ==================================================
+		<br> Assuming the Proxy vesrion is already exported to <%=exortFolder%>  
 		<h2>List Of OAS Operations defined in the GetOAS Flow  and all Proxy Flows    </h2>
 		
 		<%
@@ -144,11 +153,11 @@ String org = request.getParameter("orgSelect") ;
 			ProxyBundleParser proxyBundle =  new ProxyBundleParser(exortFolder +selectedProxy+"\\"+proxyRevision+"\\"+selectedProxy+".zip") ;
 			apigeeFlows = proxyBundle.checkFlowsConsistancy(true, execludeKnownFlows); 
 			oasOperations = proxyBundle.checkOpenApiConsistancy(true ,execludeKnownFlows) ;
-			SwaggerParseResult spr = proxyBundle.getSwaggerParser() ; 
+			com.smartvalue.swagger.v3.parser.util.SwaggerParseResult spr = proxyBundle.getSwaggerParser() ; 
 			String modifiedOASiStr = spr.getOpenAPI().getOpenapi();
 		%>
 		
-			<h2> 1-1 List Of OAS Operations and Matched Flows  </h2> 
+			<h2> 2-1 List Of OAS Operations and Matched Flows  </h2> 
 			<table border="1">
 			<tr>
 			<td></td><td colspan="4"><p style="text-align: center; font-weight: bold;"> OAS Operation Info </p> </td><td colspan="4"> <p style="text-align: center; font-weight: bold;"> Apigee Flow Info </p> </td>
@@ -189,7 +198,7 @@ String org = request.getParameter("orgSelect") ;
 		</table> 
 		
 		
-		<h2> 1-2  List Of Apigee Flow and Matched OAS Operation  </h2>  
+		<h2> 2-2  List Of Apigee Flow and Matched OAS Operation  </h2>  
 			<table border="1">
 			<tr>
 				<td>counter</td> <td>flowName</td> <td>flowPath</td> <td>flowVerb</td>

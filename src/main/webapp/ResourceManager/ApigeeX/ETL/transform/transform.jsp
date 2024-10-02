@@ -1,8 +1,8 @@
+<%@page import="com.smartvalue.apigee.migration.transformers.TransformResult"%>
 <%@page import="com.smartValue.web.AppContext"%>
 <%@page import="com.smartvalue.apigee.rest.schema.ApigeeService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import ="com.smartvalue.apigee.rest.schema.proxy.*"%>
-<%@page import ="com.smartvalue.apigee.rest.schema.proxy.transformers.*"%>
 <%@page import ="com.smartvalue.moj.clients.environments.JsonParser"%>
 <%@page import ="com.smartvalue.apigee.configuration.infra.Infra"%>
 <%@page import ="com.smartvalue.apigee.configuration.infra.ManagementServer"%>
@@ -20,17 +20,37 @@
 </head>
 <body>
 <%
-AppConfig ac = AppContext.getAppConfig(application);
+	AppConfig ac = AppContext.getAppConfig(application);
 
-//----- ETL Starting Transforming ----
-Infra sourceInfra = ac.getInfra("MasterWorks" , "MOJ" , "Stage") ;
-String sourceOrgName = "stg" ; 
-String transformedFolder = "C:\\temp\\transformed\\proxies" ; 
-
-ManagementServer sourceMs = sourceInfra.getManagementServer(sourceInfra.getRegions().get(0).getName()) ;
-ApigeeService sourceProxiesServices = sourceMs.getProxyServices(sourceOrgName);
-
-//sourceProxiesServices.transformAllProxies(exportFolder, transformedFolder);
+	//----- ETL Starting Transforming ----
+	Infra sourceInfra = ac.getInfra("MasterWorks" , "MOJ" , "Stage") ;
+	String sourceOrgName = "stg" ; 
+	String transformedFolder = "C:\\temp\\transformed\\proxies" ; 
+	
+	ManagementServer sourceMs = sourceInfra.getManagementServer(sourceInfra.getRegions().get(0).getName()) ;
+	sourceMs.setOrgName(sourceOrgName) ; 
+	ProxyServices proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
+	ArrayList<TransformResult> transformationErrors =  proxyServ.transformAll("C:\\temp\\Stage\\proxies",  "C:\\temp\\Stage\\Transformed\\proxies") ;
+%> 
+<Table>
+<tr> 
+	<td>Transformer </td>  
+	<td>source </td>
+	<td>Error </td>
+</tr>
+<% 
+ for ( TransformResult tr :  transformationErrors ) 
+ {
+	 %>
+		 <tr> 
+			<td><%=tr.getTransformerClass()%> </td>  
+			<td><%=tr.getSource()%> </td>
+			<td><%=tr.getError()%> </td>
+		</tr>
+	
+	 <% 
+ }
 %>
+</Table>
 </body>
 </html>
