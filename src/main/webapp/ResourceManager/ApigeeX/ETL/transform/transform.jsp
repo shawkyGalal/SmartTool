@@ -32,17 +32,23 @@
 	ProxyServices proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
 	ArrayList<TransformResult> transformationErrors =  proxyServ.transformAll("C:\\temp\\Stage\\proxies",  "C:\\temp\\Stage\\Transformed\\proxies") ;
 %> 
-<Table>
+<Table border="1">
 <tr> 
+	<td>Count</td>
+	<td>Status</td>
 	<td>Transformer </td>  
 	<td>source </td>
 	<td>Error </td>
 </tr>
 <% 
+ int count = 0 ; 
  for ( TransformResult tr :  transformationErrors ) 
- {
+ {	
+	 count ++ ;  
 	 %>
 		 <tr> 
+		 	<td><%=count %> </td>
+		 	<td><%=(tr.isFailed())? "Fail":"Success"%> </td>
 			<td><%=tr.getTransformerClass()%> </td>  
 			<td><%=tr.getSource()%> </td>
 			<td><%=tr.getError()%> </td>
