@@ -1,3 +1,4 @@
+<%@page import="com.smartvalue.apigee.migration.transformers.TransformationResults"%>
 <%@page import="com.smartvalue.apigee.migration.transformers.TransformResult"%>
 <%@page import="com.smartValue.web.AppContext"%>
 <%@page import="com.smartvalue.apigee.rest.schema.ApigeeService"%>
@@ -30,8 +31,12 @@
 	ManagementServer sourceMs = sourceInfra.getManagementServer(sourceInfra.getRegions().get(0).getName()) ;
 	sourceMs.setOrgName(sourceOrgName) ; 
 	ProxyServices proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
-	ArrayList<TransformResult> transformationErrors =  proxyServ.transformAll("C:\\temp\\Stage\\proxies",  "C:\\temp\\Stage\\Transformed\\proxies") ;
+	TransformationResults transformationResults =  proxyServ.transformAll("C:\\temp\\Stage\\proxies",  "C:\\temp\\Stage\\Transformed\\proxies") ;
+	TransformationResults transformationSuccess =  transformationResults.filterFailed(false); 
+	TransformationResults transformationFailed =  transformationResults.filterFailed(true);
 %> 
+<h1> Success Transformations </h1>
+ 
 <Table border="1">
 <tr> 
 	<td>Count</td>
@@ -42,21 +47,53 @@
 </tr>
 <% 
  int count = 0 ; 
- for ( TransformResult tr :  transformationErrors ) 
+ for ( TransformResult tr :  transformationSuccess  ) 
  {	
 	 count ++ ;  
 	 %>
 		 <tr> 
 		 	<td><%=count %> </td>
 		 	<td><%=(tr.isFailed())? "Fail":"Success"%> </td>
-			<td><%=tr.getTransformerClass()%> </td>  
+			<td><%=tr.getTransformerClass().toString().substring("class com.smartvalue.apigee.migration.transformers.proxy.".length())%> </td>  
 			<td><%=tr.getSource()%> </td>
 			<td><%=tr.getError()%> </td>
 		</tr>
 	
 	 <% 
  }
-%>
+ 
+ %>
+</Table>
+
+
+<h1> Failed Transformations </h1>
+ 
+<Table border="1">
+<tr> 
+	<td>Count</td>
+	<td>Status</td>
+	<td>Transformer </td>  
+	<td>source </td>
+	<td>Error </td>
+</tr>
+<% 
+ count = 0 ; 
+ for ( TransformResult tr :  transformationFailed  ) 
+ {	
+	 count ++ ;  
+	 %>
+		 <tr> 
+		 	<td><%=count %> </td>
+		 	<td><%=(tr.isFailed())? "Fail":"Success"%> </td>
+			<td><%=tr.getTransformerClass().toString().substring("class com.smartvalue.apigee.migration.transformers.proxy.".length())%> </td>  
+			<td><%=tr.getSource()%> </td>
+			<td><%=tr.getError()%> </td>
+		</tr>
+	
+	 <% 
+ }
+ 
+ %>
 </Table>
 </body>
 </html>
