@@ -24,9 +24,9 @@
 		String callbackUrl = xx+"/ResourceManager/loginWithGoogle/authCodeHandler.jsp" ;
 		String errorCallback = xx + "/ResourceManager/loginWithGoogle/errorCallBack.jsp" ; 
 		
-		boolean googleCloud = request.getParameter("googleCloud")!= null ;
+		//boolean googleCloud = request.getParameter("googleCloud")!= null ;
 		ManagementServer ms = AppContext.getApigeeManagementServer(session) ; 
-		if ( ms == null && googleCloud  )
+		if ( ms == null )
 		{
 			ms = new ManagementServer(ac); 
 			AppContext.setApigeeManagementServer(session, ms) ;

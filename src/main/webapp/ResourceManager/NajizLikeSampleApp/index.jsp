@@ -6,7 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1> Jathwa Application  </h1>
+	<h1> Najiz Like Application  </h1>
 	
 	<%@include file="intialize.jsp" %>
 	<%

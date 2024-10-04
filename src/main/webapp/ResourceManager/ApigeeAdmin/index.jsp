@@ -1,3 +1,4 @@
+<%@page import="com.smartvalue.apigee.configuration.infra.Infra"%>
 <%@page import="com.smartvalue.apigee.rest.schema.ApigeeAccessToken"%>
 <%@page import="com.smartvalue.apigee.rest.schema.AccessToken"%>
 <%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
@@ -22,32 +23,29 @@
 	<a href = "InfraSelector.jsp">Select Apigee Infrastructure </a>
 	
 	<% 
-		ManagementServer ms = AppContext.getApigeeManagementServer(session); 
+		ManagementServer ms = AppContext.getApigeeManagementServer(session);
+		GoogleIdToken googleIdToken = AppContext.getGoogleIdToken(session);
 		if (ms != null  ) 
 		{
-			out.print ("Current Infra Name : " + ms.getInfraName() ) ;
-			AccessToken at = ms.getAccessToken() ; 
-			GoogleIdToken googleIdToken = null; 
+			Infra infra = ms.getInfra(); 
+			out.print ("Current Infra : " + infra.getParentCustomer().getName() +"."+ infra.getName() ) ;
+			
+			AccessToken at = null ; 
+			try { at = ms.getAccessToken() ; }
+			catch(Exception e ) {}
 			ApigeeAccessToken apigeeAccessToken = null ; 
-			if (at instanceof GoogleAccessToken)
+			if (at != null && at instanceof GoogleAccessToken)
 			{
 				GoogleAccessToken googleAccessToken = (GoogleAccessToken) at ;
 				googleIdToken = googleAccessToken.getGoogleIdToken();
 			}
-			else if (at instanceof ApigeeAccessToken) 
-			{
-				googleIdToken = AppContext.getGoogleIdToken(session) ; 
-			}
 			
-			if ( googleIdToken != null)
-			{
-				out.print(Renderer.objectToHtmlTable(googleIdToken.getPayload()));
-			}
  		  	 
 		}
 		else {return ; }
 	%>
 	<h1> Apigee Operational Tasks </h1>
+	<img alt="<%=googleIdToken.getPayload().get("email")%>" src="<%=googleIdToken.getPayload().get("picture")%>">
 	<table border = 1>
 		<tr><td><a href = "proxies/proxies.jsp" target = "Proxies">Proxies</a></td></tr>
 		<tr><td><a href = "environments/Environments.jsp" target = "envs">Environments</a></td></tr>
@@ -73,6 +71,12 @@
 	<table border = 1>
 		<tr><td><a href = "messageProcessor/MessageProcessors.jsp"  target = "messageProcessors">message Processors  </a></td></tr>
 		<tr><td><a href = "routers/routers.jsp"  target = "routers">Routers </a></td></tr>
+	</table>
+	
+	<h1> Apigee X </h1>
+	<table border = 1>
+		<tr><td><a href = "../ApigeeX/index.jsp"  target = "ApigeeX">Apigee X Operations </a></td></tr>
+
 	</table>
 	
 	<h1> REST Services </h1>
