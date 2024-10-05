@@ -1,3 +1,5 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.net.URL"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.LinkedHashMap"%>
@@ -14,6 +16,7 @@
 <%@page import ="com.smartvalue.apigee.rest.schema.proxy.google.auto.GoogleProxiesList"%>
 <%@page import ="java.io.InputStream"%>
 <%@page import="com.smartvalue.apigee.resourceManager.Renderer"%>
+<%@page import="java.io.File"%>
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -39,7 +42,10 @@
 	<%
 	//----- ETL Starting Transforming ----
 	ProxyServices proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
-	TransformationResults transformationResults =  proxyServ.transformAll("C:\\temp\\"+org+"\\proxies",  "C:\\temp\\"+org+"\\Transformed\\proxies") ;
+	String transformPath = "C:\\temp\\Apigee" ; 
+	TransformationResults transformationResults =  proxyServ.transformAll(transformPath					 + "\\"+sourceInfra.getName()+"\\"+org+"\\proxies"
+														  				, transformPath +"\\Transformed" + "\\"+sourceInfra.getName()+"\\"+org+"\\proxies" 	) ;
+	
 	TransformationResults transformationSuccess =  transformationResults.filterFailed(false); 
 	TransformationResults transformationFailed =  transformationResults.getNotMatchedResult();
 	
@@ -52,6 +58,34 @@
 	String[] knownErrors = {error01 , error02 , error03 , error04 } ; 
 	HashMap <String , TransformationResults> errorTypes =  transformationFailed.filterErrorDesc(knownErrors)  ; 
 	errorTypes.put("UnClassefied Errors ", transformationFailed.getNotMatchedResult()); 
+	%>
+	<br> 
+	<h2> Transformation Statistics </h2>
+	<table border="1"><tr>
+			<td>Status</td> 
+			<td>Status Desc</td>
+			<td>Count</td>
+		</tr>
+		<tr>
+			<td>Success</td>
+			<td>Successfull Transformation </td>
+			<td><%=transformationSuccess.size()%></td>
+		</tr>
+	<% 
+	for (Map.Entry <String , TransformationResults> entry : errorTypes.entrySet())
+	{
+		String errorClass = entry.getKey() ; 
+		int errorClassSize = entry.getValue().size() ; 
+		%>
+		<tr>
+		<td>Failure</td>
+		<td><%=errorClass%></td>
+		<td><%=errorClassSize%></td>
+		</tr>
+		<%
+	}
+	%>
+	</table>
 %> 
 <h2> Success Transformations </h2>
  
@@ -61,7 +95,7 @@
 	<td>Status</td>
 	<td>Transformer </td>  
 	<td>source </td>
-	<td>Error </td>
+	<td>Actions</td>
 </tr>
 <% 
  int count = 0 ; 
@@ -74,7 +108,7 @@
 		 	<td><%=(tr.isFailed())? "Fail":"Success"%> </td>
 			<td><%=tr.getTransformerClass().toString().substring("class com.smartvalue.apigee.migration.transformers.proxy.".length())%> </td>  
 			<td><%=tr.getSource()%> </td>
-			<td><%=tr.getError()%> </td>
+			<td><a href= "uploadBundle.jsp?bundlePath=<%= URLEncoder.encode(tr.getDestination()+ File.pathSeparator + new File (tr.getSource()).getName()) %> " >  Upload </a> </td>
 		</tr>
 	
 	 <% 

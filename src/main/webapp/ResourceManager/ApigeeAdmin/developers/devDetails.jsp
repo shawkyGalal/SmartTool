@@ -15,7 +15,7 @@
 <body>
 <%
 		ManagementServer ms = AppContext.getApigeeManagementServer(session);  
-		String org = request.getParameter("org") ; 		
+		String org = request.getParameter("orgSelect") ; 		
 		String developerId = request.getParameter("developerId") ;
 		
 		%> <br>Apigee Developer  <%=org %>/ <%=developerId %> Details <br> <br> <br> <%
