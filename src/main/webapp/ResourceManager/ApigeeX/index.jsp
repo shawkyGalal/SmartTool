@@ -42,7 +42,7 @@
 	<h1><a href = "ETL/extract/selectOrg.jsp" target = "Proxies"> Extract Apigee Proxies from Staging  </a></h1>
 	
 	<h1><a href = "ETL/transform/selectOrg.jsp" target = "Najiz"> Transform Objects to Match ApigeeX requirments </a></h1>
-	<h1><a href = "ETL/selectOrg.jsp?targetPage=load/load.jsp" target = "load" >Load Apigee Proxies to Apigee X Cloud </a></h1>
+	<h1><a href = "ETL/load/selectOrg.jsp?targetPage=load/load.jsp" target = "load" >Load Apigee Proxies to Apigee X Cloud </a></h1>
 	
 	<h1><a href = "ETL/load/delete.jsp" target = "delete" >Delete Apigee Proxies from Apigee X Cloud </a></h1>
 	
