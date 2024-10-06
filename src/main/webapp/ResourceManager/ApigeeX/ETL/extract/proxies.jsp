@@ -24,11 +24,12 @@
 
 //----- ETL Starting Extraction ----  
 Infra sourceInfra = ac.getInfra("MasterWorks" , "MOJ" , "Stage") ;
+String infraname = sourceInfra.getName(); 
 String sourceOrgName = "stg" ; 
 ManagementServer sourceMs = sourceInfra.getManagementServer(sourceInfra.getRegions().get(0).getName()) ;
 
 ProxyServices sps = (ProxyServices) sourceMs.getProxyServices(sourceOrgName);
-sps.exportAll("C:\\temp\\proxies") ;
+sps.exportAll("C:\\temp\\Apigee\\"+infraname+"\\"+sourceOrgName+"\\proxies\\") ;
 
 out.print("=========Export Executed Successfully========== ") ;
 %>

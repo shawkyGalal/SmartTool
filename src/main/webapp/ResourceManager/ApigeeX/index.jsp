@@ -39,10 +39,11 @@
 		<h2><a href = "Environments/Delete.jsp" target = "Najiz"> 02- Delete Environments  </a></h2>
 	We Will Use ETL ( Extract , Transform and Load ) Model 
 	<h1><a href = "ETL/extract/targetServers.jsp" target = "TargetServer"> Extract Apigee TargetServers from Staging  </a></h1>
-	<h1><a href = "ETL/extract/proxies.jsp" target = "Proxies"> Extract Apigee Proxies from Staging  </a></h1>
+	<h1><a href = "ETL/extract/selectOrg.jsp" target = "Proxies"> Extract Apigee Proxies from Staging  </a></h1>
 	
 	<h1><a href = "ETL/transform/selectOrg.jsp" target = "Najiz"> Transform Objects to Match ApigeeX requirments </a></h1>
-	<h1><a href = "ETL/load/load.jsp" target = "load" >Load Apigee Proxies to Apigee X Cloud </a></h1>
+	<h1><a href = "ETL/selectOrg.jsp?targetPage=load/load.jsp" target = "load" >Load Apigee Proxies to Apigee X Cloud </a></h1>
+	
 	<h1><a href = "ETL/load/delete.jsp" target = "delete" >Delete Apigee Proxies from Apigee X Cloud </a></h1>
 	
 	

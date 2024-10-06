@@ -20,7 +20,7 @@ String targetPage = request.getParameter("targetPage");
 %>
     
 <jsp:include page="../../../ApigeeAdmin/apigeeItemSelector.jsp" >
-  	<jsp:param name="targetPage" value="transformersConfig.jsp" />
+  	<jsp:param name="targetPage" value="proxies.jsp" />
  	<jsp:param name="neededAttributes" value="org" /> 
 </jsp:include>
  

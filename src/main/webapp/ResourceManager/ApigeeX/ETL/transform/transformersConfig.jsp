@@ -35,14 +35,14 @@
 
  
 	//=====================Display Transformers Information ==========================
-	%><h1> The Following Transformation is configured in the System and will be applied to the selected Infrastructure ( <%= sourceInfra.getParentCustomer().getName()%>. <%= sourceInfra.getName()%> ) and selected Organization <%=sourceOrgName%> </h1> 
+	%><h1> The Following Transformation is configured in the System will be applied to the selected Infrastructure ( <%= sourceInfra.getParentCustomer().getName()%>. <%= sourceInfra.getName()%> ) and selected Organization <%=sourceOrgName%> </h1> 
 	<%
 
 	ManagementServer sourceMs = sourceInfra.getManagementServer(sourceInfra.getRegions().get(0).getName()) ;
 	sourceMs.setOrgName(sourceOrgName) ;
 	out.print(Renderer.arrayListToHtmlTable(sourceMs.getInfra().getTransformersConfig().getTransformers()));
 %>
-<a href = "transform.jsp?org=<%=sourceOrgName%>" >Next </a>
+<a href = "transform.jsp?org=<%=sourceOrgName%>" target = "Transformation Results" >Next </a>
  
 </body>
 </html>

@@ -86,7 +86,7 @@
 	}
 	%>
 	</table>
-%> 
+
 <h2> Success Transformations </h2>
  
 <Table border="1">
@@ -108,7 +108,8 @@
 		 	<td><%=(tr.isFailed())? "Fail":"Success"%> </td>
 			<td><%=tr.getTransformerClass().toString().substring("class com.smartvalue.apigee.migration.transformers.proxy.".length())%> </td>  
 			<td><%=tr.getSource()%> </td>
-			<td><a href= "uploadBundle.jsp?bundlePath=<%= URLEncoder.encode(tr.getDestination()+ File.pathSeparator + new File (tr.getSource()).getName()) %> " >  Upload </a> </td>
+			<td><a href= "uploadBundle.jsp?bundlePath=<%= URLEncoder.encode(tr.getDestination()+ File.pathSeparator + new File (tr.getSource()).getName()) %>&deploy=false" title = "Upload this Pundle to an Apigee Organization " >  Upload </a> </td>
+			<td><a href= "uploadBundle.jsp?bundlePath=<%= URLEncoder.encode(tr.getDestination()+ File.pathSeparator + new File (tr.getSource()).getName()) %>&deploy=true" title = "Upload this Pundle to an Apigee Organization and deploy it to its environment " >  Upload </a> </td>
 		</tr>
 	
 	 <% 
@@ -133,6 +134,7 @@ for ( Map.Entry<String,TransformationResults>  entry : errorTypes.entrySet())
 		<td>Transformer </td>  
 		<td>source </td>
 		<td>Error </td>
+		<td>Exception Class </td>
 	</tr>
 	<% 
 	 count = 0 ; 
@@ -146,6 +148,7 @@ for ( Map.Entry<String,TransformationResults>  entry : errorTypes.entrySet())
 				<td><%=tr.getTransformerClass().toString().substring("class com.smartvalue.apigee.migration.transformers.proxy.".length())%> </td>  
 				<td><%=tr.getSource()%> </td>
 				<td><%=tr.getError()%> </td>
+				<td><%=tr.getExceptionClassName()%> </td>
 			</tr>
 		
 		 <% 
