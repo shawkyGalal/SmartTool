@@ -17,15 +17,16 @@
 
 
 <body>
-	<% 	AppConfig ac = AppContext.getAppConfig(application);
+	<% 	
+		AppConfig ac = AppContext.getAppConfig(application);
+		ManagementServer ms = AppContext.getApigeeManagementServer(session) ;
+		
 		String clientId = ac.getGoogleWebAppCredential().getClient_id() ; //"455673897131-f610c9tau1i582tpk8nq2q5794qdb1oi.apps.googleusercontent.com" ; //"743562068929-2m0gujbpdcs9g3gebrroeaj4hbkelc3b.apps.googleusercontent.com" ;
 	    String contextPath = request.getContextPath();
 	    String xx = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath ;
 		String callbackUrl = xx+"/ResourceManager/loginWithGoogle/authCodeHandler.jsp" ;
 		String errorCallback = xx + "/ResourceManager/loginWithGoogle/errorCallBack.jsp" ; 
 		
-		//boolean googleCloud = request.getParameter("googleCloud")!= null ;
-		ManagementServer ms = AppContext.getApigeeManagementServer(session) ; 
 		if ( ms == null )
 		{
 			ms = new ManagementServer(ac); 
@@ -33,6 +34,10 @@
 		}
 		else 
 		{ 
+			if (ms.getGoogelAccessToken() != null)
+			{//--- Already Logged before to Google Cloud 
+				response.sendRedirect("../ApigeeAdmin/index.jsp?message=AlreadyLogedToGooleCloud") ; 
+			}
 			ms.setOnPremise(false) ;  
 		}
 	%>

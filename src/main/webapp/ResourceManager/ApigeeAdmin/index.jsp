@@ -27,9 +27,8 @@
 		GoogleIdToken googleIdToken = AppContext.getGoogleIdToken(session);
 		if (ms != null  ) 
 		{
-			Infra infra = ms.getInfra(); 
-			out.print ("Current Infra : " + infra.getParentCustomer().getName() +"."+ infra.getName() ) ;
-			
+			String infraUniqueName = ms.getInfraUniqueName();
+			out.print ("Current Infra : " + infraUniqueName ) ;
 			AccessToken at = null ; 
 			try { at = ms.getAccessToken() ; }
 			catch(Exception e ) {}
