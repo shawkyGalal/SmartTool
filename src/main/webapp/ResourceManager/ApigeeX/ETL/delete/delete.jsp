@@ -18,10 +18,9 @@
 <body>
 <%
 AppConfig ac = AppContext.getAppConfig(application);
-
+String destOrgName = request.getParameter("orgSelect"); //"moj-prod-apigee" 
 //----- ETL Starting Loading ----
 ManagementServer ms = AppContext.getApigeeManagementServer(session); 
-String destOrgName = "moj-prod-apigee" ; 
 
 ProxyServices proxiesServices =(ProxyServices) ms.getProxyServices(destOrgName); 
 GoogleProxiesList proxiesList= proxiesServices.getAllProxiesList(GoogleProxiesList.class); 

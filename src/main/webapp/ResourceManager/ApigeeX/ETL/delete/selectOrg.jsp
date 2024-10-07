@@ -20,7 +20,7 @@ String targetPage = request.getParameter("targetPage");
 %>
     
 <jsp:include page="../../../ApigeeAdmin/apigeeItemSelector.jsp" >
-  	<jsp:param name="targetPage" value="load.jsp" />
+  	<jsp:param name="targetPage" value="delete.jsp" />
  	<jsp:param name="neededAttributes" value="org" /> 
 </jsp:include>
  
