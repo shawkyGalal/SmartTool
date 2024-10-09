@@ -42,9 +42,9 @@
 	<%
 	//----- ETL Starting Transforming ----
 	ProxyServices proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
-	String transformPath = "C:\\temp\\Apigee" ; 
-	TransformationResults transformationResults =  proxyServ.transformAll(transformPath					 + "\\"+sourceInfra.getName()+"\\"+org+"\\proxies"
-														  				, transformPath +"\\Transformed" + "\\"+sourceInfra.getName()+"\\"+org+"\\proxies" 	) ;
+	String migrationBasePath = AppConfig.getMigrationBasePath() ;  ; 
+	TransformationResults transformationResults =  proxyServ.transformAll(migrationBasePath	+ "\\"+sourceInfra.getName()+"\\"+ org +"\\proxies"
+														  				, migrationBasePath + "\\"+sourceInfra.getName()+"\\"+ org +"\\Transformed" + "\\proxies" 	) ;
 	
 	TransformationResults transformationSuccess =  transformationResults.filterFailed(false); 
 	TransformationResults transformationFailed =  transformationResults.getNotMatchedResult();

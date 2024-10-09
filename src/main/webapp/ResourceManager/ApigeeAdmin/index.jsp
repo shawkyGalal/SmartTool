@@ -25,7 +25,9 @@
 	<% 
 		ManagementServer ms = AppContext.getApigeeManagementServer(session);
 		GoogleIdToken googleIdToken = AppContext.getGoogleIdToken(session);
-		if (ms != null  ) 
+		if (ms == null  || ms.getInfra() == null) 
+		{ return ;}
+		else 
 		{
 			String infraUniqueName = ms.getInfraUniqueName();
 			out.print ("Current Infra : " + infraUniqueName ) ;
@@ -38,10 +40,7 @@
 				GoogleAccessToken googleAccessToken = (GoogleAccessToken) at ;
 				googleIdToken = googleAccessToken.getGoogleIdToken();
 			}
-			
- 		  	 
 		}
-		else {return ; }
 	%>
 	<h1> Apigee Operational Tasks </h1>
 	<img alt="<%=googleIdToken.getPayload().get("email")%>" src="<%=googleIdToken.getPayload().get("picture")%>">
