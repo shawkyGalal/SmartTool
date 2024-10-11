@@ -1,3 +1,4 @@
+<%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.smartvalue.apigee.migration.load.LoadResult"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResults"%>
 <%@page import="com.smartvalue.apigee.migration.load.LoadResults"%>
@@ -26,14 +27,16 @@
 <%
 
 //----- ETL Starting Loading ----
+GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
+String userEmail = gidt.getPayload().getEmail();
+String migrationBasePath = AppConfig.getMigrationBasePath() ;
+
 ManagementServer ms = AppContext.getApigeeManagementServer(session); 
 String destOrgName = request.getParameter("orgSelect"); 
-//String destOrgName = "moj-prod-apigee" ; //"lean-it" 
-String transformedFolder = "C:\\temp\\Apigee\\Stage\\stg\\Transformed\\proxies\\" ; 
+// Uploading from Staging Env. 
+String transformedFolder = migrationBasePath +"\\"+userEmail+ "\\Stage\\stg\\Transformed\\proxies\\" ; 
 
 ProxyServices proxiesServices = (ProxyServices)ms.getProxyServices(destOrgName); 
-//GoogleProxiesList proxiesList= proxiesServices.getAllProxiesList(GoogleProxiesList.class); 
-//proxiesServices.deleteAll(proxiesList) ;
 
 proxiesServices.setDeployUponUpload(false); 
 LoadResults result = proxiesServices.importAll(transformedFolder) ;

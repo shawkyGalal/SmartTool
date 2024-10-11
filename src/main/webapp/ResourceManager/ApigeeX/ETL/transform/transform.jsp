@@ -1,3 +1,4 @@
+<%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.net.URL"%>
 <%@page import="java.util.HashMap"%>
@@ -41,10 +42,14 @@
 	<br> <h2>Apigee Organization : </h2> <%=org%> 
 	<%
 	//----- ETL Starting Transforming ----
+	GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
+	String userEmail = gidt.getPayload().getEmail(); 
+		
+	
 	ProxyServices proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
 	String migrationBasePath = AppConfig.getMigrationBasePath() ;  ; 
-	TransformationResults transformationResults =  proxyServ.transformAll(migrationBasePath	+ "\\"+sourceInfra.getName()+"\\"+ org +"\\proxies"
-														  				, migrationBasePath + "\\"+sourceInfra.getName()+"\\"+ org +"\\Transformed" + "\\proxies" 	) ;
+	TransformationResults transformationResults =  proxyServ.transformAll(migrationBasePath	+"\\"+ userEmail + "\\"+sourceInfra.getName()+"\\"+ org +"\\proxies"
+														  				, migrationBasePath +"\\"+ userEmail + "\\"+sourceInfra.getName()+"\\"+ org +"\\Transformed" + "\\proxies" 	) ;
 	
 	TransformationResults transformationSuccess =  transformationResults.filterFailed(false); 
 	TransformationResults transformationFailed =  transformationResults.getNotMatchedResult();

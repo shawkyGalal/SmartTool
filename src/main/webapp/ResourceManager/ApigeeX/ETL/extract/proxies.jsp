@@ -1,3 +1,4 @@
+<%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.mashape.unirest.http.HttpResponse"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
@@ -27,16 +28,25 @@
 </head>
 <body>
 <%
-	AppConfig ac = AppContext.getAppConfig(application);
+GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
+String userEmail = gidt.getPayload().getEmail();
+String migrationBasePath = AppConfig.getMigrationBasePath() ;
 
+ManagementServer sourceMs = AppContext.getApigeeManagementServer(session) ;
+String sourceOrgName = request.getParameter("orgSelect"); 
+sourceMs.setOrgName(sourceOrgName); 
+Infra sourceInfra = sourceMs.getInfra(); 
+
+%>
+<h1>Export Results </h1>
+<br> <h2> InfraStructure : </h2> <%=sourceInfra.getName()%>
+<br> <h2>Apigee Organization : </h2> <%=sourceOrgName%> 
+<%
 //----- ETL Starting Extraction ----  
-Infra sourceInfra = ac.getInfra("MasterWorks" , "MOJ" , "Stage") ;
-String infraname = sourceInfra.getName(); 
-String sourceOrgName = "stg" ; 
-ManagementServer sourceMs = sourceInfra.getManagementServer(sourceInfra.getRegions().get(0).getName()) ;
+
 
 ProxyServices sps = (ProxyServices) sourceMs.getProxyServices(sourceOrgName);
-ExportResults result = sps.exportAll("C:\\temp\\Apigee\\"+infraname+"\\"+sourceOrgName+"\\proxies\\") ;
+ExportResults result = sps.exportAll(migrationBasePath +"\\"+ userEmail +"\\"+sourceInfra.getName()+"\\"+sourceOrgName+"\\proxies\\") ;
 ProcessResults successResults = result.filterFailed(false) ;
 HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();
 %> 
