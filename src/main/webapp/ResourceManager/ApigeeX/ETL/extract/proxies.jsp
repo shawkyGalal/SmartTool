@@ -6,6 +6,7 @@
 <%@page import="com.smartvalue.apigee.migration.ProcessResult"%>
 <%@page import="com.smartvalue.apigee.migration.export.ExportResult"%>
 <%@page import="com.smartvalue.apigee.migration.export.ExportResults"%>
+
 <%@page import="com.smartValue.web.AppContext"%>
 <%@page import="com.smartvalue.apigee.rest.schema.targetServer.TargetServerServices"%>
 <%@page import="java.io.OutputStream"%>
@@ -38,7 +39,7 @@ sourceMs.setOrgName(sourceOrgName);
 Infra sourceInfra = sourceMs.getInfra(); 
 
 %>
-<h1>Export Results </h1>
+<h1>Export Deployed Proxies Results </h1>
 <br> <h2> InfraStructure : </h2> <%=sourceInfra.getName()%>
 <br> <h2>Apigee Organization : </h2> <%=sourceOrgName%> 
 <%
@@ -46,7 +47,10 @@ Infra sourceInfra = sourceMs.getInfra();
 
 
 ProxyServices sps = (ProxyServices) sourceMs.getProxyServices(sourceOrgName);
-ExportResults result = sps.exportAll(migrationBasePath +"\\"+ userEmail +"\\"+sourceInfra.getName()+"\\"+sourceOrgName+"\\proxies\\") ;
+String basePath =  migrationBasePath +"\\"+ userEmail +"\\"+sourceInfra.getName()+"\\"+sourceOrgName ; 
+String sourceFolder =basePath +"\\proxies\\" ; 
+String deplyStatusFileName = basePath + "\\deplysStatus.ser" ; 
+ExportResults result = sps.exportAll(sourceFolder , deplyStatusFileName) ;
 ProcessResults successResults = result.filterFailed(false) ;
 HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();
 %> 
@@ -90,7 +94,8 @@ for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
 		<table border="1">
 			<tr>
 				<td>Count</td>
-				<td>source </td>
+				<td>source (Environment.Proxy.Version) </td>
+				<td>Destination </td>
 				<td>Status</td>
 				<td>Error</td>
 				<td>ExceptionClass</td>
@@ -102,8 +107,8 @@ for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
 		ProcessResults processResults = entry.getValue() ; 
 		for (int i =0 ; i< processResults.size() ; i++)
 		{
-			ExportResult loadResult = ((ExportResult) processResults.get(i));
-			HttpResponse<String> httpResponse =  loadResult.getHttpResponse(); 
+			ExportResult exportResult = ((ExportResult) processResults.get(i));
+			HttpResponse<String> httpResponse =  exportResult.getHttpResponse(); 
 			
 			int statusCode =0; 
 			String responseBody = null; 
@@ -112,15 +117,17 @@ for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
 			statusCode = httpResponse.getStatus();
 			responseBody = httpResponse.getBody();
 			}
-			String error = loadResult.getError(); 
+			String error = exportResult.getError(); 
+			String destination = exportResult.getDestination(); 
 			
 			%>
 			<tr>
 				<td><%=i%></td>
-				<td><%=loadResult.getSource()%>  </td>
+				<td><%=exportResult.getSource()%>  </td>
+				<td><%=destination%></td>
 				<td><%=statusCode%></td>
 				<td><%=error%></td>
-				<td><%=loadResult.getExceptionClassName()%></td>
+				<td><%=exportResult.getExceptionClassName()%></td>
 				<td><%=responseBody %> </td>  
 				<td>Actions</td>
 			</tr>
