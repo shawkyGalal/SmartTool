@@ -1,3 +1,5 @@
+<%@page import="com.smartvalue.apigee.migration.ProcessResult"%>
+<%@page import="com.smartvalue.apigee.migration.deploy.DeployResult"%>
 <%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.smartvalue.apigee.migration.load.LoadResult"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResults"%>
@@ -95,7 +97,7 @@ for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
 		ProcessResults processResults = entry.getValue() ; 
 		for (int i =0 ; i< processResults.size() ; i++)
 		{
-			LoadResult loadResult = ((LoadResult) processResults.get(i));
+			ProcessResult loadResult =  processResults.get(i);
 			HttpResponse<String> httpResponse =  loadResult.getHttpResponse(); 
 			
 			int statusCode =0; 

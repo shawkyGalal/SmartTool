@@ -1,3 +1,4 @@
+<%@page import="com.smartvalue.apigee.migration.deploy.DeployResults"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResult"%>
 <%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.smartvalue.apigee.migration.load.LoadResult"%>
@@ -49,7 +50,7 @@
 	 ProcessResults successResults = result.filterFailed(false) ;
 	 HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();
 	 %> 
-	<h1>Uploading Results Statistics </h1>
+	<h1>RollBack Results Statistics </h1>
 	<table border="1">
 		<tr>
 			<td>#</td>
@@ -74,7 +75,7 @@
 	%>
 	</table>
 	
-	<h1>Loadings Results Classification </h1>
+	<h1>RollBack Results Classification </h1>
 		<%
 		for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
 		{

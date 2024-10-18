@@ -1,3 +1,4 @@
+<%@page import="com.smartvalue.apigee.rest.schema.DeploymentsStatus"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResult"%>
 <%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.smartvalue.apigee.migration.load.LoadResult"%>
@@ -22,7 +23,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>List Last Proxies Deployments Status </title>
+<title>List Last Extracted Proxies Deployments Status </title>
 </head>
 	<body>
 	<%
@@ -36,8 +37,7 @@
 		Infra sourceInfra = sourceMs.getInfra(); 
 	
 	%>
-	<h1>RollBack Results </h1>
-	<br> <h2> InfraStructure : </h2> <%=sourceInfra.getName()%>
+	<h2> InfraStructure : </h2> <%=sourceInfra.getName()%>
 	<br> <h2>Apigee Organization : </h2> <%=orgSelect%> 
 	
 	<%
@@ -45,7 +45,7 @@
 	 ProxyServices sps = (ProxyServices) sourceMs.getProxyServices(orgSelect);
 	 String basePath =  migrationBasePath +"\\"+ userEmail +"\\"+sourceInfra.getName()+"\\"+orgSelect ; 
 	 String deplyStatusFileName = basePath + "\\deplysStatus.ser" ; 
-	 HashMap<String,HashMap<String,ArrayList<String>>> lastDeploymentsStatus = sps.deSerializeDeployStatus(deplyStatusFileName); 
+	 DeploymentsStatus lastDeploymentsStatus = sps.deSerializeDeployStatus(deplyStatusFileName); 
 	 
 	 %> 
 	<h1>Before Last Extract Proxies Deployments Status</h1> 
@@ -53,31 +53,30 @@
 	<table border="1">
 		<tr>
 			<td>ProxyName</td>
-			<td>Environment </td>
 			<td>Revision</td>
+			<td>Environments </td>
 		</tr>
 		<%
 		int count = 1 ; 
 		for (Map.Entry<String,HashMap<String,ArrayList<String>>> entry : lastDeploymentsStatus.entrySet())
 		{
 			count++ ; 
-			String proxyName = entry.getKey() ; 
-			HashMap<String, ArrayList<String>> ds = entry.getValue();
-			for ( Map.Entry<String, ArrayList<String>> entry01 :  ds.entrySet() )
+			String proxyName = entry.getKey() ;
+			ArrayList<String> revisions = lastDeploymentsStatus.getDeployedRevisions(proxyName) ; 
+			
+			for (String revision : revisions  )
 			{
-				String envName = entry01.getKey(); 
-				ArrayList<String> revisions = entry01.getValue() ;
-				for (String revision : revisions)
-				{
-					%>
-					<tr>
-						<td><%=proxyName%> </td>
-						<td><%=envName%>  </td>
-						<td><%=revision%></td>
-					</tr>
-					<%
-				}
+				ArrayList<String> envs = lastDeploymentsStatus.getRevisionDeployedEnvs(proxyName , revision ) ;  
+				%>
+				<tr>
+					<td><%=proxyName%> </td>
+					<td><%=revision%></td>
+					<td><%=envs%>  </td>
+					
+				</tr>
+				<%
 			}
+			
 		}
 	%>
 	</table>
