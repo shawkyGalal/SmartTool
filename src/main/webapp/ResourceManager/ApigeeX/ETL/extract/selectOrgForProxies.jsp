@@ -15,13 +15,14 @@
 <br> 
 <%
 
-String targetPage = request.getParameter("targetPage");
+String bundleType = request.getParameter("bundleType");
 
 %>
     
 <jsp:include page="../../../ApigeeAdmin/apigeeItemSelector.jsp" >
-  	<jsp:param name="targetPage" value="proxies.jsp" />
+  	<jsp:param name="targetPage" value="bundledObjects.jsp?bundleType=proxies" />
  	<jsp:param name="neededAttributes" value="org" /> 
+ 	
 </jsp:include>
  
 </body>

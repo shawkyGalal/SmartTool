@@ -1,3 +1,6 @@
+<%@page import="com.smartvalue.apigee.rest.schema.sharedFlow.SharedFlowServices"%>
+<%@page import="com.smartvalue.apigee.rest.schema.BundleObjectService"%>
+<%@page import="com.smartvalue.apigee.rest.schema.ApigeeService"%>
 <%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.mashape.unirest.http.HttpResponse"%>
 <%@page import="java.util.Map"%>
@@ -25,7 +28,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Result of Extracting Bundled Objects </title>
 </head>
 <body>
 <%
@@ -37,24 +40,24 @@ ManagementServer sourceMs = AppContext.getApigeeManagementServer(session) ;
 String sourceOrgName = request.getParameter("orgSelect"); 
 sourceMs.setOrgName(sourceOrgName); 
 Infra sourceInfra = sourceMs.getInfra(); 
+String bundleType = request.getParameter("bundleType") ;  
 
 %>
-<h1>Export Deployed Proxies Results </h1>
+<h1>Results of Exporting Deployed <%= bundleType%>  </h1>
 <br> <h2> InfraStructure : </h2> <%=sourceInfra.getName()%>
 <br> <h2>Apigee Organization : </h2> <%=sourceOrgName%> 
 <%
 //----- ETL Starting Extraction ----  
+Class<? extends BundleObjectService> type = null ; 
+if (bundleType.equalsIgnoreCase("proxies")) type =  ProxyServices.class ;
+if (bundleType.equalsIgnoreCase("sharedFlows")) type =  SharedFlowServices.class ;
 
+ExportResults result = sourceMs.exportAllBundledObjects( type , sourceOrgName , userEmail ) ;
 
-ProxyServices sps = (ProxyServices) sourceMs.getProxyServices(sourceOrgName);
-String basePath =  migrationBasePath +"\\"+ userEmail +"\\"+sourceInfra.getName()+"\\"+sourceOrgName ; 
-String sourceFolder =basePath +"\\proxies\\" ; 
-String deplyStatusFileName = basePath + "\\deplysStatus.ser" ; 
-ExportResults result = sps.exportAll(sourceFolder , deplyStatusFileName) ;
 ProcessResults successResults = result.filterFailed(false) ;
 HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();
 %> 
-<h1>Export Results Statistics </h1>
+<h1>Export (<%=type%>) Results Statistics </h1>
 <table border="1">
 	<tr>
 		<td>#</td>
