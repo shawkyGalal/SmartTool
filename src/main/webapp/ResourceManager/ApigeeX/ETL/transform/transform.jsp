@@ -1,3 +1,4 @@
+<%@page import="com.smartvalue.apigee.rest.schema.BundleObjectService"%>
 <%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.net.URL"%>
@@ -46,7 +47,7 @@
 	String userEmail = gidt.getPayload().getEmail(); 
 		
 	
-	ProxyServices proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
+	BundleObjectService proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
 	String migrationBasePath = AppConfig.getMigrationBasePath() ;  ; 
 	TransformationResults transformationResults =  proxyServ.transformAll(migrationBasePath	+"\\"+ userEmail + "\\"+sourceInfra.getName()+"\\"+ org +"\\proxies"
 														  				, migrationBasePath +"\\"+ userEmail + "\\"+sourceInfra.getName()+"\\"+ org +"\\Transformed" + "\\proxies" 	) ;

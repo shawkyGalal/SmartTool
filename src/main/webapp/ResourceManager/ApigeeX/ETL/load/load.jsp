@@ -40,7 +40,7 @@ String transformedFolder = migrationBasePath +"\\"+userEmail+ "\\Stage\\stg\\Tra
 
 ProxyServices proxiesServices = (ProxyServices)ms.getProxyServices(destOrgName); 
 
-proxiesServices.setDeployUponUpload(false); 
+proxiesServices.setDeployUponUpload(true); 
 LoadResults result = proxiesServices.importAll(transformedFolder) ;
 LoadResults successResults = result.filterFailed(false) ;
 HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();
@@ -108,7 +108,8 @@ for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
 			responseBody = httpResponse.getBody();
 			}
 			String error = loadResult.getError(); 
-			
+			boolean isDeployResult = (loadResult instanceof DeployResult) ;  
+			boolean canRollBack = isDeployResult && ! loadResult.isFailed();			
 			%>
 			<tr>
 				<td><%=i%></td>
@@ -117,7 +118,8 @@ for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
 				<td><%=error%></td>
 				<td><%=loadResult.getExceptionClassName()%></td>
 				<td><%=responseBody %> </td>  
-				<td>Actions</td>
+				<td><%= (canRollBack) ? "<a href = 'proxyRollBack.jsp?proxyName="+loadResult.getSource()+"'>RollBack</a> " :"No Action"  %></td>
+				
 			</tr>
 			<%
 		}

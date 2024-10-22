@@ -43,12 +43,12 @@
 	<%
 	 //----- ETL Starting Loading ----
 	 ProxyServices sps = (ProxyServices) sourceMs.getProxyServices(orgSelect);
-	 String basePath =  migrationBasePath +"\\"+ userEmail +"\\"+sourceInfra.getName()+"\\"+orgSelect ; 
-	 String deplyStatusFileName = basePath + "\\deplysStatus.ser" ; 
+	 String deplyStatusFileName = sps.getSerlizeDeplyStateFileName(userEmail) ;
+	 
 	 DeploymentsStatus lastDeploymentsStatus = sps.deSerializeDeployStatus(deplyStatusFileName); 
 	 
 	 %> 
-	<h1>Before Last Extract Proxies Deployments Status</h1> 
+	<h1>Before Last Extract Proxies/SharedFlows Deployments Status</h1> 
 	<a href = "RollBack.jsp?orgSelect=<%=orgSelect%>">RollBack</a>
 	<table border="1">
 		<tr>
