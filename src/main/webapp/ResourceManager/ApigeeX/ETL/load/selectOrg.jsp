@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<h2>Select Apigee Organization To Start Uploading Proxy Bundles   </h2> 
+<h2>Select Apigee Organization To Start Uploading Last Transformed Proxy Bundles   </h2> 
 <br> 
 <%
 

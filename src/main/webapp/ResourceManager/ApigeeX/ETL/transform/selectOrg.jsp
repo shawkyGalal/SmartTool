@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<h2>Select Apigee Organization To Start The Transformation Process  </h2> 
+<h2>Select Apigee Organization To Start The Transformation Process For The Last Extracted Proxies </h2> 
 <br> 
 <%
 

@@ -44,8 +44,8 @@
 	<%
 	 //----- ETL Starting Loading ----
 	 ProxyServices sps = (ProxyServices) sourceMs.getProxyServices(sourceOrgName);
-	 String basePath =  migrationBasePath +"\\"+ userEmail +"\\"+sourceInfra.getName()+"\\"+sourceOrgName ; 
-	 String deplyStatusFileName = basePath + "\\deplysStatus.ser" ; 
+	 //String basePath =  migrationBasePath +"\\"+ userEmail +"\\"+sourceInfra.getName()+"\\"+sourceOrgName ; 
+	 String deplyStatusFileName = sps.getSerlizeDeplyStateFileName(userEmail) ;  
 	 DeployResults result = sps.rollBackToLastSerializedDeployStatus(deplyStatusFileName); 
 	 ProcessResults successResults = result.filterFailed(false) ;
 	 HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();

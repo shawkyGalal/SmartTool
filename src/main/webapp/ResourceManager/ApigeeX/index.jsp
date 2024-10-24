@@ -40,10 +40,12 @@
 	We Will Use ETL ( Extract , Transform and Load ) Model 
 	<h2><a href = "ETL/extract/selectOrgForProxies.jsp" target = "Proxies"> 01- Extract Apigee Proxies  </a></h2>
 	<h2><a href = "ETL/extract/selectOrgForSharedFlows.jsp" target = "SharedFlows"> 01- Extract Apigee SharedFlows </a></h2>
-	<h2><a href = "ETL/transform/selectOrg.jsp" target = "Najiz"> 02- Transform Objects to Match ApigeeX requirements </a></h2>
+	<h2><a href = "ETL/transform/selectOrg.jsp" target = "Najiz"> 02- Transform Proxies </a></h2>
 	<h2><a href = "ETL/load/selectOrg.jsp?targetPage=load/load.jsp" target = "load" >03- Load Apigee Proxies to Apigee X Cloud </a></h2>
 	<h2><a href = "ETL/rollBacks/selectOrg.jsp" target = "RollBack" >04- RollBack to Last Extracted Proxies Deployment Status </a></h2>
-	<h2><a href = "ETL/load/delete.jsp" target = "delete" >05- Delete Apigee Proxies from Apigee X Cloud </a></h1>
+	<h2><a href = "ETL/completeProxyETL/selectOrg.jsp" target = "RollBack" >05- Perform a Complete ETL for a Proxy  </a></h2>
+	
+	<h2><a href = "ETL/delete/selectOrg.jsp" target = "delete" >05- Delete All Apigee Proxies  </a></h1>
 	
 	<h2><a href = "ETL/extract/targetServers.jsp" target = "TargetServer"> Extract Apigee TargetServers from Staging  </a></h1>
 	

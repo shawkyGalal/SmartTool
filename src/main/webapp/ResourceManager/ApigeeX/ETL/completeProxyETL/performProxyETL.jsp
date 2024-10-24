@@ -1,38 +1,44 @@
 <%@page import="com.mashape.unirest.http.HttpResponse"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResult"%>
-<%@page import="java.util.Map"%>
-<%@page import="java.util.HashMap"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResults"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="com.smartvalue.apigee.rest.schema.proxy.ProxyServices"%>
 <%@page import="com.smartValue.web.AppContext"%>
-<%@page import ="com.smartvalue.apigee.rest.schema.proxy.*"%>
-<%@page import ="com.smartvalue.moj.clients.environments.JsonParser"%>
-<%@page import ="com.smartvalue.apigee.configuration.infra.Infra"%>
-<%@page import ="com.smartvalue.apigee.configuration.infra.ManagementServer"%>
-<%@page import ="com.smartvalue.apigee.configuration.AppConfig"%>
-<%@page import ="com.smartvalue.apigee.rest.schema.proxy.google.auto.GoogleProxiesList"%>
-<%@page import ="java.io.InputStream"%>
+<%@page import="com.smartvalue.apigee.configuration.AppConfig"%>
+<%@page import="com.smartvalue.apigee.resourceManager.Renderer"%>
+<%@page import ="com.smartvalue.apigee.rest.schema.application.Application"%>
+<%@page import ="com.smartvalue.apigee.rest.schema.organization.Organization"%>
+<%@page import ="com.smartvalue.apigee.rest.schema.product.ProductsServices"%>
+<%@page import ="com.smartvalue.apigee.rest.schema.proxy.Proxy"%>
+<%@page import ="com.smartvalue.apigee.rest.schema.developer.Developer"%>
+<%@page import ="com.smartvalue.apigee.rest.schema.server.Postgres"%>
 
+<%@page import ="com.smartvalue.apigee.rest.schema.TargetServer"%>
+<%@page import ="com.smartvalue.apigee.rest.schema.virtualHost.VirtualHost"%>
+<%@page import ="com.smartvalue.apigee.configuration.infra.ManagementServer"%>
+<%@page import ="java.util.*"%>
+<%@page import ="java.io.InputStream"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Delete Apigee Objects </title>
-</head>
-<body>
+	<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	</head>
+	<body>
+		
 	<%
-	AppConfig ac = AppContext.getAppConfig(application);
-	String destOrgName = request.getParameter("orgSelect"); //"moj-prod-apigee" 
-	//----- ETL Starting Loading ----
-	ManagementServer ms = AppContext.getApigeeManagementServer(session); 
-	ProxyServices proxiesServices =(ProxyServices) ms.getProxyServices(destOrgName); 
-	DeleteResults deleteResults = proxiesServices.deleteAll() ;
-	ProcessResults successResults = deleteResults.filterFailed(false) ;
-	HashMap<String,ProcessResults>  classifiedResults = deleteResults.getExceptionClasses();
-	%> 
-	<h1>Delete Proxies Results Statistics </h1>
+		String destOrgName = request.getParameter("orgSelect"); //"moj-prod-apigee" 
+		ManagementServer ms = AppContext.getApigeeManagementServer(session); 
+		ms.setOrgName(destOrgName); 
+		//----- ETL Starting Loading ----
+		ProxyServices proxiesServices =(ProxyServices) ms.getProxyServices(destOrgName); 
+		String proxyName = request.getParameter("proxyName") ; 
+		ProcessResults eTLResult = proxiesServices.performETL(proxyName); 
+		ProcessResults successResults = eTLResult.filterFailed(false) ;
+		HashMap<String,ProcessResults>  classifiedResults = eTLResult.getExceptionClasses();
+	%>
+	<h1>ETL Proxy Results Statistics </h1>
 	<table border="1">
 		<tr>
 			<td>#</td>
@@ -59,7 +65,7 @@
 	</table>
 	
 	
-	<h1>Delete Proxies Results Classification </h1>
+	<h1>ETL Proxy Results Classification </h1>
 		<%
 		
 		for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
@@ -112,6 +118,6 @@
 			
 		}
 		
-	%>
-</body>
+	%> 
+	</body>
 </html>

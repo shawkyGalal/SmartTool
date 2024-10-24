@@ -52,7 +52,7 @@ Class<? extends BundleObjectService> type = null ;
 if (bundleType.equalsIgnoreCase("proxies")) type =  ProxyServices.class ;
 if (bundleType.equalsIgnoreCase("sharedFlows")) type =  SharedFlowServices.class ;
 
-ExportResults result = sourceMs.exportAllBundledObjects( type , sourceOrgName , userEmail ) ;
+ExportResults result = sourceMs.exportAllBundledObjects( type ,  userEmail ) ;
 
 ProcessResults successResults = result.filterFailed(false) ;
 HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();
