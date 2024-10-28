@@ -1,3 +1,4 @@
+<%@page import="com.smartvalue.apigee.configuration.infra.ServiceFactory"%>
 <%@page import="com.smartvalue.apigee.rest.schema.sharedFlow.SharedFlowServices"%>
 <%@page import="com.smartvalue.apigee.rest.schema.BundleObjectService"%>
 <%@page import="com.smartvalue.apigee.rest.schema.ApigeeService"%>
@@ -51,8 +52,8 @@ String bundleType = request.getParameter("bundleType") ;
 Class<? extends BundleObjectService> type = null ; 
 if (bundleType.equalsIgnoreCase("proxies")) type =  ProxyServices.class ;
 if (bundleType.equalsIgnoreCase("sharedFlows")) type =  SharedFlowServices.class ;
-
-ExportResults result = sourceMs.exportAllBundledObjects( type ,  userEmail ) ;
+BundleObjectService bundleObjectService = ServiceFactory.createBundleServiceInstance(type, sourceMs ) ; 
+ExportResults result = bundleObjectService.exportAllBundledObjects( type ,  userEmail ) ;
 
 ProcessResults successResults = result.filterFailed(false) ;
 HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();

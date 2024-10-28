@@ -52,7 +52,8 @@ ProxyServices proxiesServices =(ProxyServices) ms.getProxyServices(orgSelect);
 						<tr>
 							<td><%=counter%></td>
 							<td><%=proxyName%> </td> 
-							<td><a href ="performProxyETL.jsp?proxyName=<%=proxyName%>&orgSelect=<%=orgSelect%>" >Perform Complete ETL </a></td>
+							<td><a href ="performProxyETL.jsp?proxyName=<%=proxyName%>&orgSelect=<%=orgSelect%>" target = "Perform Proxy ETL" >Perform Complete ETL </a></td>
+							<td><a href ="rollBackLastETL.jsp?proxyName=<%=proxyName%>&orgSelect=<%=orgSelect%>" target = "RollBack Proxy ETL" >RollBack ETL </a></td>
 						</tr> 
 						
 						<%

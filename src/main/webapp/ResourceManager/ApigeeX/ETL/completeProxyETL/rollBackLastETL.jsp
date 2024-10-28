@@ -1,3 +1,4 @@
+<%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.mashape.unirest.http.HttpResponse"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResult"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResults"%>
@@ -28,15 +29,19 @@
 	<body>
 		
 	<%
+		GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
+		String userEmail = gidt.getPayload().getEmail();
+	
 		String destOrgName = request.getParameter("orgSelect"); //"moj-prod-apigee" 
 		ManagementServer ms = AppContext.getApigeeManagementServer(session); 
 		ms.setOrgName(destOrgName); 
 		//----- ETL Starting Loading ----
 		ProxyServices proxiesServices =(ProxyServices) ms.getProxyServices(destOrgName); 
 		String proxyName = request.getParameter("proxyName") ; 
-		ProcessResults eTLResult = proxiesServices.performETL(proxyName); 
-		ProcessResults successResults = eTLResult.filterFailed(false) ;
-		HashMap<Class<?>,ProcessResults>  classifiedResults = eTLResult.classify();
+		String serlizeFileName = proxiesServices.getSerlizeDeplyStateFileName(userEmail); 
+		ProcessResults rollBackResult = proxiesServices.rollBackObjectToLastSerializedDeployStatus(proxyName, serlizeFileName); 
+		ProcessResults successResults = rollBackResult.filterFailed(false) ;
+		HashMap<Class<?>,ProcessResults>  classifiedResults = rollBackResult.classify();
 	%>
 	<h1>ETL Proxy Results Statistics </h1>
 	<table border="1">
@@ -48,8 +53,7 @@
 	<%
 	int count = 1 ; 
 	for (Map.Entry<Class<?>,ProcessResults> entry : classifiedResults.entrySet())
-	{
-		if (entry.getValue().size() == 0 ){continue ; }
+	{ 	if (entry.getValue().size() == 0 ){continue ; }
 		count++ ; 
 		Class<?> clazz = entry.getKey() ; 
 		int size = entry.getValue().size() ;
@@ -57,7 +61,7 @@
 		%>
 		<tr>
 			<td><%=count%></td>
-			<td>Class : <%=clazz%>  </td>
+			<td><%=clazz%>  </td>
 			<td><%=size%></td>
 		</tr>
 		<%
@@ -66,7 +70,7 @@
 	</table>
 	
 	
-	<h1>ETL Proxy Results Classification </h1>
+	<h1>RollBack ETL Proxy Results Classification </h1>
 		<%
 		
 		for (Map.Entry<Class<?>,ProcessResults> entry : classifiedResults.entrySet())
@@ -75,7 +79,7 @@
 			Class<?> resultsClassName = entry.getKey() ; 
 			
 			%> 
-			<h2>ETL Process  : <%= resultsClassName %></h2>
+			<h2>RollBack Class : <%= resultsClassName %></h2>
 			<table border="1">
 				<tr>
 					<td>Count</td>
