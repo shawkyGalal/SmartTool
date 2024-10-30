@@ -32,12 +32,15 @@ public class AppContext {
  
  public static void googleIdTokenLogoff(HttpSession  session)
  {
-	 AppContext.setGoogleIdToken(session, null); 
+	 AppContext.setGoogleIdToken(session, null);
+	 ManagementServer ms = AppContext.getApigeeManagementServer(session);  
+	 if (ms != null) ms.setAccessToken(null); // to enforce ms to regenerate accesstoken with the new googleIdToken from user google login 
 	 AppContext.setApigeeManagementServer(session , null) ; 
  }
  
  public static void  setApigeeManagementServer(HttpSession  session , ManagementServer m_managementServer )
  {
+	 if (m_managementServer != null) m_managementServer.setGoogleIdToken(AppContext.getGoogleIdToken(session));
 	 session.setAttribute(APIGEE_MANAGEMENT_SERVER ,m_managementServer ) ; 
  }
  

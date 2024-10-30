@@ -1,3 +1,4 @@
+<%@page import="com.google.api.client.googleapis.auth.oauth2.GoogleIdToken"%>
 <%@page import="com.mashape.unirest.http.HttpResponse"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResult"%>
 <%@page import="com.smartvalue.apigee.migration.ProcessResults"%>
@@ -28,13 +29,16 @@
 	<body>
 		
 	<%
+		GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
+		String userEmail = gidt.getPayload().getEmail();
+	
 		String destOrgName = request.getParameter("orgSelect"); //"moj-prod-apigee" 
 		ManagementServer ms = AppContext.getApigeeManagementServer(session); 
 		ms.setOrgName(destOrgName); 
 		//----- ETL Starting Loading ----
 		ProxyServices proxiesServices =(ProxyServices) ms.getProxyServices(destOrgName); 
 		String proxyName = request.getParameter("proxyName") ; 
-		ProcessResults eTLResult = proxiesServices.performETL(proxyName); 
+		ProcessResults eTLResult = proxiesServices.performETL(proxyName , userEmail); 
 		ProcessResults successResults = eTLResult.filterFailed(false) ;
 		HashMap<Class<?>,ProcessResults>  classifiedResults = eTLResult.classify();
 	%>

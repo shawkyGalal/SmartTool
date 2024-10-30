@@ -36,7 +36,7 @@ AppConfig ac = AppContext.getAppConfig(application);
 	if (googleIdToken != null )
 	{
 		out.print( googleIdToken.getPayload().getEmail()) ; 
-		session.setAttribute( AppContext.GOOGLE_ID_TOKEN_VAR_NAME, googleIdToken); 
+		AppContext.setGoogleIdToken(session, googleIdToken) ; 
 		
 		// Simulate Login To SmartTool
 		try{

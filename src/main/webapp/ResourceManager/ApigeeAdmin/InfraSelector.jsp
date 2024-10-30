@@ -149,6 +149,7 @@
 		Region region0 = infra.getRegions().get(0) ; 
 		ms = infra.getManagementServer(region0.getName()); // ManagementServer(infra) ;
 		ms.setOnPremise(true); 
+		ms.setGoogleIdToken(AppContext.getGoogleIdToken(session)) ; 
 		AppContext.setApigeeManagementServer(session, ms) ; 
 		session.setAttribute("infra", infra) ;
 		String accessTokenSource = infra.getAccessTokenSource() ; 
