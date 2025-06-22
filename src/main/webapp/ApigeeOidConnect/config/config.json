@@ -1,7 +1,0 @@
-{
-  "sessionApi" : {
-    "apikey" : "b7UPOb41H9jSGsbxttkwIb3qsRELtACi"
-  },
-  "localUserDb" : "..\\config\\localUserDb.js",
-  "authSystem" : "local"
-}

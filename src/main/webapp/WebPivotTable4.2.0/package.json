@@ -16,11 +16,11 @@
   "private": true,
   "dependencies": {
     "express": "~4.2.0",
-    "morgan": "~1.0.0",
-    "body-parser": "~1.0.0",
+    "morgan": "~1.9.1",
+    "body-parser": "~1.20.3",
     "method-override": "~1.0.0",
     "compression": "~1.0.1",
-    "phantomjs": "~1.9.2",
+    "phantomjs": "~2.1.2",
     "phantom": "~0.7.2",
     "temp": "~0.8.1",
     "request": "2.21.x"
