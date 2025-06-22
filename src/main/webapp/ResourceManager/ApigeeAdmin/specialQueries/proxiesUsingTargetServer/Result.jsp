@@ -31,6 +31,7 @@
 			String targetServer = request.getParameter("resourceSelect") ;
 			String org = request.getParameter("orgSelect") ;
 			Organization orgObj = (Organization) ms.getOrgByName(org) ;
+			ms.setOrgName(org); 
 			//OutputStream os = new org.apache.commons.io.output.WriterOutputStream(out);
 			//PrintStream ps = new PrintStream(os);
 			//orgObj.setPrintStream(ps); 

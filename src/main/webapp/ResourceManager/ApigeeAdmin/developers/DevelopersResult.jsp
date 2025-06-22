@@ -51,7 +51,7 @@
 				} catch (Exception e) {}
 			}
 			HashMap<String , String > extrLinks = new HashMap<String , String >() ; 
-			extrLinks.put ("devDetails.jsp?org="+orgSelect+"&developerId=" , "Details") ;
+			extrLinks.put ("devDetails.jsp?orgSelect="+orgSelect+"&developerId=" , "Details") ;
 			extrLinks.put ("xxxxx.jsp?orgSelect="+orgSelect+"&developerId=" , "xxxx") ;
 			
 			out.print(Renderer.arrayListToHtmlTable(developers , extrLinks)) ;

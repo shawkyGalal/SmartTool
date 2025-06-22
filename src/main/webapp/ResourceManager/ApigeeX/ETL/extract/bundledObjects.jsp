@@ -1,3 +1,4 @@
+<%@page import="java.util.UUID"%>
 <%@page import="com.smartvalue.apigee.configuration.infra.ServiceFactory"%>
 <%@page import="com.smartvalue.apigee.rest.schema.sharedFlow.SharedFlowServices"%>
 <%@page import="com.smartvalue.apigee.rest.schema.BundleObjectService"%>
@@ -33,30 +34,33 @@
 </head>
 <body>
 <%
-GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
-String userEmail = gidt.getPayload().getEmail();
-String migrationBasePath = AppConfig.getMigrationBasePath() ;
+p
 
-ManagementServer sourceMs = AppContext.getApigeeManagementServer(session) ;
-String sourceOrgName = request.getParameter("orgSelect"); 
-sourceMs.setOrgName(sourceOrgName); 
-Infra sourceInfra = sourceMs.getInfra(); 
-String bundleType = request.getParameter("bundleType") ;  
-
+	GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
+	String userEmail = gidt.getPayload().getEmail();
+	
+	
+	ManagementServer sourceMs = AppContext.getApigeeManagementServer(session) ;
+	
+	String migrationBasePath = sourceMs.getProcessFolderPath(UUID.randomUUID().toString()); 
+	String sourceOrgName = request.getParameter("orgSelect"); 
+	sourceMs.setOrgName(sourceOrgName); 
+	Infra sourceInfra = sourceMs.getInfra(); 
+	String bundleType = request.getParameter("bundleType") ;
 %>
-<h1>Results of Exporting Deployed <%= bundleType%>  </h1>
-<br> <h2> InfraStructure : </h2> <%=sourceInfra.getName()%>
-<br> <h2>Apigee Organization : </h2> <%=sourceOrgName%> 
-<%
-//----- ETL Starting Extraction ----  
-Class<? extends BundleObjectService> type = null ; 
-if (bundleType.equalsIgnoreCase("proxies")) type =  ProxyServices.class ;
-if (bundleType.equalsIgnoreCase("sharedFlows")) type =  SharedFlowServices.class ;
-BundleObjectService bundleObjectService = ServiceFactory.createBundleServiceInstance(type, sourceMs ) ; 
-ExportResults result = bundleObjectService.exportAllBundledObjects( type ,  userEmail ) ;
-
-ProcessResults successResults = result.filterFailed(false) ;
-HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();
+	<h1>Results of Exporting Deployed <%= bundleType%>  </h1>
+	<br> <h2> InfraStructure : </h2> <%=sourceInfra.getName()%>
+	<br> <h2>Apigee Organization : </h2> <%=sourceOrgName%> 
+	<%
+	//----- ETL Starting Extraction ----  
+	Class<? extends BundleObjectService> type = null ; 
+	if (bundleType.equalsIgnoreCase("proxies")) type =  ProxyServices.class ;
+	if (bundleType.equalsIgnoreCase("sharedFlows")) type =  SharedFlowServices.class ;
+	BundleObjectService bundleObjectService = ServiceFactory.createBundleServiceInstance(type, sourceMs.getInfra() , null ) ; 
+	ExportResults result = bundleObjectService.exportAll( migrationBasePath ) ;
+	
+	ProcessResults successResults = result.filterFailed(false) ;
+	HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();
 %> 
 <h1>Export (<%=type%>) Results Statistics </h1>
 <table border="1">
@@ -100,7 +104,6 @@ for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
 				<td>Count</td>
 				<td>source (Environment.Proxy.Version) </td>
 				<td>Destination </td>
-				<td>Status</td>
 				<td>Error</td>
 				<td>ExceptionClass</td>
 				<td>responseBody </td>  
@@ -112,27 +115,15 @@ for (Map.Entry<String,ProcessResults> entry : classifiedResults.entrySet())
 		for (int i =0 ; i< processResults.size() ; i++)
 		{
 			ExportResult exportResult = ((ExportResult) processResults.get(i));
-			HttpResponse<String> httpResponse =  exportResult.getHttpResponse(); 
-			
-			int statusCode =0; 
-			String responseBody = null; 
-			if (httpResponse != null)
-			{
-			statusCode = httpResponse.getStatus();
-			responseBody = httpResponse.getBody();
-			}
-			String error = exportResult.getError(); 
-			String destination = exportResult.getDestination(); 
 			
 			%>
 			<tr>
 				<td><%=i%></td>
 				<td><%=exportResult.getSource()%>  </td>
-				<td><%=destination%></td>
-				<td><%=statusCode%></td>
-				<td><%=error%></td>
+				<td><%=exportResult.getDestination() %></td>
+				<td><%=exportResult.getError() %></td>
 				<td><%=exportResult.getExceptionClassName()%></td>
-				<td><%=responseBody %> </td>  
+				<td><%=exportResult.getResponseBody() %> </td>  
 				<td>Actions</td>
 			</tr>
 			<%

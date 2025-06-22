@@ -2,7 +2,7 @@
 <%@page import="com.smartvalue.swagger.v3.parser.util.SwaggerParseResult"%>
 <%@page import="com.smartvalue.apigee.proxyBundle.ProxyBundleParser"%>
 <%@page import="io.swagger.v3.oas.models.Operation"%>
-<%@page import="com.smartvalue.apigee.rest.schema.proxyEndPoint.auto.Flow"%>
+<%@page import="com.smartvalue.apigee.rest.schema.proxy.endPoints.auto.Flow"%>
 <%@page import="com.smartvalue.apigee.rest.schema.proxyRevision.ProxyRevision"%>
 <%@page import="com.smartvalue.apigee.rest.schema.proxyRevision.OasOperation"%>
 <%@page import ="com.smartvalue.apigee.rest.schema.application.Application"%>

@@ -29,16 +29,17 @@
 	<body>
 		
 	<%
-		GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
+		GoogleIdToken gidt =  AppContext.getGoogleIdToken(session); 
 		String userEmail = gidt.getPayload().getEmail();
 	
 		String destOrgName = request.getParameter("orgSelect"); //"moj-prod-apigee" 
 		ManagementServer ms = AppContext.getApigeeManagementServer(session); 
 		ms.setOrgName(destOrgName); 
-		//----- ETL Starting Loading ----
-		ProxyServices proxiesServices =(ProxyServices) ms.getProxyServices(destOrgName); 
-		String proxyName = request.getParameter("proxyName") ; 
-		ProcessResults eTLResult = proxiesServices.performETL(proxyName , userEmail); 
+		
+		//----- ETL Starting ----
+		String proxyName = request.getParameter("proxyName") ;
+		 
+		ProcessResults eTLResult = ms.getProxyServices().performETL(proxyName, UUID.randomUUID()); 
 		ProcessResults successResults = eTLResult.filterFailed(false) ;
 		HashMap<Class<?>,ProcessResults>  classifiedResults = eTLResult.classify();
 	%>
@@ -84,7 +85,6 @@
 				<tr>
 					<td>Count</td>
 					<td>source </td>
-					<td>Status</td>
 					<td>Error</td>
 					<td>ExceptionClass</td>
 					<td>responseBody </td>  
@@ -95,21 +95,20 @@
 			for (int i =0 ; i< processResults.size() ; i++)
 			{
 				ProcessResult loadResult =  processResults.get(i);
-				HttpResponse<String> httpResponse =  loadResult.getHttpResponse(); 
+				String httpResponse =  loadResult.getResponseBody(); 
 				
 				int statusCode =0; 
 				String responseBody = null; 
 				if (httpResponse != null)
 				{
-				statusCode = httpResponse.getStatus();
-				responseBody = httpResponse.getBody();
+				
+				responseBody = loadResult.getResponseBody(); 
 				}
 				String error = loadResult.getError(); 
 				%>
 				<tr>
 					<td><%=i%></td>
 					<td><%=loadResult.getSource()%>  </td>
-					<td><%=statusCode%></td>
 					<td><%=error%></td>
 					<td><%=loadResult.getExceptionClassName()%></td>
 					<td><%=responseBody %> </td>  

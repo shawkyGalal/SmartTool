@@ -47,7 +47,7 @@ public class GoogleAuthenticator extends Authenticator implements IUserNotFoundH
 	     
 	    if (googleIdToken == null)
 	    {
-	    	response.sendRedirect("/ResourceManager/loginWithGoogle/authorize.jsp"); 
+	    	response.sendRedirect("/SmartTool/ResourceManager/loginWithGoogle/authorize.jsp?reason=GoogleIdTokenIsNull"); 
 	    }
 		userEmail = googleIdToken.getPayload().getEmail();
 		userName = userEmail ; 

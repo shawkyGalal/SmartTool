@@ -41,18 +41,24 @@
 							<td><%=counter%></td>
 							<td><%=proxyName%> </td> 
 							<%
+							List<String> allversions = null; 
 							HashMap<String , List<Object>> basePaths = new HashMap<String , List<Object>>() ; 
 							try {
 								Proxy proxy = org.getProxy(proxyName) ; 
-								List<String> allversions = proxy.getRevision() ;
+								 allversions = proxy.getRevision() ;
 								
-								for (String revision : allversions )
+								Boolean displyRevisions = false ; 
+								if (displyRevisions)
 								{
-									basePaths.put(revision , (List<Object>)(Object)proxy.getRevision(revision).getBasepaths() );
+									for (String revision : allversions )
+									{
+										basePaths.put(revision , (List<Object>)(Object)proxy.getRevision(revision).getBasepaths() );
+									}
 								}
 							} catch(Exception e ) {}
 							%>
 							<td><%=Renderer.hashMapWithArraylisttoHtmlTable(basePaths) %> </td>
+							<td><a href = "https://api-stg-n.moj.gov.sa:3001/platform/stg/proxies/<%=proxyName%>/overview/<%=allversions.getLast() %>" >Apigee Edge</a></td>
 							
 					</tr> 
 					

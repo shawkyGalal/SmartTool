@@ -42,29 +42,32 @@
 	<br> <h2> InfraStructure : </h2> <%=sourceInfra.getName()%>
 	<br> <h2>Apigee Organization : </h2> <%=org%> 
 	<%
-	//----- ETL Starting Transforming ----
-	GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
-	String userEmail = gidt.getPayload().getEmail(); 
-		
-	
-	BundleObjectService proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
-	String migrationBasePath = AppConfig.getMigrationBasePath() ;  ; 
-	TransformationResults transformationResults =  proxyServ.transformAll(migrationBasePath	+"\\"+ userEmail + "\\"+sourceInfra.getName()+"\\"+ org +"\\proxies"
-														  				, migrationBasePath +"\\"+ userEmail + "\\"+sourceInfra.getName()+"\\"+ org +"\\Transformed" + "\\proxies" 	) ;
-	
-	TransformationResults transformationSuccess =  transformationResults.filterFailed(false); 
-	TransformationResults transformationFailed =  transformationResults.getNotMatchedResult();
-	
-	
-	String error01 = "Not Found" ; 
-	String error02 = "OAS Flow (GetOAS) Found But Empty" ; 
-	String error03 = "Unable to Extract Documentation from Flow : GetOAS" ;
-	String error04 = "Unexpected character" ; 
-	
-	String[] knownErrors = {error01 , error02 , error03 , error04 } ; 
-	HashMap <String , TransformationResults> errorTypes =  transformationFailed.filterErrorDesc(knownErrors)  ; 
-	errorTypes.put("UnClassefied Errors ", transformationFailed.getNotMatchedResult()); 
-	%>
+ 	p
+
+ 	 		//----- ETL Starting Transforming ----
+ 	 		GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
+ 	 		String userEmail = gidt.getPayload().getEmail(); 
+ 	 			
+ 	 		
+ 	 		BundleObjectService proxyServ =  (ProxyServices) sourceMs.getProxyServices(); 
+ 	 		String migrationBasePath = AppConfig.getMigrationBasePath() ;  
+ 	 		String upToOrgNamePath = proxyServ.getProcessFolderPath(null) ; 
+ 	 		TransformationResults transformationResults =  proxyServ.transformAll(upToOrgNamePath  +"\\proxies"
+ 	 													  				, upToOrgNamePath +"\\" +ProxyServices.TransformedFoldername + "\\proxies" 	) ;
+ 	 		
+ 	 		TransformationResults transformationSuccess =  transformationResults.filterFailed(false); 
+ 	 		TransformationResults transformationFailed =  transformationResults.getNotMatchedResult();
+ 	 		
+ 	 		
+ 	 		String error01 = "Not Found" ; 
+ 	 		String error02 = "OAS Flow (GetOAS) Found But Empty" ; 
+ 	 		String error03 = "Unable to Extract Documentation from Flow : GetOAS" ;
+ 	 		String error04 = "Unexpected character" ; 
+ 	 		
+ 	 		String[] knownErrors = {error01 , error02 , error03 , error04 } ; 
+ 	 		HashMap <String , TransformationResults> errorTypes =  transformationFailed.filterErrorDesc(knownErrors)  ; 
+ 	 		errorTypes.put("UnClassefied Errors ", transformationFailed.getNotMatchedResult());
+ 	%>
 	<br> 
 	<h2> Transformation Statistics </h2>
 	<table border="1"><tr>

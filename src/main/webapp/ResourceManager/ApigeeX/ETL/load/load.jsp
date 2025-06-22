@@ -36,12 +36,11 @@ String migrationBasePath = AppConfig.getMigrationBasePath() ;
 ManagementServer ms = AppContext.getApigeeManagementServer(session); 
 String destOrgName = request.getParameter("orgSelect"); 
 // Uploading from Staging Env. 
-String transformedFolder = migrationBasePath +"\\"+userEmail+ "\\Stage\\stg\\Transformed\\proxies\\" ; 
 
 ProxyServices proxiesServices = (ProxyServices)ms.getProxyServices(destOrgName); 
-
+String transformedPath = proxiesServices.getTransformedPath(null) ; 
 proxiesServices.setDeployUponUpload(true); 
-LoadResults result = proxiesServices.importAll(transformedFolder) ;
+LoadResults result = proxiesServices.importAll(transformedPath) ;
 LoadResults successResults = result.filterFailed(false) ;
 HashMap<String,ProcessResults>  classifiedResults = result.getExceptionClasses();
 %> 

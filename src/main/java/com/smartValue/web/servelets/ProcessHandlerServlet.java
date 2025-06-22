@@ -43,7 +43,7 @@ public class ProcessHandlerServlet extends HttpServlet {
 	    } else {
 	    	response.setContentType("application/json");
 	        out.print("{'status': 'Process Not Found' }") ; 
-	    	//response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+	    	response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 	    }
 	}
 
