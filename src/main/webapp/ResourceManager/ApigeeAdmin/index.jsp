@@ -25,7 +25,7 @@
 	<% 
 		ManagementServer ms = AppContext.getApigeeManagementServer(session);
 		GoogleIdToken googleIdToken = AppContext.getGoogleIdToken(session);
-		if (ms == null  || ms.getInfra() == null) 
+		if (ms == null ) // || ms.getInfra() == null
 		{ return ;}
 		else 
 		{

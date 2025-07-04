@@ -36,7 +36,7 @@ ManagementServer ms = AppContext.getApigeeManagementServer(session);
 	}
 	catch(Exception e ){
 		out.println("Failure to Authenticate SmartTool Due To : " + e.getMessage()) ;
-		//response.sendRedirect("../index.jsp");
+		response.sendRedirect("../index.jsp");
 	}
 
 	//
