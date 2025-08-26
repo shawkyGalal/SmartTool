@@ -19,7 +19,7 @@
 <body>
 <%
 ManagementServer ms = AppContext.getApigeeManagementServer(session);
-	ms.setOnPremise(false) ;
+	//ms.setOnPremise(false) ;
 	String authCode = request.getParameter("code") ;
 	String contextPath = request.getContextPath(); 
 	String redirectUri = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+contextPath+"/ResourceManager/loginWithGoogle/authCodeHandler.jsp" ; 

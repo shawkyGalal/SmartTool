@@ -29,6 +29,7 @@
 		%>	
 			<img alt="<%=googleIdToken.getPayload().get("name")%>" src="<%=googleIdToken.getPayload().get("picture")%>">
 			<a href = "./loginWithGoogle/googleIdLogout.jsp">Google ID Logout</a>
+			<a href = "./loginWithGoogle/userInfo.jsp">User Info </a>
 		
 			<h1><a href = "ApigeeAdmin/index.jsp" target = "Najiz"> Apigee Administration </a></h1>
 			<h1><a href = "SDK_Generator/InputParams.jsp" target = "SDK Generator"> SDK Generator </a></h1>

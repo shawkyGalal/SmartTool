@@ -38,7 +38,7 @@
 			{//--- Already Logged before to Google Cloud 
 				response.sendRedirect("../ApigeeAdmin/index.jsp?message=AlreadyLogedToGooleCloud") ; 
 			}
-			ms.setOnPremise(false) ;  
+			//ms.setOnPremise(false) ;  
 		}
 	%>
 	
