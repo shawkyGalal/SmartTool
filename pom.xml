@@ -645,6 +645,12 @@
 			    <version>1.9</version> <!-- Use the appropriate version -->
 			</dependency>
 			
+			<dependency>
+			    <groupId>com.oracle.database.xml</groupId>
+			    <artifactId>xmlparserv2</artifactId> 
+			</dependency>
+    
+			
 						
 		<dependency>
 		    <groupId>org.hibernate</groupId>
