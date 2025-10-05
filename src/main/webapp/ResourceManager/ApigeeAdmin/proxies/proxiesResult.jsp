@@ -47,7 +47,7 @@
 								Proxy proxy = org.getProxy(proxyName) ; 
 								 allversions = proxy.getRevision() ;
 								
-								Boolean displyRevisions = false ; 
+								Boolean displyRevisions = true ; 
 								if (displyRevisions)
 								{
 									for (String revision : allversions )
@@ -55,7 +55,7 @@
 										basePaths.put(revision , (List<Object>)(Object)proxy.getRevision(revision).getBasepaths() );
 									}
 								}
-							} catch(Exception e ) {}
+							} catch(Exception e ) {System.out.print(e.getMessage()); e.printStackTrace(); }
 							%>
 							<td><%=Renderer.hashMapWithArraylisttoHtmlTable(basePaths) %> </td>
 							<td><a href = "https://api-stg-n.moj.gov.sa:3001/platform/stg/proxies/<%=proxyName%>/overview/<%=allversions.getLast() %>" >Apigee Edge</a></td>

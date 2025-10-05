@@ -2,19 +2,48 @@
  *  
  */
 	const configPath = './moj-environments.json' ; 
+	let selectedInfraCache = null;
+
+	async function getSelectedInfra(configPath) {
+	    // 2. Check the cache first
+	    if (selectedInfraCache != null) {
+	        console.log("Returning selectedInfra from cache.");
+	        return selectedInfraCache;
+	    }
+	
+	    // 3. If not in cache, perform the asynchronous fetch
+	    try {
+	        console.log("Fetching data and populating cache...");
+	        const response = await fetch(configPath);
+	
+	        if (!response.ok) {
+	            throw new Error(`HTTP error! status: ${response.status}`);
+	        }
+	
+	        const data = await response.json();
+	
+	        // 4. Find the item and store it in the cache variable
+	        const selectedInfra = data.Environments.find(infra => infra.selected === true);
+	        selectedInfraCache = selectedInfra; // Store the result for future calls
+	        
+	        return selectedInfra;
+	
+	    } catch (error) {
+	        console.error('Error fetching data:', error);
+	        // Important: Propagate the error so the caller knows the operation failed
+	        throw error;
+	    }
+	} 
+
   
 	//---1-  For Building Authorization requerst ---- 
-	function buildAuthReqWithPKCE(infraIndex ,  m_scope , m_anchorObjectId )
+	function buildAuthReqWithPKCE( m_scope , m_anchorObjectId )
 	{
-		fetch(configPath) // Replace 'data.json' with your actual file name and path
-		.then(response => response.json()) // Parse the response as JSON
-		.then(data => {
-		  // Access and use the data object here
-		  buildAuthorizationLinkUsingPKCE(data.Environments[infraIndex] , m_scope , m_anchorObjectId ) ;
-		})
-		.catch(error => {
-		  console.error('Error fetching data:', error);
-		});
+		getSelectedInfra(configPath).then(infra => 
+		{
+    		buildAuthorizationLinkUsingPKCE(infra , m_scope , m_anchorObjectId ) ;
+    	})
+	  
 	}
 
 	async function buildAuthorizationLinkUsingPKCE(m_infra ,  m_scope ,  m_anchorObjectId )
@@ -24,7 +53,7 @@
 		var code_challange = await  generateCodeChallenge(code_verifier); 
 		localStorage.setItem('code_verifier', code_verifier) ; 
 
-		authorizationUrl = m_infra.nafath.authorizationUrl  ; 
+		authorizationUrl = m_infra.mojServicesBaseUrl + "/" + m_infra.nafath.authorizationUrl  ; 
 		clientId = m_infra.credential.clientId ; 
 		var redirectUri = m_infra.nafath.redirectUri ; 
 		var response_type = 'code' ; 
@@ -50,20 +79,14 @@
 
 
 	// --2- For Getting AccessToken End point -----------
-	function getTokenWithPKCE(m_infraIndex , elementId)
+	function getTokenWithPKCE(elementId)
 	{
-		fetch(configPath) // Replace 'data.json' with your actual file name and path
-		.then(response => response.json()) // Parse the response as JSON
-		.then(data => {
-		  // Access and use the data object here
-		  console.log(data);
-		  // You can further process the data and display it on the page
-		  printTokenUsingPKCE(data.Environments[m_infraIndex] , elementId) ;
-		})
-		.catch(error => {
-		  console.error('Error fetching data:', error);
-		});
-	} ; 
+		getSelectedInfra(configPath).then(infra => 
+			{
+	    		printTokenUsingPKCE(infra , elementId ) ;
+	    	}
+    	)
+	} 
 	
 	
 	
@@ -89,84 +112,89 @@
 
 function sendPostRequest( url , data , elementId )
 {
-	var xhr = new XMLHttpRequest();
-		//xhr.withCredentials = true;
-				
-		xhr.open("POST", url);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.send(data);
-		xhr.onload = function() {
-		  if (xhr.status === 200) {
-		    localStorage.setItem('accessToken' , xhr.responseText) ;
-		    var retAccessToken = localStorage.getItem('accessToken') ;  
-		    console.log(JSON.parse(retAccessToken)); 
-		    document.getElementById(elementId).innerHTML = retAccessToken ; 
-		  } else {
-			document.getElementById(elementId).innerHTML = "" ; 
-			document.getElementById("error-container").innerHTML = xhr.responseText 
-		    console.error(xhr.statusText);
-		  }
-		};
+	getSelectedInfra(configPath).then(infra => 
+		{
+    		mojServicesBaseUrl = infra.mojServicesBaseUrl ; 
+			var xhr = new XMLHttpRequest();
+			//xhr.withCredentials = true;
+					
+			xhr.open("POST", mojServicesBaseUrl+"/"+url);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send(data);
+			xhr.onload = function() {
+			  if (xhr.status === 200) {
+			    localStorage.setItem('accessToken' , xhr.responseText) ;
+			    var retAccessToken = localStorage.getItem('accessToken') ;  
+			    console.log(JSON.parse(retAccessToken)); 
+			    document.getElementById(elementId).innerHTML = retAccessToken ; 
+			  } else {
+				document.getElementById(elementId).innerHTML = "" ; 
+				document.getElementById("error-container").innerHTML = xhr.responseText 
+			    console.error(xhr.statusText);
+			  }
+			};
 		
-		xhr.onerror = function(error) {
-		  console.error(error);
-		};
+			xhr.onerror = function(error) {
+			  console.error(error);
+			};
+    	}
+    )
+	
 }
 
 function sendGetRequest( url , elementId  )
 {
-	var xhr = new XMLHttpRequest();
-		//xhr.withCredentials = true;
-				
-		xhr.open("GET", url);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		var at = localStorage.getItem('accessToken')
-		accessToken = JSON.parse(at) ; 
-		xhr.setRequestHeader("Authorization" , "Bearer " + accessToken.access_token  ) ; 
-		xhr.send();
-		xhr.onload = function() {
-		  if (xhr.status === 200) {
-		    localStorage.setItem('response' , xhr.responseText) ;
-		    document.getElementById(elementId).innerHTML = xhr.responseText ; 
-		  } else {
-			document.getElementById(elementId).innerHTML = "" ; 
-			document.getElementById("error-container").innerHTML = xhr.responseText 
-		  }
-		};
+	getSelectedInfra(configPath).then(infra => 
+		{
+			mojServicesBaseUrl = infra.mojServicesBaseUrl ; 
+			var xhr = new XMLHttpRequest();
+			//xhr.withCredentials = true;
+					
+			xhr.open("GET", mojServicesBaseUrl+"/"+url);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			var at = localStorage.getItem('accessToken')
+			accessToken = JSON.parse(at) ; 
+			xhr.setRequestHeader("Authorization" , "Bearer " + accessToken.access_token  ) ; 
+			xhr.send();
+			xhr.onload = function() {
+			  if (xhr.status === 200) {
+			    localStorage.setItem('response' , xhr.responseText) ;
+			    document.getElementById(elementId).innerHTML = xhr.responseText ; 
+			  } else {
+				document.getElementById(elementId).innerHTML = "" ; 
+				document.getElementById("error-container").innerHTML = xhr.responseText 
+			  }
+			};
 		
-		xhr.onerror = function(error) {
-		document.getElementById("error-container").innerHTML = error ; 
-		console.error(error);
-		};
+			xhr.onerror = function(error) {
+			document.getElementById("error-container").innerHTML = error ; 
+			console.error(error);
+			};
+		}
+	)
 }
 
-
-
 //--- Building logout Request
-	function buildLogoutReq(infraIndex ,   m_anchorObjectId , userId , sessionIndex )
+	function buildLogoutReq( m_anchorObjectId , userId , sessionIndex )
 	{
-		fetch(configPath) // Replace 'data.json' with your actual file name and path
-		.then(response => response.json()) // Parse the response as JSON
-		.then(data => {
-		var result ; 
-		m_infra = data.Environments[infraIndex] 
-		logoutUrl = m_infra.nafath.logoutUrl  ; 
-		clientId = m_infra.credential.clientId ; 
-		var state = generateRandom(8) ; 
-		var nonce = generateRandom(8) ;  
-		var result = logoutUrl + '?client_id=' + clientId 
-					+'&state=' + state
-					+'&nonce=' + nonce 
-					+'userId=' + userId
-					+'sessionIndex=' +sessionIndex; 
-		// Get the anchor element by its ID
-		const myLink = document.getElementById(m_anchorObjectId);
-		// Update the href attribute
-		myLink.href = result;
-		})
-		.catch(error => {
-		  console.error('Error fetching data:', error);
-		});
+		getSelectedInfra('config.json').then(m_infra => 
+			{
+	    		var result ; 
+				logoutUrl = m_infra.nafath.logoutUrl  ; 
+				clientId = m_infra.credential.clientId ; 
+				var state = generateRandom(8) ; 
+				var nonce = generateRandom(8) ;  
+				var result = logoutUrl + '?client_id=' + clientId 
+						+'&state=' + state
+						+'&nonce=' + nonce 
+						+'userId=' + userId
+						+'sessionIndex=' +sessionIndex; 
+				// Get the anchor element by its ID
+				const myLink = document.getElementById(m_anchorObjectId);
+				// Update the href attribute
+				myLink.href = result;
+	    	}
+    	)
 	}
 
  // Function to generate a random string for the code verifier
@@ -205,4 +233,5 @@ function generateRandom(length)
   }
   return nonce;
 }
+
 

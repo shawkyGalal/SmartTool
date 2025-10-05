@@ -7,21 +7,12 @@
 <script type="text/javascript" src="./crypto-js.min.js"></script>
 </head>
 <body>
-	<script>
-		function buildAuthRequest()
-		{
-			var result ; 
-			result = buildAuthReqWithPKCE(1) ; 
-			return result ; 
-		
-		}
-	</script>
 
 	<h1> NajizLike Application  </h1>
 	
 	Your are Not Logged in , or Your Session is Expired.  
 	<br>
-		<a href = '' Target = "NajizLikeApp" id="loginAnchor"  onmouseover="buildAuthReqWithPKCE(1, 'openid%20XXX%20YYYY' , this.id  )" >Login Using Nafath Mowahad </a>
+		<a href = '' Target = "NajizLikeApp" id="loginAnchor"  onmouseover="buildAuthReqWithPKCE('openid%20XXX%20YYYY' , this.id  )" >Login Using Nafath Mowahad </a>
 	<br><br>
 	
 </body>
