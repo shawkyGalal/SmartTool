@@ -1,3 +1,4 @@
+<%@page import="com.smartvalue.apigee.rest.schema.developer.DevelopersList"%>
 <%@page import="com.smartvalue.apigee.rest.schema.developer.DeveloperServices"%>
 <%@page import="com.smartvalue.apigee.resourceManager.Renderer"%>
 <%@page import="com.smartvalue.apigee.configuration.AppConfig"%>
@@ -38,23 +39,32 @@
 		
 			Organization org = ms.getOrgByName(orgSelect) ; 
 			DeveloperServices ds =  (DeveloperServices) ms.getDevelopersServices(orgSelect) ; 
+			ds.setExtend(true) ; 
 			
-			//List<String> envs = org.getEnvironments(); 
-			ArrayList<String> developers = org.getDeveloperNames() ;
+			
+			DevelopersList allDevelopers = ds.getAllDevelopersList() ; 
 			int devAppsSize ; 
-			for ( String  developerName :  developers )
+			int counter = 0 ; 
+			out.print ("<Table border=1 >") ; 
+			out.print ("<tr><td>#</td><td> Developer Email </td><td> Domain </td><td> Apps Count </td> <td> Status </td></tr>") ; 
+			for ( Developer  dev :  allDevelopers.getDevelopers() )
 			{
-				try{
-				Developer dev = ds.getDeveloperById(developerName) ;
+				//Developer dev = ds.getDeveloperById(developerName) ;
+				counter ++ ; 
 				devAppsSize = dev.getApps().size(); 
-				out.print ("<br>" +developerName + "\t\t" + devAppsSize) ;
-				} catch (Exception e) {}
+				String devEmail = dev.getEmail() ; 
+				out.print ("<tr><td>"+counter+"</td>"
+						+"<td>" + devEmail + "</td>"
+						+"<td>" + devEmail.substring(devEmail.indexOf("@")+1) + "</td>"
+						+"<td>" + devAppsSize + "</td>"
+						+"<td>" + dev.getStatus()+ "</td></tr>" ) ;
 			}
+			out.print ("</Table>") ;
 			HashMap<String , String > extrLinks = new HashMap<String , String >() ; 
 			extrLinks.put ("devDetails.jsp?orgSelect="+orgSelect+"&developerId=" , "Details") ;
 			extrLinks.put ("xxxxx.jsp?orgSelect="+orgSelect+"&developerId=" , "xxxx") ;
 			
-			out.print(Renderer.arrayListToHtmlTable(developers , extrLinks)) ;
+			//out.print(Renderer.arrayListToHtmlTable(allDevelopers.getDevelopers() , extrLinks)) ;
 			}
 			catch ( Exception e) 
 			{
