@@ -51,6 +51,7 @@
 		<tr><td><a href = "developers/developers.jsp" target = "developers">Developers  </a></td></tr>
 		<tr><td><a href = "apps/apps.jsp" target = "applications">Applications  </a></td></tr>
 		<tr><td><a href = "kvms/kvms.jsp" target = "kvms">Key value Maps  </a></td></tr>
+		<tr><td><a href = "targetServers/targetServers.jsp" target = "kvms">TargetServers  </a></td></tr>
 	
 	</table>
 	

@@ -34,7 +34,6 @@
 </head>
 <body>
 <%
-p
 
 	GoogleIdToken gidt =  AppContext.getGoogleIdToken(session);
 	String userEmail = gidt.getPayload().getEmail();
