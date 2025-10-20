@@ -1,8 +1,8 @@
 package com.smartValue.web;
 
 import javax.servlet.ServletContext;
-//import javax.servlet.http.HttpSession;
-import jakarta.servlet.http.HttpSession ;
+import javax.servlet.http.HttpSession;
+//import jakarta.servlet.http.HttpSession ;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.smartvalue.apigee.configuration.AppConfig;

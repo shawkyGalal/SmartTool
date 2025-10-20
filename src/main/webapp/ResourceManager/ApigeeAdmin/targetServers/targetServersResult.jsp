@@ -19,7 +19,7 @@
 			
 			String orgSelect = request.getParameter("orgSelect") ;
 			out.print ("<br>KVMs for Organization " + orgSelect ) ; 
-					
+			ms.setOrgName(orgSelect); 	
 			try {
 			Organization org = ms.getOrgByName(orgSelect) ;  
 			List<String> envs = org.getEnvironments() ;
@@ -38,11 +38,15 @@
 				{
 					counter++ ; 
 					TargetServer targetServerObj  = targetServerServices.getTargetServerByName(targetServersName) ;
+					com.smartvalue.apigee.rest.schema.virtualHost.auto.SSLInfo  sslInfo = targetServerObj.getsSLInfo() ; 
+					boolean secure = sslInfo != null && sslInfo.getEnabled().equalsIgnoreCase("true") ;
+					boolean clientAuthenticated = secure && sslInfo.getClientAuthEnabled().equalsIgnoreCase("true") ; 
 					%> <tr>
 							<td><%=counter%></td>
 							<td><%=env%></td>
 							<td><%=targetServersName%></td>
-							<td><%=targetServerObj.getsSLInfo().getKeyStore() %></td>
+							<td><%=(secure) ? "https" : "http" %></td>
+							<td><%=(clientAuthenticated)? sslInfo : "ClientNotAuthenticated"  %> </td>
 							<td><a href = "targetServerDetails.jsp?org=<%=orgSelect%>&env=<%=env%>&targetServer=<%=targetServersName%>"> Details</a> </td> 
 					</tr> 
 					<%
