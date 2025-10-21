@@ -2,6 +2,8 @@
 <%@page import ="com.smartvalue.apigee.rest.schema.environment.Environment"%>
 <%@page import="com.smartvalue.apigee.rest.schema.targetServer.TargetServerServices"%>
 <%@page import="com.smartvalue.apigee.rest.schema.targetServer.TargetServer"%>
+<%@page import="com.smartvalue.apigee.resourceManager.Renderer"%> 
+
 
 <%@page import ="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
@@ -26,7 +28,7 @@
 			int counter = 0 ; 
 			%>
 			<table border = 1 > 
-			<tr><td> <%=counter%><td>Environment </td><td>KVM Name </td> <td>Details</td></tr>
+			<tr><td> <%=counter%><td>Environment </td><td>KVM Name </td> <td>Protocol</td> <td>SSLInfo</td> <td>Details</td></tr>
 			<%
 			
 			for (String env  : envs)
@@ -46,9 +48,11 @@
 							<td><%=env%></td>
 							<td><%=targetServersName%></td>
 							<td><%=(secure) ? "https" : "http" %></td>
-							<td><%=(clientAuthenticated)? sslInfo : "ClientNotAuthenticated"  %> </td>
-							<td><a href = "targetServerDetails.jsp?org=<%=orgSelect%>&env=<%=env%>&targetServer=<%=targetServersName%>"> Details</a> </td> 
-					</tr> 
+							<!--  <td><%=(clientAuthenticated)? ( "{\"KeyStore\" : " + "\""+sslInfo.getKeyStore() +"\" , \"KeyAlias\"" + "\"" + sslInfo.getKeyAlias()+"\"}"  )  : "ClientNotAuthenticated"  %> </td>  -->
+							<td><%=(clientAuthenticated)? Renderer.objectToHtmlTable(sslInfo) : "ClientNotAuthenticated" %></td>
+							<td><a href = "targetServerDetails.jsp?org=<%=orgSelect%>&env=<%=env%>&targetServer=<%=targetServersName%>"> Details</a> </td>
+							 
+						</tr> 
 					<%
 				}
 			}

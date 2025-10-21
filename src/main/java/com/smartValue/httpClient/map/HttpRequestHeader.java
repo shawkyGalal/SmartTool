@@ -1,6 +1,5 @@
-package com.masterWorks.httpClient.map;
+package com.smartValue.httpClient.map;
 
-import com.masterWorks.httpClient.map.auto._HttpRequestHeader;
 import com.smartValue.database.Attribute;
 import com.smartValue.database.AttributeChangeValidator;
 import com.smartValue.database.DbForignKeyArray;
@@ -9,6 +8,7 @@ import com.smartValue.database.audit.AuditInDbTriggerHandler;
 import com.smartValue.database.map.SecUsrDta;
 import com.smartValue.database.map.security.PersistentObjectSecurityControl;
 import com.smartValue.database.trigger.TriggerHandler;
+import com.smartValue.httpClient.map.auto._HttpRequestHeader;
 
 import java.util.HashMap;
 

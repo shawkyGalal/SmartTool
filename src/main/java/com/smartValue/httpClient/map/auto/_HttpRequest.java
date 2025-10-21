@@ -1,4 +1,4 @@
-package com.masterWorks.httpClient.map.auto;
+package com.smartValue.httpClient.map.auto;
 
 import com.smartValue.database.ApplicationContext;
 import com.smartValue.database.Attribute;

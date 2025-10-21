@@ -1,6 +1,5 @@
-package com.masterWorks.httpClient.map;
+package com.smartValue.httpClient.map;
 
-import com.masterWorks.httpClient.map.auto._HttpRequest;
 import com.smartValue.database.Attribute;
 import com.smartValue.database.AttributeChangeValidator;
 import com.smartValue.database.DataSet;
@@ -10,6 +9,7 @@ import com.smartValue.database.audit.AuditInDbTriggerHandler;
 import com.smartValue.database.map.SecUsrDta;
 import com.smartValue.database.map.security.PersistentObjectSecurityControl;
 import com.smartValue.database.trigger.TriggerHandler;
+import com.smartValue.httpClient.map.auto._HttpRequest;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -85,7 +85,7 @@ public class HttpRequest extends _HttpRequest {
 					+" Where "+ HttpRequestHeader.REQUEST_ID + " = '" + this.getRequestIdValue() + "'"
 					+" Order by  "+ HttpRequestHeader.HEADER_ID ;
 				
-				headers = this.getDbService().queryForDataSet(queryStr, com.masterWorks.httpClient.map.HttpRequestHeader.class) ;
+				headers = this.getDbService().queryForDataSet(queryStr, com.smartValue.httpClient.map.HttpRequestHeader.class) ;
 
 			}
 			return headers ;
